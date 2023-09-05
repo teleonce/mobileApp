@@ -1,0 +1,90 @@
+{
+  "project_info": {
+    "project_number": "644805332654",
+    "project_id": "teleonce-ea51b",
+    "storage_bucket": "teleonce-ea51b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:644805332654:android:9a29a718c6c62a9ed9e73f",
+        "android_client_info": {
+          "package_name": "com.app.teleonce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "644805332654-3r4teunbe7m1eeb34lpi0fmt9179u2kd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDp8rFhBuByNTqdvWFoNGvlnjpjBWndXsQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "644805332654-3r4teunbe7m1eeb34lpi0fmt9179u2kd.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "644805332654-bdq0et63l74gkbrtoncufmhesr5ctrmu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.teleonce.com"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:644805332654:android:e90e3f065bed0f5ed9e73f",
+        "android_client_info": {
+          "package_name": "com.teleonce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "644805332654-g64gsq9q59b866p3i1v6umh504nlucfd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.teleonce",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "644805332654-3r4teunbe7m1eeb34lpi0fmt9179u2kd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDp8rFhBuByNTqdvWFoNGvlnjpjBWndXsQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "644805332654-3r4teunbe7m1eeb34lpi0fmt9179u2kd.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "644805332654-bdq0et63l74gkbrtoncufmhesr5ctrmu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.teleonce.com"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

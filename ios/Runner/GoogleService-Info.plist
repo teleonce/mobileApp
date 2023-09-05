@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>644805332654-pr2pvtglvrs0n314uvpvi16dir5n65jf.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.644805332654-pr2pvtglvrs0n314uvpvi16dir5n65jf</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>644805332654-g64gsq9q59b866p3i1v6umh504nlucfd.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBtbwP8oGoJ_iuPIbPZDo8cxS_TYdPJWRQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>644805332654</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.app.teleonce</string>
+	<key>PROJECT_ID</key>
+	<string>teleonce-ea51b</string>
+	<key>STORAGE_BUCKET</key>
+	<string>teleonce-ea51b.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:644805332654:ios:b4a7010a90aa5949d9e73f</string>
+</dict>
+</plist>
