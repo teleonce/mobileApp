@@ -4,6 +4,8 @@ import '/components/menu_widget.dart';
 import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/instant_timer.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'dart:async';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
@@ -39,29 +41,46 @@ class _HomeWidgetState extends State<HomeWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('HOME_PAGE_Home_ON_INIT_STATE');
-      logFirebaseEvent('Home_custom_action');
-      await actions.lockOrientation();
       logFirebaseEvent('Home_backend_call');
-      _model.weather = await WeatherCall.call();
+      _model.country = await GetCountryCall.call();
       logFirebaseEvent('Home_update_app_state');
       setState(() {
-        FFAppState().temp = valueOrDefault<String>(
-          getJsonField(
-            (_model.weather?.jsonBody ?? ''),
-            r'''$.main.temp''',
-          ).toString().toString(),
-          '88',
+        FFAppState().showAds = true;
+        FFAppState().showSearch = false;
+        FFAppState().state = valueOrDefault<String>(
+          GetCountryCall.country(
+            (_model.country?.jsonBody ?? ''),
+          ).toString(),
+          'PR',
         );
-        FFAppState().weatherIcon = valueOrDefault<String>(
-          WeatherCall.weatherIcon(
-            (_model.weather?.jsonBody ?? ''),
-          ).toString().toString(),
-          '10d',
+        FFAppState().live = GetCountryCall.live(
+          (_model.country?.jsonBody ?? ''),
         );
         FFAppState().menuActiveItem = 'home';
-        FFAppState().showAds = getRemoteConfigBool('showAds');
-        FFAppState().showSearch = getRemoteConfigBool('showSearch');
       });
+      logFirebaseEvent('Home_custom_action');
+      await actions.lockOrientation();
+      logFirebaseEvent('Home_start_periodic_action');
+      _model.instantTimer = InstantTimer.periodic(
+        duration: Duration(milliseconds: 3500),
+        callback: (timer) async {
+          if (_model.pageViewCurrentIndex < 4) {
+            logFirebaseEvent('Home_page_view');
+            await _model.pageViewController?.nextPage(
+              duration: Duration(milliseconds: 300),
+              curve: Curves.ease,
+            );
+          } else {
+            logFirebaseEvent('Home_page_view');
+            await _model.pageViewController?.animateToPage(
+              0,
+              duration: Duration(milliseconds: 500),
+              curve: Curves.ease,
+            );
+          }
+        },
+        startImmediately: true,
+      );
     });
   }
 
@@ -95,7 +114,7 @@ class _HomeWidgetState extends State<HomeWidget> {
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.0, 0.0),
+            alignment: AlignmentDirectional(0.00, 0.00),
             child: Container(
               width: double.infinity,
               height: double.infinity,
@@ -168,8 +187,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                         Flexible(
                                           flex: 1,
                                           child: Align(
-                                            alignment:
-                                                AlignmentDirectional(0.0, 0.0),
+                                            alignment: AlignmentDirectional(
+                                                0.00, 0.00),
                                             child: Builder(
                                               builder: (context) {
                                                 final slides =
@@ -216,8 +235,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                             return Align(
                                                               alignment:
                                                                   AlignmentDirectional(
-                                                                      0.0,
-                                                                      -1.0),
+                                                                      0.00,
+                                                                      -1.00),
                                                               child: InkWell(
                                                                 splashColor: Colors
                                                                     .transparent,
@@ -291,7 +310,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                       Align(
                                                         alignment:
                                                             AlignmentDirectional(
-                                                                0.0, 1.0),
+                                                                0.00, 1.00),
                                                         child: Padding(
                                                           padding:
                                                               EdgeInsetsDirectional
@@ -366,8 +385,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             AlignmentDirectional(0.0, -1.0),
                                         children: [
                                           Align(
-                                            alignment:
-                                                AlignmentDirectional(-1.0, 0.0),
+                                            alignment: AlignmentDirectional(
+                                                -1.00, 0.00),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               crossAxisAlignment:
@@ -378,7 +397,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                   child: Align(
                                                     alignment:
                                                         AlignmentDirectional(
-                                                            -1.0, -1.0),
+                                                            -1.00, -1.00),
                                                     child: Padding(
                                                       padding:
                                                           EdgeInsetsDirectional
@@ -432,8 +451,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             ),
                                           ),
                                           Align(
-                                            alignment:
-                                                AlignmentDirectional(0.0, 1.0),
+                                            alignment: AlignmentDirectional(
+                                                0.00, 1.00),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
@@ -546,8 +565,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                               ),
                                                               alignment:
                                                                   AlignmentDirectional(
-                                                                      -1.0,
-                                                                      0.0),
+                                                                      -1.00,
+                                                                      0.00),
                                                               child: Padding(
                                                                 padding:
                                                                     EdgeInsetsDirectional
@@ -735,7 +754,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                     ),
                                     Align(
                                       alignment:
-                                          AlignmentDirectional(0.0, -1.0),
+                                          AlignmentDirectional(0.00, -1.00),
                                       child: Container(
                                         width:
                                             MediaQuery.sizeOf(context).width *
@@ -789,7 +808,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                 Align(
                                                   alignment:
                                                       AlignmentDirectional(
-                                                          -1.0, -1.0),
+                                                          -1.00, -1.00),
                                                   child: InkWell(
                                                     splashColor:
                                                         Colors.transparent,
@@ -1310,7 +1329,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                         children: [
                                           Align(
                                             alignment: AlignmentDirectional(
-                                                -1.0, -1.0),
+                                                -1.00, -1.00),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
@@ -1321,7 +1340,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                 Align(
                                                   alignment:
                                                       AlignmentDirectional(
-                                                          0.0, -1.0),
+                                                          0.00, -1.00),
                                                   child: Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
@@ -1356,8 +1375,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             ),
                                           ),
                                           Align(
-                                            alignment:
-                                                AlignmentDirectional(0.0, 1.0),
+                                            alignment: AlignmentDirectional(
+                                                0.00, 1.00),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
@@ -1470,8 +1489,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                               ),
                                                               alignment:
                                                                   AlignmentDirectional(
-                                                                      -1.0,
-                                                                      0.0),
+                                                                      -1.00,
+                                                                      0.00),
                                                               child: Padding(
                                                                 padding:
                                                                     EdgeInsetsDirectional
@@ -1635,7 +1654,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, -1.0),
+                    alignment: AlignmentDirectional(0.00, -1.00),
                     child: Container(
                       width: MediaQuery.sizeOf(context).width * 1.0,
                       height: 74.0,
@@ -1652,7 +1671,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, 1.0),
+                    alignment: AlignmentDirectional(0.00, 1.00),
                     child: wrapWithModel(
                       model: _model.navBarModel,
                       updateCallback: () => setState(() {}),

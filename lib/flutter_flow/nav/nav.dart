@@ -331,9 +331,9 @@ class FFRoute {
                   color: Colors.white,
                   child: Center(
                     child: Image.asset(
-                      'assets/images/logo_605129fdc1772c95239d019d_d6367807c40d56026c330a4926e5a2b5_(1).png',
-                      width: MediaQuery.sizeOf(context).width * 0.6,
-                      fit: BoxFit.contain,
+                      'assets/images/1x-tele11-2.gif',
+                      width: MediaQuery.sizeOf(context).width * 0.75,
+                      fit: BoxFit.cover,
                     ),
                   ),
                 )

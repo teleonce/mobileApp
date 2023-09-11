@@ -4,6 +4,8 @@ import '/components/menu_widget.dart';
 import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/instant_timer.dart';
 import 'dart:async';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
@@ -41,6 +43,27 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
       setState(() {
         FFAppState().menuActiveItem = 'programas';
       });
+      logFirebaseEvent('Programas_start_periodic_action');
+      _model.instantTimer = InstantTimer.periodic(
+        duration: Duration(milliseconds: 3500),
+        callback: (timer) async {
+          if (_model.pageViewCurrentIndex <= 4) {
+            logFirebaseEvent('Programas_page_view');
+            await _model.pageViewController?.nextPage(
+              duration: Duration(milliseconds: 300),
+              curve: Curves.ease,
+            );
+          } else {
+            logFirebaseEvent('Programas_page_view');
+            await _model.pageViewController?.animateToPage(
+              0,
+              duration: Duration(milliseconds: 500),
+              curve: Curves.ease,
+            );
+          }
+        },
+        startImmediately: true,
+      );
     });
   }
 
@@ -74,7 +97,7 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.0, 0.0),
+            alignment: AlignmentDirectional(0.00, 0.00),
             child: Container(
               width: double.infinity,
               height: double.infinity,
@@ -82,7 +105,7 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                 alignment: AlignmentDirectional(0.0, 0.0),
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.00, 0.00),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 74.0, 0.0, 80.0),
@@ -254,7 +277,7 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                                 Align(
                                                   alignment:
                                                       AlignmentDirectional(
-                                                          0.0, 1.0),
+                                                          0.00, 1.00),
                                                   child: smooth_page_indicator
                                                       .SmoothPageIndicator(
                                                     controller: _model
@@ -351,7 +374,7 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.0, 1.0),
+                                              AlignmentDirectional(0.00, 1.00),
                                           child: Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
@@ -455,7 +478,8 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                                             ),
                                                             alignment:
                                                                 AlignmentDirectional(
-                                                                    -1.0, 0.0),
+                                                                    -1.00,
+                                                                    0.00),
                                                             child: Padding(
                                                               padding:
                                                                   EdgeInsetsDirectional
@@ -609,7 +633,7 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.0, 1.0),
+                                              AlignmentDirectional(0.00, 1.00),
                                           child: Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
@@ -712,7 +736,8 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                                             ),
                                                             alignment:
                                                                 AlignmentDirectional(
-                                                                    -1.0, 0.0),
+                                                                    -1.00,
+                                                                    0.00),
                                                             child: Padding(
                                                               padding:
                                                                   EdgeInsetsDirectional
@@ -866,7 +891,7 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.0, 1.0),
+                                              AlignmentDirectional(0.00, 1.00),
                                           child: Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
@@ -971,7 +996,8 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                                             ),
                                                             alignment:
                                                                 AlignmentDirectional(
-                                                                    -1.0, 0.0),
+                                                                    -1.00,
+                                                                    0.00),
                                                             child: Padding(
                                                               padding:
                                                                   EdgeInsetsDirectional
@@ -1125,7 +1151,7 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.0, 1.0),
+                                              AlignmentDirectional(0.00, 1.00),
                                           child: Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
@@ -1230,7 +1256,8 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                                             ),
                                                             alignment:
                                                                 AlignmentDirectional(
-                                                                    -1.0, 0.0),
+                                                                    -1.00,
+                                                                    0.00),
                                                             child: Padding(
                                                               padding:
                                                                   EdgeInsetsDirectional
@@ -1384,7 +1411,7 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.0, 1.0),
+                                              AlignmentDirectional(0.00, 1.00),
                                           child: Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
@@ -1489,7 +1516,8 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                                             ),
                                                             alignment:
                                                                 AlignmentDirectional(
-                                                                    -1.0, 0.0),
+                                                                    -1.00,
+                                                                    0.00),
                                                             child: Padding(
                                                               padding:
                                                                   EdgeInsetsDirectional
@@ -1615,7 +1643,7 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, 1.0),
+                    alignment: AlignmentDirectional(0.00, 1.00),
                     child: wrapWithModel(
                       model: _model.navBarModel,
                       updateCallback: () => setState(() {}),
@@ -1623,7 +1651,7 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, -1.0),
+                    alignment: AlignmentDirectional(0.00, -1.00),
                     child: Container(
                       width: MediaQuery.sizeOf(context).width * 1.0,
                       height: 74.0,

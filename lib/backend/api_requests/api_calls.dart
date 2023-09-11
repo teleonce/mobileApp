@@ -1227,7 +1227,7 @@ class GetCountryCall {
   static Future<ApiCallResponse> call() {
     return ApiManager.instance.makeApiCall(
       callName: 'GetCountry',
-      apiUrl: 'https://teleonce.com/wp-json/app/v1/getCountry',
+      apiUrl: 'https://teleonce.com/wp-json/app/v2/getCountry',
       callType: ApiCallType.GET,
       headers: {},
       params: {},
@@ -1241,6 +1241,10 @@ class GetCountryCall {
   static dynamic country(dynamic response) => getJsonField(
         response,
         r'''$.country''',
+      );
+  static dynamic live(dynamic response) => getJsonField(
+        response,
+        r'''$.is_live''',
       );
 }
 
@@ -1280,6 +1284,27 @@ class WeatherCall {
   static dynamic weatherIcon(dynamic response) => getJsonField(
         response,
         r'''$.weather[:].icon''',
+      );
+}
+
+class LiveCall {
+  static Future<ApiCallResponse> call() {
+    return ApiManager.instance.makeApiCall(
+      callName: 'Live',
+      apiUrl: 'https://teleoncestg.wpengine.com/wp-json/app/v1/live',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  static dynamic live(dynamic response) => getJsonField(
+        response,
+        r'''$.is_live''',
       );
 }
 

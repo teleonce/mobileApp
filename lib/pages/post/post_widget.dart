@@ -4,6 +4,7 @@ import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_web_view.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -76,7 +77,7 @@ class _PostWidgetState extends State<PostWidget> {
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.0, 0.0),
+            alignment: AlignmentDirectional(0.00, 0.00),
             child: Container(
               width: double.infinity,
               height: double.infinity,
@@ -107,7 +108,7 @@ class _PostWidgetState extends State<PostWidget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, 1.0),
+                    alignment: AlignmentDirectional(0.00, 1.00),
                     child: wrapWithModel(
                       model: _model.navBarModel,
                       updateCallback: () => setState(() {}),
@@ -115,7 +116,7 @@ class _PostWidgetState extends State<PostWidget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, -1.0),
+                    alignment: AlignmentDirectional(0.00, -1.00),
                     child: Container(
                       width: MediaQuery.sizeOf(context).width * 1.0,
                       height: 74.0,

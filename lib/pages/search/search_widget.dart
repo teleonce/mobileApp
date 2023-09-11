@@ -4,6 +4,7 @@ import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_web_view.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -43,8 +44,6 @@ class _SearchWidgetState extends State<SearchWidget> {
         FFAppState().menuActiveItem = 'search';
       });
     });
-
-    _model.textController ??= TextEditingController();
   }
 
   @override
@@ -77,7 +76,7 @@ class _SearchWidgetState extends State<SearchWidget> {
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.0, 0.0),
+            alignment: AlignmentDirectional(0.00, 0.00),
             child: Container(
               width: double.infinity,
               height: double.infinity,
@@ -100,88 +99,12 @@ class _SearchWidgetState extends State<SearchWidget> {
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Container(
-                              width: MediaQuery.sizeOf(context).width * 1.0,
-                              height: 70.0,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: Image.asset(
-                                    'assets/images/benner_1.jpg',
-                                  ).image,
-                                ),
-                              ),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    12.0, 12.0, 12.0, 0.0),
-                                child: TextFormField(
-                                  controller: _model.textController,
-                                  onFieldSubmitted: (_) async {
-                                    logFirebaseEvent(
-                                        'SEARCH_TextField_xt43r8f3_ON_TEXTFIELD_S');
-                                    logFirebaseEvent(
-                                        'TextField_update_app_state');
-                                    setState(() {
-                                      FFAppState().search = widget.search!;
-                                    });
-                                  },
-                                  autofocus: true,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    labelText: 'Buscar ...',
-                                    labelStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium,
-                                    hintStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium,
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .alternate,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    errorBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    focusedErrorBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                  ),
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
-                                  validator: _model.textControllerValidator
-                                      .asValidator(context),
-                                ),
-                              ),
-                            ),
                             if (FFAppState().search != null &&
                                 FFAppState().search != '')
                               Flexible(
                                 flex: 1,
                                 child: FlutterFlowWebView(
-                                  content:
-                                      'https://teleonce.com/?s=${FFAppState().search}',
+                                  content: 'https://teleonce.com/?s=',
                                   bypass: false,
                                   width: MediaQuery.sizeOf(context).width * 1.0,
                                   height:
@@ -196,7 +119,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, 1.0),
+                    alignment: AlignmentDirectional(0.00, 1.00),
                     child: wrapWithModel(
                       model: _model.navBarModel,
                       updateCallback: () => setState(() {}),
@@ -204,7 +127,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, -1.0),
+                    alignment: AlignmentDirectional(0.00, -1.00),
                     child: Container(
                       width: MediaQuery.sizeOf(context).width * 1.0,
                       height: 74.0,

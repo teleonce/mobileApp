@@ -123,7 +123,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
         FFAppState().state = valueOrDefault<String>(
           GetCountryCall.country(
             (_model.country?.jsonBody ?? ''),
-          ).toString().toString(),
+          ).toString(),
           'PR',
         );
       }
@@ -310,7 +310,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
               ),
               Expanded(
                 child: Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.00, 0.00),
                   child: Container(
                     width: double.infinity,
                     constraints: BoxConstraints(
@@ -324,7 +324,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                       children: [
                         Container(
                           width: double.infinity,
-                          height: 230.0,
+                          height: 158.0,
                           child: Stack(
                             children: [
                               Padding(
@@ -355,18 +355,26 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                                 ),
                                           ).animateOnPageLoad(animationsMap[
                                               'textOnPageLoadAnimation1']!),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 16.0, 0.0, 0.0),
-                                            child: Text(
-                                              'Mantenerte al día con las últimas noticias, programas, actualizaciones deportivas y más.',
-                                              textAlign: TextAlign.center,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelLarge,
-                                            ).animateOnPageLoad(animationsMap[
-                                                'textOnPageLoadAnimation2']!),
+                                          Flexible(
+                                            flex: 1,
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 16.0, 0.0, 0.0),
+                                              child: Text(
+                                                'Mantenerte al día con las últimas noticias, programas, actualizaciones deportivas y más.',
+                                                textAlign: TextAlign.center,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'Open Sans',
+                                                          lineHeight: 1.0,
+                                                        ),
+                                              ).animateOnPageLoad(animationsMap[
+                                                  'textOnPageLoadAnimation2']!),
+                                            ),
                                           ),
                                         ],
                                       ),
@@ -375,7 +383,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                 ),
                               ),
                               Align(
-                                alignment: AlignmentDirectional(0.0, 1.0),
+                                alignment: AlignmentDirectional(0.00, 1.00),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 10.0),

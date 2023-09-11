@@ -2,9 +2,9 @@ import '/backend/api_requests/api_calls.dart';
 import '/components/main_header_widget.dart';
 import '/components/menu_widget.dart';
 import '/components/nav_bar_widget.dart';
-import '/flutter_flow/flutter_flow_ad_banner.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
@@ -78,7 +78,7 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.0, 0.0),
+            alignment: AlignmentDirectional(0.00, 0.00),
             child: Container(
               width: double.infinity,
               height: double.infinity,
@@ -158,7 +158,7 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
                                             children: [
                                               Align(
                                                 alignment: AlignmentDirectional(
-                                                    0.0, -1.0),
+                                                    0.00, -1.00),
                                                 child: ClipRRect(
                                                   borderRadius:
                                                       BorderRadius.circular(
@@ -186,7 +186,7 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
                                               ),
                                               Align(
                                                 alignment: AlignmentDirectional(
-                                                    0.0, 1.0),
+                                                    0.00, 1.00),
                                                 child: Column(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -198,7 +198,7 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
                                                     Align(
                                                       alignment:
                                                           AlignmentDirectional(
-                                                              0.0, 1.0),
+                                                              0.00, 1.00),
                                                       child: ClipRRect(
                                                         child: BackdropFilter(
                                                           filter:
@@ -303,31 +303,6 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
                                 );
                               },
                             ),
-                            if (FFAppState().showAds == true)
-                              Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 10.0, 0.0, 10.0),
-                                  child: Container(
-                                    width: 320.0,
-                                    height: 50.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                    ),
-                                    child: FlutterFlowAdBanner(
-                                      width: 320.0,
-                                      height: 50.0,
-                                      showsTestAd: false,
-                                      iOSAdUnitID:
-                                          'ca-app-pub-7444673555678901/7793782119',
-                                      androidAdUnitID:
-                                          'ca-app-pub-7444673555678901/3506735514',
-                                    ),
-                                  ),
-                                ),
-                              ),
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 10.0, 0.0, 0.0),
@@ -454,7 +429,7 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
                                                     Align(
                                                       alignment:
                                                           AlignmentDirectional(
-                                                              -0.9, 0.85),
+                                                              -0.90, 0.85),
                                                       child: Container(
                                                         width: 32.0,
                                                         height: 32.0,
@@ -634,38 +609,13 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
                                 },
                               ),
                             ),
-                            if (FFAppState().showAds == true)
-                              Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 10.0, 10.0, 10.0),
-                                  child: Container(
-                                    width: 300.0,
-                                    height: 250.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                    ),
-                                    child: FlutterFlowAdBanner(
-                                      width: 320.0,
-                                      height: 100.0,
-                                      showsTestAd: false,
-                                      iOSAdUnitID:
-                                          'ca-app-pub-7444673555678901/7793782119',
-                                      androidAdUnitID:
-                                          'ca-app-pub-7444673555678901/3506735514',
-                                    ),
-                                  ),
-                                ),
-                              ),
                           ],
                         ),
                       ),
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, 1.0),
+                    alignment: AlignmentDirectional(0.00, 1.00),
                     child: wrapWithModel(
                       model: _model.navBarModel,
                       updateCallback: () => setState(() {}),
@@ -673,7 +623,7 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, -1.0),
+                    alignment: AlignmentDirectional(0.00, -1.00),
                     child: Container(
                       width: MediaQuery.sizeOf(context).width * 1.0,
                       height: 74.0,

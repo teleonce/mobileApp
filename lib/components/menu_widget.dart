@@ -73,7 +73,7 @@ class _MenuWidgetState extends State<MenuWidget> {
               children: [
                 Flexible(
                   child: Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.00, 0.00),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
@@ -107,6 +107,9 @@ class _MenuWidgetState extends State<MenuWidget> {
                   width: double.infinity,
                   height: 50.0,
                   decoration: BoxDecoration(
+                    color: FFAppState().menuActiveItem == 'home'
+                        ? Color(0xFFE1ECFB)
+                        : Color(0x00000000),
                     borderRadius: BorderRadius.circular(12.0),
                     shape: BoxShape.rectangle,
                   ),
@@ -122,7 +125,9 @@ class _MenuWidgetState extends State<MenuWidget> {
                             width: 4.0,
                             height: 60.0,
                             decoration: BoxDecoration(
-                              color: Color(0xFFE1ECFB),
+                              color: FFAppState().menuActiveItem == 'home'
+                                  ? FlutterFlowTheme.of(context).primary
+                                  : Color(0xFFE1ECFB),
                               borderRadius: BorderRadius.circular(4.0),
                             ),
                           ),
@@ -170,7 +175,9 @@ class _MenuWidgetState extends State<MenuWidget> {
                   width: double.infinity,
                   height: 50.0,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: FFAppState().menuActiveItem == 'noticias'
+                        ? Color(0xFFE1ECFB)
+                        : Color(0x00000000),
                     borderRadius: BorderRadius.circular(12.0),
                     shape: BoxShape.rectangle,
                   ),
@@ -186,7 +193,9 @@ class _MenuWidgetState extends State<MenuWidget> {
                             width: 4.0,
                             height: 60.0,
                             decoration: BoxDecoration(
-                              color: Color(0xFFE1ECFB),
+                              color: FFAppState().menuActiveItem == 'noticias'
+                                  ? FlutterFlowTheme.of(context).primary
+                                  : Color(0xFFE1ECFB),
                               borderRadius: BorderRadius.circular(4.0),
                             ),
                           ),
@@ -236,7 +245,9 @@ class _MenuWidgetState extends State<MenuWidget> {
                   width: double.infinity,
                   height: 50.0,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: FFAppState().menuActiveItem == 'programas'
+                        ? Color(0xFFE1ECFB)
+                        : Color(0x00000000),
                     borderRadius: BorderRadius.circular(12.0),
                     shape: BoxShape.rectangle,
                   ),
@@ -252,7 +263,9 @@ class _MenuWidgetState extends State<MenuWidget> {
                             width: 4.0,
                             height: 60.0,
                             decoration: BoxDecoration(
-                              color: Color(0xFFE1ECFB),
+                              color: FFAppState().menuActiveItem == 'programas'
+                                  ? FlutterFlowTheme.of(context).primary
+                                  : Color(0xFFE1ECFB),
                               borderRadius: BorderRadius.circular(4.0),
                             ),
                           ),
@@ -302,7 +315,9 @@ class _MenuWidgetState extends State<MenuWidget> {
                   width: double.infinity,
                   height: 50.0,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: FFAppState().menuActiveItem == 'eltiempo'
+                        ? Color(0xFFE1ECFB)
+                        : Color(0x00000000),
                     borderRadius: BorderRadius.circular(12.0),
                     shape: BoxShape.rectangle,
                   ),
@@ -318,7 +333,9 @@ class _MenuWidgetState extends State<MenuWidget> {
                             width: 4.0,
                             height: 60.0,
                             decoration: BoxDecoration(
-                              color: Color(0xFFE1ECFB),
+                              color: FFAppState().menuActiveItem == 'eltiempo'
+                                  ? FlutterFlowTheme.of(context).primary
+                                  : Color(0xFFE1ECFB),
                               borderRadius: BorderRadius.circular(4.0),
                             ),
                           ),
@@ -349,74 +366,74 @@ class _MenuWidgetState extends State<MenuWidget> {
                 ),
               ),
             ),
-            if (FFAppState().showSearch)
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
-                child: InkWell(
-                  splashColor: Colors.transparent,
-                  focusColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () async {
-                    logFirebaseEvent('MENU_COMP_Buscar_ON_TAP');
-                    logFirebaseEvent('Buscar_navigate_to');
-                    if (Navigator.of(context).canPop()) {
-                      context.pop();
-                    }
-                    context.pushNamed('Search');
-                  },
-                  child: Container(
-                    width: double.infinity,
-                    height: 50.0,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).info,
-                      borderRadius: BorderRadius.circular(12.0),
-                      shape: BoxShape.rectangle,
-                    ),
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 12.0, 0.0),
-                            child: Container(
-                              width: 4.0,
-                              height: 60.0,
-                              decoration: BoxDecoration(
-                                color: Color(0xFFD6E5EC),
-                                borderRadius: BorderRadius.circular(4.0),
-                              ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+              child: InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  logFirebaseEvent('MENU_COMP_Buscar_ON_TAP');
+                  logFirebaseEvent('Buscar_navigate_to');
+                  if (Navigator.of(context).canPop()) {
+                    context.pop();
+                  }
+                  context.pushNamed('Search');
+                },
+                child: Container(
+                  width: double.infinity,
+                  height: 50.0,
+                  decoration: BoxDecoration(
+                    color: FFAppState().menuActiveItem == 'buscar'
+                        ? Color(0xFFE1ECFB)
+                        : Color(0x00000000),
+                    borderRadius: BorderRadius.circular(12.0),
+                    shape: BoxShape.rectangle,
+                  ),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 12.0, 0.0),
+                          child: Container(
+                            width: 4.0,
+                            height: 60.0,
+                            decoration: BoxDecoration(
+                              color: Color(0xFFD6E5EC),
+                              borderRadius: BorderRadius.circular(4.0),
                             ),
                           ),
-                          Icon(
-                            Icons.manage_search_rounded,
-                            color: Color(0xFF384E58),
-                            size: 28.0,
+                        ),
+                        Icon(
+                          Icons.manage_search_rounded,
+                          color: Color(0xFF384E58),
+                          size: 28.0,
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              12.0, 0.0, 0.0, 0.0),
+                          child: Text(
+                            'Busqueda',
+                            style: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Plus Jakarta Sans',
+                                  color: Color(0xFF384E58),
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.w600,
+                                ),
                           ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                12.0, 0.0, 0.0, 0.0),
-                            child: Text(
-                              'Busqueda',
-                              style: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    fontFamily: 'Plus Jakarta Sans',
-                                    color: Color(0xFF384E58),
-                                    fontSize: 16.0,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                            ),
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
               ),
+            ),
             Expanded(
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
@@ -424,6 +441,115 @@ class _MenuWidgetState extends State<MenuWidget> {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
+                    Flexible(
+                      flex: 1,
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                logFirebaseEvent('MENU_COMP_Facebook_ON_TAP');
+                                logFirebaseEvent('Facebook_launch_u_r_l');
+                                await launchURL(
+                                    'https://www.facebook.com/TeleOncePR/');
+                              },
+                              child: FaIcon(
+                                FontAwesomeIcons.facebookSquare,
+                                color: FlutterFlowTheme.of(context).thirdText,
+                                size: 36.0,
+                              ),
+                            ),
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                logFirebaseEvent('MENU_COMP_Instagram_ON_TAP');
+                                logFirebaseEvent('Instagram_launch_u_r_l');
+                                await launchURL(
+                                    'httphttps://www.instagram.com/teleonce/');
+                              },
+                              child: FaIcon(
+                                FontAwesomeIcons.instagramSquare,
+                                color: FlutterFlowTheme.of(context).thirdText,
+                                size: 36.0,
+                              ),
+                            ),
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                logFirebaseEvent('MENU_COMP_Twitter_ON_TAP');
+                                logFirebaseEvent('Twitter_launch_u_r_l');
+                                await launchURL('https://twitter.com/tele11PR');
+                              },
+                              child: FaIcon(
+                                FontAwesomeIcons.twitterSquare,
+                                color: FlutterFlowTheme.of(context).thirdText,
+                                size: 36.0,
+                              ),
+                            ),
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                logFirebaseEvent('MENU_COMP_Twitter_ON_TAP');
+                                logFirebaseEvent('Twitter_launch_u_r_l');
+                                await launchURL(
+                                    'https://www.youtube.com/c/TeleOncePuertoRico');
+                              },
+                              child: FaIcon(
+                                FontAwesomeIcons.youtubeSquare,
+                                color: FlutterFlowTheme.of(context).thirdText,
+                                size: 36.0,
+                              ),
+                            ),
+                          ]
+                              .divide(SizedBox(width: 10.0))
+                              .around(SizedBox(width: 10.0)),
+                        ),
+                      ),
+                    ),
+                    Flexible(
+                      flex: 1,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Flexible(
+                            flex: 1,
+                            child: Text(
+                              'Copyright © 2023 TeleOnce. \nTodos los derechos reservados.',
+                              textAlign: TextAlign.center,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Open Sans',
+                                    color:
+                                        FlutterFlowTheme.of(context).thirdText,
+                                    fontSize: 12.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                            ),
+                          ),
+                        ]
+                            .divide(SizedBox(width: 10.0))
+                            .around(SizedBox(width: 10.0)),
+                      ),
+                    ),
                     Divider(
                       height: 12.0,
                       thickness: 2.0,

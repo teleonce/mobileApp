@@ -4,6 +4,7 @@ import '/components/menu_widget.dart';
 import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:async';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -78,7 +79,7 @@ class _CategoriaWidgetState extends State<CategoriaWidget> {
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.0, 0.0),
+            alignment: AlignmentDirectional(0.00, 0.00),
             child: Container(
               width: double.infinity,
               height: double.infinity,
@@ -148,8 +149,8 @@ class _CategoriaWidgetState extends State<CategoriaWidget> {
                                             AlignmentDirectional(0.0, 1.0),
                                         children: [
                                           Align(
-                                            alignment:
-                                                AlignmentDirectional(-1.0, 0.0),
+                                            alignment: AlignmentDirectional(
+                                                -1.00, 0.00),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
@@ -201,8 +202,8 @@ class _CategoriaWidgetState extends State<CategoriaWidget> {
                                                               Align(
                                                                 alignment:
                                                                     AlignmentDirectional(
-                                                                        0.0,
-                                                                        -1.0),
+                                                                        0.00,
+                                                                        -1.00),
                                                                 child: Icon(
                                                                   Icons
                                                                       .art_track_rounded,
@@ -215,8 +216,8 @@ class _CategoriaWidgetState extends State<CategoriaWidget> {
                                                               Align(
                                                                 alignment:
                                                                     AlignmentDirectional(
-                                                                        0.0,
-                                                                        1.0),
+                                                                        0.00,
+                                                                        1.00),
                                                                 child: Padding(
                                                                   padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
@@ -328,7 +329,7 @@ class _CategoriaWidgetState extends State<CategoriaWidget> {
                                                           return Align(
                                                             alignment:
                                                                 AlignmentDirectional(
-                                                                    0.0, 0.0),
+                                                                    0.00, 0.00),
                                                             child: InkWell(
                                                               splashColor: Colors
                                                                   .transparent,
@@ -376,10 +377,9 @@ class _CategoriaWidgetState extends State<CategoriaWidget> {
                                                                 child: Stack(
                                                                   children: [
                                                                     Align(
-                                                                      alignment:
-                                                                          AlignmentDirectional(
-                                                                              0.0,
-                                                                              -1.0),
+                                                                      alignment: AlignmentDirectional(
+                                                                          0.00,
+                                                                          -1.00),
                                                                       child:
                                                                           Padding(
                                                                         padding: EdgeInsetsDirectional.fromSTEB(
@@ -416,10 +416,9 @@ class _CategoriaWidgetState extends State<CategoriaWidget> {
                                                                       ),
                                                                     ),
                                                                     Align(
-                                                                      alignment:
-                                                                          AlignmentDirectional(
-                                                                              0.0,
-                                                                              1.0),
+                                                                      alignment: AlignmentDirectional(
+                                                                          0.00,
+                                                                          1.00),
                                                                       child:
                                                                           Padding(
                                                                         padding: EdgeInsetsDirectional.fromSTEB(
@@ -522,7 +521,7 @@ class _CategoriaWidgetState extends State<CategoriaWidget> {
                                       ),
                                       child: Align(
                                         alignment:
-                                            AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.00, 0.00),
                                         child: AutoSizeText(
                                           widget.cat! <= 0
                                               ? 'Últimas Noticias'
@@ -687,7 +686,7 @@ class _CategoriaWidgetState extends State<CategoriaWidget> {
                                                     Align(
                                                       alignment:
                                                           AlignmentDirectional(
-                                                              -0.9, 0.85),
+                                                              -0.90, 0.85),
                                                       child: Container(
                                                         width: 32.0,
                                                         height: 32.0,
@@ -900,7 +899,7 @@ class _CategoriaWidgetState extends State<CategoriaWidget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, 1.0),
+                    alignment: AlignmentDirectional(0.00, 1.00),
                     child: wrapWithModel(
                       model: _model.navBarModel,
                       updateCallback: () => setState(() {}),
@@ -908,7 +907,7 @@ class _CategoriaWidgetState extends State<CategoriaWidget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, -1.0),
+                    alignment: AlignmentDirectional(0.00, -1.00),
                     child: Container(
                       width: MediaQuery.sizeOf(context).width * 1.0,
                       height: 74.0,

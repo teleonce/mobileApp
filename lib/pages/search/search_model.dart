@@ -4,6 +4,7 @@ import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_web_view.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -14,9 +15,6 @@ class SearchModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // State field(s) for TextField widget.
-  TextEditingController? textController;
-  String? Function(BuildContext, String?)? textControllerValidator;
   // Model for NavBar component.
   late NavBarModel navBarModel;
   // Model for MainHeader component.
@@ -34,7 +32,6 @@ class SearchModel extends FlutterFlowModel {
 
   void dispose() {
     unfocusNode.dispose();
-    textController?.dispose();
     navBarModel.dispose();
     mainHeaderModel.dispose();
     menuModel.dispose();

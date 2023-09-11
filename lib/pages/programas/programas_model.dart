@@ -4,6 +4,8 @@ import '/components/menu_widget.dart';
 import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/instant_timer.dart';
 import '/flutter_flow/request_manager.dart';
 
 import 'dart:async';
@@ -20,6 +22,7 @@ class ProgramasModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  InstantTimer? instantTimer;
   bool apiRequestCompleted = false;
   String? apiRequestLastUniqueKey;
   // State field(s) for PageView widget.
@@ -64,6 +67,7 @@ class ProgramasModel extends FlutterFlowModel {
 
   void dispose() {
     unfocusNode.dispose();
+    instantTimer?.cancel();
     navBarModel.dispose();
     mainHeaderModel.dispose();
     menuModel.dispose();

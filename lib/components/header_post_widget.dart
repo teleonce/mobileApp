@@ -53,7 +53,7 @@ class _HeaderPostWidgetState extends State<HeaderPostWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.0, -1.0),
+      alignment: AlignmentDirectional(0.00, -1.00),
       child: Container(
         width: double.infinity,
         height: 74.0,
@@ -67,14 +67,14 @@ class _HeaderPostWidgetState extends State<HeaderPostWidget> {
                 color: FlutterFlowTheme.of(context).primaryBackground,
               ),
               child: Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
+                alignment: AlignmentDirectional(0.00, 0.00),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Flexible(
                       flex: 1,
                       child: Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.00, 0.00),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -82,7 +82,7 @@ class _HeaderPostWidgetState extends State<HeaderPostWidget> {
                           children: [
                             Flexible(
                               child: Align(
-                                alignment: AlignmentDirectional(-1.0, 0.0),
+                                alignment: AlignmentDirectional(-1.00, 0.00),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       8.0, 0.0, 0.0, 0.0),
@@ -114,7 +114,7 @@ class _HeaderPostWidgetState extends State<HeaderPostWidget> {
                     Flexible(
                       flex: 2,
                       child: Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.00, 0.00),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -122,7 +122,7 @@ class _HeaderPostWidgetState extends State<HeaderPostWidget> {
                           children: [
                             if (FFAppState().menuActiveItem != 'Home')
                               Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.00, 0.00),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
                                   focusColor: Colors.transparent,
@@ -153,7 +153,7 @@ class _HeaderPostWidgetState extends State<HeaderPostWidget> {
                     Flexible(
                       flex: 1,
                       child: Align(
-                        alignment: AlignmentDirectional(1.0, 0.0),
+                        alignment: AlignmentDirectional(1.00, 0.00),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 10.0, 0.0),
@@ -163,7 +163,7 @@ class _HeaderPostWidgetState extends State<HeaderPostWidget> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Align(
-                                alignment: AlignmentDirectional(1.0, 0.0),
+                                alignment: AlignmentDirectional(1.00, 0.00),
                                 child: Builder(
                                   builder: (context) => InkWell(
                                     splashColor: Colors.transparent,
@@ -199,7 +199,7 @@ class _HeaderPostWidgetState extends State<HeaderPostWidget> {
               ),
             ),
             Align(
-              alignment: AlignmentDirectional(0.0, 1.0),
+              alignment: AlignmentDirectional(0.00, 1.00),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(0.0),
                 child: Image.asset(

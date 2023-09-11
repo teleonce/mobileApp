@@ -29,7 +29,6 @@ void main() async {
   if (!kIsWeb) {
     FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
   }
-  await initializeFirebaseRemoteConfig();
 
   runApp(ChangeNotifierProvider(
     create: (context) => appState,
@@ -60,6 +59,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+
     _appStateNotifier = AppStateNotifier.instance;
     _router = createRouter(_appStateNotifier);
     userStream = t11AppFirebaseUserStream()

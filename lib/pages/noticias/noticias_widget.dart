@@ -4,6 +4,7 @@ import '/components/menu_widget.dart';
 import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:async';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -81,7 +82,7 @@ class _NoticiasWidgetState extends State<NoticiasWidget> {
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.0, 0.0),
+            alignment: AlignmentDirectional(0.00, 0.00),
             child: Container(
               width: double.infinity,
               height: double.infinity,
@@ -185,7 +186,7 @@ class _NoticiasWidgetState extends State<NoticiasWidget> {
                                             children: [
                                               Align(
                                                 alignment: AlignmentDirectional(
-                                                    -1.0, 0.0),
+                                                    -1.00, 0.00),
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
@@ -242,8 +243,8 @@ class _NoticiasWidgetState extends State<NoticiasWidget> {
                                                                   Align(
                                                                     alignment:
                                                                         AlignmentDirectional(
-                                                                            0.0,
-                                                                            -1.0),
+                                                                            0.00,
+                                                                            -1.00),
                                                                     child: Icon(
                                                                       Icons
                                                                           .art_track_rounded,
@@ -257,8 +258,8 @@ class _NoticiasWidgetState extends State<NoticiasWidget> {
                                                                   Align(
                                                                     alignment:
                                                                         AlignmentDirectional(
-                                                                            0.0,
-                                                                            1.0),
+                                                                            0.00,
+                                                                            1.00),
                                                                     child:
                                                                         Padding(
                                                                       padding: EdgeInsetsDirectional.fromSTEB(
@@ -363,8 +364,8 @@ class _NoticiasWidgetState extends State<NoticiasWidget> {
                                                               return Align(
                                                                 alignment:
                                                                     AlignmentDirectional(
-                                                                        0.0,
-                                                                        0.0),
+                                                                        0.00,
+                                                                        0.00),
                                                                 child: InkWell(
                                                                   splashColor:
                                                                       Colors
@@ -419,8 +420,8 @@ class _NoticiasWidgetState extends State<NoticiasWidget> {
                                                                       children: [
                                                                         Align(
                                                                           alignment: AlignmentDirectional(
-                                                                              0.0,
-                                                                              -1.0),
+                                                                              0.00,
+                                                                              -1.00),
                                                                           child:
                                                                               Padding(
                                                                             padding: EdgeInsetsDirectional.fromSTEB(
@@ -450,8 +451,8 @@ class _NoticiasWidgetState extends State<NoticiasWidget> {
                                                                         ),
                                                                         Align(
                                                                           alignment: AlignmentDirectional(
-                                                                              0.0,
-                                                                              1.0),
+                                                                              0.00,
+                                                                              1.00),
                                                                           child:
                                                                               Padding(
                                                                             padding: EdgeInsetsDirectional.fromSTEB(
@@ -632,7 +633,8 @@ class _NoticiasWidgetState extends State<NoticiasWidget> {
                                                           Align(
                                                             alignment:
                                                                 AlignmentDirectional(
-                                                                    -0.9, 0.85),
+                                                                    -0.90,
+                                                                    0.85),
                                                             child: Container(
                                                               width: 28.0,
                                                               height: 28.0,
@@ -671,7 +673,8 @@ class _NoticiasWidgetState extends State<NoticiasWidget> {
                                                           Align(
                                                             alignment:
                                                                 AlignmentDirectional(
-                                                                    -0.9, 0.85),
+                                                                    -0.90,
+                                                                    0.85),
                                                             child: Container(
                                                               width: 28.0,
                                                               height: 28.0,
@@ -915,8 +918,8 @@ class _NoticiasWidgetState extends State<NoticiasWidget> {
                                             ),
                                           ),
                                           Align(
-                                            alignment:
-                                                AlignmentDirectional(0.0, 1.0),
+                                            alignment: AlignmentDirectional(
+                                                0.00, 1.00),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
@@ -1020,8 +1023,8 @@ class _NoticiasWidgetState extends State<NoticiasWidget> {
                                                               ),
                                                               alignment:
                                                                   AlignmentDirectional(
-                                                                      -1.0,
-                                                                      0.0),
+                                                                      -1.00,
+                                                                      0.00),
                                                               child: Padding(
                                                                 padding:
                                                                     EdgeInsetsDirectional
@@ -1167,8 +1170,8 @@ class _NoticiasWidgetState extends State<NoticiasWidget> {
                                             ),
                                           ),
                                           Align(
-                                            alignment:
-                                                AlignmentDirectional(0.0, 1.0),
+                                            alignment: AlignmentDirectional(
+                                                0.00, 1.00),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
@@ -1274,8 +1277,8 @@ class _NoticiasWidgetState extends State<NoticiasWidget> {
                                                               ),
                                                               alignment:
                                                                   AlignmentDirectional(
-                                                                      -1.0,
-                                                                      0.0),
+                                                                      -1.00,
+                                                                      0.00),
                                                               child: Padding(
                                                                 padding:
                                                                     EdgeInsetsDirectional
@@ -1418,8 +1421,8 @@ class _NoticiasWidgetState extends State<NoticiasWidget> {
                                             ),
                                           ),
                                           Align(
-                                            alignment:
-                                                AlignmentDirectional(0.0, 1.0),
+                                            alignment: AlignmentDirectional(
+                                                0.00, 1.00),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
@@ -1525,8 +1528,8 @@ class _NoticiasWidgetState extends State<NoticiasWidget> {
                                                               ),
                                                               alignment:
                                                                   AlignmentDirectional(
-                                                                      -1.0,
-                                                                      0.0),
+                                                                      -1.00,
+                                                                      0.00),
                                                               child: Padding(
                                                                 padding:
                                                                     EdgeInsetsDirectional
@@ -1669,8 +1672,8 @@ class _NoticiasWidgetState extends State<NoticiasWidget> {
                                             ),
                                           ),
                                           Align(
-                                            alignment:
-                                                AlignmentDirectional(0.0, 1.0),
+                                            alignment: AlignmentDirectional(
+                                                0.00, 1.00),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
@@ -1774,8 +1777,8 @@ class _NoticiasWidgetState extends State<NoticiasWidget> {
                                                               ),
                                                               alignment:
                                                                   AlignmentDirectional(
-                                                                      -1.0,
-                                                                      0.0),
+                                                                      -1.00,
+                                                                      0.00),
                                                               child: Padding(
                                                                 padding:
                                                                     EdgeInsetsDirectional
@@ -1918,8 +1921,8 @@ class _NoticiasWidgetState extends State<NoticiasWidget> {
                                             ),
                                           ),
                                           Align(
-                                            alignment:
-                                                AlignmentDirectional(0.0, 1.0),
+                                            alignment: AlignmentDirectional(
+                                                0.00, 1.00),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
@@ -2023,8 +2026,8 @@ class _NoticiasWidgetState extends State<NoticiasWidget> {
                                                               ),
                                                               alignment:
                                                                   AlignmentDirectional(
-                                                                      -1.0,
-                                                                      0.0),
+                                                                      -1.00,
+                                                                      0.00),
                                                               child: Padding(
                                                                 padding:
                                                                     EdgeInsetsDirectional
@@ -2167,8 +2170,8 @@ class _NoticiasWidgetState extends State<NoticiasWidget> {
                                             ),
                                           ),
                                           Align(
-                                            alignment:
-                                                AlignmentDirectional(0.0, 1.0),
+                                            alignment: AlignmentDirectional(
+                                                0.00, 1.00),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
@@ -2271,8 +2274,8 @@ class _NoticiasWidgetState extends State<NoticiasWidget> {
                                                               ),
                                                               alignment:
                                                                   AlignmentDirectional(
-                                                                      -1.0,
-                                                                      0.0),
+                                                                      -1.00,
+                                                                      0.00),
                                                               child: Padding(
                                                                 padding:
                                                                     EdgeInsetsDirectional
@@ -2415,8 +2418,8 @@ class _NoticiasWidgetState extends State<NoticiasWidget> {
                                             ),
                                           ),
                                           Align(
-                                            alignment:
-                                                AlignmentDirectional(0.0, 1.0),
+                                            alignment: AlignmentDirectional(
+                                                0.00, 1.00),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
@@ -2520,8 +2523,8 @@ class _NoticiasWidgetState extends State<NoticiasWidget> {
                                                               ),
                                                               alignment:
                                                                   AlignmentDirectional(
-                                                                      -1.0,
-                                                                      0.0),
+                                                                      -1.00,
+                                                                      0.00),
                                                               child: Padding(
                                                                 padding:
                                                                     EdgeInsetsDirectional
@@ -2664,8 +2667,8 @@ class _NoticiasWidgetState extends State<NoticiasWidget> {
                                             ),
                                           ),
                                           Align(
-                                            alignment:
-                                                AlignmentDirectional(0.0, 1.0),
+                                            alignment: AlignmentDirectional(
+                                                0.00, 1.00),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
@@ -2767,8 +2770,8 @@ class _NoticiasWidgetState extends State<NoticiasWidget> {
                                                               ),
                                                               alignment:
                                                                   AlignmentDirectional(
-                                                                      -1.0,
-                                                                      0.0),
+                                                                      -1.00,
+                                                                      0.00),
                                                               child: Padding(
                                                                 padding:
                                                                     EdgeInsetsDirectional
@@ -2887,7 +2890,7 @@ class _NoticiasWidgetState extends State<NoticiasWidget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, 1.0),
+                    alignment: AlignmentDirectional(0.00, 1.00),
                     child: wrapWithModel(
                       model: _model.navBarModel,
                       updateCallback: () => setState(() {}),
@@ -2895,7 +2898,7 @@ class _NoticiasWidgetState extends State<NoticiasWidget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, -1.0),
+                    alignment: AlignmentDirectional(0.00, -1.00),
                     child: Container(
                       width: MediaQuery.sizeOf(context).width * 1.0,
                       height: 74.0,

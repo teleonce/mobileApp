@@ -7,13 +7,17 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 
 class FFAppState extends ChangeNotifier {
-  static final FFAppState _instance = FFAppState._internal();
+  static FFAppState _instance = FFAppState._internal();
 
   factory FFAppState() {
     return _instance;
   }
 
   FFAppState._internal();
+
+  static void reset() {
+    _instance = FFAppState._internal();
+  }
 
   Future initializePersistedState() async {}
 
@@ -45,6 +49,10 @@ class FFAppState extends ChangeNotifier {
     String Function(String) updateFn,
   ) {
     _menuItems[_index] = updateFn(_menuItems[_index]);
+  }
+
+  void insertAtIndexInMenuItems(int _index, String _value) {
+    _menuItems.insert(_index, _value);
   }
 
   String _menuActiveItem = '';
@@ -82,6 +90,10 @@ class FFAppState extends ChangeNotifier {
     Color Function(Color) updateFn,
   ) {
     _menuItemColors[_index] = updateFn(_menuItemColors[_index]);
+  }
+
+  void insertAtIndexInMenuItemColors(int _index, Color _value) {
+    _menuItemColors.insert(_index, _value);
   }
 
   bool _drawer = false;
@@ -138,7 +150,7 @@ class FFAppState extends ChangeNotifier {
     _showAds = _value;
   }
 
-  bool _showSearch = false;
+  bool _showSearch = true;
   bool get showSearch => _showSearch;
   set showSearch(bool _value) {
     _showSearch = _value;

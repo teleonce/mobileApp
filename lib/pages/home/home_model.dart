@@ -4,6 +4,8 @@ import '/components/menu_widget.dart';
 import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/instant_timer.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/request_manager.dart';
 
@@ -22,8 +24,9 @@ class HomeModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Stores action output result for [Backend Call - API (Weather)] action in Home widget.
-  ApiCallResponse? weather;
+  // Stores action output result for [Backend Call - API (GetCountry)] action in Home widget.
+  ApiCallResponse? country;
+  InstantTimer? instantTimer;
   bool apiRequestCompleted = false;
   String? apiRequestLastUniqueKey;
   // State field(s) for PageView widget.
@@ -68,6 +71,7 @@ class HomeModel extends FlutterFlowModel {
 
   void dispose() {
     unfocusNode.dispose();
+    instantTimer?.cancel();
     mainHeaderModel.dispose();
     navBarModel.dispose();
     menuModel.dispose();
