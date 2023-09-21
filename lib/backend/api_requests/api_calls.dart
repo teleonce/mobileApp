@@ -215,6 +215,7 @@ class AppAPIGroup {
   static LatestShowsCall latestShowsCall = LatestShowsCall();
   static ShowInfoCall showInfoCall = ShowInfoCall();
   static NewsCatCall newsCatCall = NewsCatCall();
+  static ShowCategoriesCall showCategoriesCall = ShowCategoriesCall();
 }
 
 class NewsCall {
@@ -1086,6 +1087,11 @@ class LastestNewsCall {
         r'''$.Seguridad[:].video''',
         true,
       );
+  dynamic tecnologia(dynamic response) => getJsonField(
+        response,
+        r'''$.Tecnología''',
+        true,
+      );
 }
 
 class LatestShowsCall {
@@ -1221,13 +1227,47 @@ class NewsCatCall {
       );
 }
 
+class ShowCategoriesCall {
+  Future<ApiCallResponse> call() {
+    return ApiManager.instance.makeApiCall(
+      callName: 'Show Categories',
+      apiUrl: '${AppAPIGroup.baseUrl}/v1/shows/categories',
+      callType: ApiCallType.GET,
+      headers: {
+        ...AppAPIGroup.headers,
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic id(dynamic response) => getJsonField(
+        response,
+        r'''$[:].id''',
+        true,
+      );
+  dynamic name(dynamic response) => getJsonField(
+        response,
+        r'''$[:].name''',
+        true,
+      );
+  dynamic image(dynamic response) => getJsonField(
+        response,
+        r'''$[:].image''',
+        true,
+      );
+}
+
 /// End App API Group Code
 
-class GetCountryCall {
+class GetLiveCall {
   static Future<ApiCallResponse> call() {
     return ApiManager.instance.makeApiCall(
-      callName: 'GetCountry',
-      apiUrl: 'https://teleonce.com/wp-json/app/v2/getCountry',
+      callName: 'GetLive',
+      apiUrl: 'https://teleonce.com/wp-json/app/v1/live',
       callType: ApiCallType.GET,
       headers: {},
       params: {},
@@ -1238,10 +1278,6 @@ class GetCountryCall {
     );
   }
 
-  static dynamic country(dynamic response) => getJsonField(
-        response,
-        r'''$.country''',
-      );
   static dynamic live(dynamic response) => getJsonField(
         response,
         r'''$.is_live''',
@@ -1287,11 +1323,11 @@ class WeatherCall {
       );
 }
 
-class LiveCall {
+class CountryCall {
   static Future<ApiCallResponse> call() {
     return ApiManager.instance.makeApiCall(
-      callName: 'Live',
-      apiUrl: 'https://teleoncestg.wpengine.com/wp-json/app/v1/live',
+      callName: 'country',
+      apiUrl: 'https://geoip.razex.de/api/',
       callType: ApiCallType.GET,
       headers: {},
       params: {},
@@ -1302,9 +1338,21 @@ class LiveCall {
     );
   }
 
-  static dynamic live(dynamic response) => getJsonField(
+  static dynamic country(dynamic response) => getJsonField(
         response,
-        r'''$.is_live''',
+        r'''$.country.iso_code''',
+      );
+  static dynamic countryName(dynamic response) => getJsonField(
+        response,
+        r'''$.country.name''',
+      );
+  static dynamic state(dynamic response) => getJsonField(
+        response,
+        r'''$.city.region_code''',
+      );
+  static dynamic stateName(dynamic response) => getJsonField(
+        response,
+        r'''$.city.region''',
       );
 }
 

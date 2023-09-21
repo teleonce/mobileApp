@@ -90,6 +90,10 @@ class _CategoriaWidgetState extends State<CategoriaWidget> {
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 74.0, 0.0, 80.0),
                     child: RefreshIndicator(
+                      color: FlutterFlowTheme.of(context).primary,
+                      backgroundColor:
+                          FlutterFlowTheme.of(context).primaryBackground,
+                      strokeWidth: 3.0,
                       onRefresh: () async {
                         logFirebaseEvent(
                             'CATEGORIA_Column_nzc6niq9_ON_PULL_TO_REF');
@@ -286,12 +290,10 @@ class _CategoriaWidgetState extends State<CategoriaWidget> {
                                                     child: SizedBox(
                                                       width: 50.0,
                                                       height: 50.0,
-                                                      child:
-                                                          SpinKitDoubleBounce(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
+                                                      child: SpinKitFadingGrid(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
                                                         size: 50.0,
                                                       ),
                                                     ),
@@ -495,9 +497,9 @@ class _CategoriaWidgetState extends State<CategoriaWidget> {
                                     child: SizedBox(
                                       width: 50.0,
                                       height: 50.0,
-                                      child: SpinKitDoubleBounce(
+                                      child: SpinKitFadingGrid(
                                         color: FlutterFlowTheme.of(context)
-                                            .primary,
+                                            .secondaryBackground,
                                         size: 50.0,
                                       ),
                                     ),
@@ -582,9 +584,9 @@ class _CategoriaWidgetState extends State<CategoriaWidget> {
                                       child: SizedBox(
                                         width: 50.0,
                                         height: 50.0,
-                                        child: SpinKitDoubleBounce(
+                                        child: SpinKitFadingGrid(
                                           color: FlutterFlowTheme.of(context)
-                                              .primary,
+                                              .secondaryBackground,
                                           size: 50.0,
                                         ),
                                       ),
@@ -681,37 +683,6 @@ class _CategoriaWidgetState extends State<CategoriaWidget> {
                                                         width: 120.0,
                                                         height: 100.0,
                                                         fit: BoxFit.cover,
-                                                      ),
-                                                    ),
-                                                    Align(
-                                                      alignment:
-                                                          AlignmentDirectional(
-                                                              -0.90, 0.85),
-                                                      child: Container(
-                                                        width: 32.0,
-                                                        height: 32.0,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: Colors.white,
-                                                          boxShadow: [
-                                                            BoxShadow(
-                                                              blurRadius: 4.0,
-                                                              color: Color(
-                                                                  0x230E151B),
-                                                              offset: Offset(
-                                                                  0.0, 2.0),
-                                                            )
-                                                          ],
-                                                          shape:
-                                                              BoxShape.circle,
-                                                        ),
-                                                        child: Icon(
-                                                          Icons
-                                                              .play_arrow_rounded,
-                                                          color:
-                                                              Color(0xFF14181B),
-                                                          size: 20.0,
-                                                        ),
                                                       ),
                                                     ),
                                                     Padding(
@@ -873,6 +844,76 @@ class _CategoriaWidgetState extends State<CategoriaWidget> {
                                                         ],
                                                       ),
                                                     ),
+                                                    if (getJsonField(
+                                                      contenidoItem,
+                                                      r'''$.video''',
+                                                    ))
+                                                      Align(
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                -0.90, 0.85),
+                                                        child: Container(
+                                                          width: 32.0,
+                                                          height: 32.0,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: Colors.white,
+                                                            boxShadow: [
+                                                              BoxShadow(
+                                                                blurRadius: 4.0,
+                                                                color: Color(
+                                                                    0x230E151B),
+                                                                offset: Offset(
+                                                                    0.0, 2.0),
+                                                              )
+                                                            ],
+                                                            shape:
+                                                                BoxShape.circle,
+                                                          ),
+                                                          child: Icon(
+                                                            Icons
+                                                                .play_arrow_rounded,
+                                                            color: Color(
+                                                                0xFF14181B),
+                                                            size: 20.0,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    if (!getJsonField(
+                                                      contenidoItem,
+                                                      r'''$.video''',
+                                                    ))
+                                                      Align(
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                -0.90, 0.85),
+                                                        child: Container(
+                                                          width: 32.0,
+                                                          height: 32.0,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: Colors.white,
+                                                            boxShadow: [
+                                                              BoxShadow(
+                                                                blurRadius: 4.0,
+                                                                color: Color(
+                                                                    0x230E151B),
+                                                                offset: Offset(
+                                                                    0.0, 2.0),
+                                                              )
+                                                            ],
+                                                            shape:
+                                                                BoxShape.circle,
+                                                          ),
+                                                          child: Icon(
+                                                            Icons
+                                                                .play_arrow_rounded,
+                                                            color: Color(
+                                                                0xFF14181B),
+                                                            size: 20.0,
+                                                          ),
+                                                        ),
+                                                      ),
                                                   ],
                                                 ),
                                               ),
@@ -889,7 +930,7 @@ class _CategoriaWidgetState extends State<CategoriaWidget> {
                               ClipRRect(
                                 child: Container(
                                   width: 320.0,
-                                  height: 100.0,
+                                  height: 50.0,
                                   decoration: BoxDecoration(),
                                 ),
                               ),

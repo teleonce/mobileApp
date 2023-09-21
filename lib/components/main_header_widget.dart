@@ -203,10 +203,17 @@ class _MainHeaderWidgetState extends State<MainHeaderWidget> {
                                 child: FlutterFlowIconButton(
                                   borderRadius: 5.0,
                                   borderWidth: 1.0,
-                                  buttonSize: 40.0,
+                                  buttonSize: 48.0,
+                                  fillColor:
+                                      FFAppState().menuActiveItem == 'buscar'
+                                          ? FlutterFlowTheme.of(context).primary
+                                          : Color(0x00000000),
                                   icon: Icon(
                                     Icons.search,
-                                    color: FlutterFlowTheme.of(context).primary,
+                                    color: FFAppState().menuActiveItem ==
+                                            'buscar'
+                                        ? Colors.white
+                                        : FlutterFlowTheme.of(context).primary,
                                     size: 24.0,
                                   ),
                                   onPressed: () async {

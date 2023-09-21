@@ -36,7 +36,7 @@ class _LiveWidgetState extends State<LiveWidget> {
       logFirebaseEvent('LIVE_PAGE_Live_ON_INIT_STATE');
       logFirebaseEvent('Live_update_app_state');
       setState(() {
-        FFAppState().menuActiveItem = '';
+        FFAppState().menuActiveItem = 'live';
       });
     });
   }

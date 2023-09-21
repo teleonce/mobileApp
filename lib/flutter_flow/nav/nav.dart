@@ -147,7 +147,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'Home',
           path: '/home',
           requireAuth: true,
-          builder: (context, params) => HomeWidget(),
+          builder: (context, params) => HomeWidget(
+            page: params.getParam('page', ParamType.String),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

@@ -47,15 +47,15 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
       _model.instantTimer = InstantTimer.periodic(
         duration: Duration(milliseconds: 3500),
         callback: (timer) async {
-          if (_model.pageViewCurrentIndex <= 4) {
+          if (_model.programasDestacadosCurrentIndex < 4) {
             logFirebaseEvent('Programas_page_view');
-            await _model.pageViewController?.nextPage(
+            await _model.programasDestacadosController?.nextPage(
               duration: Duration(milliseconds: 300),
               curve: Curves.ease,
             );
           } else {
             logFirebaseEvent('Programas_page_view');
-            await _model.pageViewController?.animateToPage(
+            await _model.programasDestacadosController?.animateToPage(
               0,
               duration: Duration(milliseconds: 500),
               curve: Curves.ease,
@@ -125,8 +125,9 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                               child: SizedBox(
                                 width: 50.0,
                                 height: 50.0,
-                                child: SpinKitDoubleBounce(
-                                  color: FlutterFlowTheme.of(context).primary,
+                                child: SpinKitFadingGrid(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
                                   size: 50.0,
                                 ),
                               ),
@@ -135,6 +136,10 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                           final mainProgramasLatestShowsResponse =
                               snapshot.data!;
                           return RefreshIndicator(
+                            color: FlutterFlowTheme.of(context).primary,
+                            backgroundColor:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            strokeWidth: 3.0,
                             onRefresh: () async {
                               logFirebaseEvent(
                                   'PROGRAMAS_MainProgramas_ON_PULL_TO_REFRE');
@@ -163,6 +168,12 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                     child: Container(
                                       width: MediaQuery.sizeOf(context).width *
                                           1.0,
+                                      constraints: BoxConstraints(
+                                        minHeight: 300.0,
+                                        maxHeight:
+                                            MediaQuery.sizeOf(context).height *
+                                                0.4,
+                                      ),
                                       decoration: BoxDecoration(),
                                       child: Builder(
                                         builder: (context) {
@@ -178,12 +189,11 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                                   .toList();
                                           return Container(
                                             width: double.infinity,
-                                            height: 385.0,
                                             child: Stack(
                                               children: [
                                                 PageView.builder(
                                                   controller: _model
-                                                          .pageViewController ??=
+                                                          .programasDestacadosController ??=
                                                       PageController(
                                                           initialPage: min(
                                                               0,
@@ -266,7 +276,6 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                                                             context)
                                                                     .width *
                                                                 1.0,
-                                                            height: 385.0,
                                                             fit: BoxFit.cover,
                                                           ),
                                                         ),
@@ -281,7 +290,7 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                                   child: smooth_page_indicator
                                                       .SmoothPageIndicator(
                                                     controller: _model
-                                                            .pageViewController ??=
+                                                            .programasDestacadosController ??=
                                                         PageController(
                                                             initialPage: min(
                                                                 0,
@@ -292,7 +301,7 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                                         Axis.horizontal,
                                                     onDotClicked: (i) async {
                                                       await _model
-                                                          .pageViewController!
+                                                          .programasDestacadosController!
                                                           .animateToPage(
                                                         i,
                                                         duration: Duration(
@@ -323,1301 +332,1808 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                       ),
                                     ),
                                   ),
-                                  Container(
-                                    width: double.infinity,
-                                    height: 250.0,
-                                    child: Stack(
-                                      alignment:
-                                          AlignmentDirectional(0.0, -1.0),
+                                  Flexible(
+                                    flex: 1,
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 4.0, 0.0, 10.0),
-                                          child: InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              logFirebaseEvent(
-                                                  'PROGRAMAS_PAGE_Image_vje5rls9_ON_TAP');
-                                              logFirebaseEvent(
-                                                  'Image_navigate_to');
-                                              if (Navigator.of(context)
-                                                  .canPop()) {
-                                                context.pop();
-                                              }
-                                              context.pushNamed(
-                                                'Programa',
-                                                queryParameters: {
-                                                  'cat': serializeParam(
-                                                    7,
-                                                    ParamType.int,
+                                        Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      10.0, 0.0, 0.0, 0.0),
+                                              child: InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  logFirebaseEvent(
+                                                      'PROGRAMAS_PAGE_Image_eoowuepb_ON_TAP');
+                                                  logFirebaseEvent(
+                                                      'Image_navigate_to');
+                                                  if (Navigator.of(context)
+                                                      .canPop()) {
+                                                    context.pop();
+                                                  }
+                                                  context.pushNamed(
+                                                    'Programa',
+                                                    queryParameters: {
+                                                      'cat': serializeParam(
+                                                        7,
+                                                        ParamType.int,
+                                                      ),
+                                                    }.withoutNulls,
+                                                  );
+                                                },
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          0.0),
+                                                  child: Image.asset(
+                                                    'assets/images/COmay.png',
+                                                    width: 80.0,
+                                                    height: 60.0,
+                                                    fit: BoxFit.contain,
                                                   ),
-                                                }.withoutNulls,
-                                              );
-                                            },
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(0.0),
-                                              child: Image.asset(
-                                                'assets/images/lacomay-header.png',
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Expanded(
+                                          flex: 1,
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Container(
                                                 width:
                                                     MediaQuery.sizeOf(context)
                                                             .width *
                                                         1.0,
-                                                fit: BoxFit.contain,
+                                                height: 22.0,
+                                                decoration: BoxDecoration(
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      blurRadius: 4.0,
+                                                      color: Color(0x33000000),
+                                                      offset: Offset(0.0, 2.0),
+                                                    )
+                                                  ],
+                                                  gradient: LinearGradient(
+                                                    colors: [
+                                                      Color(0xFFD11D1E),
+                                                      Color(0xFF9F0000)
+                                                    ],
+                                                    stops: [0.0, 1.0],
+                                                    begin: AlignmentDirectional(
+                                                        1.0, 0.0),
+                                                    end: AlignmentDirectional(
+                                                        -1.0, 0),
+                                                  ),
+                                                ),
                                               ),
-                                            ),
+                                            ],
                                           ),
                                         ),
-                                        Align(
-                                          alignment:
-                                              AlignmentDirectional(0.00, 1.00),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 6.0),
-                                            child: Builder(
-                                              builder: (context) {
-                                                final lacomay =
-                                                    AppAPIGroup.latestShowsCall
-                                                            .laComay(
-                                                              mainProgramasLatestShowsResponse
-                                                                  .jsonBody,
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  1.00, 0.00),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 10.0, 0.0),
+                                                child: FFButtonWidget(
+                                                  onPressed: () async {
+                                                    logFirebaseEvent(
+                                                        'PROGRAMAS_PAGE_VER_MÁS_BTN_ON_TAP');
+                                                    logFirebaseEvent(
+                                                        'Button_navigate_to');
+
+                                                    context.pushNamed(
+                                                      'Programa',
+                                                      queryParameters: {
+                                                        'cat': serializeParam(
+                                                          7,
+                                                          ParamType.int,
+                                                        ),
+                                                      }.withoutNulls,
+                                                    );
+                                                  },
+                                                  text: 'Ver Más',
+                                                  options: FFButtonOptions(
+                                                    width: 100.0,
+                                                    height: 40.0,
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(5.0, 0.0,
+                                                                5.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: Color(0xFFD11D1E),
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Open Sans',
+                                                          color: Colors.white,
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          lineHeight: 1.0,
+                                                        ),
+                                                    elevation: 3.0,
+                                                    borderSide: BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            0.0),
+                                                  ),
+                                                  showLoadingIndicator: false,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ]
+                                          .divide(SizedBox(width: 0.0))
+                                          .around(SizedBox(width: 0.0)),
+                                    ),
+                                  ),
+                                  Flexible(
+                                    flex: 1,
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 6.0),
+                                      child: Builder(
+                                        builder: (context) {
+                                          final lacomay =
+                                              AppAPIGroup.latestShowsCall
+                                                      .laComay(
+                                                        mainProgramasLatestShowsResponse
+                                                            .jsonBody,
+                                                      )
+                                                      ?.toList() ??
+                                                  [];
+                                          return SingleChildScrollView(
+                                            scrollDirection: Axis.horizontal,
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.end,
+                                              children:
+                                                  List.generate(lacomay.length,
+                                                      (lacomayIndex) {
+                                                final lacomayItem =
+                                                    lacomay[lacomayIndex];
+                                                return Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.00, 1.00),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(5.0, 12.0,
+                                                                5.0, 12.0),
+                                                    child: InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        logFirebaseEvent(
+                                                            'PROGRAMAS_PAGE_Container_ank7m2kz_ON_TAP');
+                                                        logFirebaseEvent(
+                                                            'Container_navigate_to');
+                                                        if (Navigator.of(
+                                                                context)
+                                                            .canPop()) {
+                                                          context.pop();
+                                                        }
+                                                        context.pushNamed(
+                                                          'Post',
+                                                          queryParameters: {
+                                                            'link':
+                                                                serializeParam(
+                                                              valueOrDefault<
+                                                                  String>(
+                                                                getJsonField(
+                                                                  lacomayItem,
+                                                                  r'''$.link''',
+                                                                ).toString(),
+                                                                'https://teleonce.com',
+                                                              ),
+                                                              ParamType.String,
+                                                            ),
+                                                          }.withoutNulls,
+                                                        );
+                                                      },
+                                                      child: Container(
+                                                        width: 160.0,
+                                                        height: 180.0,
+                                                        constraints:
+                                                            BoxConstraints(
+                                                          minHeight: 170.0,
+                                                          maxHeight: 300.0,
+                                                        ),
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color:
+                                                              Color(0xFFF3F3F3),
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              blurRadius: 4.0,
+                                                              color: Color(
+                                                                  0x33000000),
+                                                              offset: Offset(
+                                                                  0.0, 2.0),
                                                             )
-                                                            ?.toList() ??
-                                                        [];
-                                                return SingleChildScrollView(
-                                                  scrollDirection:
-                                                      Axis.horizontal,
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment.end,
-                                                    children: List.generate(
-                                                        lacomay.length,
-                                                        (lacomayIndex) {
-                                                      final lacomayItem =
-                                                          lacomay[lacomayIndex];
-                                                      return Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    5.0,
-                                                                    12.0,
-                                                                    5.0,
-                                                                    12.0),
-                                                        child: InkWell(
-                                                          splashColor: Colors
-                                                              .transparent,
-                                                          focusColor: Colors
-                                                              .transparent,
-                                                          hoverColor: Colors
-                                                              .transparent,
-                                                          highlightColor: Colors
-                                                              .transparent,
-                                                          onTap: () async {
-                                                            logFirebaseEvent(
-                                                                'PROGRAMAS_PAGE_Container_ank7m2kz_ON_TAP');
-                                                            logFirebaseEvent(
-                                                                'Container_navigate_to');
-                                                            if (Navigator.of(
-                                                                    context)
-                                                                .canPop()) {
-                                                              context.pop();
-                                                            }
-                                                            context.pushNamed(
-                                                              'Post',
-                                                              queryParameters: {
-                                                                'link':
-                                                                    serializeParam(
+                                                          ],
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      5.0),
+                                                        ),
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                -1.00, 0.00),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      4.0,
+                                                                      4.0,
+                                                                      4.0,
+                                                                      12.0),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .start,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            12.0),
+                                                                child:
+                                                                    ClipRRect(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              5.0),
+                                                                  child: Image
+                                                                      .network(
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                      getJsonField(
+                                                                        lacomayItem,
+                                                                        r'''$.image''',
+                                                                      ),
+                                                                      'https://teleonce.com/wp-content/uploads/2023/08/no-image.jpg',
+                                                                    ),
+                                                                    width:
+                                                                        160.0,
+                                                                    height:
+                                                                        95.0,
+                                                                    fit: BoxFit
+                                                                        .cover,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            8.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child: Text(
                                                                   valueOrDefault<
                                                                       String>(
                                                                     getJsonField(
                                                                       lacomayItem,
-                                                                      r'''$.link''',
+                                                                      r'''$.title''',
                                                                     ).toString(),
-                                                                    'https://teleonce.com',
+                                                                    'titulo',
                                                                   ),
-                                                                  ParamType
-                                                                      .String,
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .start,
+                                                                  maxLines: 3,
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyLarge
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Open Sans',
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w500,
+                                                                        lineHeight:
+                                                                            1.0,
+                                                                      ),
                                                                 ),
-                                                              }.withoutNulls,
-                                                            );
-                                                          },
-                                                          child: Container(
-                                                            width: MediaQuery
-                                                                        .sizeOf(
-                                                                            context)
-                                                                    .width *
-                                                                0.4,
-                                                            height: 170.0,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: Color(
-                                                                  0xFFF3F3F3),
-                                                              boxShadow: [
-                                                                BoxShadow(
-                                                                  blurRadius:
-                                                                      4.0,
-                                                                  color: Color(
-                                                                      0x33000000),
-                                                                  offset:
-                                                                      Offset(
-                                                                          0.0,
-                                                                          2.0),
-                                                                )
-                                                              ],
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          5.0),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                );
+                                              }),
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                  Flexible(
+                                    flex: 1,
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      10.0, 0.0, 0.0, 0.0),
+                                              child: InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  logFirebaseEvent(
+                                                      'PROGRAMAS_PAGE_Image_febh5mpn_ON_TAP');
+                                                  logFirebaseEvent(
+                                                      'Image_navigate_to');
+                                                  if (Navigator.of(context)
+                                                      .canPop()) {
+                                                    context.pop();
+                                                  }
+                                                  context.pushNamed(
+                                                    'Programa',
+                                                    queryParameters: {
+                                                      'cat': serializeParam(
+                                                        7,
+                                                        ParamType.int,
+                                                      ),
+                                                    }.withoutNulls,
+                                                  );
+                                                },
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          0.0),
+                                                  child: Image.asset(
+                                                    'assets/images/JPD_LOGO_1.jpg',
+                                                    width: 80.0,
+                                                    height: 60.0,
+                                                    fit: BoxFit.contain,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Expanded(
+                                          flex: 1,
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Container(
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        1.0,
+                                                height: 22.0,
+                                                decoration: BoxDecoration(
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      blurRadius: 4.0,
+                                                      color: Color(0x33000000),
+                                                      offset: Offset(0.0, 2.0),
+                                                    )
+                                                  ],
+                                                  gradient: LinearGradient(
+                                                    colors: [
+                                                      Color(0xFF223659),
+                                                      Color(0xFF223659)
+                                                    ],
+                                                    stops: [0.0, 1.0],
+                                                    begin: AlignmentDirectional(
+                                                        1.0, 0.0),
+                                                    end: AlignmentDirectional(
+                                                        -1.0, 0),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  1.00, 0.00),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 10.0, 0.0),
+                                                child: FFButtonWidget(
+                                                  onPressed: () async {
+                                                    logFirebaseEvent(
+                                                        'PROGRAMAS_PAGE_VER_MÁS_BTN_ON_TAP');
+                                                    logFirebaseEvent(
+                                                        'Button_navigate_to');
+
+                                                    context.pushNamed(
+                                                      'Programa',
+                                                      queryParameters: {
+                                                        'cat': serializeParam(
+                                                          8,
+                                                          ParamType.int,
+                                                        ),
+                                                      }.withoutNulls,
+                                                    );
+                                                  },
+                                                  text: 'Ver Más',
+                                                  options: FFButtonOptions(
+                                                    width: 100.0,
+                                                    height: 40.0,
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(5.0, 0.0,
+                                                                5.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: Color(0xFF223659),
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Open Sans',
+                                                          color: Colors.white,
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          lineHeight: 1.0,
+                                                        ),
+                                                    elevation: 3.0,
+                                                    borderSide: BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            0.0),
+                                                  ),
+                                                  showLoadingIndicator: false,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ]
+                                          .divide(SizedBox(width: 0.0))
+                                          .around(SizedBox(width: 0.0)),
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: AlignmentDirectional(0.00, 1.00),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 6.0),
+                                      child: Builder(
+                                        builder: (context) {
+                                          final jpd =
+                                              AppAPIGroup.latestShowsCall
+                                                      .jpd(
+                                                        mainProgramasLatestShowsResponse
+                                                            .jsonBody,
+                                                      )
+                                                      ?.toList() ??
+                                                  [];
+                                          return SingleChildScrollView(
+                                            scrollDirection: Axis.horizontal,
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.end,
+                                              children: List.generate(
+                                                      jpd.length, (jpdIndex) {
+                                                final jpdItem = jpd[jpdIndex];
+                                                return Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.00, 1.00),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(5.0, 12.0,
+                                                                5.0, 12.0),
+                                                    child: InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        logFirebaseEvent(
+                                                            'PROGRAMAS_PAGE_Container_6gebr0tl_ON_TAP');
+                                                        logFirebaseEvent(
+                                                            'Container_navigate_to');
+                                                        if (Navigator.of(
+                                                                context)
+                                                            .canPop()) {
+                                                          context.pop();
+                                                        }
+                                                        context.pushNamed(
+                                                          'Post',
+                                                          queryParameters: {
+                                                            'link':
+                                                                serializeParam(
+                                                              valueOrDefault<
+                                                                  String>(
+                                                                getJsonField(
+                                                                  jpdItem,
+                                                                  r'''$.link''',
+                                                                ).toString(),
+                                                                'https://teleonce.com',
+                                                              ),
+                                                              ParamType.String,
                                                             ),
-                                                            alignment:
-                                                                AlignmentDirectional(
-                                                                    -1.00,
-                                                                    0.00),
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          4.0,
-                                                                          4.0,
-                                                                          4.0,
-                                                                          12.0),
-                                                              child: Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .start,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                          }.withoutNulls,
+                                                        );
+                                                      },
+                                                      child: Container(
+                                                        width: 160.0,
+                                                        height: 180.0,
+                                                        constraints:
+                                                            BoxConstraints(
+                                                          minHeight: 170.0,
+                                                          maxHeight: 300.0,
+                                                        ),
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color:
+                                                              Color(0xFFF3F3F3),
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              blurRadius: 4.0,
+                                                              color: Color(
+                                                                  0x33000000),
+                                                              offset: Offset(
+                                                                  0.0, 2.0),
+                                                            )
+                                                          ],
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      5.0),
+                                                        ),
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                -1.00, 0.00),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      4.0,
+                                                                      4.0,
+                                                                      4.0,
+                                                                      12.0),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .start,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             0.0,
                                                                             12.0),
-                                                                    child:
-                                                                        ClipRRect(
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
+                                                                child:
+                                                                    ClipRRect(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
                                                                               5.0),
-                                                                      child: Image
-                                                                          .network(
-                                                                        valueOrDefault<
-                                                                            String>(
-                                                                          getJsonField(
-                                                                            lacomayItem,
-                                                                            r'''$.image''',
-                                                                          ),
-                                                                          'https://teleonce.com/wp-content/uploads/2023/08/no-image.jpg',
-                                                                        ),
-                                                                        width: double
-                                                                            .infinity,
-                                                                        height:
-                                                                            90.0,
-                                                                        fit: BoxFit
-                                                                            .cover,
+                                                                  child: Image
+                                                                      .network(
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                      getJsonField(
+                                                                        jpdItem,
+                                                                        r'''$.image''',
                                                                       ),
+                                                                      'https://teleonce.com/wp-content/uploads/2023/08/no-image.jpg',
                                                                     ),
+                                                                    width: double
+                                                                        .infinity,
+                                                                    height:
+                                                                        90.0,
+                                                                    fit: BoxFit
+                                                                        .cover,
                                                                   ),
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             8.0,
                                                                             0.0,
                                                                             0.0,
                                                                             0.0),
-                                                                    child: Text(
-                                                                      valueOrDefault<
-                                                                          String>(
-                                                                        getJsonField(
-                                                                          lacomayItem,
-                                                                          r'''$.title''',
-                                                                        ).toString(),
-                                                                        'titulo',
-                                                                      ),
-                                                                      textAlign:
-                                                                          TextAlign
-                                                                              .start,
-                                                                      maxLines:
-                                                                          3,
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyLarge
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Open Sans',
-                                                                            letterSpacing:
-                                                                                0.0,
-                                                                            fontWeight:
-                                                                                FontWeight.w500,
-                                                                            lineHeight:
-                                                                                1.0,
-                                                                          ),
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      );
-                                                    }),
-                                                  ),
-                                                );
-                                              },
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    width: double.infinity,
-                                    height: 250.0,
-                                    child: Stack(
-                                      alignment:
-                                          AlignmentDirectional(0.0, -1.0),
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 4.0, 0.0, 10.0),
-                                          child: InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              logFirebaseEvent(
-                                                  'PROGRAMAS_PAGE_Image_bc35sai2_ON_TAP');
-                                              logFirebaseEvent(
-                                                  'Image_navigate_to');
-                                              if (Navigator.of(context)
-                                                  .canPop()) {
-                                                context.pop();
-                                              }
-                                              context.pushNamed(
-                                                'Programa',
-                                                queryParameters: {
-                                                  'cat': serializeParam(
-                                                    8,
-                                                    ParamType.int,
-                                                  ),
-                                                }.withoutNulls,
-                                              );
-                                            },
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(0.0),
-                                              child: Image.asset(
-                                                'assets/images/JPD-Header.png',
-                                                width:
-                                                    MediaQuery.sizeOf(context)
-                                                            .width *
-                                                        1.0,
-                                                fit: BoxFit.contain,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment:
-                                              AlignmentDirectional(0.00, 1.00),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 6.0),
-                                            child: Builder(
-                                              builder: (context) {
-                                                final jpd =
-                                                    AppAPIGroup.latestShowsCall
-                                                            .jpd(
-                                                              mainProgramasLatestShowsResponse
-                                                                  .jsonBody,
-                                                            )
-                                                            ?.toList() ??
-                                                        [];
-                                                return SingleChildScrollView(
-                                                  scrollDirection:
-                                                      Axis.horizontal,
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment.end,
-                                                    children: List.generate(
-                                                        jpd.length, (jpdIndex) {
-                                                      final jpdItem =
-                                                          jpd[jpdIndex];
-                                                      return Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    5.0,
-                                                                    12.0,
-                                                                    5.0,
-                                                                    12.0),
-                                                        child: InkWell(
-                                                          splashColor: Colors
-                                                              .transparent,
-                                                          focusColor: Colors
-                                                              .transparent,
-                                                          hoverColor: Colors
-                                                              .transparent,
-                                                          highlightColor: Colors
-                                                              .transparent,
-                                                          onTap: () async {
-                                                            logFirebaseEvent(
-                                                                'PROGRAMAS_PAGE_Container_6gebr0tl_ON_TAP');
-                                                            logFirebaseEvent(
-                                                                'Container_navigate_to');
-                                                            if (Navigator.of(
-                                                                    context)
-                                                                .canPop()) {
-                                                              context.pop();
-                                                            }
-                                                            context.pushNamed(
-                                                              'Post',
-                                                              queryParameters: {
-                                                                'link':
-                                                                    serializeParam(
+                                                                child: Text(
                                                                   valueOrDefault<
                                                                       String>(
                                                                     getJsonField(
                                                                       jpdItem,
-                                                                      r'''$.link''',
+                                                                      r'''$.title''',
                                                                     ).toString(),
-                                                                    'https://teleonce.com',
+                                                                    'titulo',
                                                                   ),
-                                                                  ParamType
-                                                                      .String,
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .start,
+                                                                  maxLines: 3,
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyLarge
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Open Sans',
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w500,
+                                                                        lineHeight:
+                                                                            1.0,
+                                                                      ),
                                                                 ),
-                                                              }.withoutNulls,
-                                                            );
-                                                          },
-                                                          child: Container(
-                                                            width: MediaQuery
-                                                                        .sizeOf(
-                                                                            context)
-                                                                    .width *
-                                                                0.4,
-                                                            height: 170.0,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: Color(
-                                                                  0xFFF3F3F3),
-                                                              boxShadow: [
-                                                                BoxShadow(
-                                                                  blurRadius:
-                                                                      4.0,
-                                                                  color: Color(
-                                                                      0x33000000),
-                                                                  offset:
-                                                                      Offset(
-                                                                          0.0,
-                                                                          2.0),
-                                                                )
-                                                              ],
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          5.0),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                );
+                                              })
+                                                  .divide(SizedBox(width: 0.0))
+                                                  .around(SizedBox(width: 0.0)),
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                  Flexible(
+                                    flex: 1,
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      10.0, 0.0, 0.0, 0.0),
+                                              child: InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  logFirebaseEvent(
+                                                      'PROGRAMAS_PAGE_Image_zy6ezbux_ON_TAP');
+                                                  logFirebaseEvent(
+                                                      'Image_navigate_to');
+                                                  if (Navigator.of(context)
+                                                      .canPop()) {
+                                                    context.pop();
+                                                  }
+                                                  context.pushNamed(
+                                                    'Programa',
+                                                    queryParameters: {
+                                                      'cat': serializeParam(
+                                                        7,
+                                                        ParamType.int,
+                                                      ),
+                                                    }.withoutNulls,
+                                                  );
+                                                },
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          0.0),
+                                                  child: Image.asset(
+                                                    'assets/images/LabovedaV2.png',
+                                                    width: 80.0,
+                                                    height: 80.0,
+                                                    fit: BoxFit.contain,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Expanded(
+                                          flex: 1,
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Container(
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        1.0,
+                                                height: 22.0,
+                                                decoration: BoxDecoration(
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      blurRadius: 4.0,
+                                                      color: Color(0x33000000),
+                                                      offset: Offset(0.0, 2.0),
+                                                    )
+                                                  ],
+                                                  gradient: LinearGradient(
+                                                    colors: [
+                                                      Color(0xFF354A73),
+                                                      Color(0xFF456C9F)
+                                                    ],
+                                                    stops: [0.0, 1.0],
+                                                    begin: AlignmentDirectional(
+                                                        1.0, 0.0),
+                                                    end: AlignmentDirectional(
+                                                        -1.0, 0),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  1.00, 0.00),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 10.0, 0.0),
+                                                child: FFButtonWidget(
+                                                  onPressed: () async {
+                                                    logFirebaseEvent(
+                                                        'PROGRAMAS_PAGE_VER_MÁS_BTN_ON_TAP');
+                                                    logFirebaseEvent(
+                                                        'Button_navigate_to');
+
+                                                    context.pushNamed(
+                                                      'Programa',
+                                                      queryParameters: {
+                                                        'cat': serializeParam(
+                                                          2191,
+                                                          ParamType.int,
+                                                        ),
+                                                      }.withoutNulls,
+                                                    );
+                                                  },
+                                                  text: 'Ver Más',
+                                                  options: FFButtonOptions(
+                                                    width: 100.0,
+                                                    height: 40.0,
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(5.0, 0.0,
+                                                                5.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: Color(0xFF223659),
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Open Sans',
+                                                          color: Colors.white,
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          lineHeight: 1.0,
+                                                        ),
+                                                    elevation: 3.0,
+                                                    borderSide: BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            0.0),
+                                                  ),
+                                                  showLoadingIndicator: false,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ]
+                                          .divide(SizedBox(width: 0.0))
+                                          .around(SizedBox(width: 0.0)),
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: AlignmentDirectional(0.00, 1.00),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 6.0),
+                                      child: Builder(
+                                        builder: (context) {
+                                          final laBoveda =
+                                              AppAPIGroup.latestShowsCall
+                                                      .laBoveda(
+                                                        mainProgramasLatestShowsResponse
+                                                            .jsonBody,
+                                                      )
+                                                      ?.toList() ??
+                                                  [];
+                                          return SingleChildScrollView(
+                                            scrollDirection: Axis.horizontal,
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.end,
+                                              children:
+                                                  List.generate(laBoveda.length,
+                                                      (laBovedaIndex) {
+                                                final laBovedaItem =
+                                                    laBoveda[laBovedaIndex];
+                                                return Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.00, 1.00),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(5.0, 12.0,
+                                                                5.0, 12.0),
+                                                    child: InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        logFirebaseEvent(
+                                                            'PROGRAMAS_PAGE_Container_f5938nkb_ON_TAP');
+                                                        logFirebaseEvent(
+                                                            'Container_navigate_to');
+                                                        if (Navigator.of(
+                                                                context)
+                                                            .canPop()) {
+                                                          context.pop();
+                                                        }
+                                                        context.pushNamed(
+                                                          'Post',
+                                                          queryParameters: {
+                                                            'link':
+                                                                serializeParam(
+                                                              valueOrDefault<
+                                                                  String>(
+                                                                getJsonField(
+                                                                  laBovedaItem,
+                                                                  r'''$.link''',
+                                                                ).toString(),
+                                                                'https://teleonce.com',
+                                                              ),
+                                                              ParamType.String,
                                                             ),
-                                                            alignment:
-                                                                AlignmentDirectional(
-                                                                    -1.00,
-                                                                    0.00),
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          4.0,
-                                                                          4.0,
-                                                                          4.0,
-                                                                          12.0),
-                                                              child: Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .start,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                          }.withoutNulls,
+                                                        );
+                                                      },
+                                                      child: Container(
+                                                        width: 160.0,
+                                                        height: 180.0,
+                                                        constraints:
+                                                            BoxConstraints(
+                                                          minHeight: 170.0,
+                                                          maxHeight: 300.0,
+                                                        ),
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color:
+                                                              Color(0xFFF3F3F3),
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              blurRadius: 4.0,
+                                                              color: Color(
+                                                                  0x33000000),
+                                                              offset: Offset(
+                                                                  0.0, 2.0),
+                                                            )
+                                                          ],
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      5.0),
+                                                        ),
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                -1.00, 0.00),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      4.0,
+                                                                      4.0,
+                                                                      4.0,
+                                                                      12.0),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .start,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             0.0,
                                                                             12.0),
-                                                                    child:
-                                                                        ClipRRect(
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
+                                                                child:
+                                                                    ClipRRect(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
                                                                               5.0),
-                                                                      child: Image
-                                                                          .network(
-                                                                        valueOrDefault<
-                                                                            String>(
-                                                                          getJsonField(
-                                                                            jpdItem,
-                                                                            r'''$.image''',
-                                                                          ),
-                                                                          'https://teleonce.com/wp-content/uploads/2023/08/no-image.jpg',
-                                                                        ),
-                                                                        width: double
-                                                                            .infinity,
-                                                                        height:
-                                                                            90.0,
-                                                                        fit: BoxFit
-                                                                            .cover,
+                                                                  child: Image
+                                                                      .network(
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                      getJsonField(
+                                                                        laBovedaItem,
+                                                                        r'''$.image''',
                                                                       ),
+                                                                      'https://teleonce.com/wp-content/uploads/2023/08/no-image.jpg',
                                                                     ),
+                                                                    width: double
+                                                                        .infinity,
+                                                                    height:
+                                                                        90.0,
+                                                                    fit: BoxFit
+                                                                        .cover,
                                                                   ),
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             8.0,
                                                                             0.0,
                                                                             0.0,
                                                                             0.0),
-                                                                    child: Text(
-                                                                      valueOrDefault<
-                                                                          String>(
-                                                                        getJsonField(
-                                                                          jpdItem,
-                                                                          r'''$.title''',
-                                                                        ).toString(),
-                                                                        'titulo',
-                                                                      ),
-                                                                      textAlign:
-                                                                          TextAlign
-                                                                              .start,
-                                                                      maxLines:
-                                                                          3,
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyLarge
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Open Sans',
-                                                                            letterSpacing:
-                                                                                0.0,
-                                                                            fontWeight:
-                                                                                FontWeight.w500,
-                                                                            lineHeight:
-                                                                                1.0,
-                                                                          ),
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      );
-                                                    }),
-                                                  ),
-                                                );
-                                              },
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    width: double.infinity,
-                                    height: 250.0,
-                                    child: Stack(
-                                      alignment:
-                                          AlignmentDirectional(0.0, -1.0),
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 4.0, 0.0, 10.0),
-                                          child: InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              logFirebaseEvent(
-                                                  'PROGRAMAS_PAGE_Image_2oorpd7k_ON_TAP');
-                                              logFirebaseEvent(
-                                                  'Image_navigate_to');
-                                              if (Navigator.of(context)
-                                                  .canPop()) {
-                                                context.pop();
-                                              }
-                                              context.pushNamed(
-                                                'Programa',
-                                                queryParameters: {
-                                                  'cat': serializeParam(
-                                                    2191,
-                                                    ParamType.int,
-                                                  ),
-                                                }.withoutNulls,
-                                              );
-                                            },
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(0.0),
-                                              child: Image.asset(
-                                                'assets/images/LaBovedaheader.png',
-                                                width:
-                                                    MediaQuery.sizeOf(context)
-                                                            .width *
-                                                        1.0,
-                                                fit: BoxFit.contain,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment:
-                                              AlignmentDirectional(0.00, 1.00),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 6.0),
-                                            child: Builder(
-                                              builder: (context) {
-                                                final laBoveda =
-                                                    AppAPIGroup.latestShowsCall
-                                                            .laBoveda(
-                                                              mainProgramasLatestShowsResponse
-                                                                  .jsonBody,
-                                                            )
-                                                            ?.toList() ??
-                                                        [];
-                                                return SingleChildScrollView(
-                                                  scrollDirection:
-                                                      Axis.horizontal,
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment.end,
-                                                    children: List.generate(
-                                                        laBoveda.length,
-                                                        (laBovedaIndex) {
-                                                      final laBovedaItem =
-                                                          laBoveda[
-                                                              laBovedaIndex];
-                                                      return Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    5.0,
-                                                                    12.0,
-                                                                    5.0,
-                                                                    12.0),
-                                                        child: InkWell(
-                                                          splashColor: Colors
-                                                              .transparent,
-                                                          focusColor: Colors
-                                                              .transparent,
-                                                          hoverColor: Colors
-                                                              .transparent,
-                                                          highlightColor: Colors
-                                                              .transparent,
-                                                          onTap: () async {
-                                                            logFirebaseEvent(
-                                                                'PROGRAMAS_PAGE_Container_f5938nkb_ON_TAP');
-                                                            logFirebaseEvent(
-                                                                'Container_navigate_to');
-                                                            if (Navigator.of(
-                                                                    context)
-                                                                .canPop()) {
-                                                              context.pop();
-                                                            }
-                                                            context.pushNamed(
-                                                              'Post',
-                                                              queryParameters: {
-                                                                'link':
-                                                                    serializeParam(
+                                                                child: Text(
                                                                   valueOrDefault<
                                                                       String>(
                                                                     getJsonField(
                                                                       laBovedaItem,
-                                                                      r'''$.link''',
+                                                                      r'''$.title''',
                                                                     ).toString(),
-                                                                    'https://teleonce.com',
+                                                                    'titulo',
                                                                   ),
-                                                                  ParamType
-                                                                      .String,
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .start,
+                                                                  maxLines: 3,
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyLarge
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Open Sans',
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w500,
+                                                                        lineHeight:
+                                                                            1.0,
+                                                                      ),
                                                                 ),
-                                                              }.withoutNulls,
-                                                            );
-                                                          },
-                                                          child: Container(
-                                                            width: MediaQuery
-                                                                        .sizeOf(
-                                                                            context)
-                                                                    .width *
-                                                                0.4,
-                                                            height: 170.0,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: Color(
-                                                                  0xFFF3F3F3),
-                                                              boxShadow: [
-                                                                BoxShadow(
-                                                                  blurRadius:
-                                                                      4.0,
-                                                                  color: Color(
-                                                                      0x33000000),
-                                                                  offset:
-                                                                      Offset(
-                                                                          0.0,
-                                                                          2.0),
-                                                                )
-                                                              ],
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          5.0),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                );
+                                              }),
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    10.0, 0.0, 0.0, 0.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                logFirebaseEvent(
+                                                    'PROGRAMAS_PAGE_Image_tvtqhg0f_ON_TAP');
+                                                logFirebaseEvent(
+                                                    'Image_navigate_to');
+                                                if (Navigator.of(context)
+                                                    .canPop()) {
+                                                  context.pop();
+                                                }
+                                                context.pushNamed(
+                                                  'Programa',
+                                                  queryParameters: {
+                                                    'cat': serializeParam(
+                                                      7,
+                                                      ParamType.int,
+                                                    ),
+                                                  }.withoutNulls,
+                                                );
+                                              },
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(0.0),
+                                                child: Image.asset(
+                                                  'assets/images/PRENVIvo.png',
+                                                  width: 120.0,
+                                                  height: 40.0,
+                                                  fit: BoxFit.contain,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Expanded(
+                                        flex: 1,
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Container(
+                                              width: MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  1.0,
+                                              height: 22.0,
+                                              decoration: BoxDecoration(
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    blurRadius: 4.0,
+                                                    color: Color(0x33000000),
+                                                    offset: Offset(0.0, 2.0),
+                                                  )
+                                                ],
+                                                gradient: LinearGradient(
+                                                  colors: [
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                    Color(0xFF09A7E0)
+                                                  ],
+                                                  stops: [0.0, 1.0],
+                                                  begin: AlignmentDirectional(
+                                                      1.0, 0.0),
+                                                  end: AlignmentDirectional(
+                                                      -1.0, 0),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Align(
+                                            alignment: AlignmentDirectional(
+                                                1.00, 0.00),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 10.0, 0.0),
+                                              child: FFButtonWidget(
+                                                onPressed: () async {
+                                                  logFirebaseEvent(
+                                                      'PROGRAMAS_PAGE_VER_MÁS_BTN_ON_TAP');
+                                                  logFirebaseEvent(
+                                                      'Button_navigate_to');
+
+                                                  context.pushNamed(
+                                                    'Programa',
+                                                    queryParameters: {
+                                                      'cat': serializeParam(
+                                                        4485,
+                                                        ParamType.int,
+                                                      ),
+                                                    }.withoutNulls,
+                                                  );
+                                                },
+                                                text: 'Ver Más',
+                                                options: FFButtonOptions(
+                                                  width: 100.0,
+                                                  height: 40.0,
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          5.0, 0.0, 5.0, 0.0),
+                                                  iconPadding:
+                                                      EdgeInsetsDirectional
+                                                          .fromSTEB(0.0, 0.0,
+                                                              0.0, 0.0),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primary,
+                                                  textStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        fontFamily: 'Open Sans',
+                                                        color: Colors.white,
+                                                        fontSize: 16.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        lineHeight: 1.0,
+                                                      ),
+                                                  elevation: 3.0,
+                                                  borderSide: BorderSide(
+                                                    color: Colors.transparent,
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          0.0),
+                                                ),
+                                                showLoadingIndicator: false,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ]
+                                        .divide(SizedBox(width: 0.0))
+                                        .around(SizedBox(width: 0.0)),
+                                  ),
+                                  Align(
+                                    alignment: AlignmentDirectional(0.00, 1.00),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 6.0),
+                                      child: Builder(
+                                        builder: (context) {
+                                          final pRenVivo =
+                                              AppAPIGroup.latestShowsCall
+                                                      .pRenVivo(
+                                                        mainProgramasLatestShowsResponse
+                                                            .jsonBody,
+                                                      )
+                                                      ?.toList() ??
+                                                  [];
+                                          return SingleChildScrollView(
+                                            scrollDirection: Axis.horizontal,
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.end,
+                                              children:
+                                                  List.generate(pRenVivo.length,
+                                                      (pRenVivoIndex) {
+                                                final pRenVivoItem =
+                                                    pRenVivo[pRenVivoIndex];
+                                                return Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.00, 1.00),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(5.0, 12.0,
+                                                                5.0, 12.0),
+                                                    child: InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        logFirebaseEvent(
+                                                            'PROGRAMAS_PAGE_Container_qoaiospc_ON_TAP');
+                                                        logFirebaseEvent(
+                                                            'Container_navigate_to');
+                                                        if (Navigator.of(
+                                                                context)
+                                                            .canPop()) {
+                                                          context.pop();
+                                                        }
+                                                        context.pushNamed(
+                                                          'Post',
+                                                          queryParameters: {
+                                                            'link':
+                                                                serializeParam(
+                                                              valueOrDefault<
+                                                                  String>(
+                                                                getJsonField(
+                                                                  pRenVivoItem,
+                                                                  r'''$.link''',
+                                                                ).toString(),
+                                                                'https://teleonce.com',
+                                                              ),
+                                                              ParamType.String,
                                                             ),
-                                                            alignment:
-                                                                AlignmentDirectional(
-                                                                    -1.00,
-                                                                    0.00),
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          4.0,
-                                                                          4.0,
-                                                                          4.0,
-                                                                          12.0),
-                                                              child: Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .start,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                          }.withoutNulls,
+                                                        );
+                                                      },
+                                                      child: Container(
+                                                        width: 160.0,
+                                                        height: 180.0,
+                                                        constraints:
+                                                            BoxConstraints(
+                                                          minHeight: 170.0,
+                                                          maxHeight: 300.0,
+                                                        ),
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color:
+                                                              Color(0xFFF3F3F3),
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              blurRadius: 4.0,
+                                                              color: Color(
+                                                                  0x33000000),
+                                                              offset: Offset(
+                                                                  0.0, 2.0),
+                                                            )
+                                                          ],
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      5.0),
+                                                        ),
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                -1.00, 0.00),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      4.0,
+                                                                      4.0,
+                                                                      4.0,
+                                                                      12.0),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .start,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             0.0,
                                                                             12.0),
-                                                                    child:
-                                                                        ClipRRect(
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
+                                                                child:
+                                                                    ClipRRect(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
                                                                               5.0),
-                                                                      child: Image
-                                                                          .network(
-                                                                        valueOrDefault<
-                                                                            String>(
-                                                                          getJsonField(
-                                                                            laBovedaItem,
-                                                                            r'''$.image''',
-                                                                          ),
-                                                                          'https://teleonce.com/wp-content/uploads/2023/08/no-image.jpg',
-                                                                        ),
-                                                                        width: double
-                                                                            .infinity,
-                                                                        height:
-                                                                            90.0,
-                                                                        fit: BoxFit
-                                                                            .cover,
+                                                                  child: Image
+                                                                      .network(
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                      getJsonField(
+                                                                        pRenVivoItem,
+                                                                        r'''$.image''',
                                                                       ),
+                                                                      'https://teleonce.com/wp-content/uploads/2023/08/no-image.jpg',
                                                                     ),
+                                                                    width: double
+                                                                        .infinity,
+                                                                    height:
+                                                                        90.0,
+                                                                    fit: BoxFit
+                                                                        .cover,
                                                                   ),
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             8.0,
                                                                             0.0,
                                                                             0.0,
                                                                             0.0),
-                                                                    child: Text(
-                                                                      valueOrDefault<
-                                                                          String>(
-                                                                        getJsonField(
-                                                                          laBovedaItem,
-                                                                          r'''$.title''',
-                                                                        ).toString(),
-                                                                        'titulo',
-                                                                      ),
-                                                                      textAlign:
-                                                                          TextAlign
-                                                                              .start,
-                                                                      maxLines:
-                                                                          3,
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyLarge
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Open Sans',
-                                                                            letterSpacing:
-                                                                                0.0,
-                                                                            fontWeight:
-                                                                                FontWeight.w500,
-                                                                            lineHeight:
-                                                                                1.0,
-                                                                          ),
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      );
-                                                    }),
-                                                  ),
-                                                );
-                                              },
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    width: double.infinity,
-                                    height: 250.0,
-                                    child: Stack(
-                                      alignment:
-                                          AlignmentDirectional(0.0, -1.0),
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 4.0, 0.0, 10.0),
-                                          child: InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              logFirebaseEvent(
-                                                  'PROGRAMAS_PAGE_Image_07gmiuh2_ON_TAP');
-                                              logFirebaseEvent(
-                                                  'Image_navigate_to');
-                                              if (Navigator.of(context)
-                                                  .canPop()) {
-                                                context.pop();
-                                              }
-                                              context.pushNamed(
-                                                'Programa',
-                                                queryParameters: {
-                                                  'cat': serializeParam(
-                                                    4485,
-                                                    ParamType.int,
-                                                  ),
-                                                }.withoutNulls,
-                                              );
-                                            },
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(0.0),
-                                              child: Image.asset(
-                                                'assets/images/PRenVIvo-Header.png',
-                                                width:
-                                                    MediaQuery.sizeOf(context)
-                                                            .width *
-                                                        1.0,
-                                                fit: BoxFit.contain,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment:
-                                              AlignmentDirectional(0.00, 1.00),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 6.0),
-                                            child: Builder(
-                                              builder: (context) {
-                                                final pRenVivo =
-                                                    AppAPIGroup.latestShowsCall
-                                                            .pRenVivo(
-                                                              mainProgramasLatestShowsResponse
-                                                                  .jsonBody,
-                                                            )
-                                                            ?.toList() ??
-                                                        [];
-                                                return SingleChildScrollView(
-                                                  scrollDirection:
-                                                      Axis.horizontal,
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment.end,
-                                                    children: List.generate(
-                                                        pRenVivo.length,
-                                                        (pRenVivoIndex) {
-                                                      final pRenVivoItem =
-                                                          pRenVivo[
-                                                              pRenVivoIndex];
-                                                      return Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    5.0,
-                                                                    12.0,
-                                                                    5.0,
-                                                                    12.0),
-                                                        child: InkWell(
-                                                          splashColor: Colors
-                                                              .transparent,
-                                                          focusColor: Colors
-                                                              .transparent,
-                                                          hoverColor: Colors
-                                                              .transparent,
-                                                          highlightColor: Colors
-                                                              .transparent,
-                                                          onTap: () async {
-                                                            logFirebaseEvent(
-                                                                'PROGRAMAS_PAGE_Container_qoaiospc_ON_TAP');
-                                                            logFirebaseEvent(
-                                                                'Container_navigate_to');
-                                                            if (Navigator.of(
-                                                                    context)
-                                                                .canPop()) {
-                                                              context.pop();
-                                                            }
-                                                            context.pushNamed(
-                                                              'Post',
-                                                              queryParameters: {
-                                                                'link':
-                                                                    serializeParam(
+                                                                child: Text(
                                                                   valueOrDefault<
                                                                       String>(
                                                                     getJsonField(
                                                                       pRenVivoItem,
-                                                                      r'''$.link''',
+                                                                      r'''$.title''',
                                                                     ).toString(),
-                                                                    'https://teleonce.com',
+                                                                    'titulo',
                                                                   ),
-                                                                  ParamType
-                                                                      .String,
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .start,
+                                                                  maxLines: 3,
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyLarge
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Open Sans',
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w500,
+                                                                        lineHeight:
+                                                                            1.0,
+                                                                      ),
                                                                 ),
-                                                              }.withoutNulls,
-                                                            );
-                                                          },
-                                                          child: Container(
-                                                            width: MediaQuery
-                                                                        .sizeOf(
-                                                                            context)
-                                                                    .width *
-                                                                0.4,
-                                                            height: 170.0,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: Color(
-                                                                  0xFFF3F3F3),
-                                                              boxShadow: [
-                                                                BoxShadow(
-                                                                  blurRadius:
-                                                                      4.0,
-                                                                  color: Color(
-                                                                      0x33000000),
-                                                                  offset:
-                                                                      Offset(
-                                                                          0.0,
-                                                                          2.0),
-                                                                )
-                                                              ],
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          5.0),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                );
+                                              }),
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    10.0, 0.0, 0.0, 0.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                logFirebaseEvent(
+                                                    'PROGRAMAS_PAGE_Image_yicbsm8d_ON_TAP');
+                                                logFirebaseEvent(
+                                                    'Image_navigate_to');
+                                                if (Navigator.of(context)
+                                                    .canPop()) {
+                                                  context.pop();
+                                                }
+                                                context.pushNamed(
+                                                  'Programa',
+                                                  queryParameters: {
+                                                    'cat': serializeParam(
+                                                      7,
+                                                      ParamType.int,
+                                                    ),
+                                                  }.withoutNulls,
+                                                );
+                                              },
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(0.0),
+                                                child: Image.asset(
+                                                  'assets/images/EPDP.png',
+                                                  width: 110.0,
+                                                  height: 50.0,
+                                                  fit: BoxFit.contain,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Expanded(
+                                        flex: 1,
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Container(
+                                              width: MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  1.0,
+                                              height: 22.0,
+                                              decoration: BoxDecoration(
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    blurRadius: 4.0,
+                                                    color: Color(0x33000000),
+                                                    offset: Offset(0.0, 2.0),
+                                                  )
+                                                ],
+                                                gradient: LinearGradient(
+                                                  colors: [
+                                                    Color(0xFF20365B),
+                                                    Color(0xFF284976)
+                                                  ],
+                                                  stops: [0.0, 1.0],
+                                                  begin: AlignmentDirectional(
+                                                      1.0, 0.0),
+                                                  end: AlignmentDirectional(
+                                                      -1.0, 0),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Align(
+                                            alignment: AlignmentDirectional(
+                                                1.00, 0.00),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 10.0, 0.0),
+                                              child: FFButtonWidget(
+                                                onPressed: () async {
+                                                  logFirebaseEvent(
+                                                      'PROGRAMAS_PAGE_VER_MÁS_BTN_ON_TAP');
+                                                  logFirebaseEvent(
+                                                      'Button_navigate_to');
+
+                                                  context.pushNamed(
+                                                    'Programa',
+                                                    queryParameters: {
+                                                      'cat': serializeParam(
+                                                        4678,
+                                                        ParamType.int,
+                                                      ),
+                                                    }.withoutNulls,
+                                                  );
+                                                },
+                                                text: 'Ver Más',
+                                                options: FFButtonOptions(
+                                                  width: 100.0,
+                                                  height: 40.0,
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          5.0, 0.0, 5.0, 0.0),
+                                                  iconPadding:
+                                                      EdgeInsetsDirectional
+                                                          .fromSTEB(0.0, 0.0,
+                                                              0.0, 0.0),
+                                                  color: Color(0xFF20365B),
+                                                  textStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        fontFamily: 'Open Sans',
+                                                        color: Colors.white,
+                                                        fontSize: 16.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        lineHeight: 1.0,
+                                                      ),
+                                                  elevation: 3.0,
+                                                  borderSide: BorderSide(
+                                                    color: Colors.transparent,
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          0.0),
+                                                ),
+                                                showLoadingIndicator: false,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ]
+                                        .divide(SizedBox(width: 0.0))
+                                        .around(SizedBox(width: 0.0)),
+                                  ),
+                                  Align(
+                                    alignment: AlignmentDirectional(0.00, 1.00),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 6.0),
+                                      child: Builder(
+                                        builder: (context) {
+                                          final pRenVivo =
+                                              AppAPIGroup.latestShowsCall
+                                                      .epdp(
+                                                        mainProgramasLatestShowsResponse
+                                                            .jsonBody,
+                                                      )
+                                                      ?.toList() ??
+                                                  [];
+                                          return SingleChildScrollView(
+                                            scrollDirection: Axis.horizontal,
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.end,
+                                              children:
+                                                  List.generate(pRenVivo.length,
+                                                      (pRenVivoIndex) {
+                                                final pRenVivoItem =
+                                                    pRenVivo[pRenVivoIndex];
+                                                return Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.00, 1.00),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(5.0, 12.0,
+                                                                5.0, 12.0),
+                                                    child: InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        logFirebaseEvent(
+                                                            'PROGRAMAS_PAGE_Container_5972ojb2_ON_TAP');
+                                                        logFirebaseEvent(
+                                                            'Container_navigate_to');
+                                                        if (Navigator.of(
+                                                                context)
+                                                            .canPop()) {
+                                                          context.pop();
+                                                        }
+                                                        context.pushNamed(
+                                                          'Post',
+                                                          queryParameters: {
+                                                            'link':
+                                                                serializeParam(
+                                                              valueOrDefault<
+                                                                  String>(
+                                                                getJsonField(
+                                                                  pRenVivoItem,
+                                                                  r'''$.link''',
+                                                                ).toString(),
+                                                                'https://teleonce.com',
+                                                              ),
+                                                              ParamType.String,
                                                             ),
-                                                            alignment:
-                                                                AlignmentDirectional(
-                                                                    -1.00,
-                                                                    0.00),
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          4.0,
-                                                                          4.0,
-                                                                          4.0,
-                                                                          12.0),
-                                                              child: Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .start,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                          }.withoutNulls,
+                                                        );
+                                                      },
+                                                      child: Container(
+                                                        width: 160.0,
+                                                        height: 180.0,
+                                                        constraints:
+                                                            BoxConstraints(
+                                                          minHeight: 170.0,
+                                                          maxHeight: 300.0,
+                                                        ),
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color:
+                                                              Color(0xFFF3F3F3),
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              blurRadius: 4.0,
+                                                              color: Color(
+                                                                  0x33000000),
+                                                              offset: Offset(
+                                                                  0.0, 2.0),
+                                                            )
+                                                          ],
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      5.0),
+                                                        ),
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                -1.00, 0.00),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      4.0,
+                                                                      4.0,
+                                                                      4.0,
+                                                                      12.0),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .start,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             0.0,
                                                                             12.0),
-                                                                    child:
-                                                                        ClipRRect(
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
+                                                                child:
+                                                                    ClipRRect(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
                                                                               5.0),
-                                                                      child: Image
-                                                                          .network(
-                                                                        valueOrDefault<
-                                                                            String>(
-                                                                          getJsonField(
-                                                                            pRenVivoItem,
-                                                                            r'''$.image''',
-                                                                          ),
-                                                                          'https://teleonce.com/wp-content/uploads/2023/08/no-image.jpg',
-                                                                        ),
-                                                                        width: double
-                                                                            .infinity,
-                                                                        height:
-                                                                            90.0,
-                                                                        fit: BoxFit
-                                                                            .cover,
+                                                                  child: Image
+                                                                      .network(
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                      getJsonField(
+                                                                        pRenVivoItem,
+                                                                        r'''$.image''',
                                                                       ),
+                                                                      'https://teleonce.com/wp-content/uploads/2023/08/no-image.jpg',
                                                                     ),
+                                                                    width: double
+                                                                        .infinity,
+                                                                    height:
+                                                                        90.0,
+                                                                    fit: BoxFit
+                                                                        .cover,
                                                                   ),
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             8.0,
                                                                             0.0,
                                                                             0.0,
                                                                             0.0),
-                                                                    child: Text(
-                                                                      valueOrDefault<
-                                                                          String>(
-                                                                        getJsonField(
-                                                                          pRenVivoItem,
-                                                                          r'''$.title''',
-                                                                        ).toString(),
-                                                                        'titulo',
-                                                                      ),
-                                                                      textAlign:
-                                                                          TextAlign
-                                                                              .start,
-                                                                      maxLines:
-                                                                          3,
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyLarge
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Open Sans',
-                                                                            letterSpacing:
-                                                                                0.0,
-                                                                            fontWeight:
-                                                                                FontWeight.w500,
-                                                                            lineHeight:
-                                                                                1.0,
-                                                                          ),
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      );
-                                                    }),
-                                                  ),
-                                                );
-                                              },
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    width: double.infinity,
-                                    height: 250.0,
-                                    child: Stack(
-                                      alignment:
-                                          AlignmentDirectional(0.0, -1.0),
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 4.0, 0.0, 10.0),
-                                          child: InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              logFirebaseEvent(
-                                                  'PROGRAMAS_PAGE_Image_30mv6150_ON_TAP');
-                                              logFirebaseEvent(
-                                                  'Image_navigate_to');
-                                              if (Navigator.of(context)
-                                                  .canPop()) {
-                                                context.pop();
-                                              }
-                                              context.pushNamed(
-                                                'Programa',
-                                                queryParameters: {
-                                                  'cat': serializeParam(
-                                                    4678,
-                                                    ParamType.int,
-                                                  ),
-                                                }.withoutNulls,
-                                              );
-                                            },
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(0.0),
-                                              child: Image.asset(
-                                                'assets/images/EPDP-Headers.png',
-                                                width:
-                                                    MediaQuery.sizeOf(context)
-                                                            .width *
-                                                        1.0,
-                                                fit: BoxFit.contain,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment:
-                                              AlignmentDirectional(0.00, 1.00),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 6.0),
-                                            child: Builder(
-                                              builder: (context) {
-                                                final pRenVivo =
-                                                    AppAPIGroup.latestShowsCall
-                                                            .epdp(
-                                                              mainProgramasLatestShowsResponse
-                                                                  .jsonBody,
-                                                            )
-                                                            ?.toList() ??
-                                                        [];
-                                                return SingleChildScrollView(
-                                                  scrollDirection:
-                                                      Axis.horizontal,
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment.end,
-                                                    children: List.generate(
-                                                        pRenVivo.length,
-                                                        (pRenVivoIndex) {
-                                                      final pRenVivoItem =
-                                                          pRenVivo[
-                                                              pRenVivoIndex];
-                                                      return Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    5.0,
-                                                                    12.0,
-                                                                    5.0,
-                                                                    12.0),
-                                                        child: InkWell(
-                                                          splashColor: Colors
-                                                              .transparent,
-                                                          focusColor: Colors
-                                                              .transparent,
-                                                          hoverColor: Colors
-                                                              .transparent,
-                                                          highlightColor: Colors
-                                                              .transparent,
-                                                          onTap: () async {
-                                                            logFirebaseEvent(
-                                                                'PROGRAMAS_PAGE_Container_5972ojb2_ON_TAP');
-                                                            logFirebaseEvent(
-                                                                'Container_navigate_to');
-                                                            if (Navigator.of(
-                                                                    context)
-                                                                .canPop()) {
-                                                              context.pop();
-                                                            }
-                                                            context.pushNamed(
-                                                              'Post',
-                                                              queryParameters: {
-                                                                'link':
-                                                                    serializeParam(
+                                                                child: Text(
                                                                   valueOrDefault<
                                                                       String>(
                                                                     getJsonField(
                                                                       pRenVivoItem,
-                                                                      r'''$.link''',
+                                                                      r'''$.title''',
                                                                     ).toString(),
-                                                                    'https://teleonce.com',
+                                                                    'titulo',
                                                                   ),
-                                                                  ParamType
-                                                                      .String,
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .start,
+                                                                  maxLines: 3,
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyLarge
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Open Sans',
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w500,
+                                                                        lineHeight:
+                                                                            1.0,
+                                                                      ),
                                                                 ),
-                                                              }.withoutNulls,
-                                                            );
-                                                          },
-                                                          child: Container(
-                                                            width: MediaQuery
-                                                                        .sizeOf(
-                                                                            context)
-                                                                    .width *
-                                                                0.4,
-                                                            height: 170.0,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: Color(
-                                                                  0xFFF3F3F3),
-                                                              boxShadow: [
-                                                                BoxShadow(
-                                                                  blurRadius:
-                                                                      4.0,
-                                                                  color: Color(
-                                                                      0x33000000),
-                                                                  offset:
-                                                                      Offset(
-                                                                          0.0,
-                                                                          2.0),
-                                                                )
-                                                              ],
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          5.0),
-                                                            ),
-                                                            alignment:
-                                                                AlignmentDirectional(
-                                                                    -1.00,
-                                                                    0.00),
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          4.0,
-                                                                          4.0,
-                                                                          4.0,
-                                                                          12.0),
-                                                              child: Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .start,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            12.0),
-                                                                    child:
-                                                                        ClipRRect(
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              5.0),
-                                                                      child: Image
-                                                                          .network(
-                                                                        valueOrDefault<
-                                                                            String>(
-                                                                          getJsonField(
-                                                                            pRenVivoItem,
-                                                                            r'''$.image''',
-                                                                          ),
-                                                                          'https://teleonce.com/wp-content/uploads/2023/08/no-image.jpg',
-                                                                        ),
-                                                                        width: double
-                                                                            .infinity,
-                                                                        height:
-                                                                            90.0,
-                                                                        fit: BoxFit
-                                                                            .cover,
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            8.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                    child: Text(
-                                                                      valueOrDefault<
-                                                                          String>(
-                                                                        getJsonField(
-                                                                          pRenVivoItem,
-                                                                          r'''$.title''',
-                                                                        ).toString(),
-                                                                        'titulo',
-                                                                      ),
-                                                                      textAlign:
-                                                                          TextAlign
-                                                                              .start,
-                                                                      maxLines:
-                                                                          3,
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyLarge
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Open Sans',
-                                                                            letterSpacing:
-                                                                                0.0,
-                                                                            fontWeight:
-                                                                                FontWeight.w500,
-                                                                            lineHeight:
-                                                                                1.0,
-                                                                          ),
-                                                                    ),
-                                                                  ),
-                                                                ],
                                                               ),
-                                                            ),
+                                                            ],
                                                           ),
                                                         ),
-                                                      );
-                                                    }),
+                                                      ),
+                                                    ),
                                                   ),
                                                 );
-                                              },
+                                              }),
                                             ),
-                                          ),
-                                        ),
-                                      ],
+                                          );
+                                        },
+                                      ),
                                     ),
                                   ),
                                   if (FFAppState().showAds)
@@ -1627,11 +2143,8 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                         width:
                                             MediaQuery.sizeOf(context).width *
                                                 1.0,
-                                        height: 100.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                        ),
+                                        height: 50.0,
+                                        decoration: BoxDecoration(),
                                       ),
                                     ),
                                 ],

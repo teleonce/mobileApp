@@ -41,7 +41,7 @@ class _SearchWidgetState extends State<SearchWidget> {
       logFirebaseEvent('SEARCH_PAGE_Search_ON_INIT_STATE');
       logFirebaseEvent('Search_update_app_state');
       setState(() {
-        FFAppState().menuActiveItem = 'search';
+        FFAppState().menuActiveItem = 'buscar';
       });
     });
   }
@@ -99,20 +99,17 @@ class _SearchWidgetState extends State<SearchWidget> {
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            if (FFAppState().search != null &&
-                                FFAppState().search != '')
-                              Flexible(
-                                flex: 1,
-                                child: FlutterFlowWebView(
-                                  content: 'https://teleonce.com/?s=',
-                                  bypass: false,
-                                  width: MediaQuery.sizeOf(context).width * 1.0,
-                                  height:
-                                      MediaQuery.sizeOf(context).height * 1.0,
-                                  verticalScroll: true,
-                                  horizontalScroll: false,
-                                ),
+                            Flexible(
+                              flex: 1,
+                              child: FlutterFlowWebView(
+                                content: 'https://teleonce.com/?s=',
+                                bypass: false,
+                                width: MediaQuery.sizeOf(context).width * 1.0,
+                                height: MediaQuery.sizeOf(context).height * 1.0,
+                                verticalScroll: true,
+                                horizontalScroll: false,
                               ),
+                            ),
                           ],
                         ),
                       ),

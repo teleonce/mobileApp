@@ -25,14 +25,15 @@ class ProgramasModel extends FlutterFlowModel {
   InstantTimer? instantTimer;
   bool apiRequestCompleted = false;
   String? apiRequestLastUniqueKey;
-  // State field(s) for PageView widget.
-  PageController? pageViewController;
+  // State field(s) for ProgramasDestacados widget.
+  PageController? programasDestacadosController;
 
-  int get pageViewCurrentIndex => pageViewController != null &&
-          pageViewController!.hasClients &&
-          pageViewController!.page != null
-      ? pageViewController!.page!.round()
-      : 0;
+  int get programasDestacadosCurrentIndex =>
+      programasDestacadosController != null &&
+              programasDestacadosController!.hasClients &&
+              programasDestacadosController!.page != null
+          ? programasDestacadosController!.page!.round()
+          : 0;
   // Model for NavBar component.
   late NavBarModel navBarModel;
   // Model for MainHeader component.

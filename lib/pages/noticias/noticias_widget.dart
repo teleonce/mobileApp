@@ -11,6 +11,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'noticias_model.dart';
@@ -116,8 +117,9 @@ class _NoticiasWidgetState extends State<NoticiasWidget> {
                                 child: SizedBox(
                                   width: 50.0,
                                   height: 50.0,
-                                  child: SpinKitDoubleBounce(
-                                    color: FlutterFlowTheme.of(context).primary,
+                                  child: SpinKitFadingGrid(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
                                     size: 50.0,
                                   ),
                                 ),
@@ -126,6 +128,10 @@ class _NoticiasWidgetState extends State<NoticiasWidget> {
                             final mainNoticiasLastestNewsResponse =
                                 snapshot.data!;
                             return RefreshIndicator(
+                              color: FlutterFlowTheme.of(context).primary,
+                              backgroundColor: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
+                              strokeWidth: 3.0,
                               onRefresh: () async {
                                 logFirebaseEvent(
                                     'NOTICIAS_MainNoticias_ON_PULL_TO_REFRESH');
@@ -322,10 +328,10 @@ class _NoticiasWidgetState extends State<NoticiasWidget> {
                                                           width: 50.0,
                                                           height: 50.0,
                                                           child:
-                                                              SpinKitDoubleBounce(
+                                                              SpinKitFadingGrid(
                                                             color: FlutterFlowTheme
                                                                     .of(context)
-                                                                .primary,
+                                                                .secondaryBackground,
                                                             size: 50.0,
                                                           ),
                                                         ),
@@ -870,2000 +876,3125 @@ class _NoticiasWidgetState extends State<NoticiasWidget> {
                                         },
                                       ),
                                     ),
-                                    Container(
-                                      width: double.infinity,
-                                      height: 250.0,
-                                      child: Stack(
-                                        alignment:
-                                            AlignmentDirectional(0.0, -1.0),
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    10.0, 4.0, 0.0, 10.0),
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                logFirebaseEvent(
-                                                    'NOTICIAS_PAGE_Image_shfuxwpd_ON_TAP');
-                                                logFirebaseEvent(
-                                                    'Image_navigate_to');
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(5.0, 5.0, 0.0, 5.0),
+                                              child: Icon(
+                                                Icons.speaker_notes_outlined,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                size: 52.0,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Expanded(
+                                          flex: 1,
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Container(
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        1.0,
+                                                height: 22.0,
+                                                decoration: BoxDecoration(
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      blurRadius: 4.0,
+                                                      color: Color(0x33000000),
+                                                      offset: Offset(0.0, 2.0),
+                                                    )
+                                                  ],
+                                                  gradient: LinearGradient(
+                                                    colors: [
+                                                      Color(0xFF223659),
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary
+                                                    ],
+                                                    stops: [0.0, 1.0],
+                                                    begin: AlignmentDirectional(
+                                                        1.0, 0.0),
+                                                    end: AlignmentDirectional(
+                                                        -1.0, 0),
+                                                  ),
+                                                ),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          5.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    'Locales',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Open Sans',
+                                                          color: Colors.white,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  1.00, 0.00),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 10.0, 0.0),
+                                                child: FFButtonWidget(
+                                                  onPressed: () async {
+                                                    logFirebaseEvent(
+                                                        'NOTICIAS_PAGE_VER_MÁS_BTN_ON_TAP');
+                                                    logFirebaseEvent(
+                                                        'Button_navigate_to');
 
-                                                context.goNamed(
-                                                  'Categoria',
-                                                  queryParameters: {
-                                                    'cat': serializeParam(
-                                                      478,
-                                                      ParamType.int,
+                                                    context.pushNamed(
+                                                      'Categoria',
+                                                      queryParameters: {
+                                                        'cat': serializeParam(
+                                                          4,
+                                                          ParamType.int,
+                                                        ),
+                                                      }.withoutNulls,
+                                                    );
+                                                  },
+                                                  text: 'Ver Más',
+                                                  options: FFButtonOptions(
+                                                    width: 80.0,
+                                                    height: 36.0,
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(5.0, 0.0,
+                                                                5.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: Color(0xFF223659),
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Open Sans',
+                                                          color: Colors.white,
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          lineHeight: 1.0,
+                                                        ),
+                                                    elevation: 3.0,
+                                                    borderSide: BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1.0,
                                                     ),
-                                                  }.withoutNulls,
-                                                );
-                                              },
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(0.0),
-                                                child: Image.asset(
-                                                  'assets/images/Deportes-Headers.png',
-                                                  width:
-                                                      MediaQuery.sizeOf(context)
-                                                              .width *
-                                                          1.0,
-                                                  fit: BoxFit.contain,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            0.0),
+                                                  ),
+                                                  showLoadingIndicator: false,
                                                 ),
                                               ),
                                             ),
-                                          ),
-                                          Align(
-                                            alignment: AlignmentDirectional(
-                                                0.00, 1.00),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      10.0, 0.0, 0.0, 6.0),
-                                              child: Builder(
-                                                builder: (context) {
-                                                  final deportes = AppAPIGroup
-                                                          .lastestNewsCall
-                                                          .deportes(
-                                                            mainNoticiasLastestNewsResponse
-                                                                .jsonBody,
-                                                          )
-                                                          ?.toList() ??
-                                                      [];
-                                                  return SingleChildScrollView(
-                                                    scrollDirection:
-                                                        Axis.horizontal,
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .end,
-                                                      children: List.generate(
-                                                          deportes.length,
-                                                          (deportesIndex) {
-                                                        final deportesItem =
-                                                            deportes[
-                                                                deportesIndex];
-                                                        return Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      5.0,
-                                                                      12.0,
-                                                                      5.0,
-                                                                      12.0),
-                                                          child: InkWell(
-                                                            splashColor: Colors
-                                                                .transparent,
-                                                            focusColor: Colors
-                                                                .transparent,
-                                                            hoverColor: Colors
-                                                                .transparent,
-                                                            highlightColor:
-                                                                Colors
-                                                                    .transparent,
-                                                            onTap: () async {
-                                                              logFirebaseEvent(
-                                                                  'NOTICIAS_PAGE_Container_s8tb8d5e_ON_TAP');
-                                                              logFirebaseEvent(
-                                                                  'Container_navigate_to');
+                                          ],
+                                        ),
+                                      ]
+                                          .divide(SizedBox(width: 0.0))
+                                          .around(SizedBox(width: 0.0)),
+                                    ),
+                                    Align(
+                                      alignment:
+                                          AlignmentDirectional(0.00, 1.00),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 0.0, 0.0, 6.0),
+                                        child: Builder(
+                                          builder: (context) {
+                                            final deportes =
+                                                AppAPIGroup.lastestNewsCall
+                                                        .locales(
+                                                          mainNoticiasLastestNewsResponse
+                                                              .jsonBody,
+                                                        )
+                                                        ?.toList() ??
+                                                    [];
+                                            return SingleChildScrollView(
+                                              scrollDirection: Axis.horizontal,
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.end,
+                                                children: List.generate(
+                                                    deportes.length,
+                                                    (deportesIndex) {
+                                                  final deportesItem =
+                                                      deportes[deportesIndex];
+                                                  return Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            0.00, 1.00),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  5.0,
+                                                                  12.0,
+                                                                  5.0,
+                                                                  12.0),
+                                                      child: InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () async {
+                                                          logFirebaseEvent(
+                                                              'NOTICIAS_PAGE_Container_s8tb8d5e_ON_TAP');
+                                                          logFirebaseEvent(
+                                                              'Container_navigate_to');
 
-                                                              context.pushNamed(
-                                                                'Post',
-                                                                queryParameters:
-                                                                    {
-                                                                  'link':
-                                                                      serializeParam(
+                                                          context.pushNamed(
+                                                            'Post',
+                                                            queryParameters: {
+                                                              'link':
+                                                                  serializeParam(
+                                                                valueOrDefault<
+                                                                    String>(
+                                                                  getJsonField(
+                                                                    deportesItem,
+                                                                    r'''$.link''',
+                                                                  ).toString(),
+                                                                  'https://teleonce.com',
+                                                                ),
+                                                                ParamType
+                                                                    .String,
+                                                              ),
+                                                            }.withoutNulls,
+                                                          );
+                                                        },
+                                                        child: Container(
+                                                          width: 160.0,
+                                                          height: 180.0,
+                                                          constraints:
+                                                              BoxConstraints(
+                                                            minHeight: 170.0,
+                                                            maxHeight: 300.0,
+                                                          ),
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: Color(
+                                                                0xFFF3F3F3),
+                                                            boxShadow: [
+                                                              BoxShadow(
+                                                                blurRadius: 4.0,
+                                                                color: Color(
+                                                                    0x33000000),
+                                                                offset: Offset(
+                                                                    0.0, 2.0),
+                                                              )
+                                                            ],
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5.0),
+                                                          ),
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  -1.00, 0.00),
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        4.0,
+                                                                        4.0,
+                                                                        4.0,
+                                                                        12.0),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .start,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          12.0),
+                                                                  child:
+                                                                      ClipRRect(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            5.0),
+                                                                    child: Image
+                                                                        .network(
+                                                                      valueOrDefault<
+                                                                          String>(
+                                                                        getJsonField(
+                                                                          deportesItem,
+                                                                          r'''$.image''',
+                                                                        ),
+                                                                        'https://teleonce.com/wp-content/uploads/2023/08/no-image.jpg',
+                                                                      ),
+                                                                      width: double
+                                                                          .infinity,
+                                                                      height:
+                                                                          90.0,
+                                                                      fit: BoxFit
+                                                                          .cover,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          8.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                  child: Text(
                                                                     valueOrDefault<
                                                                         String>(
                                                                       getJsonField(
                                                                         deportesItem,
-                                                                        r'''$.link''',
+                                                                        r'''$.title''',
                                                                       ).toString(),
-                                                                      'https://teleonce.com',
+                                                                      'titulo',
                                                                     ),
-                                                                    ParamType
-                                                                        .String,
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .start,
+                                                                    maxLines: 3,
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyLarge
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Open Sans',
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          fontWeight:
+                                                                              FontWeight.w500,
+                                                                          lineHeight:
+                                                                              1.0,
+                                                                        ),
                                                                   ),
-                                                                }.withoutNulls,
-                                                              );
-                                                            },
-                                                            child: Container(
-                                                              width: MediaQuery
-                                                                          .sizeOf(
-                                                                              context)
-                                                                      .width *
-                                                                  0.4,
-                                                              height: 170.0,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                color: Color(
-                                                                    0xFFF3F3F3),
-                                                                boxShadow: [
-                                                                  BoxShadow(
-                                                                    blurRadius:
-                                                                        4.0,
-                                                                    color: Color(
-                                                                        0x33000000),
-                                                                    offset:
-                                                                        Offset(
-                                                                            0.0,
-                                                                            2.0),
-                                                                  )
-                                                                ],
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            5.0),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                }),
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(5.0, 5.0, 0.0, 5.0),
+                                              child: Icon(
+                                                Icons.gpp_good_outlined,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                size: 52.0,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Expanded(
+                                          flex: 1,
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Container(
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        1.0,
+                                                height: 22.0,
+                                                decoration: BoxDecoration(
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      blurRadius: 4.0,
+                                                      color: Color(0x33000000),
+                                                      offset: Offset(0.0, 2.0),
+                                                    )
+                                                  ],
+                                                  gradient: LinearGradient(
+                                                    colors: [
+                                                      Color(0xFF223659),
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary
+                                                    ],
+                                                    stops: [0.0, 1.0],
+                                                    begin: AlignmentDirectional(
+                                                        1.0, 0.0),
+                                                    end: AlignmentDirectional(
+                                                        -1.0, 0),
+                                                  ),
+                                                ),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          5.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    'Seguridad',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Open Sans',
+                                                          color: Colors.white,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  1.00, 0.00),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 10.0, 0.0),
+                                                child: FFButtonWidget(
+                                                  onPressed: () async {
+                                                    logFirebaseEvent(
+                                                        'NOTICIAS_PAGE_VER_MÁS_BTN_ON_TAP');
+                                                    logFirebaseEvent(
+                                                        'Button_navigate_to');
+
+                                                    context.pushNamed(
+                                                      'Categoria',
+                                                      queryParameters: {
+                                                        'cat': serializeParam(
+                                                          2,
+                                                          ParamType.int,
+                                                        ),
+                                                      }.withoutNulls,
+                                                    );
+                                                  },
+                                                  text: 'Ver Más',
+                                                  options: FFButtonOptions(
+                                                    width: 80.0,
+                                                    height: 36.0,
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(5.0, 0.0,
+                                                                5.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: Color(0xFF223659),
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Open Sans',
+                                                          color: Colors.white,
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          lineHeight: 1.0,
+                                                        ),
+                                                    elevation: 3.0,
+                                                    borderSide: BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            0.0),
+                                                  ),
+                                                  showLoadingIndicator: false,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ]
+                                          .divide(SizedBox(width: 0.0))
+                                          .around(SizedBox(width: 0.0)),
+                                    ),
+                                    Align(
+                                      alignment:
+                                          AlignmentDirectional(0.00, 1.00),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 0.0, 0.0, 6.0),
+                                        child: Builder(
+                                          builder: (context) {
+                                            final entretenimiento =
+                                                AppAPIGroup.lastestNewsCall
+                                                        .seguridad(
+                                                          mainNoticiasLastestNewsResponse
+                                                              .jsonBody,
+                                                        )
+                                                        ?.toList() ??
+                                                    [];
+                                            return SingleChildScrollView(
+                                              scrollDirection: Axis.horizontal,
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.end,
+                                                children: List.generate(
+                                                    entretenimiento.length,
+                                                    (entretenimientoIndex) {
+                                                  final entretenimientoItem =
+                                                      entretenimiento[
+                                                          entretenimientoIndex];
+                                                  return Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            0.00, 1.00),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  5.0,
+                                                                  12.0,
+                                                                  5.0,
+                                                                  12.0),
+                                                      child: InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () async {
+                                                          logFirebaseEvent(
+                                                              'NOTICIAS_PAGE_Container_4pqvx1m3_ON_TAP');
+                                                          logFirebaseEvent(
+                                                              'Container_navigate_to');
+
+                                                          context.pushNamed(
+                                                            'Post',
+                                                            queryParameters: {
+                                                              'link':
+                                                                  serializeParam(
+                                                                valueOrDefault<
+                                                                    String>(
+                                                                  getJsonField(
+                                                                    entretenimientoItem,
+                                                                    r'''$.link''',
+                                                                  ).toString(),
+                                                                  'https://teleonce.com',
+                                                                ),
+                                                                ParamType
+                                                                    .String,
                                                               ),
-                                                              alignment:
-                                                                  AlignmentDirectional(
-                                                                      -1.00,
-                                                                      0.00),
-                                                              child: Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            4.0,
-                                                                            4.0,
-                                                                            4.0,
-                                                                            12.0),
-                                                                child: Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .start,
-                                                                  crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .start,
-                                                                  children: [
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                            }.withoutNulls,
+                                                          );
+                                                        },
+                                                        child: Container(
+                                                          width: 160.0,
+                                                          height: 180.0,
+                                                          constraints:
+                                                              BoxConstraints(
+                                                            minHeight: 170.0,
+                                                            maxHeight: 300.0,
+                                                          ),
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: Color(
+                                                                0xFFF3F3F3),
+                                                            boxShadow: [
+                                                              BoxShadow(
+                                                                blurRadius: 4.0,
+                                                                color: Color(
+                                                                    0x33000000),
+                                                                offset: Offset(
+                                                                    0.0, 2.0),
+                                                              )
+                                                            ],
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5.0),
+                                                          ),
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  -1.00, 0.00),
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        4.0,
+                                                                        4.0,
+                                                                        4.0,
+                                                                        12.0),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .start,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
                                                                           12.0),
-                                                                      child:
-                                                                          ClipRRect(
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(5.0),
-                                                                        child: Image
-                                                                            .network(
-                                                                          valueOrDefault<
-                                                                              String>(
-                                                                            getJsonField(
-                                                                              deportesItem,
-                                                                              r'''$.image''',
-                                                                            ),
-                                                                            'https://teleonce.com/wp-content/uploads/2023/08/no-image.jpg',
-                                                                          ),
-                                                                          width:
-                                                                              double.infinity,
-                                                                          height:
-                                                                              90.0,
-                                                                          fit: BoxFit
-                                                                              .cover,
+                                                                  child:
+                                                                      ClipRRect(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            5.0),
+                                                                    child: Image
+                                                                        .network(
+                                                                      valueOrDefault<
+                                                                          String>(
+                                                                        getJsonField(
+                                                                          entretenimientoItem,
+                                                                          r'''$.image''',
                                                                         ),
+                                                                        'https://teleonce.com/wp-content/uploads/2023/08/no-image.jpg',
                                                                       ),
+                                                                      width: double
+                                                                          .infinity,
+                                                                      height:
+                                                                          90.0,
+                                                                      fit: BoxFit
+                                                                          .cover,
                                                                     ),
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                  ),
+                                                                ),
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
                                                                           8.0,
                                                                           0.0,
                                                                           0.0,
                                                                           0.0),
-                                                                      child:
-                                                                          Text(
-                                                                        valueOrDefault<
-                                                                            String>(
-                                                                          getJsonField(
-                                                                            deportesItem,
-                                                                            r'''$.title''',
-                                                                          ).toString(),
-                                                                          'titulo',
-                                                                        ),
-                                                                        textAlign:
-                                                                            TextAlign.start,
-                                                                        maxLines:
-                                                                            3,
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyLarge
-                                                                            .override(
-                                                                              fontFamily: 'Open Sans',
-                                                                              letterSpacing: 0.0,
-                                                                              fontWeight: FontWeight.w500,
-                                                                              lineHeight: 1.0,
-                                                                            ),
-                                                                      ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        );
-                                                      }),
-                                                    ),
-                                                  );
-                                                },
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Container(
-                                      width: double.infinity,
-                                      height: 250.0,
-                                      child: Stack(
-                                        alignment:
-                                            AlignmentDirectional(0.0, -1.0),
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    10.0, 4.0, 0.0, 10.0),
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                logFirebaseEvent(
-                                                    'NOTICIAS_PAGE_Image_03vgr96b_ON_TAP');
-                                                logFirebaseEvent(
-                                                    'Image_navigate_to');
-                                                if (Navigator.of(context)
-                                                    .canPop()) {
-                                                  context.pop();
-                                                }
-                                                context.pushNamed(
-                                                  'Categoria',
-                                                  queryParameters: {
-                                                    'cat': serializeParam(
-                                                      546,
-                                                      ParamType.int,
-                                                    ),
-                                                  }.withoutNulls,
-                                                );
-                                              },
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(0.0),
-                                                child: Image.asset(
-                                                  'assets/images/Entretenimiento-Headers.png',
-                                                  width:
-                                                      MediaQuery.sizeOf(context)
-                                                              .width *
-                                                          1.0,
-                                                  fit: BoxFit.contain,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Align(
-                                            alignment: AlignmentDirectional(
-                                                0.00, 1.00),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      10.0, 0.0, 0.0, 6.0),
-                                              child: Builder(
-                                                builder: (context) {
-                                                  final entretenimiento =
-                                                      AppAPIGroup
-                                                              .lastestNewsCall
-                                                              .entretenimiento(
-                                                                mainNoticiasLastestNewsResponse
-                                                                    .jsonBody,
-                                                              )
-                                                              ?.toList() ??
-                                                          [];
-                                                  return SingleChildScrollView(
-                                                    scrollDirection:
-                                                        Axis.horizontal,
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .end,
-                                                      children: List.generate(
-                                                          entretenimiento
-                                                              .length,
-                                                          (entretenimientoIndex) {
-                                                        final entretenimientoItem =
-                                                            entretenimiento[
-                                                                entretenimientoIndex];
-                                                        return Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      5.0,
-                                                                      12.0,
-                                                                      5.0,
-                                                                      12.0),
-                                                          child: InkWell(
-                                                            splashColor: Colors
-                                                                .transparent,
-                                                            focusColor: Colors
-                                                                .transparent,
-                                                            hoverColor: Colors
-                                                                .transparent,
-                                                            highlightColor:
-                                                                Colors
-                                                                    .transparent,
-                                                            onTap: () async {
-                                                              logFirebaseEvent(
-                                                                  'NOTICIAS_PAGE_Container_4pqvx1m3_ON_TAP');
-                                                              logFirebaseEvent(
-                                                                  'Container_navigate_to');
-
-                                                              context.pushNamed(
-                                                                'Post',
-                                                                queryParameters:
-                                                                    {
-                                                                  'link':
-                                                                      serializeParam(
+                                                                  child: Text(
                                                                     valueOrDefault<
                                                                         String>(
                                                                       getJsonField(
                                                                         entretenimientoItem,
-                                                                        r'''$.link''',
+                                                                        r'''$.title''',
                                                                       ).toString(),
-                                                                      'https://teleonce.com',
+                                                                      'titulo',
                                                                     ),
-                                                                    ParamType
-                                                                        .String,
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .start,
+                                                                    maxLines: 3,
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyLarge
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Open Sans',
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          fontWeight:
+                                                                              FontWeight.w500,
+                                                                          lineHeight:
+                                                                              1.0,
+                                                                        ),
                                                                   ),
-                                                                }.withoutNulls,
-                                                              );
-                                                            },
-                                                            child: Container(
-                                                              width: MediaQuery
-                                                                          .sizeOf(
-                                                                              context)
-                                                                      .width *
-                                                                  0.4,
-                                                              height: 170.0,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                color: Color(
-                                                                    0xFFF3F3F3),
-                                                                boxShadow: [
-                                                                  BoxShadow(
-                                                                    blurRadius:
-                                                                        4.0,
-                                                                    color: Color(
-                                                                        0x33000000),
-                                                                    offset:
-                                                                        Offset(
-                                                                            0.0,
-                                                                            2.0),
-                                                                  )
-                                                                ],
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            5.0),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                }),
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(5.0, 5.0, 0.0, 5.0),
+                                              child: Icon(
+                                                Icons.account_balance,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                size: 48.0,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Expanded(
+                                          flex: 1,
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Container(
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        1.0,
+                                                height: 22.0,
+                                                decoration: BoxDecoration(
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      blurRadius: 4.0,
+                                                      color: Color(0x33000000),
+                                                      offset: Offset(0.0, 2.0),
+                                                    )
+                                                  ],
+                                                  gradient: LinearGradient(
+                                                    colors: [
+                                                      Color(0xFF223659),
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary
+                                                    ],
+                                                    stops: [0.0, 1.0],
+                                                    begin: AlignmentDirectional(
+                                                        1.0, 0.0),
+                                                    end: AlignmentDirectional(
+                                                        -1.0, 0),
+                                                  ),
+                                                ),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          5.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    'Politica',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Open Sans',
+                                                          color: Colors.white,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  1.00, 0.00),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 10.0, 0.0),
+                                                child: FFButtonWidget(
+                                                  onPressed: () async {
+                                                    logFirebaseEvent(
+                                                        'NOTICIAS_PAGE_VER_MÁS_BTN_ON_TAP');
+                                                    logFirebaseEvent(
+                                                        'Button_navigate_to');
+
+                                                    context.pushNamed(
+                                                      'Categoria',
+                                                      queryParameters: {
+                                                        'cat': serializeParam(
+                                                          3,
+                                                          ParamType.int,
+                                                        ),
+                                                      }.withoutNulls,
+                                                    );
+                                                  },
+                                                  text: 'Ver Más',
+                                                  options: FFButtonOptions(
+                                                    width: 80.0,
+                                                    height: 36.0,
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(5.0, 0.0,
+                                                                5.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: Color(0xFF223659),
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Open Sans',
+                                                          color: Colors.white,
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          lineHeight: 1.0,
+                                                        ),
+                                                    elevation: 3.0,
+                                                    borderSide: BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            0.0),
+                                                  ),
+                                                  showLoadingIndicator: false,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ]
+                                          .divide(SizedBox(width: 0.0))
+                                          .around(SizedBox(width: 0.0)),
+                                    ),
+                                    Align(
+                                      alignment:
+                                          AlignmentDirectional(0.00, 1.00),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 0.0, 0.0, 6.0),
+                                        child: Builder(
+                                          builder: (context) {
+                                            final internacionales =
+                                                AppAPIGroup.lastestNewsCall
+                                                        .politica(
+                                                          mainNoticiasLastestNewsResponse
+                                                              .jsonBody,
+                                                        )
+                                                        ?.toList() ??
+                                                    [];
+                                            return SingleChildScrollView(
+                                              scrollDirection: Axis.horizontal,
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.end,
+                                                children: List.generate(
+                                                    internacionales.length,
+                                                    (internacionalesIndex) {
+                                                  final internacionalesItem =
+                                                      internacionales[
+                                                          internacionalesIndex];
+                                                  return Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            0.00, 1.00),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  5.0,
+                                                                  12.0,
+                                                                  5.0,
+                                                                  12.0),
+                                                      child: InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () async {
+                                                          logFirebaseEvent(
+                                                              'NOTICIAS_PAGE_Container_aihjefp3_ON_TAP');
+                                                          logFirebaseEvent(
+                                                              'Container_navigate_to');
+
+                                                          context.pushNamed(
+                                                            'Post',
+                                                            queryParameters: {
+                                                              'link':
+                                                                  serializeParam(
+                                                                valueOrDefault<
+                                                                    String>(
+                                                                  getJsonField(
+                                                                    internacionalesItem,
+                                                                    r'''$.link''',
+                                                                  ).toString(),
+                                                                  'https://teleonce.com',
+                                                                ),
+                                                                ParamType
+                                                                    .String,
                                                               ),
-                                                              alignment:
-                                                                  AlignmentDirectional(
-                                                                      -1.00,
-                                                                      0.00),
-                                                              child: Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            4.0,
-                                                                            4.0,
-                                                                            4.0,
-                                                                            12.0),
-                                                                child: Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .start,
-                                                                  crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .start,
-                                                                  children: [
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                            }.withoutNulls,
+                                                          );
+                                                        },
+                                                        child: Container(
+                                                          width: 160.0,
+                                                          height: 180.0,
+                                                          constraints:
+                                                              BoxConstraints(
+                                                            minHeight: 170.0,
+                                                            maxHeight: 300.0,
+                                                          ),
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: Color(
+                                                                0xFFF3F3F3),
+                                                            boxShadow: [
+                                                              BoxShadow(
+                                                                blurRadius: 4.0,
+                                                                color: Color(
+                                                                    0x33000000),
+                                                                offset: Offset(
+                                                                    0.0, 2.0),
+                                                              )
+                                                            ],
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5.0),
+                                                          ),
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  -1.00, 0.00),
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        4.0,
+                                                                        4.0,
+                                                                        4.0,
+                                                                        12.0),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .start,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
                                                                           12.0),
-                                                                      child:
-                                                                          ClipRRect(
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(5.0),
-                                                                        child: Image
-                                                                            .network(
-                                                                          valueOrDefault<
-                                                                              String>(
-                                                                            getJsonField(
-                                                                              entretenimientoItem,
-                                                                              r'''$.image''',
-                                                                            ),
-                                                                            'https://teleonce.com/wp-content/uploads/2023/08/no-image.jpg',
-                                                                          ),
-                                                                          width:
-                                                                              double.infinity,
-                                                                          height:
-                                                                              90.0,
-                                                                          fit: BoxFit
-                                                                              .cover,
+                                                                  child:
+                                                                      ClipRRect(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            5.0),
+                                                                    child: Image
+                                                                        .network(
+                                                                      valueOrDefault<
+                                                                          String>(
+                                                                        getJsonField(
+                                                                          internacionalesItem,
+                                                                          r'''$.image''',
                                                                         ),
+                                                                        'https://teleonce.com/wp-content/uploads/2023/08/no-image.jpg',
                                                                       ),
+                                                                      width: double
+                                                                          .infinity,
+                                                                      height:
+                                                                          90.0,
+                                                                      fit: BoxFit
+                                                                          .cover,
                                                                     ),
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                  ),
+                                                                ),
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
                                                                           8.0,
                                                                           0.0,
                                                                           0.0,
                                                                           0.0),
-                                                                      child:
-                                                                          Text(
-                                                                        valueOrDefault<
-                                                                            String>(
-                                                                          getJsonField(
-                                                                            entretenimientoItem,
-                                                                            r'''$.title''',
-                                                                          ).toString(),
-                                                                          'titulo',
-                                                                        ),
-                                                                        textAlign:
-                                                                            TextAlign.start,
-                                                                        maxLines:
-                                                                            3,
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyLarge
-                                                                            .override(
-                                                                              fontFamily: 'Open Sans',
-                                                                              letterSpacing: 0.0,
-                                                                              fontWeight: FontWeight.w500,
-                                                                              lineHeight: 1.0,
-                                                                            ),
-                                                                      ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        );
-                                                      }),
-                                                    ),
-                                                  );
-                                                },
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Container(
-                                      width: double.infinity,
-                                      height: 250.0,
-                                      child: Stack(
-                                        alignment:
-                                            AlignmentDirectional(0.0, -1.0),
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    10.0, 4.0, 0.0, 10.0),
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                logFirebaseEvent(
-                                                    'NOTICIAS_PAGE_Image_u3k16fhi_ON_TAP');
-                                                logFirebaseEvent(
-                                                    'Image_navigate_to');
-
-                                                context.goNamed(
-                                                  'Categoria',
-                                                  queryParameters: {
-                                                    'cat': serializeParam(
-                                                      663,
-                                                      ParamType.int,
-                                                    ),
-                                                  }.withoutNulls,
-                                                );
-                                              },
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(0.0),
-                                                child: Image.asset(
-                                                  'assets/images/Internacionales-Headers.png',
-                                                  width:
-                                                      MediaQuery.sizeOf(context)
-                                                              .width *
-                                                          1.0,
-                                                  fit: BoxFit.contain,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Align(
-                                            alignment: AlignmentDirectional(
-                                                0.00, 1.00),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      10.0, 0.0, 0.0, 6.0),
-                                              child: Builder(
-                                                builder: (context) {
-                                                  final internacionales =
-                                                      AppAPIGroup
-                                                              .lastestNewsCall
-                                                              .internacionales(
-                                                                mainNoticiasLastestNewsResponse
-                                                                    .jsonBody,
-                                                              )
-                                                              ?.toList() ??
-                                                          [];
-                                                  return SingleChildScrollView(
-                                                    scrollDirection:
-                                                        Axis.horizontal,
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .end,
-                                                      children: List.generate(
-                                                          internacionales
-                                                              .length,
-                                                          (internacionalesIndex) {
-                                                        final internacionalesItem =
-                                                            internacionales[
-                                                                internacionalesIndex];
-                                                        return Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      5.0,
-                                                                      12.0,
-                                                                      5.0,
-                                                                      12.0),
-                                                          child: InkWell(
-                                                            splashColor: Colors
-                                                                .transparent,
-                                                            focusColor: Colors
-                                                                .transparent,
-                                                            hoverColor: Colors
-                                                                .transparent,
-                                                            highlightColor:
-                                                                Colors
-                                                                    .transparent,
-                                                            onTap: () async {
-                                                              logFirebaseEvent(
-                                                                  'NOTICIAS_PAGE_Container_aihjefp3_ON_TAP');
-                                                              logFirebaseEvent(
-                                                                  'Container_navigate_to');
-
-                                                              context.pushNamed(
-                                                                'Post',
-                                                                queryParameters:
-                                                                    {
-                                                                  'link':
-                                                                      serializeParam(
+                                                                  child: Text(
                                                                     valueOrDefault<
                                                                         String>(
                                                                       getJsonField(
                                                                         internacionalesItem,
-                                                                        r'''$.link''',
+                                                                        r'''$.title''',
                                                                       ).toString(),
-                                                                      'https://teleonce.com',
+                                                                      'titulo',
                                                                     ),
-                                                                    ParamType
-                                                                        .String,
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .start,
+                                                                    maxLines: 3,
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyLarge
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Open Sans',
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          fontWeight:
+                                                                              FontWeight.w500,
+                                                                          lineHeight:
+                                                                              1.0,
+                                                                        ),
                                                                   ),
-                                                                }.withoutNulls,
-                                                              );
-                                                            },
-                                                            child: Container(
-                                                              width: MediaQuery
-                                                                          .sizeOf(
-                                                                              context)
-                                                                      .width *
-                                                                  0.4,
-                                                              height: 170.0,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                color: Color(
-                                                                    0xFFF3F3F3),
-                                                                boxShadow: [
-                                                                  BoxShadow(
-                                                                    blurRadius:
-                                                                        4.0,
-                                                                    color: Color(
-                                                                        0x33000000),
-                                                                    offset:
-                                                                        Offset(
-                                                                            0.0,
-                                                                            2.0),
-                                                                  )
-                                                                ],
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            5.0),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                }),
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(5.0, 5.0, 0.0, 5.0),
+                                              child: Icon(
+                                                Icons.sports_basketball,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                size: 48.0,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Expanded(
+                                          flex: 1,
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Container(
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        1.0,
+                                                height: 22.0,
+                                                decoration: BoxDecoration(
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      blurRadius: 4.0,
+                                                      color: Color(0x33000000),
+                                                      offset: Offset(0.0, 2.0),
+                                                    )
+                                                  ],
+                                                  gradient: LinearGradient(
+                                                    colors: [
+                                                      Color(0xFF223659),
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary
+                                                    ],
+                                                    stops: [0.0, 1.0],
+                                                    begin: AlignmentDirectional(
+                                                        1.0, 0.0),
+                                                    end: AlignmentDirectional(
+                                                        -1.0, 0),
+                                                  ),
+                                                ),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          5.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    'Deportes',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Open Sans',
+                                                          color: Colors.white,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  1.00, 0.00),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 10.0, 0.0),
+                                                child: FFButtonWidget(
+                                                  onPressed: () async {
+                                                    logFirebaseEvent(
+                                                        'NOTICIAS_PAGE_VER_MÁS_BTN_ON_TAP');
+                                                    logFirebaseEvent(
+                                                        'Button_navigate_to');
+
+                                                    context.pushNamed(
+                                                      'Categoria',
+                                                      queryParameters: {
+                                                        'cat': serializeParam(
+                                                          478,
+                                                          ParamType.int,
+                                                        ),
+                                                      }.withoutNulls,
+                                                    );
+                                                  },
+                                                  text: 'Ver Más',
+                                                  options: FFButtonOptions(
+                                                    width: 80.0,
+                                                    height: 36.0,
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(5.0, 0.0,
+                                                                5.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: Color(0xFF223659),
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Open Sans',
+                                                          color: Colors.white,
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          lineHeight: 1.0,
+                                                        ),
+                                                    elevation: 3.0,
+                                                    borderSide: BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            0.0),
+                                                  ),
+                                                  showLoadingIndicator: false,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ]
+                                          .divide(SizedBox(width: 0.0))
+                                          .around(SizedBox(width: 0.0)),
+                                    ),
+                                    Align(
+                                      alignment:
+                                          AlignmentDirectional(0.00, 1.00),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 0.0, 0.0, 6.0),
+                                        child: Builder(
+                                          builder: (context) {
+                                            final locales =
+                                                AppAPIGroup.lastestNewsCall
+                                                        .deportes(
+                                                          mainNoticiasLastestNewsResponse
+                                                              .jsonBody,
+                                                        )
+                                                        ?.toList() ??
+                                                    [];
+                                            return SingleChildScrollView(
+                                              scrollDirection: Axis.horizontal,
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.end,
+                                                children: List.generate(
+                                                    locales.length,
+                                                    (localesIndex) {
+                                                  final localesItem =
+                                                      locales[localesIndex];
+                                                  return Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            0.00, 1.00),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  5.0,
+                                                                  12.0,
+                                                                  5.0,
+                                                                  12.0),
+                                                      child: InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () async {
+                                                          logFirebaseEvent(
+                                                              'NOTICIAS_PAGE_Container_cs7nqhku_ON_TAP');
+                                                          logFirebaseEvent(
+                                                              'Container_navigate_to');
+
+                                                          context.pushNamed(
+                                                            'Post',
+                                                            queryParameters: {
+                                                              'link':
+                                                                  serializeParam(
+                                                                valueOrDefault<
+                                                                    String>(
+                                                                  getJsonField(
+                                                                    localesItem,
+                                                                    r'''$.link''',
+                                                                  ).toString(),
+                                                                  'https://teleonce.com',
+                                                                ),
+                                                                ParamType
+                                                                    .String,
                                                               ),
-                                                              alignment:
-                                                                  AlignmentDirectional(
-                                                                      -1.00,
-                                                                      0.00),
-                                                              child: Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            4.0,
-                                                                            4.0,
-                                                                            4.0,
-                                                                            12.0),
-                                                                child: Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .start,
-                                                                  crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .start,
-                                                                  children: [
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                            }.withoutNulls,
+                                                          );
+                                                        },
+                                                        child: Container(
+                                                          width: 160.0,
+                                                          height: 180.0,
+                                                          constraints:
+                                                              BoxConstraints(
+                                                            minHeight: 170.0,
+                                                            maxHeight: 300.0,
+                                                          ),
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: Color(
+                                                                0xFFF3F3F3),
+                                                            boxShadow: [
+                                                              BoxShadow(
+                                                                blurRadius: 4.0,
+                                                                color: Color(
+                                                                    0x33000000),
+                                                                offset: Offset(
+                                                                    0.0, 2.0),
+                                                              )
+                                                            ],
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5.0),
+                                                          ),
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  -1.00, 0.00),
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        4.0,
+                                                                        4.0,
+                                                                        4.0,
+                                                                        12.0),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .start,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
                                                                           12.0),
-                                                                      child:
-                                                                          ClipRRect(
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(5.0),
-                                                                        child: Image
-                                                                            .network(
-                                                                          valueOrDefault<
-                                                                              String>(
-                                                                            getJsonField(
-                                                                              internacionalesItem,
-                                                                              r'''$.image''',
-                                                                            ),
-                                                                            'https://teleonce.com/wp-content/uploads/2023/08/no-image.jpg',
-                                                                          ),
-                                                                          width:
-                                                                              double.infinity,
-                                                                          height:
-                                                                              90.0,
-                                                                          fit: BoxFit
-                                                                              .cover,
+                                                                  child:
+                                                                      ClipRRect(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            5.0),
+                                                                    child: Image
+                                                                        .network(
+                                                                      valueOrDefault<
+                                                                          String>(
+                                                                        getJsonField(
+                                                                          localesItem,
+                                                                          r'''$.image''',
                                                                         ),
+                                                                        'https://teleonce.com/wp-content/uploads/2023/08/no-image.jpg',
                                                                       ),
+                                                                      width: double
+                                                                          .infinity,
+                                                                      height:
+                                                                          90.0,
+                                                                      fit: BoxFit
+                                                                          .cover,
                                                                     ),
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                  ),
+                                                                ),
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
                                                                           8.0,
                                                                           0.0,
                                                                           0.0,
                                                                           0.0),
-                                                                      child:
-                                                                          Text(
-                                                                        valueOrDefault<
-                                                                            String>(
-                                                                          getJsonField(
-                                                                            internacionalesItem,
-                                                                            r'''$.title''',
-                                                                          ).toString(),
-                                                                          'titulo',
-                                                                        ),
-                                                                        textAlign:
-                                                                            TextAlign.start,
-                                                                        maxLines:
-                                                                            3,
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyLarge
-                                                                            .override(
-                                                                              fontFamily: 'Open Sans',
-                                                                              letterSpacing: 0.0,
-                                                                              fontWeight: FontWeight.w500,
-                                                                              lineHeight: 1.0,
-                                                                            ),
-                                                                      ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        );
-                                                      }),
-                                                    ),
-                                                  );
-                                                },
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Container(
-                                      width: double.infinity,
-                                      height: 250.0,
-                                      child: Stack(
-                                        alignment:
-                                            AlignmentDirectional(0.0, -1.0),
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    10.0, 4.0, 0.0, 10.0),
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                logFirebaseEvent(
-                                                    'NOTICIAS_PAGE_Image_161t4ym7_ON_TAP');
-                                                logFirebaseEvent(
-                                                    'Image_navigate_to');
-
-                                                context.goNamed(
-                                                  'Categoria',
-                                                  queryParameters: {
-                                                    'cat': serializeParam(
-                                                      4,
-                                                      ParamType.int,
-                                                    ),
-                                                  }.withoutNulls,
-                                                );
-                                              },
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(0.0),
-                                                child: Image.asset(
-                                                  'assets/images/Locales-Headers.png',
-                                                  width:
-                                                      MediaQuery.sizeOf(context)
-                                                              .width *
-                                                          1.0,
-                                                  fit: BoxFit.contain,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Align(
-                                            alignment: AlignmentDirectional(
-                                                0.00, 1.00),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      10.0, 0.0, 0.0, 6.0),
-                                              child: Builder(
-                                                builder: (context) {
-                                                  final locales = AppAPIGroup
-                                                          .lastestNewsCall
-                                                          .locales(
-                                                            mainNoticiasLastestNewsResponse
-                                                                .jsonBody,
-                                                          )
-                                                          ?.toList() ??
-                                                      [];
-                                                  return SingleChildScrollView(
-                                                    scrollDirection:
-                                                        Axis.horizontal,
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .end,
-                                                      children: List.generate(
-                                                          locales.length,
-                                                          (localesIndex) {
-                                                        final localesItem =
-                                                            locales[
-                                                                localesIndex];
-                                                        return Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      5.0,
-                                                                      12.0,
-                                                                      5.0,
-                                                                      12.0),
-                                                          child: InkWell(
-                                                            splashColor: Colors
-                                                                .transparent,
-                                                            focusColor: Colors
-                                                                .transparent,
-                                                            hoverColor: Colors
-                                                                .transparent,
-                                                            highlightColor:
-                                                                Colors
-                                                                    .transparent,
-                                                            onTap: () async {
-                                                              logFirebaseEvent(
-                                                                  'NOTICIAS_PAGE_Container_cs7nqhku_ON_TAP');
-                                                              logFirebaseEvent(
-                                                                  'Container_navigate_to');
-
-                                                              context.pushNamed(
-                                                                'Post',
-                                                                queryParameters:
-                                                                    {
-                                                                  'link':
-                                                                      serializeParam(
+                                                                  child: Text(
                                                                     valueOrDefault<
                                                                         String>(
                                                                       getJsonField(
                                                                         localesItem,
-                                                                        r'''$.link''',
+                                                                        r'''$.title''',
                                                                       ).toString(),
-                                                                      'https://teleonce.com',
+                                                                      'titulo',
                                                                     ),
-                                                                    ParamType
-                                                                        .String,
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .start,
+                                                                    maxLines: 3,
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyLarge
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Open Sans',
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          fontWeight:
+                                                                              FontWeight.w500,
+                                                                          lineHeight:
+                                                                              1.0,
+                                                                        ),
                                                                   ),
-                                                                }.withoutNulls,
-                                                              );
-                                                            },
-                                                            child: Container(
-                                                              width: MediaQuery
-                                                                          .sizeOf(
-                                                                              context)
-                                                                      .width *
-                                                                  0.4,
-                                                              height: 170.0,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                color: Color(
-                                                                    0xFFF3F3F3),
-                                                                boxShadow: [
-                                                                  BoxShadow(
-                                                                    blurRadius:
-                                                                        4.0,
-                                                                    color: Color(
-                                                                        0x33000000),
-                                                                    offset:
-                                                                        Offset(
-                                                                            0.0,
-                                                                            2.0),
-                                                                  )
-                                                                ],
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            5.0),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                }),
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(5.0, 5.0, 0.0, 5.0),
+                                              child: Icon(
+                                                Icons.local_activity_outlined,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                size: 48.0,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Expanded(
+                                          flex: 1,
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Container(
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        1.0,
+                                                height: 22.0,
+                                                decoration: BoxDecoration(
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      blurRadius: 4.0,
+                                                      color: Color(0x33000000),
+                                                      offset: Offset(0.0, 2.0),
+                                                    )
+                                                  ],
+                                                  gradient: LinearGradient(
+                                                    colors: [
+                                                      Color(0xFF223659),
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary
+                                                    ],
+                                                    stops: [0.0, 1.0],
+                                                    begin: AlignmentDirectional(
+                                                        1.0, 0.0),
+                                                    end: AlignmentDirectional(
+                                                        -1.0, 0),
+                                                  ),
+                                                ),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          5.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    'Entretenimiento',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Open Sans',
+                                                          color: Colors.white,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  1.00, 0.00),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 10.0, 0.0),
+                                                child: FFButtonWidget(
+                                                  onPressed: () async {
+                                                    logFirebaseEvent(
+                                                        'NOTICIAS_PAGE_VER_MÁS_BTN_ON_TAP');
+                                                    logFirebaseEvent(
+                                                        'Button_navigate_to');
+
+                                                    context.pushNamed(
+                                                      'Categoria',
+                                                      queryParameters: {
+                                                        'cat': serializeParam(
+                                                          546,
+                                                          ParamType.int,
+                                                        ),
+                                                      }.withoutNulls,
+                                                    );
+                                                  },
+                                                  text: 'Ver Más',
+                                                  options: FFButtonOptions(
+                                                    width: 80.0,
+                                                    height: 36.0,
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(5.0, 0.0,
+                                                                5.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: Color(0xFF223659),
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Open Sans',
+                                                          color: Colors.white,
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          lineHeight: 1.0,
+                                                        ),
+                                                    elevation: 3.0,
+                                                    borderSide: BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            0.0),
+                                                  ),
+                                                  showLoadingIndicator: false,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ]
+                                          .divide(SizedBox(width: 0.0))
+                                          .around(SizedBox(width: 0.0)),
+                                    ),
+                                    Align(
+                                      alignment:
+                                          AlignmentDirectional(0.00, 1.00),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 0.0, 0.0, 6.0),
+                                        child: Builder(
+                                          builder: (context) {
+                                            final politica =
+                                                AppAPIGroup.lastestNewsCall
+                                                        .entretenimiento(
+                                                          mainNoticiasLastestNewsResponse
+                                                              .jsonBody,
+                                                        )
+                                                        ?.toList() ??
+                                                    [];
+                                            return SingleChildScrollView(
+                                              scrollDirection: Axis.horizontal,
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.end,
+                                                children: List.generate(
+                                                    politica.length,
+                                                    (politicaIndex) {
+                                                  final politicaItem =
+                                                      politica[politicaIndex];
+                                                  return Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            0.00, 1.00),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  5.0,
+                                                                  12.0,
+                                                                  5.0,
+                                                                  12.0),
+                                                      child: InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () async {
+                                                          logFirebaseEvent(
+                                                              'NOTICIAS_PAGE_Container_kvfkkhda_ON_TAP');
+                                                          logFirebaseEvent(
+                                                              'Container_navigate_to');
+
+                                                          context.pushNamed(
+                                                            'Post',
+                                                            queryParameters: {
+                                                              'link':
+                                                                  serializeParam(
+                                                                valueOrDefault<
+                                                                    String>(
+                                                                  getJsonField(
+                                                                    politicaItem,
+                                                                    r'''$.link''',
+                                                                  ).toString(),
+                                                                  'https://teleonce.com',
+                                                                ),
+                                                                ParamType
+                                                                    .String,
                                                               ),
-                                                              alignment:
-                                                                  AlignmentDirectional(
-                                                                      -1.00,
-                                                                      0.00),
-                                                              child: Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            4.0,
-                                                                            4.0,
-                                                                            4.0,
-                                                                            12.0),
-                                                                child: Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .start,
-                                                                  crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .start,
-                                                                  children: [
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                            }.withoutNulls,
+                                                          );
+                                                        },
+                                                        child: Container(
+                                                          width: 160.0,
+                                                          height: 180.0,
+                                                          constraints:
+                                                              BoxConstraints(
+                                                            minHeight: 170.0,
+                                                            maxHeight: 300.0,
+                                                          ),
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: Color(
+                                                                0xFFF3F3F3),
+                                                            boxShadow: [
+                                                              BoxShadow(
+                                                                blurRadius: 4.0,
+                                                                color: Color(
+                                                                    0x33000000),
+                                                                offset: Offset(
+                                                                    0.0, 2.0),
+                                                              )
+                                                            ],
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5.0),
+                                                          ),
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  -1.00, 0.00),
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        4.0,
+                                                                        4.0,
+                                                                        4.0,
+                                                                        12.0),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .start,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
                                                                           12.0),
-                                                                      child:
-                                                                          ClipRRect(
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(5.0),
-                                                                        child: Image
-                                                                            .network(
-                                                                          valueOrDefault<
-                                                                              String>(
-                                                                            getJsonField(
-                                                                              localesItem,
-                                                                              r'''$.image''',
-                                                                            ),
-                                                                            'https://teleonce.com/wp-content/uploads/2023/08/no-image.jpg',
-                                                                          ),
-                                                                          width:
-                                                                              double.infinity,
-                                                                          height:
-                                                                              90.0,
-                                                                          fit: BoxFit
-                                                                              .cover,
+                                                                  child:
+                                                                      ClipRRect(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            5.0),
+                                                                    child: Image
+                                                                        .network(
+                                                                      valueOrDefault<
+                                                                          String>(
+                                                                        getJsonField(
+                                                                          politicaItem,
+                                                                          r'''$.image''',
                                                                         ),
+                                                                        'https://teleonce.com/wp-content/uploads/2023/08/no-image.jpg',
                                                                       ),
+                                                                      width: double
+                                                                          .infinity,
+                                                                      height:
+                                                                          90.0,
+                                                                      fit: BoxFit
+                                                                          .cover,
                                                                     ),
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                  ),
+                                                                ),
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
                                                                           8.0,
                                                                           0.0,
                                                                           0.0,
                                                                           0.0),
-                                                                      child:
-                                                                          Text(
-                                                                        valueOrDefault<
-                                                                            String>(
-                                                                          getJsonField(
-                                                                            localesItem,
-                                                                            r'''$.title''',
-                                                                          ).toString(),
-                                                                          'titulo',
-                                                                        ),
-                                                                        textAlign:
-                                                                            TextAlign.start,
-                                                                        maxLines:
-                                                                            3,
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyLarge
-                                                                            .override(
-                                                                              fontFamily: 'Open Sans',
-                                                                              letterSpacing: 0.0,
-                                                                              fontWeight: FontWeight.w500,
-                                                                              lineHeight: 1.0,
-                                                                            ),
-                                                                      ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        );
-                                                      }),
-                                                    ),
-                                                  );
-                                                },
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Container(
-                                      width: double.infinity,
-                                      height: 250.0,
-                                      child: Stack(
-                                        alignment:
-                                            AlignmentDirectional(0.0, -1.0),
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    10.0, 4.0, 0.0, 10.0),
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                logFirebaseEvent(
-                                                    'NOTICIAS_PAGE_Image_r4t9omtu_ON_TAP');
-                                                logFirebaseEvent(
-                                                    'Image_navigate_to');
-
-                                                context.goNamed(
-                                                  'Categoria',
-                                                  queryParameters: {
-                                                    'cat': serializeParam(
-                                                      3,
-                                                      ParamType.int,
-                                                    ),
-                                                  }.withoutNulls,
-                                                );
-                                              },
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(0.0),
-                                                child: Image.asset(
-                                                  'assets/images/Politica-Headers.png',
-                                                  width:
-                                                      MediaQuery.sizeOf(context)
-                                                              .width *
-                                                          1.0,
-                                                  fit: BoxFit.contain,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Align(
-                                            alignment: AlignmentDirectional(
-                                                0.00, 1.00),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      10.0, 0.0, 0.0, 6.0),
-                                              child: Builder(
-                                                builder: (context) {
-                                                  final politica = AppAPIGroup
-                                                          .lastestNewsCall
-                                                          .politica(
-                                                            mainNoticiasLastestNewsResponse
-                                                                .jsonBody,
-                                                          )
-                                                          ?.toList() ??
-                                                      [];
-                                                  return SingleChildScrollView(
-                                                    scrollDirection:
-                                                        Axis.horizontal,
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .end,
-                                                      children: List.generate(
-                                                          politica.length,
-                                                          (politicaIndex) {
-                                                        final politicaItem =
-                                                            politica[
-                                                                politicaIndex];
-                                                        return Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      5.0,
-                                                                      12.0,
-                                                                      5.0,
-                                                                      12.0),
-                                                          child: InkWell(
-                                                            splashColor: Colors
-                                                                .transparent,
-                                                            focusColor: Colors
-                                                                .transparent,
-                                                            hoverColor: Colors
-                                                                .transparent,
-                                                            highlightColor:
-                                                                Colors
-                                                                    .transparent,
-                                                            onTap: () async {
-                                                              logFirebaseEvent(
-                                                                  'NOTICIAS_PAGE_Container_kvfkkhda_ON_TAP');
-                                                              logFirebaseEvent(
-                                                                  'Container_navigate_to');
-
-                                                              context.pushNamed(
-                                                                'Post',
-                                                                queryParameters:
-                                                                    {
-                                                                  'link':
-                                                                      serializeParam(
+                                                                  child: Text(
                                                                     valueOrDefault<
                                                                         String>(
                                                                       getJsonField(
                                                                         politicaItem,
-                                                                        r'''$.link''',
+                                                                        r'''$.title''',
                                                                       ).toString(),
-                                                                      'https://teleonce.com',
+                                                                      'titulo',
                                                                     ),
-                                                                    ParamType
-                                                                        .String,
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .start,
+                                                                    maxLines: 3,
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyLarge
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Open Sans',
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          fontWeight:
+                                                                              FontWeight.w500,
+                                                                          lineHeight:
+                                                                              1.0,
+                                                                        ),
                                                                   ),
-                                                                }.withoutNulls,
-                                                              );
-                                                            },
-                                                            child: Container(
-                                                              width: MediaQuery
-                                                                          .sizeOf(
-                                                                              context)
-                                                                      .width *
-                                                                  0.4,
-                                                              height: 170.0,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                color: Color(
-                                                                    0xFFF3F3F3),
-                                                                boxShadow: [
-                                                                  BoxShadow(
-                                                                    blurRadius:
-                                                                        4.0,
-                                                                    color: Color(
-                                                                        0x33000000),
-                                                                    offset:
-                                                                        Offset(
-                                                                            0.0,
-                                                                            2.0),
-                                                                  )
-                                                                ],
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            5.0),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                }),
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(5.0, 5.0, 5.0, 5.0),
+                                              child: FaIcon(
+                                                FontAwesomeIcons.react,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                size: 44.0,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Expanded(
+                                          flex: 1,
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Container(
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        1.0,
+                                                height: 22.0,
+                                                decoration: BoxDecoration(
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      blurRadius: 4.0,
+                                                      color: Color(0x33000000),
+                                                      offset: Offset(0.0, 2.0),
+                                                    )
+                                                  ],
+                                                  gradient: LinearGradient(
+                                                    colors: [
+                                                      Color(0xFF223659),
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary
+                                                    ],
+                                                    stops: [0.0, 1.0],
+                                                    begin: AlignmentDirectional(
+                                                        1.0, 0.0),
+                                                    end: AlignmentDirectional(
+                                                        -1.0, 0),
+                                                  ),
+                                                ),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          5.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    'Tecnología',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Open Sans',
+                                                          color: Colors.white,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  1.00, 0.00),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 10.0, 0.0),
+                                                child: FFButtonWidget(
+                                                  onPressed: () async {
+                                                    logFirebaseEvent(
+                                                        'NOTICIAS_PAGE_VER_MÁS_BTN_ON_TAP');
+                                                    logFirebaseEvent(
+                                                        'Button_navigate_to');
+
+                                                    context.pushNamed(
+                                                      'Categoria',
+                                                      queryParameters: {
+                                                        'cat': serializeParam(
+                                                          7682,
+                                                          ParamType.int,
+                                                        ),
+                                                      }.withoutNulls,
+                                                    );
+                                                  },
+                                                  text: 'Ver Más',
+                                                  options: FFButtonOptions(
+                                                    width: 80.0,
+                                                    height: 36.0,
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(5.0, 0.0,
+                                                                5.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: Color(0xFF223659),
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Open Sans',
+                                                          color: Colors.white,
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          lineHeight: 1.0,
+                                                        ),
+                                                    elevation: 3.0,
+                                                    borderSide: BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            0.0),
+                                                  ),
+                                                  showLoadingIndicator: false,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ]
+                                          .divide(SizedBox(width: 0.0))
+                                          .around(SizedBox(width: 0.0)),
+                                    ),
+                                    Align(
+                                      alignment:
+                                          AlignmentDirectional(0.00, 1.00),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 0.0, 0.0, 6.0),
+                                        child: Builder(
+                                          builder: (context) {
+                                            final politica =
+                                                AppAPIGroup.lastestNewsCall
+                                                        .tecnologia(
+                                                          mainNoticiasLastestNewsResponse
+                                                              .jsonBody,
+                                                        )
+                                                        ?.toList() ??
+                                                    [];
+                                            return SingleChildScrollView(
+                                              scrollDirection: Axis.horizontal,
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.end,
+                                                children: List.generate(
+                                                    politica.length,
+                                                    (politicaIndex) {
+                                                  final politicaItem =
+                                                      politica[politicaIndex];
+                                                  return Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            0.00, 1.00),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  5.0,
+                                                                  12.0,
+                                                                  5.0,
+                                                                  12.0),
+                                                      child: InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () async {
+                                                          logFirebaseEvent(
+                                                              'NOTICIAS_PAGE_Container_3iq2x4jc_ON_TAP');
+                                                          logFirebaseEvent(
+                                                              'Container_navigate_to');
+
+                                                          context.pushNamed(
+                                                            'Post',
+                                                            queryParameters: {
+                                                              'link':
+                                                                  serializeParam(
+                                                                valueOrDefault<
+                                                                    String>(
+                                                                  getJsonField(
+                                                                    politicaItem,
+                                                                    r'''$.link''',
+                                                                  ).toString(),
+                                                                  'https://teleonce.com',
+                                                                ),
+                                                                ParamType
+                                                                    .String,
                                                               ),
-                                                              alignment:
-                                                                  AlignmentDirectional(
-                                                                      -1.00,
-                                                                      0.00),
-                                                              child: Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            4.0,
-                                                                            4.0,
-                                                                            4.0,
-                                                                            12.0),
-                                                                child: Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .start,
-                                                                  crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .start,
-                                                                  children: [
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                            }.withoutNulls,
+                                                          );
+                                                        },
+                                                        child: Container(
+                                                          width: 160.0,
+                                                          height: 180.0,
+                                                          constraints:
+                                                              BoxConstraints(
+                                                            minHeight: 170.0,
+                                                            maxHeight: 300.0,
+                                                          ),
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: Color(
+                                                                0xFFF3F3F3),
+                                                            boxShadow: [
+                                                              BoxShadow(
+                                                                blurRadius: 4.0,
+                                                                color: Color(
+                                                                    0x33000000),
+                                                                offset: Offset(
+                                                                    0.0, 2.0),
+                                                              )
+                                                            ],
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5.0),
+                                                          ),
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  -1.00, 0.00),
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        4.0,
+                                                                        4.0,
+                                                                        4.0,
+                                                                        12.0),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .start,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
                                                                           12.0),
-                                                                      child:
-                                                                          ClipRRect(
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(5.0),
-                                                                        child: Image
-                                                                            .network(
-                                                                          valueOrDefault<
-                                                                              String>(
-                                                                            getJsonField(
-                                                                              politicaItem,
-                                                                              r'''$.image''',
-                                                                            ),
-                                                                            'https://teleonce.com/wp-content/uploads/2023/08/no-image.jpg',
-                                                                          ),
-                                                                          width:
-                                                                              double.infinity,
-                                                                          height:
-                                                                              90.0,
-                                                                          fit: BoxFit
-                                                                              .cover,
+                                                                  child:
+                                                                      ClipRRect(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            5.0),
+                                                                    child: Image
+                                                                        .network(
+                                                                      valueOrDefault<
+                                                                          String>(
+                                                                        getJsonField(
+                                                                          politicaItem,
+                                                                          r'''$.image''',
                                                                         ),
+                                                                        'https://teleonce.com/wp-content/uploads/2023/08/no-image.jpg',
                                                                       ),
+                                                                      width: double
+                                                                          .infinity,
+                                                                      height:
+                                                                          90.0,
+                                                                      fit: BoxFit
+                                                                          .cover,
                                                                     ),
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                  ),
+                                                                ),
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
                                                                           8.0,
                                                                           0.0,
                                                                           0.0,
                                                                           0.0),
-                                                                      child:
-                                                                          Text(
-                                                                        valueOrDefault<
-                                                                            String>(
-                                                                          getJsonField(
-                                                                            politicaItem,
-                                                                            r'''$.title''',
-                                                                          ).toString(),
-                                                                          'titulo',
-                                                                        ),
-                                                                        textAlign:
-                                                                            TextAlign.start,
-                                                                        maxLines:
-                                                                            3,
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyLarge
-                                                                            .override(
-                                                                              fontFamily: 'Open Sans',
-                                                                              letterSpacing: 0.0,
-                                                                              fontWeight: FontWeight.w500,
-                                                                              lineHeight: 1.0,
-                                                                            ),
-                                                                      ),
+                                                                  child: Text(
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                      getJsonField(
+                                                                        politicaItem,
+                                                                        r'''$.title''',
+                                                                      ).toString(),
+                                                                      'titulo',
                                                                     ),
-                                                                  ],
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .start,
+                                                                    maxLines: 3,
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyLarge
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Open Sans',
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          fontWeight:
+                                                                              FontWeight.w500,
+                                                                          lineHeight:
+                                                                              1.0,
+                                                                        ),
+                                                                  ),
                                                                 ),
-                                                              ),
+                                                              ],
                                                             ),
                                                           ),
-                                                        );
-                                                      }),
+                                                        ),
+                                                      ),
                                                     ),
                                                   );
-                                                },
+                                                }),
                                               ),
-                                            ),
-                                          ),
-                                        ],
+                                            );
+                                          },
+                                        ),
                                       ),
                                     ),
-                                    Container(
-                                      width: double.infinity,
-                                      height: 250.0,
-                                      child: Stack(
-                                        alignment:
-                                            AlignmentDirectional(0.0, -1.0),
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    10.0, 4.0, 0.0, 10.0),
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                logFirebaseEvent(
-                                                    'NOTICIAS_PAGE_Image_tu0xrp9g_ON_TAP');
-                                                logFirebaseEvent(
-                                                    'Image_navigate_to');
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(5.0, 5.0, 5.0, 5.0),
+                                              child: FaIcon(
+                                                FontAwesomeIcons.globe,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                size: 42.0,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Expanded(
+                                          flex: 1,
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Container(
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        1.0,
+                                                height: 22.0,
+                                                decoration: BoxDecoration(
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      blurRadius: 4.0,
+                                                      color: Color(0x33000000),
+                                                      offset: Offset(0.0, 2.0),
+                                                    )
+                                                  ],
+                                                  gradient: LinearGradient(
+                                                    colors: [
+                                                      Color(0xFF223659),
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary
+                                                    ],
+                                                    stops: [0.0, 1.0],
+                                                    begin: AlignmentDirectional(
+                                                        1.0, 0.0),
+                                                    end: AlignmentDirectional(
+                                                        -1.0, 0),
+                                                  ),
+                                                ),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          5.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    'Internacionales',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Open Sans',
+                                                          color: Colors.white,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  1.00, 0.00),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 10.0, 0.0),
+                                                child: FFButtonWidget(
+                                                  onPressed: () async {
+                                                    logFirebaseEvent(
+                                                        'NOTICIAS_PAGE_VER_MÁS_BTN_ON_TAP');
+                                                    logFirebaseEvent(
+                                                        'Button_navigate_to');
 
-                                                context.goNamed(
-                                                  'Categoria',
-                                                  queryParameters: {
-                                                    'cat': serializeParam(
-                                                      974,
-                                                      ParamType.int,
+                                                    context.pushNamed(
+                                                      'Categoria',
+                                                      queryParameters: {
+                                                        'cat': serializeParam(
+                                                          663,
+                                                          ParamType.int,
+                                                        ),
+                                                      }.withoutNulls,
+                                                    );
+                                                  },
+                                                  text: 'Ver Más',
+                                                  options: FFButtonOptions(
+                                                    width: 80.0,
+                                                    height: 36.0,
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(5.0, 0.0,
+                                                                5.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: Color(0xFF223659),
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Open Sans',
+                                                          color: Colors.white,
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          lineHeight: 1.0,
+                                                        ),
+                                                    elevation: 3.0,
+                                                    borderSide: BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1.0,
                                                     ),
-                                                  }.withoutNulls,
-                                                );
-                                              },
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(0.0),
-                                                child: Image.asset(
-                                                  'assets/images/Salud-Headers.png',
-                                                  width:
-                                                      MediaQuery.sizeOf(context)
-                                                              .width *
-                                                          1.0,
-                                                  fit: BoxFit.contain,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            0.0),
+                                                  ),
+                                                  showLoadingIndicator: false,
                                                 ),
                                               ),
                                             ),
-                                          ),
-                                          Align(
-                                            alignment: AlignmentDirectional(
-                                                0.00, 1.00),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      10.0, 0.0, 0.0, 6.0),
-                                              child: Builder(
-                                                builder: (context) {
-                                                  final salud = AppAPIGroup
-                                                          .lastestNewsCall
-                                                          .salud(
-                                                            mainNoticiasLastestNewsResponse
-                                                                .jsonBody,
-                                                          )
-                                                          ?.toList() ??
-                                                      [];
-                                                  return SingleChildScrollView(
-                                                    scrollDirection:
-                                                        Axis.horizontal,
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .end,
-                                                      children: List.generate(
-                                                          salud.length,
-                                                          (saludIndex) {
-                                                        final saludItem =
-                                                            salud[saludIndex];
-                                                        return Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      5.0,
-                                                                      12.0,
-                                                                      5.0,
-                                                                      12.0),
-                                                          child: InkWell(
-                                                            splashColor: Colors
-                                                                .transparent,
-                                                            focusColor: Colors
-                                                                .transparent,
-                                                            hoverColor: Colors
-                                                                .transparent,
-                                                            highlightColor:
-                                                                Colors
-                                                                    .transparent,
-                                                            onTap: () async {
-                                                              logFirebaseEvent(
-                                                                  'NOTICIAS_PAGE_Container_lt96e4q6_ON_TAP');
-                                                              logFirebaseEvent(
-                                                                  'Container_navigate_to');
+                                          ],
+                                        ),
+                                      ]
+                                          .divide(SizedBox(width: 0.0))
+                                          .around(SizedBox(width: 0.0)),
+                                    ),
+                                    Align(
+                                      alignment:
+                                          AlignmentDirectional(0.00, 1.00),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 0.0, 0.0, 6.0),
+                                        child: Builder(
+                                          builder: (context) {
+                                            final salud =
+                                                AppAPIGroup.lastestNewsCall
+                                                        .internacionales(
+                                                          mainNoticiasLastestNewsResponse
+                                                              .jsonBody,
+                                                        )
+                                                        ?.toList() ??
+                                                    [];
+                                            return SingleChildScrollView(
+                                              scrollDirection: Axis.horizontal,
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.end,
+                                                children: List.generate(
+                                                    salud.length, (saludIndex) {
+                                                  final saludItem =
+                                                      salud[saludIndex];
+                                                  return Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            0.00, 1.00),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  5.0,
+                                                                  12.0,
+                                                                  5.0,
+                                                                  12.0),
+                                                      child: InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () async {
+                                                          logFirebaseEvent(
+                                                              'NOTICIAS_PAGE_Container_lt96e4q6_ON_TAP');
+                                                          logFirebaseEvent(
+                                                              'Container_navigate_to');
 
-                                                              context.pushNamed(
-                                                                'Post',
-                                                                queryParameters:
-                                                                    {
-                                                                  'link':
-                                                                      serializeParam(
+                                                          context.pushNamed(
+                                                            'Post',
+                                                            queryParameters: {
+                                                              'link':
+                                                                  serializeParam(
+                                                                valueOrDefault<
+                                                                    String>(
+                                                                  getJsonField(
+                                                                    saludItem,
+                                                                    r'''$.link''',
+                                                                  ).toString(),
+                                                                  'https://teleonce.com',
+                                                                ),
+                                                                ParamType
+                                                                    .String,
+                                                              ),
+                                                            }.withoutNulls,
+                                                          );
+                                                        },
+                                                        child: Container(
+                                                          width: 160.0,
+                                                          height: 180.0,
+                                                          constraints:
+                                                              BoxConstraints(
+                                                            minHeight: 170.0,
+                                                            maxHeight: 300.0,
+                                                          ),
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: Color(
+                                                                0xFFF3F3F3),
+                                                            boxShadow: [
+                                                              BoxShadow(
+                                                                blurRadius: 4.0,
+                                                                color: Color(
+                                                                    0x33000000),
+                                                                offset: Offset(
+                                                                    0.0, 2.0),
+                                                              )
+                                                            ],
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5.0),
+                                                          ),
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  -1.00, 0.00),
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        4.0,
+                                                                        4.0,
+                                                                        4.0,
+                                                                        12.0),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .start,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          12.0),
+                                                                  child:
+                                                                      ClipRRect(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            5.0),
+                                                                    child: Image
+                                                                        .network(
+                                                                      valueOrDefault<
+                                                                          String>(
+                                                                        getJsonField(
+                                                                          saludItem,
+                                                                          r'''$.image''',
+                                                                        ),
+                                                                        'https://teleonce.com/wp-content/uploads/2023/08/no-image.jpg',
+                                                                      ),
+                                                                      width: double
+                                                                          .infinity,
+                                                                      height:
+                                                                          90.0,
+                                                                      fit: BoxFit
+                                                                          .cover,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          8.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                  child: Text(
                                                                     valueOrDefault<
                                                                         String>(
                                                                       getJsonField(
                                                                         saludItem,
-                                                                        r'''$.link''',
+                                                                        r'''$.title''',
                                                                       ).toString(),
-                                                                      'https://teleonce.com',
+                                                                      'titulo',
                                                                     ),
-                                                                    ParamType
-                                                                        .String,
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .start,
+                                                                    maxLines: 3,
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyLarge
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Open Sans',
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          fontWeight:
+                                                                              FontWeight.w500,
+                                                                          lineHeight:
+                                                                              1.0,
+                                                                        ),
                                                                   ),
-                                                                }.withoutNulls,
-                                                              );
-                                                            },
-                                                            child: Container(
-                                                              width: MediaQuery
-                                                                          .sizeOf(
-                                                                              context)
-                                                                      .width *
-                                                                  0.4,
-                                                              height: 170.0,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                color: Color(
-                                                                    0xFFF3F3F3),
-                                                                boxShadow: [
-                                                                  BoxShadow(
-                                                                    blurRadius:
-                                                                        4.0,
-                                                                    color: Color(
-                                                                        0x33000000),
-                                                                    offset:
-                                                                        Offset(
-                                                                            0.0,
-                                                                            2.0),
-                                                                  )
-                                                                ],
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            5.0),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                }),
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(5.0, 5.0, 5.0, 5.0),
+                                              child: FaIcon(
+                                                FontAwesomeIcons.heartbeat,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                size: 44.0,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Expanded(
+                                          flex: 1,
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Container(
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        1.0,
+                                                height: 22.0,
+                                                decoration: BoxDecoration(
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      blurRadius: 4.0,
+                                                      color: Color(0x33000000),
+                                                      offset: Offset(0.0, 2.0),
+                                                    )
+                                                  ],
+                                                  gradient: LinearGradient(
+                                                    colors: [
+                                                      Color(0xFF223659),
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary
+                                                    ],
+                                                    stops: [0.0, 1.0],
+                                                    begin: AlignmentDirectional(
+                                                        1.0, 0.0),
+                                                    end: AlignmentDirectional(
+                                                        -1.0, 0),
+                                                  ),
+                                                ),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          5.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    'Salud',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Open Sans',
+                                                          color: Colors.white,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  1.00, 0.00),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 10.0, 0.0),
+                                                child: FFButtonWidget(
+                                                  onPressed: () async {
+                                                    logFirebaseEvent(
+                                                        'NOTICIAS_PAGE_VER_MÁS_BTN_ON_TAP');
+                                                    logFirebaseEvent(
+                                                        'Button_navigate_to');
+
+                                                    context.pushNamed(
+                                                      'Categoria',
+                                                      queryParameters: {
+                                                        'cat': serializeParam(
+                                                          974,
+                                                          ParamType.int,
+                                                        ),
+                                                      }.withoutNulls,
+                                                    );
+                                                  },
+                                                  text: 'Ver Más',
+                                                  options: FFButtonOptions(
+                                                    width: 80.0,
+                                                    height: 36.0,
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(5.0, 0.0,
+                                                                5.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: Color(0xFF223659),
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Open Sans',
+                                                          color: Colors.white,
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          lineHeight: 1.0,
+                                                        ),
+                                                    elevation: 3.0,
+                                                    borderSide: BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            0.0),
+                                                  ),
+                                                  showLoadingIndicator: false,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ]
+                                          .divide(SizedBox(width: 0.0))
+                                          .around(SizedBox(width: 0.0)),
+                                    ),
+                                    Align(
+                                      alignment:
+                                          AlignmentDirectional(0.00, 1.00),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 0.0, 0.0, 6.0),
+                                        child: Builder(
+                                          builder: (context) {
+                                            final seguridad =
+                                                AppAPIGroup.lastestNewsCall
+                                                        .salud(
+                                                          mainNoticiasLastestNewsResponse
+                                                              .jsonBody,
+                                                        )
+                                                        ?.toList() ??
+                                                    [];
+                                            return SingleChildScrollView(
+                                              scrollDirection: Axis.horizontal,
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.end,
+                                                children: List.generate(
+                                                    seguridad.length,
+                                                    (seguridadIndex) {
+                                                  final seguridadItem =
+                                                      seguridad[seguridadIndex];
+                                                  return Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            0.00, 1.00),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  5.0,
+                                                                  12.0,
+                                                                  5.0,
+                                                                  12.0),
+                                                      child: InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () async {
+                                                          logFirebaseEvent(
+                                                              'NOTICIAS_PAGE_Container_hcqxr298_ON_TAP');
+                                                          logFirebaseEvent(
+                                                              'Container_navigate_to');
+
+                                                          context.pushNamed(
+                                                            'Post',
+                                                            queryParameters: {
+                                                              'link':
+                                                                  serializeParam(
+                                                                valueOrDefault<
+                                                                    String>(
+                                                                  getJsonField(
+                                                                    seguridadItem,
+                                                                    r'''$.link''',
+                                                                  ).toString(),
+                                                                  'https://teleonce.com',
+                                                                ),
+                                                                ParamType
+                                                                    .String,
                                                               ),
-                                                              alignment:
-                                                                  AlignmentDirectional(
-                                                                      -1.00,
-                                                                      0.00),
-                                                              child: Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            4.0,
-                                                                            4.0,
-                                                                            4.0,
-                                                                            12.0),
-                                                                child: Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .start,
-                                                                  crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .start,
-                                                                  children: [
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                            }.withoutNulls,
+                                                          );
+                                                        },
+                                                        child: Container(
+                                                          width: 160.0,
+                                                          height: 180.0,
+                                                          constraints:
+                                                              BoxConstraints(
+                                                            minHeight: 170.0,
+                                                            maxHeight: 300.0,
+                                                          ),
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: Color(
+                                                                0xFFF3F3F3),
+                                                            boxShadow: [
+                                                              BoxShadow(
+                                                                blurRadius: 4.0,
+                                                                color: Color(
+                                                                    0x33000000),
+                                                                offset: Offset(
+                                                                    0.0, 2.0),
+                                                              )
+                                                            ],
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5.0),
+                                                          ),
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  -1.00, 0.00),
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        4.0,
+                                                                        4.0,
+                                                                        4.0,
+                                                                        12.0),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .start,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
                                                                           12.0),
-                                                                      child:
-                                                                          ClipRRect(
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(5.0),
-                                                                        child: Image
-                                                                            .network(
-                                                                          valueOrDefault<
-                                                                              String>(
-                                                                            getJsonField(
-                                                                              saludItem,
-                                                                              r'''$.image''',
-                                                                            ),
-                                                                            'https://teleonce.com/wp-content/uploads/2023/08/no-image.jpg',
-                                                                          ),
-                                                                          width:
-                                                                              double.infinity,
-                                                                          height:
-                                                                              90.0,
-                                                                          fit: BoxFit
-                                                                              .cover,
+                                                                  child:
+                                                                      ClipRRect(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            5.0),
+                                                                    child: Image
+                                                                        .network(
+                                                                      valueOrDefault<
+                                                                          String>(
+                                                                        getJsonField(
+                                                                          seguridadItem,
+                                                                          r'''$.image''',
                                                                         ),
+                                                                        'https://teleonce.com/wp-content/uploads/2023/08/no-image.jpg',
                                                                       ),
+                                                                      width: double
+                                                                          .infinity,
+                                                                      height:
+                                                                          90.0,
+                                                                      fit: BoxFit
+                                                                          .cover,
                                                                     ),
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                  ),
+                                                                ),
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
                                                                           8.0,
                                                                           0.0,
                                                                           0.0,
                                                                           0.0),
-                                                                      child:
-                                                                          Text(
-                                                                        valueOrDefault<
-                                                                            String>(
-                                                                          getJsonField(
-                                                                            saludItem,
-                                                                            r'''$.title''',
-                                                                          ).toString(),
-                                                                          'titulo',
-                                                                        ),
-                                                                        textAlign:
-                                                                            TextAlign.start,
-                                                                        maxLines:
-                                                                            3,
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyLarge
-                                                                            .override(
-                                                                              fontFamily: 'Open Sans',
-                                                                              letterSpacing: 0.0,
-                                                                              fontWeight: FontWeight.w500,
-                                                                              lineHeight: 1.0,
-                                                                            ),
-                                                                      ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        );
-                                                      }),
-                                                    ),
-                                                  );
-                                                },
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Container(
-                                      width: double.infinity,
-                                      height: 250.0,
-                                      child: Stack(
-                                        alignment:
-                                            AlignmentDirectional(0.0, -1.0),
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    10.0, 4.0, 0.0, 10.0),
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                logFirebaseEvent(
-                                                    'NOTICIAS_PAGE_Image_kivaal3j_ON_TAP');
-                                                logFirebaseEvent(
-                                                    'Image_navigate_to');
-
-                                                context.goNamed(
-                                                  'Categoria',
-                                                  queryParameters: {
-                                                    'cat': serializeParam(
-                                                      2,
-                                                      ParamType.int,
-                                                    ),
-                                                  }.withoutNulls,
-                                                );
-                                              },
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(0.0),
-                                                child: Image.asset(
-                                                  'assets/images/Seguridad-Headers.png',
-                                                  width:
-                                                      MediaQuery.sizeOf(context)
-                                                              .width *
-                                                          1.0,
-                                                  fit: BoxFit.contain,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Align(
-                                            alignment: AlignmentDirectional(
-                                                0.00, 1.00),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      10.0, 0.0, 0.0, 6.0),
-                                              child: Builder(
-                                                builder: (context) {
-                                                  final seguridad = AppAPIGroup
-                                                          .lastestNewsCall
-                                                          .seguridad(
-                                                            mainNoticiasLastestNewsResponse
-                                                                .jsonBody,
-                                                          )
-                                                          ?.toList() ??
-                                                      [];
-                                                  return SingleChildScrollView(
-                                                    scrollDirection:
-                                                        Axis.horizontal,
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .end,
-                                                      children: List.generate(
-                                                          seguridad.length,
-                                                          (seguridadIndex) {
-                                                        final seguridadItem =
-                                                            seguridad[
-                                                                seguridadIndex];
-                                                        return Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      5.0,
-                                                                      12.0,
-                                                                      5.0,
-                                                                      12.0),
-                                                          child: InkWell(
-                                                            splashColor: Colors
-                                                                .transparent,
-                                                            focusColor: Colors
-                                                                .transparent,
-                                                            hoverColor: Colors
-                                                                .transparent,
-                                                            highlightColor:
-                                                                Colors
-                                                                    .transparent,
-                                                            onTap: () async {
-                                                              logFirebaseEvent(
-                                                                  'NOTICIAS_PAGE_Container_hcqxr298_ON_TAP');
-                                                              logFirebaseEvent(
-                                                                  'Container_navigate_to');
-
-                                                              context.pushNamed(
-                                                                'Post',
-                                                                queryParameters:
-                                                                    {
-                                                                  'link':
-                                                                      serializeParam(
+                                                                  child: Text(
                                                                     valueOrDefault<
                                                                         String>(
                                                                       getJsonField(
                                                                         seguridadItem,
-                                                                        r'''$.link''',
+                                                                        r'''$.title''',
                                                                       ).toString(),
-                                                                      'https://teleonce.com',
+                                                                      'titulo',
                                                                     ),
-                                                                    ParamType
-                                                                        .String,
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .start,
+                                                                    maxLines: 3,
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyLarge
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Open Sans',
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          fontWeight:
+                                                                              FontWeight.w500,
+                                                                          lineHeight:
+                                                                              1.0,
+                                                                        ),
                                                                   ),
-                                                                }.withoutNulls,
-                                                              );
-                                                            },
-                                                            child: Container(
-                                                              width: MediaQuery
-                                                                          .sizeOf(
-                                                                              context)
-                                                                      .width *
-                                                                  0.4,
-                                                              height: 170.0,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                color: Color(
-                                                                    0xFFF3F3F3),
-                                                                boxShadow: [
-                                                                  BoxShadow(
-                                                                    blurRadius:
-                                                                        4.0,
-                                                                    color: Color(
-                                                                        0x33000000),
-                                                                    offset:
-                                                                        Offset(
-                                                                            0.0,
-                                                                            2.0),
-                                                                  )
-                                                                ],
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            5.0),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                }),
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(5.0, 5.0, 5.0, 5.0),
+                                              child: FaIcon(
+                                                FontAwesomeIcons.userSecret,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                size: 42.0,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Expanded(
+                                          flex: 1,
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Container(
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        1.0,
+                                                height: 22.0,
+                                                decoration: BoxDecoration(
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      blurRadius: 4.0,
+                                                      color: Color(0x33000000),
+                                                      offset: Offset(0.0, 2.0),
+                                                    )
+                                                  ],
+                                                  gradient: LinearGradient(
+                                                    colors: [
+                                                      Color(0xFF223659),
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary
+                                                    ],
+                                                    stops: [0.0, 1.0],
+                                                    begin: AlignmentDirectional(
+                                                        1.0, 0.0),
+                                                    end: AlignmentDirectional(
+                                                        -1.0, 0),
+                                                  ),
+                                                ),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          5.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    'Unidad Investigativa',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Open Sans',
+                                                          color: Colors.white,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  1.00, 0.00),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 10.0, 0.0),
+                                                child: FFButtonWidget(
+                                                  onPressed: () async {
+                                                    logFirebaseEvent(
+                                                        'NOTICIAS_PAGE_VER_MÁS_BTN_ON_TAP');
+                                                    logFirebaseEvent(
+                                                        'Button_navigate_to');
+
+                                                    context.pushNamed(
+                                                      'Categoria',
+                                                      queryParameters: {
+                                                        'cat': serializeParam(
+                                                          6494,
+                                                          ParamType.int,
+                                                        ),
+                                                      }.withoutNulls,
+                                                    );
+                                                  },
+                                                  text: 'Ver Más',
+                                                  options: FFButtonOptions(
+                                                    width: 80.0,
+                                                    height: 36.0,
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(5.0, 0.0,
+                                                                5.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: Color(0xFF223659),
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Open Sans',
+                                                          color: Colors.white,
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          lineHeight: 1.0,
+                                                        ),
+                                                    elevation: 3.0,
+                                                    borderSide: BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            0.0),
+                                                  ),
+                                                  showLoadingIndicator: false,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ]
+                                          .divide(SizedBox(width: 0.0))
+                                          .around(SizedBox(width: 0.0)),
+                                    ),
+                                    Align(
+                                      alignment:
+                                          AlignmentDirectional(0.00, 1.00),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 0.0, 0.0, 6.0),
+                                        child: Builder(
+                                          builder: (context) {
+                                            final seguridad = getJsonField(
+                                              mainNoticiasLastestNewsResponse
+                                                  .jsonBody,
+                                              r'''$.UnidadInvestigativa''',
+                                            ).toList();
+                                            return SingleChildScrollView(
+                                              scrollDirection: Axis.horizontal,
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.end,
+                                                children: List.generate(
+                                                    seguridad.length,
+                                                    (seguridadIndex) {
+                                                  final seguridadItem =
+                                                      seguridad[seguridadIndex];
+                                                  return Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            0.00, 1.00),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  5.0,
+                                                                  12.0,
+                                                                  5.0,
+                                                                  12.0),
+                                                      child: InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () async {
+                                                          logFirebaseEvent(
+                                                              'NOTICIAS_PAGE_Container_7pzjg02r_ON_TAP');
+                                                          logFirebaseEvent(
+                                                              'Container_navigate_to');
+
+                                                          context.pushNamed(
+                                                            'Post',
+                                                            queryParameters: {
+                                                              'link':
+                                                                  serializeParam(
+                                                                valueOrDefault<
+                                                                    String>(
+                                                                  getJsonField(
+                                                                    seguridadItem,
+                                                                    r'''$.link''',
+                                                                  ).toString(),
+                                                                  'https://teleonce.com',
+                                                                ),
+                                                                ParamType
+                                                                    .String,
                                                               ),
-                                                              alignment:
-                                                                  AlignmentDirectional(
-                                                                      -1.00,
-                                                                      0.00),
-                                                              child: Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            4.0,
-                                                                            4.0,
-                                                                            4.0,
-                                                                            12.0),
-                                                                child: Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .start,
-                                                                  crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .start,
-                                                                  children: [
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                            }.withoutNulls,
+                                                          );
+                                                        },
+                                                        child: Container(
+                                                          width: 160.0,
+                                                          height: 180.0,
+                                                          constraints:
+                                                              BoxConstraints(
+                                                            minHeight: 170.0,
+                                                            maxHeight: 300.0,
+                                                          ),
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: Color(
+                                                                0xFFF3F3F3),
+                                                            boxShadow: [
+                                                              BoxShadow(
+                                                                blurRadius: 4.0,
+                                                                color: Color(
+                                                                    0x33000000),
+                                                                offset: Offset(
+                                                                    0.0, 2.0),
+                                                              )
+                                                            ],
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5.0),
+                                                          ),
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  -1.00, 0.00),
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        4.0,
+                                                                        4.0,
+                                                                        4.0,
+                                                                        12.0),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .start,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
                                                                           12.0),
-                                                                      child:
-                                                                          ClipRRect(
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(5.0),
-                                                                        child: Image
-                                                                            .network(
-                                                                          valueOrDefault<
-                                                                              String>(
-                                                                            getJsonField(
-                                                                              seguridadItem,
-                                                                              r'''$.image''',
-                                                                            ),
-                                                                            'https://teleonce.com/wp-content/uploads/2023/08/no-image.jpg',
-                                                                          ),
-                                                                          width:
-                                                                              double.infinity,
-                                                                          height:
-                                                                              90.0,
-                                                                          fit: BoxFit
-                                                                              .cover,
+                                                                  child:
+                                                                      ClipRRect(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            5.0),
+                                                                    child: Image
+                                                                        .network(
+                                                                      valueOrDefault<
+                                                                          String>(
+                                                                        getJsonField(
+                                                                          seguridadItem,
+                                                                          r'''$.image''',
                                                                         ),
+                                                                        'https://teleonce.com/wp-content/uploads/2023/08/no-image.jpg',
                                                                       ),
+                                                                      width: double
+                                                                          .infinity,
+                                                                      height:
+                                                                          90.0,
+                                                                      fit: BoxFit
+                                                                          .cover,
                                                                     ),
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                  ),
+                                                                ),
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
                                                                           8.0,
                                                                           0.0,
                                                                           0.0,
                                                                           0.0),
-                                                                      child:
-                                                                          Text(
-                                                                        valueOrDefault<
-                                                                            String>(
-                                                                          getJsonField(
-                                                                            seguridadItem,
-                                                                            r'''$.title''',
-                                                                          ).toString(),
-                                                                          'titulo',
-                                                                        ),
-                                                                        textAlign:
-                                                                            TextAlign.start,
-                                                                        maxLines:
-                                                                            3,
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyLarge
-                                                                            .override(
-                                                                              fontFamily: 'Open Sans',
-                                                                              letterSpacing: 0.0,
-                                                                              fontWeight: FontWeight.w500,
-                                                                              lineHeight: 1.0,
-                                                                            ),
-                                                                      ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        );
-                                                      }),
-                                                    ),
-                                                  );
-                                                },
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Container(
-                                      width: double.infinity,
-                                      height: 250.0,
-                                      child: Stack(
-                                        alignment:
-                                            AlignmentDirectional(0.0, -1.0),
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    10.0, 4.0, 0.0, 10.0),
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                logFirebaseEvent(
-                                                    'NOTICIAS_PAGE_Image_sz0z2b0m_ON_TAP');
-                                                logFirebaseEvent(
-                                                    'Image_navigate_to');
-
-                                                context.goNamed(
-                                                  'Categoria',
-                                                  queryParameters: {
-                                                    'cat': serializeParam(
-                                                      6494,
-                                                      ParamType.int,
-                                                    ),
-                                                  }.withoutNulls,
-                                                );
-                                              },
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(0.0),
-                                                child: Image.asset(
-                                                  'assets/images/UInvestigativa-Headers.png',
-                                                  width:
-                                                      MediaQuery.sizeOf(context)
-                                                              .width *
-                                                          1.0,
-                                                  fit: BoxFit.contain,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Align(
-                                            alignment: AlignmentDirectional(
-                                                0.00, 1.00),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      10.0, 0.0, 0.0, 6.0),
-                                              child: Builder(
-                                                builder: (context) {
-                                                  final seguridad =
-                                                      getJsonField(
-                                                    mainNoticiasLastestNewsResponse
-                                                        .jsonBody,
-                                                    r'''$.UnidadInvestigativa''',
-                                                  ).toList();
-                                                  return SingleChildScrollView(
-                                                    scrollDirection:
-                                                        Axis.horizontal,
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .end,
-                                                      children: List.generate(
-                                                          seguridad.length,
-                                                          (seguridadIndex) {
-                                                        final seguridadItem =
-                                                            seguridad[
-                                                                seguridadIndex];
-                                                        return Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      5.0,
-                                                                      12.0,
-                                                                      5.0,
-                                                                      12.0),
-                                                          child: InkWell(
-                                                            splashColor: Colors
-                                                                .transparent,
-                                                            focusColor: Colors
-                                                                .transparent,
-                                                            hoverColor: Colors
-                                                                .transparent,
-                                                            highlightColor:
-                                                                Colors
-                                                                    .transparent,
-                                                            onTap: () async {
-                                                              logFirebaseEvent(
-                                                                  'NOTICIAS_PAGE_Container_7pzjg02r_ON_TAP');
-                                                              logFirebaseEvent(
-                                                                  'Container_navigate_to');
-
-                                                              context.pushNamed(
-                                                                'Post',
-                                                                queryParameters:
-                                                                    {
-                                                                  'link':
-                                                                      serializeParam(
+                                                                  child: Text(
                                                                     valueOrDefault<
                                                                         String>(
                                                                       getJsonField(
                                                                         seguridadItem,
-                                                                        r'''$.link''',
+                                                                        r'''$.title''',
                                                                       ).toString(),
-                                                                      'https://teleonce.com',
+                                                                      'titulo',
                                                                     ),
-                                                                    ParamType
-                                                                        .String,
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .start,
+                                                                    maxLines: 3,
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyLarge
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Open Sans',
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          fontWeight:
+                                                                              FontWeight.w500,
+                                                                          lineHeight:
+                                                                              1.0,
+                                                                        ),
                                                                   ),
-                                                                }.withoutNulls,
-                                                              );
-                                                            },
-                                                            child: Container(
-                                                              width: MediaQuery
-                                                                          .sizeOf(
-                                                                              context)
-                                                                      .width *
-                                                                  0.4,
-                                                              height: 170.0,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                color: Color(
-                                                                    0xFFF3F3F3),
-                                                                boxShadow: [
-                                                                  BoxShadow(
-                                                                    blurRadius:
-                                                                        4.0,
-                                                                    color: Color(
-                                                                        0x33000000),
-                                                                    offset:
-                                                                        Offset(
-                                                                            0.0,
-                                                                            2.0),
-                                                                  )
-                                                                ],
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            5.0),
-                                                              ),
-                                                              alignment:
-                                                                  AlignmentDirectional(
-                                                                      -1.00,
-                                                                      0.00),
-                                                              child: Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            4.0,
-                                                                            4.0,
-                                                                            4.0,
-                                                                            12.0),
-                                                                child: Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .start,
-                                                                  crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .start,
-                                                                  children: [
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          12.0),
-                                                                      child:
-                                                                          ClipRRect(
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(5.0),
-                                                                        child: Image
-                                                                            .network(
-                                                                          valueOrDefault<
-                                                                              String>(
-                                                                            getJsonField(
-                                                                              seguridadItem,
-                                                                              r'''$.image''',
-                                                                            ),
-                                                                            'https://teleonce.com/wp-content/uploads/2023/08/no-image.jpg',
-                                                                          ),
-                                                                          width:
-                                                                              double.infinity,
-                                                                          height:
-                                                                              90.0,
-                                                                          fit: BoxFit
-                                                                              .cover,
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                                                          8.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                      child:
-                                                                          Text(
-                                                                        valueOrDefault<
-                                                                            String>(
-                                                                          getJsonField(
-                                                                            seguridadItem,
-                                                                            r'''$.title''',
-                                                                          ).toString(),
-                                                                          'titulo',
-                                                                        ),
-                                                                        textAlign:
-                                                                            TextAlign.start,
-                                                                        maxLines:
-                                                                            3,
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyLarge
-                                                                            .override(
-                                                                              fontFamily: 'Open Sans',
-                                                                              letterSpacing: 0.0,
-                                                                              fontWeight: FontWeight.w500,
-                                                                              lineHeight: 1.0,
-                                                                            ),
-                                                                      ),
-                                                                    ),
-                                                                  ],
                                                                 ),
-                                                              ),
+                                                              ],
                                                             ),
                                                           ),
-                                                        );
-                                                      }),
+                                                        ),
+                                                      ),
                                                     ),
                                                   );
-                                                },
+                                                }),
                                               ),
-                                            ),
-                                          ),
-                                        ],
+                                            );
+                                          },
+                                        ),
                                       ),
                                     ),
                                     if (FFAppState().showAds)
@@ -2873,11 +4004,8 @@ class _NoticiasWidgetState extends State<NoticiasWidget> {
                                           width:
                                               MediaQuery.sizeOf(context).width *
                                                   1.0,
-                                          height: 100.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                          ),
+                                          height: 50.0,
+                                          decoration: BoxDecoration(),
                                         ),
                                       ),
                                   ],

@@ -4,8 +4,6 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart'
-    as smooth_page_indicator;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -117,11 +115,11 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('ONBOARDING_PAGE_onboarding_ON_INIT_STATE');
       logFirebaseEvent('onboarding_backend_call');
-      _model.country = await GetCountryCall.call();
+      _model.country = await CountryCall.call();
       if ((_model.country?.succeeded ?? true)) {
         logFirebaseEvent('onboarding_update_app_state');
         FFAppState().state = valueOrDefault<String>(
-          GetCountryCall.country(
+          CountryCall.country(
             (_model.country?.jsonBody ?? ''),
           ).toString(),
           'PR',
@@ -154,7 +152,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
               ClipRRect(
                 child: Container(
                   width: double.infinity,
-                  height: 420.0,
+                  height: MediaQuery.sizeOf(context).height * 0.5,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                   ),
@@ -163,7 +161,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                     children: [
                       Container(
                         width: double.infinity,
-                        height: 600.0,
+                        height: 6000.0,
                         decoration: BoxDecoration(
                           color: Colors.white,
                         ),
@@ -304,7 +302,9 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                         ),
                       ).animateOnPageLoad(
                           animationsMap['containerOnPageLoadAnimation']!),
-                    ],
+                    ]
+                        .divide(SizedBox(height: 0.0))
+                        .around(SizedBox(height: 0.0)),
                   ),
                 ),
               ),
@@ -319,150 +319,92 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                     decoration: BoxDecoration(
                       color: Colors.white,
                     ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Container(
-                          width: double.infinity,
-                          height: 158.0,
-                          child: Stack(
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 50.0),
-                                child: PageView(
-                                  controller: _model.pageViewController ??=
-                                      PageController(initialPage: 0),
-                                  scrollDirection: Axis.horizontal,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          48.0, 0.0, 48.0, 0.0),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            'Bienevenid@',
-                                            textAlign: TextAlign.center,
-                                            style: FlutterFlowTheme.of(context)
-                                                .displaySmall
-                                                .override(
-                                                  fontFamily: 'Montserrat',
-                                                  fontSize: 32.0,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                          ).animateOnPageLoad(animationsMap[
-                                              'textOnPageLoadAnimation1']!),
-                                          Flexible(
-                                            flex: 1,
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 16.0, 0.0, 0.0),
-                                              child: Text(
-                                                'Mantenerte al día con las últimas noticias, programas, actualizaciones deportivas y más.',
-                                                textAlign: TextAlign.center,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelLarge
-                                                        .override(
-                                                          fontFamily:
-                                                              'Open Sans',
-                                                          lineHeight: 1.0,
-                                                        ),
-                                              ).animateOnPageLoad(animationsMap[
-                                                  'textOnPageLoadAnimation2']!),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Align(
-                                alignment: AlignmentDirectional(0.00, 1.00),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 10.0),
-                                  child:
-                                      smooth_page_indicator.SmoothPageIndicator(
-                                    controller: _model.pageViewController ??=
-                                        PageController(initialPage: 0),
-                                    count: 1,
-                                    axisDirection: Axis.horizontal,
-                                    onDotClicked: (i) async {
-                                      await _model.pageViewController!
-                                          .animateToPage(
-                                        i,
-                                        duration: Duration(milliseconds: 500),
-                                        curve: Curves.ease,
-                                      );
-                                    },
-                                    effect: smooth_page_indicator
-                                        .ExpandingDotsEffect(
-                                      expansionFactor: 3.0,
-                                      spacing: 8.0,
-                                      radius: 16.0,
-                                      dotWidth: 8.0,
-                                      dotHeight: 8.0,
-                                      dotColor: Color(0xFFD6E5EC),
-                                      activeDotColor: Color(0xFF384E58),
-                                      paintStyle: PaintingStyle.fill,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              16.0, 12.0, 16.0, 0.0),
-                          child: FFButtonWidget(
-                            onPressed: () async {
-                              logFirebaseEvent(
-                                  'ONBOARDING_PAGE_CONTINUAR_BTN_ON_TAP');
-                              logFirebaseEvent('Button_auth');
-                              GoRouter.of(context).prepareAuthEvent();
-                              final user =
-                                  await authManager.signInAnonymously(context);
-                              if (user == null) {
-                                return;
-                              }
-
-                              context.goNamedAuth('Home', context.mounted);
-                            },
-                            text: 'Continuar',
-                            options: FFButtonOptions(
-                              width: double.infinity,
-                              height: 60.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: FlutterFlowTheme.of(context).primary,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleMedium
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 10.0, 0.0, 0.0),
+                            child: Text(
+                              'Bienevenid@',
+                              textAlign: TextAlign.center,
+                              style: FlutterFlowTheme.of(context)
+                                  .displaySmall
                                   .override(
-                                    fontFamily: 'Open Sans',
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w500,
+                                    fontFamily: 'Montserrat',
+                                    fontSize: 32.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
-                              elevation: 4.0,
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(50.0),
-                              hoverColor:
-                                  FlutterFlowTheme.of(context).primaryText,
+                            ).animateOnPageLoad(
+                                animationsMap['textOnPageLoadAnimation1']!),
+                          ),
+                          Flexible(
+                            flex: 1,
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 16.0, 0.0, 0.0),
+                              child: Text(
+                                'Mantente al día con las últimas noticias, programas, actualizaciones deportivas y más.',
+                                textAlign: TextAlign.center,
+                                style: FlutterFlowTheme.of(context)
+                                    .labelLarge
+                                    .override(
+                                      fontFamily: 'Open Sans',
+                                      lineHeight: 1.0,
+                                    ),
+                              ).animateOnPageLoad(
+                                  animationsMap['textOnPageLoadAnimation2']!),
                             ),
                           ),
-                        ),
-                      ],
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                16.0, 12.0, 16.0, 0.0),
+                            child: FFButtonWidget(
+                              onPressed: () async {
+                                logFirebaseEvent(
+                                    'ONBOARDING_PAGE_CONTINUAR_BTN_ON_TAP');
+                                logFirebaseEvent('Button_auth');
+                                GoRouter.of(context).prepareAuthEvent();
+                                final user = await authManager
+                                    .signInAnonymously(context);
+                                if (user == null) {
+                                  return;
+                                }
+
+                                context.goNamedAuth('Home', context.mounted);
+                              },
+                              text: 'Continuar',
+                              options: FFButtonOptions(
+                                width: double.infinity,
+                                height: 60.0,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: FlutterFlowTheme.of(context).primary,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleMedium
+                                    .override(
+                                      fontFamily: 'Open Sans',
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                elevation: 4.0,
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(50.0),
+                                hoverColor:
+                                    FlutterFlowTheme.of(context).primaryText,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

@@ -1,8 +1,10 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_ad_banner.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -30,6 +32,33 @@ class _NavBarWidgetState extends State<NavBarWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => NavBarModel());
+
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('NAV_BAR_COMP_NavBar_ON_INIT_STATE');
+      logFirebaseEvent('NavBar_wait__delay');
+      await Future.delayed(const Duration(milliseconds: 3000));
+      if (FFAppState().live == null) {
+        logFirebaseEvent('NavBar_backend_call');
+        _model.live = await GetLiveCall.call();
+        logFirebaseEvent('NavBar_backend_call');
+        _model.country = await CountryCall.call();
+      } else {
+        return;
+      }
+
+      logFirebaseEvent('NavBar_update_app_state');
+      setState(() {
+        FFAppState().live = (GetLiveCall.live(
+                  (_model.live?.jsonBody ?? ''),
+                ) ==
+                true) &&
+            ('PR' !=
+                CountryCall.state(
+                  (_model.country?.jsonBody ?? ''),
+                ));
+      });
+    });
   }
 
   @override
@@ -44,12 +73,14 @@ class _NavBarWidgetState extends State<NavBarWidget> {
     context.watch<FFAppState>();
 
     return Container(
-      height: 180.0,
+      height: 130.0,
       child: Stack(
         children: [
           if ((FFAppState().showAds == true) &&
               (FFAppState().menuActiveItem != 'eltiempo') &&
-              (FFAppState().menuActiveItem != 'post'))
+              (FFAppState().menuActiveItem != 'post') &&
+              (FFAppState().menuActiveItem != 'buscar') &&
+              (FFAppState().menuActiveItem != 'live'))
             Align(
               alignment: AlignmentDirectional(0.00, 1.00),
               child: Padding(
@@ -74,8 +105,40 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                                 .secondaryBackground,
                           ),
                           child: FlutterFlowAdBanner(
-                            width: 320.0,
-                            height: 50.0,
+                            width: valueOrDefault<double>(
+                              () {
+                                if (MediaQuery.sizeOf(context).width <
+                                    kBreakpointSmall) {
+                                  return 320.0;
+                                } else if (MediaQuery.sizeOf(context).width <
+                                    kBreakpointMedium) {
+                                  return 470.0;
+                                } else if (MediaQuery.sizeOf(context).width <
+                                    kBreakpointLarge) {
+                                  return 728.0;
+                                } else {
+                                  return 320.0;
+                                }
+                              }(),
+                              320.0,
+                            ),
+                            height: valueOrDefault<double>(
+                              () {
+                                if (MediaQuery.sizeOf(context).width <
+                                    kBreakpointSmall) {
+                                  return 50.0;
+                                } else if (MediaQuery.sizeOf(context).width <
+                                    kBreakpointMedium) {
+                                  return 50.0;
+                                } else if (MediaQuery.sizeOf(context).width <
+                                    kBreakpointLarge) {
+                                  return 90.0;
+                                } else {
+                                  return 50.0;
+                                }
+                              }(),
+                              50.0,
+                            ),
                             showsTestAd: false,
                             iOSAdUnitID:
                                 'ca-app-pub-7444673555678901/7793782119',
@@ -89,14 +152,6 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                 ),
               ),
             ),
-          Align(
-            alignment: AlignmentDirectional(1.00, 1.00),
-            child: Icon(
-              Icons.settings_outlined,
-              color: FlutterFlowTheme.of(context).secondaryText,
-              size: 24.0,
-            ),
-          ),
           Align(
             alignment: AlignmentDirectional(0.00, 1.00),
             child: Container(
@@ -320,24 +375,19 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                                   buttonSize: 55.0,
                                   fillColor:
                                       FlutterFlowTheme.of(context).alternate,
-                                  disabledColor:
-                                      FlutterFlowTheme.of(context).thirdText,
-                                  disabledIconColor: Color(0xFFC4C4C4),
                                   icon: Icon(
                                     Icons.slow_motion_video,
                                     color: Colors.white,
                                     size: 38.0,
                                   ),
-                                  onPressed: FFAppState().live
-                                      ? null
-                                      : () async {
-                                          logFirebaseEvent(
-                                              'NAV_BAR_COMP_MiddleButton_ON_TAP');
-                                          logFirebaseEvent(
-                                              'MiddleButton_navigate_to');
+                                  onPressed: () async {
+                                    logFirebaseEvent(
+                                        'NAV_BAR_COMP_MiddleButton_ON_TAP');
+                                    logFirebaseEvent(
+                                        'MiddleButton_navigate_to');
 
-                                          context.goNamed('Live');
-                                        },
+                                    context.goNamed('Live');
+                                  },
                                 ),
                                 Align(
                                   alignment: AlignmentDirectional(0.00, 1.00),

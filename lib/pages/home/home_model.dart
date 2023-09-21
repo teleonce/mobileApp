@@ -24,8 +24,6 @@ class HomeModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Stores action output result for [Backend Call - API (GetCountry)] action in Home widget.
-  ApiCallResponse? country;
   InstantTimer? instantTimer;
   bool apiRequestCompleted = false;
   String? apiRequestLastUniqueKey;
