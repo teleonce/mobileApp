@@ -40,3 +40,15 @@ String? replaceHTML(String? html) {
   newString = newString.replaceAll(RegExp(r'<[^>]*>'), '');
   return newString;
 }
+
+bool moreThanFifteen(DateTime cache) {
+  DateTime time1 = DateTime.now();
+
+  Duration difference = cache.difference(time1).abs();
+
+  if (difference.inMinutes > 15) {
+    return true;
+  } else {
+    return false;
+  }
+}

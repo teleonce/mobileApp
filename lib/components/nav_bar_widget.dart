@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -38,25 +39,21 @@ class _NavBarWidgetState extends State<NavBarWidget> {
       logFirebaseEvent('NAV_BAR_COMP_NavBar_ON_INIT_STATE');
       logFirebaseEvent('NavBar_wait__delay');
       await Future.delayed(const Duration(milliseconds: 3000));
-      if (FFAppState().live == null) {
-        logFirebaseEvent('NavBar_backend_call');
-        _model.live = await GetLiveCall.call();
-        logFirebaseEvent('NavBar_backend_call');
-        _model.country = await CountryCall.call();
-      } else {
-        return;
-      }
-
+      logFirebaseEvent('NavBar_backend_call');
+      _model.live = await GetLiveCall.call();
+      logFirebaseEvent('NavBar_backend_call');
+      _model.country = await CountryCall.call();
       logFirebaseEvent('NavBar_update_app_state');
       setState(() {
-        FFAppState().live = (GetLiveCall.live(
-                  (_model.live?.jsonBody ?? ''),
-                ) ==
-                true) &&
-            ('PR' !=
-                CountryCall.state(
-                  (_model.country?.jsonBody ?? ''),
-                ));
+        FFAppState().live = GetLiveCall.live(
+          (_model.live?.jsonBody ?? ''),
+        );
+        FFAppState().state = valueOrDefault<String>(
+          CountryCall.country(
+            (_model.country?.jsonBody ?? ''),
+          ).toString(),
+          'PR',
+        );
       });
     });
   }
@@ -91,15 +88,63 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                   child: ClipRRect(
                     child: Container(
                       width: MediaQuery.sizeOf(context).width * 1.0,
-                      height: 50.0,
+                      height: valueOrDefault<double>(
+                        () {
+                          if (MediaQuery.sizeOf(context).width <
+                              kBreakpointSmall) {
+                            return 50.0;
+                          } else if (MediaQuery.sizeOf(context).width <
+                              kBreakpointMedium) {
+                            return 100.0;
+                          } else if (MediaQuery.sizeOf(context).width <
+                              kBreakpointLarge) {
+                            return 90.0;
+                          } else {
+                            return 50.0;
+                          }
+                        }(),
+                        50.0,
+                      ),
                       decoration: BoxDecoration(
                         color: Color(0xBFFFFFFF),
                       ),
                       alignment: AlignmentDirectional(0.00, 1.00),
                       child: ClipRRect(
                         child: Container(
-                          width: 320.0,
-                          height: 50.0,
+                          width: valueOrDefault<double>(
+                            () {
+                              if (MediaQuery.sizeOf(context).width <
+                                  kBreakpointSmall) {
+                                return 320.0;
+                              } else if (MediaQuery.sizeOf(context).width <
+                                  kBreakpointMedium) {
+                                return 470.0;
+                              } else if (MediaQuery.sizeOf(context).width <
+                                  kBreakpointLarge) {
+                                return 728.0;
+                              } else {
+                                return 320.0;
+                              }
+                            }(),
+                            320.0,
+                          ),
+                          height: valueOrDefault<double>(
+                            () {
+                              if (MediaQuery.sizeOf(context).width <
+                                  kBreakpointSmall) {
+                                return 50.0;
+                              } else if (MediaQuery.sizeOf(context).width <
+                                  kBreakpointMedium) {
+                                return 50.0;
+                              } else if (MediaQuery.sizeOf(context).width <
+                                  kBreakpointLarge) {
+                                return 90.0;
+                              } else {
+                                return 50.0;
+                              }
+                            }(),
+                            50.0,
+                          ),
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,

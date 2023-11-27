@@ -11,14 +11,17 @@ import '/flutter_flow/request_manager.dart';
 import 'dart:async';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
+import 'programas_widget.dart' show ProgramasWidget;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 
-class ProgramasModel extends FlutterFlowModel {
+class ProgramasModel extends FlutterFlowModel<ProgramasWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

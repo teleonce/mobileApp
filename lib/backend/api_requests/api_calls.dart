@@ -1,8 +1,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import '../../flutter_flow/flutter_flow_util.dart';
-
+import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
 
 export 'api_manager.dart' show ApiCallResponse;
@@ -24,14 +23,12 @@ class WordpressGroup {
 class PostsCall {
   Future<ApiCallResponse> call({
     String? perPage = '',
-  }) {
+  }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'Posts',
       apiUrl: '${WordpressGroup.baseUrl}/wp/v2/posts/',
       callType: ApiCallType.GET,
-      headers: {
-        ...WordpressGroup.headers,
-      },
+      headers: {},
       params: {
         'per_page': perPage,
       },
@@ -46,14 +43,12 @@ class PostsCall {
 class SinglePostCall {
   Future<ApiCallResponse> call({
     String? postId = '',
-  }) {
+  }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'Single Post',
       apiUrl: '${WordpressGroup.baseUrl}/wp/v2/posts/${postId}',
       callType: ApiCallType.GET,
-      headers: {
-        ...WordpressGroup.headers,
-      },
+      headers: {},
       params: {},
       returnBody: true,
       encodeBodyUtf8: false,
@@ -67,14 +62,12 @@ class NoticiasCall {
   Future<ApiCallResponse> call({
     String? perPage = '5',
     String? search = '',
-  }) {
+  }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'Noticias',
       apiUrl: '${WordpressGroup.baseUrl}/wp/v2/noticias',
       callType: ApiCallType.GET,
-      headers: {
-        ...WordpressGroup.headers,
-      },
+      headers: {},
       params: {
         'per_page': perPage,
         'search': search,
@@ -134,14 +127,12 @@ class NoticiasCall {
 }
 
 class SearchCall {
-  Future<ApiCallResponse> call() {
+  Future<ApiCallResponse> call() async {
     return ApiManager.instance.makeApiCall(
       callName: 'Search',
       apiUrl: '${WordpressGroup.baseUrl}/wp/v2/search',
       callType: ApiCallType.GET,
-      headers: {
-        ...WordpressGroup.headers,
-      },
+      headers: {},
       params: {},
       returnBody: true,
       encodeBodyUtf8: false,
@@ -154,14 +145,12 @@ class SearchCall {
 class ProgramasCall {
   Future<ApiCallResponse> call({
     String? perPage = '',
-  }) {
+  }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'Programas',
       apiUrl: '${WordpressGroup.baseUrl}/wp/v2/programas',
       callType: ApiCallType.GET,
-      headers: {
-        ...WordpressGroup.headers,
-      },
+      headers: {},
       params: {
         'per_page': perPage,
       },
@@ -224,14 +213,12 @@ class NewsCall {
     String? postsPerPage = '',
     String? paged = '',
     String? offset = '',
-  }) {
+  }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'News',
       apiUrl: '${AppAPIGroup.baseUrl}/v2/news/',
       callType: ApiCallType.GET,
-      headers: {
-        ...AppAPIGroup.headers,
-      },
+      headers: {},
       params: {
         'category': category,
         'posts_per_page': postsPerPage,
@@ -298,14 +285,12 @@ class ProgramsCall {
     String? postsPerPage = '',
     String? paged = '',
     String? offset = '',
-  }) {
+  }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'Programs',
       apiUrl: '${AppAPIGroup.baseUrl}/v2/shows/',
       callType: ApiCallType.GET,
-      headers: {
-        ...AppAPIGroup.headers,
-      },
+      headers: {},
       params: {
         'category': category,
         'posts_per_page': postsPerPage,
@@ -367,14 +352,12 @@ class BrandedCall {
     String? postsPerPage = '',
     String? paged = '',
     String? offset = '',
-  }) {
+  }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'Branded',
       apiUrl: '${AppAPIGroup.baseUrl}/v1/branded-content/',
       callType: ApiCallType.GET,
-      headers: {
-        ...AppAPIGroup.headers,
-      },
+      headers: {},
       params: {
         'category': category,
         'posts_per_page': postsPerPage,
@@ -421,14 +404,12 @@ class BrandedCall {
 }
 
 class BannersCall {
-  Future<ApiCallResponse> call() {
+  Future<ApiCallResponse> call() async {
     return ApiManager.instance.makeApiCall(
       callName: 'Banners',
       apiUrl: '${AppAPIGroup.baseUrl}/v2/banner',
       callType: ApiCallType.GET,
-      headers: {
-        ...AppAPIGroup.headers,
-      },
+      headers: {},
       params: {},
       returnBody: true,
       encodeBodyUtf8: false,
@@ -455,14 +436,12 @@ class BannersCall {
 }
 
 class NewsCategoriesCall {
-  Future<ApiCallResponse> call() {
+  Future<ApiCallResponse> call() async {
     return ApiManager.instance.makeApiCall(
       callName: 'News Categories',
       apiUrl: '${AppAPIGroup.baseUrl}/v2/news/categories',
       callType: ApiCallType.GET,
-      headers: {
-        ...AppAPIGroup.headers,
-      },
+      headers: {},
       params: {},
       returnBody: true,
       encodeBodyUtf8: false,
@@ -489,14 +468,12 @@ class NewsCategoriesCall {
 }
 
 class HomeCall {
-  Future<ApiCallResponse> call() {
+  Future<ApiCallResponse> call() async {
     return ApiManager.instance.makeApiCall(
       callName: 'HOME',
       apiUrl: '${AppAPIGroup.baseUrl}/v2/home',
       callType: ApiCallType.GET,
-      headers: {
-        ...AppAPIGroup.headers,
-      },
+      headers: {},
       params: {},
       returnBody: true,
       encodeBodyUtf8: false,
@@ -671,14 +648,12 @@ class HomeCall {
 }
 
 class LastestNewsCall {
-  Future<ApiCallResponse> call() {
+  Future<ApiCallResponse> call() async {
     return ApiManager.instance.makeApiCall(
       callName: 'Lastest News',
       apiUrl: '${AppAPIGroup.baseUrl}/v2/lastest-news/',
       callType: ApiCallType.GET,
-      headers: {
-        ...AppAPIGroup.headers,
-      },
+      headers: {},
       params: {},
       returnBody: true,
       encodeBodyUtf8: false,
@@ -1095,14 +1070,12 @@ class LastestNewsCall {
 }
 
 class LatestShowsCall {
-  Future<ApiCallResponse> call() {
+  Future<ApiCallResponse> call() async {
     return ApiManager.instance.makeApiCall(
       callName: 'Latest Shows',
       apiUrl: '${AppAPIGroup.baseUrl}/v2/lastest-shows',
       callType: ApiCallType.GET,
-      headers: {
-        ...AppAPIGroup.headers,
-      },
+      headers: {},
       params: {},
       returnBody: true,
       encodeBodyUtf8: false,
@@ -1151,19 +1124,22 @@ class LatestShowsCall {
         r'''$.banner''',
         true,
       );
+  dynamic enLaManana(dynamic response) => getJsonField(
+        response,
+        r'''$.enlamanana''',
+        true,
+      );
 }
 
 class ShowInfoCall {
   Future<ApiCallResponse> call({
     String? show = '',
-  }) {
+  }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'Show Info',
       apiUrl: '${AppAPIGroup.baseUrl}/v1/shows/category/${show}',
       callType: ApiCallType.GET,
-      headers: {
-        ...AppAPIGroup.headers,
-      },
+      headers: {},
       params: {},
       returnBody: true,
       encodeBodyUtf8: false,
@@ -1201,14 +1177,12 @@ class ShowInfoCall {
 class NewsCatCall {
   Future<ApiCallResponse> call({
     String? cat = '',
-  }) {
+  }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'News Cat',
       apiUrl: '${AppAPIGroup.baseUrl}/v1/news/category/${cat}',
       callType: ApiCallType.GET,
-      headers: {
-        ...AppAPIGroup.headers,
-      },
+      headers: {},
       params: {},
       returnBody: true,
       encodeBodyUtf8: false,
@@ -1228,14 +1202,12 @@ class NewsCatCall {
 }
 
 class ShowCategoriesCall {
-  Future<ApiCallResponse> call() {
+  Future<ApiCallResponse> call() async {
     return ApiManager.instance.makeApiCall(
       callName: 'Show Categories',
       apiUrl: '${AppAPIGroup.baseUrl}/v1/shows/categories',
       callType: ApiCallType.GET,
-      headers: {
-        ...AppAPIGroup.headers,
-      },
+      headers: {},
       params: {},
       returnBody: true,
       encodeBodyUtf8: false,
@@ -1264,7 +1236,7 @@ class ShowCategoriesCall {
 /// End App API Group Code
 
 class GetLiveCall {
-  static Future<ApiCallResponse> call() {
+  static Future<ApiCallResponse> call() async {
     return ApiManager.instance.makeApiCall(
       callName: 'GetLive',
       apiUrl: 'https://teleonce.com/wp-json/app/v1/live',
@@ -1292,7 +1264,7 @@ class WeatherCall {
     String? appid = '5ea20c34427b9975a24ca2c9d4b64486',
     String? lang = 'es',
     String? exclude = 'minutely',
-  }) {
+  }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'Weather',
       apiUrl: 'https://api.openweathermap.org/data/2.5/weather',
@@ -1324,7 +1296,7 @@ class WeatherCall {
 }
 
 class CountryCall {
-  static Future<ApiCallResponse> call() {
+  static Future<ApiCallResponse> call() async {
     return ApiManager.instance.makeApiCall(
       callName: 'country',
       apiUrl: 'https://geoip.razex.de/api/',

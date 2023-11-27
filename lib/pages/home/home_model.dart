@@ -5,35 +5,36 @@ import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/instant_timer.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/request_manager.dart';
 
 import 'dart:async';
+import 'home_widget.dart' show HomeWidget;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 
-class HomeModel extends FlutterFlowModel {
+class HomeModel extends FlutterFlowModel<HomeWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  InstantTimer? instantTimer;
   bool apiRequestCompleted = false;
   String? apiRequestLastUniqueKey;
-  // State field(s) for PageView widget.
-  PageController? pageViewController;
+  // State field(s) for CenterStage widget.
+  PageController? centerStageController;
 
-  int get pageViewCurrentIndex => pageViewController != null &&
-          pageViewController!.hasClients &&
-          pageViewController!.page != null
-      ? pageViewController!.page!.round()
+  int get centerStageCurrentIndex => centerStageController != null &&
+          centerStageController!.hasClients &&
+          centerStageController!.page != null
+      ? centerStageController!.page!.round()
       : 0;
   // Model for MainHeader component.
   late MainHeaderModel mainHeaderModel;
@@ -69,7 +70,6 @@ class HomeModel extends FlutterFlowModel {
 
   void dispose() {
     unfocusNode.dispose();
-    instantTimer?.cancel();
     mainHeaderModel.dispose();
     navBarModel.dispose();
     menuModel.dispose();

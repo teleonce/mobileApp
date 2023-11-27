@@ -9,13 +9,16 @@ import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/request_manager.dart';
 
+import 'programa_widget.dart' show ProgramaWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 
-class ProgramaModel extends FlutterFlowModel {
+class ProgramaModel extends FlutterFlowModel<ProgramaWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

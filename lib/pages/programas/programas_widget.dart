@@ -12,9 +12,11 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart'
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'programas_model.dart';
 export 'programas_model.dart';
 
@@ -76,23 +78,35 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
 
   @override
   Widget build(BuildContext context) {
+    if (isiOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).brightness,
+          systemStatusBarContrastEnforced: true,
+        ),
+      );
+    }
+
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
+      onTap: () => _model.unfocusNode.canRequestFocus
+          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+          : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         drawer: Container(
           width: 270.0,
-          child: Drawer(
+          child: WebViewAware(
+              child: Drawer(
             elevation: 16.0,
             child: wrapWithModel(
               model: _model.menuModel,
               updateCallback: () => setState(() {}),
               child: MenuWidget(),
             ),
-          ),
+          )),
         ),
         body: SafeArea(
           top: true,
@@ -168,11 +182,30 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                     child: Container(
                                       width: MediaQuery.sizeOf(context).width *
                                           1.0,
+                                      height: valueOrDefault<double>(
+                                        () {
+                                          if (MediaQuery.sizeOf(context).width <
+                                              kBreakpointSmall) {
+                                            return 360.0;
+                                          } else if (MediaQuery.sizeOf(context)
+                                                  .width <
+                                              kBreakpointMedium) {
+                                            return 400.0;
+                                          } else if (MediaQuery.sizeOf(context)
+                                                  .width <
+                                              kBreakpointLarge) {
+                                            return 600.0;
+                                          } else {
+                                            return 360.0;
+                                          }
+                                        }(),
+                                        360.0,
+                                      ),
                                       constraints: BoxConstraints(
                                         minHeight: 300.0,
                                         maxHeight:
                                             MediaQuery.sizeOf(context).height *
-                                                0.4,
+                                                0.6,
                                       ),
                                       decoration: BoxDecoration(),
                                       child: Builder(
@@ -189,6 +222,9 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                                   .toList();
                                           return Container(
                                             width: double.infinity,
+                                            height: MediaQuery.sizeOf(context)
+                                                    .height *
+                                                1.0,
                                             child: Stack(
                                               children: [
                                                 PageView.builder(
@@ -334,108 +370,37 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                   ),
                                   Flexible(
                                     flex: 1,
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      10.0, 0.0, 0.0, 0.0),
-                                              child: InkWell(
-                                                splashColor: Colors.transparent,
-                                                focusColor: Colors.transparent,
-                                                hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
-                                                onTap: () async {
-                                                  logFirebaseEvent(
-                                                      'PROGRAMAS_PAGE_Image_eoowuepb_ON_TAP');
-                                                  logFirebaseEvent(
-                                                      'Image_navigate_to');
-                                                  if (Navigator.of(context)
-                                                      .canPop()) {
-                                                    context.pop();
-                                                  }
-                                                  context.pushNamed(
-                                                    'Programa',
-                                                    queryParameters: {
-                                                      'cat': serializeParam(
-                                                        7,
-                                                        ParamType.int,
-                                                      ),
-                                                    }.withoutNulls,
-                                                  );
-                                                },
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          0.0),
-                                                  child: Image.asset(
-                                                    'assets/images/COmay.png',
-                                                    width: 80.0,
-                                                    height: 60.0,
-                                                    fit: BoxFit.contain,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Expanded(
-                                          flex: 1,
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 10.0, 0.0, 0.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Column(
+                                            mainAxisSize: MainAxisSize.min,
                                             children: [
-                                              Container(
-                                                width:
-                                                    MediaQuery.sizeOf(context)
-                                                            .width *
-                                                        1.0,
-                                                height: 22.0,
-                                                decoration: BoxDecoration(
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                      blurRadius: 4.0,
-                                                      color: Color(0x33000000),
-                                                      offset: Offset(0.0, 2.0),
-                                                    )
-                                                  ],
-                                                  gradient: LinearGradient(
-                                                    colors: [
-                                                      Color(0xFFD11D1E),
-                                                      Color(0xFF9F0000)
-                                                    ],
-                                                    stops: [0.0, 1.0],
-                                                    begin: AlignmentDirectional(
-                                                        1.0, 0.0),
-                                                    end: AlignmentDirectional(
-                                                        -1.0, 0),
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Align(
-                                              alignment: AlignmentDirectional(
-                                                  1.00, 0.00),
-                                              child: Padding(
+                                              Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        0.0, 0.0, 10.0, 0.0),
-                                                child: FFButtonWidget(
-                                                  onPressed: () async {
+                                                        10.0, 0.0, 0.0, 0.0),
+                                                child: InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () async {
                                                     logFirebaseEvent(
-                                                        'PROGRAMAS_PAGE_VER_MÁS_BTN_ON_TAP');
+                                                        'PROGRAMAS_PAGE_Image_eoowuepb_ON_TAP');
                                                     logFirebaseEvent(
-                                                        'Button_navigate_to');
-
+                                                        'Image_navigate_to');
+                                                    if (Navigator.of(context)
+                                                        .canPop()) {
+                                                      context.pop();
+                                                    }
                                                     context.pushNamed(
                                                       'Programa',
                                                       queryParameters: {
@@ -446,50 +411,526 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                                       }.withoutNulls,
                                                     );
                                                   },
-                                                  text: 'Ver Más',
-                                                  options: FFButtonOptions(
-                                                    width: 100.0,
-                                                    height: 40.0,
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(5.0, 0.0,
-                                                                5.0, 0.0),
-                                                    iconPadding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 0.0),
-                                                    color: Color(0xFFD11D1E),
-                                                    textStyle: FlutterFlowTheme
-                                                            .of(context)
-                                                        .titleSmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Open Sans',
-                                                          color: Colors.white,
-                                                          fontSize: 16.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                          lineHeight: 1.0,
-                                                        ),
-                                                    elevation: 3.0,
-                                                    borderSide: BorderSide(
-                                                      color: Colors.transparent,
-                                                      width: 1.0,
-                                                    ),
+                                                  child: ClipRRect(
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             0.0),
+                                                    child: Image.asset(
+                                                      'assets/images/En_La_Manana_Logo_3D.png',
+                                                      width: 80.0,
+                                                      height: 60.0,
+                                                      fit: BoxFit.contain,
+                                                    ),
                                                   ),
-                                                  showLoadingIndicator: false,
                                                 ),
                                               ),
+                                            ],
+                                          ),
+                                          Expanded(
+                                            flex: 1,
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Container(
+                                                  width:
+                                                      MediaQuery.sizeOf(context)
+                                                              .width *
+                                                          1.0,
+                                                  height: 22.0,
+                                                  decoration: BoxDecoration(
+                                                    boxShadow: [
+                                                      BoxShadow(
+                                                        blurRadius: 4.0,
+                                                        color:
+                                                            Color(0x33000000),
+                                                        offset:
+                                                            Offset(0.0, 2.0),
+                                                      )
+                                                    ],
+                                                    gradient: LinearGradient(
+                                                      colors: [
+                                                        Color(0xFFFF8E01),
+                                                        Color(0xFFFFE001)
+                                                      ],
+                                                      stops: [0.0, 1.0],
+                                                      begin:
+                                                          AlignmentDirectional(
+                                                              1.0, 0.0),
+                                                      end: AlignmentDirectional(
+                                                          -1.0, 0),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
                                             ),
-                                          ],
-                                        ),
-                                      ]
-                                          .divide(SizedBox(width: 0.0))
-                                          .around(SizedBox(width: 0.0)),
+                                          ),
+                                          Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    1.00, 0.00),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 10.0, 0.0),
+                                                  child: FFButtonWidget(
+                                                    onPressed: () async {
+                                                      logFirebaseEvent(
+                                                          'PROGRAMAS_PAGE_VER_MÁS_BTN_ON_TAP');
+                                                      logFirebaseEvent(
+                                                          'Button_navigate_to');
+
+                                                      context.pushNamed(
+                                                        'Programa',
+                                                        queryParameters: {
+                                                          'cat': serializeParam(
+                                                            7,
+                                                            ParamType.int,
+                                                          ),
+                                                        }.withoutNulls,
+                                                      );
+                                                    },
+                                                    text: 'Ver Más',
+                                                    options: FFButtonOptions(
+                                                      width: 100.0,
+                                                      height: 40.0,
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  5.0,
+                                                                  0.0,
+                                                                  5.0,
+                                                                  0.0),
+                                                      iconPadding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      color: Color(0xFFF78607),
+                                                      textStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Open Sans',
+                                                                color: Colors
+                                                                    .white,
+                                                                fontSize: 16.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                                lineHeight: 1.0,
+                                                              ),
+                                                      elevation: 3.0,
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            Colors.transparent,
+                                                        width: 1.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              0.0),
+                                                    ),
+                                                    showLoadingIndicator: false,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ]
+                                            .divide(SizedBox(width: 0.0))
+                                            .around(SizedBox(width: 0.0)),
+                                      ),
+                                    ),
+                                  ),
+                                  Flexible(
+                                    flex: 1,
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 6.0),
+                                      child: Builder(
+                                        builder: (context) {
+                                          final enlamanana =
+                                              AppAPIGroup.latestShowsCall
+                                                      .enLaManana(
+                                                        mainProgramasLatestShowsResponse
+                                                            .jsonBody,
+                                                      )
+                                                      ?.toList() ??
+                                                  [];
+                                          return SingleChildScrollView(
+                                            scrollDirection: Axis.horizontal,
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.end,
+                                              children: List.generate(
+                                                  enlamanana.length,
+                                                  (enlamananaIndex) {
+                                                final enlamananaItem =
+                                                    enlamanana[enlamananaIndex];
+                                                return Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.00, 1.00),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(5.0, 12.0,
+                                                                5.0, 12.0),
+                                                    child: InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        logFirebaseEvent(
+                                                            'PROGRAMAS_PAGE_Container_ank7m2kz_ON_TAP');
+                                                        logFirebaseEvent(
+                                                            'Container_navigate_to');
+                                                        if (Navigator.of(
+                                                                context)
+                                                            .canPop()) {
+                                                          context.pop();
+                                                        }
+                                                        context.pushNamed(
+                                                          'Post',
+                                                          queryParameters: {
+                                                            'link':
+                                                                serializeParam(
+                                                              valueOrDefault<
+                                                                  String>(
+                                                                getJsonField(
+                                                                  enlamananaItem,
+                                                                  r'''$.link''',
+                                                                ).toString(),
+                                                                'https://teleonce.com',
+                                                              ),
+                                                              ParamType.String,
+                                                            ),
+                                                          }.withoutNulls,
+                                                        );
+                                                      },
+                                                      child: Container(
+                                                        width: 160.0,
+                                                        height: 180.0,
+                                                        constraints:
+                                                            BoxConstraints(
+                                                          minHeight: 170.0,
+                                                          maxHeight: 300.0,
+                                                        ),
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color:
+                                                              Color(0xFFF3F3F3),
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              blurRadius: 4.0,
+                                                              color: Color(
+                                                                  0x33000000),
+                                                              offset: Offset(
+                                                                  0.0, 2.0),
+                                                            )
+                                                          ],
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      5.0),
+                                                        ),
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                -1.00, 0.00),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      4.0,
+                                                                      4.0,
+                                                                      4.0,
+                                                                      12.0),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .start,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            12.0),
+                                                                child:
+                                                                    ClipRRect(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              5.0),
+                                                                  child: Image
+                                                                      .network(
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                      getJsonField(
+                                                                        enlamananaItem,
+                                                                        r'''$.image''',
+                                                                      ),
+                                                                      'https://teleonce.com/wp-content/uploads/2023/08/no-image.jpg',
+                                                                    ),
+                                                                    width:
+                                                                        160.0,
+                                                                    height:
+                                                                        95.0,
+                                                                    fit: BoxFit
+                                                                        .cover,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            8.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child: Text(
+                                                                  valueOrDefault<
+                                                                      String>(
+                                                                    getJsonField(
+                                                                      enlamananaItem,
+                                                                      r'''$.title''',
+                                                                    ).toString(),
+                                                                    'titulo',
+                                                                  ),
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .start,
+                                                                  maxLines: 3,
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyLarge
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Open Sans',
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w500,
+                                                                        lineHeight:
+                                                                            1.0,
+                                                                      ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                );
+                                              }),
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                  Flexible(
+                                    flex: 1,
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 10.0, 0.0, 0.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 0.0, 0.0),
+                                                child: InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () async {
+                                                    logFirebaseEvent(
+                                                        'PROGRAMAS_PAGE_Image_1bdd5tu2_ON_TAP');
+                                                    logFirebaseEvent(
+                                                        'Image_navigate_to');
+                                                    if (Navigator.of(context)
+                                                        .canPop()) {
+                                                      context.pop();
+                                                    }
+                                                    context.pushNamed(
+                                                      'Programa',
+                                                      queryParameters: {
+                                                        'cat': serializeParam(
+                                                          7,
+                                                          ParamType.int,
+                                                        ),
+                                                      }.withoutNulls,
+                                                    );
+                                                  },
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            0.0),
+                                                    child: Image.asset(
+                                                      'assets/images/COmay.png',
+                                                      width: 80.0,
+                                                      height: 60.0,
+                                                      fit: BoxFit.contain,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Expanded(
+                                            flex: 1,
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Container(
+                                                  width:
+                                                      MediaQuery.sizeOf(context)
+                                                              .width *
+                                                          1.0,
+                                                  height: 22.0,
+                                                  decoration: BoxDecoration(
+                                                    boxShadow: [
+                                                      BoxShadow(
+                                                        blurRadius: 4.0,
+                                                        color:
+                                                            Color(0x33000000),
+                                                        offset:
+                                                            Offset(0.0, 2.0),
+                                                      )
+                                                    ],
+                                                    gradient: LinearGradient(
+                                                      colors: [
+                                                        Color(0xFFD11D1E),
+                                                        Color(0xFF9F0000)
+                                                      ],
+                                                      stops: [0.0, 1.0],
+                                                      begin:
+                                                          AlignmentDirectional(
+                                                              1.0, 0.0),
+                                                      end: AlignmentDirectional(
+                                                          -1.0, 0),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    1.00, 0.00),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 10.0, 0.0),
+                                                  child: FFButtonWidget(
+                                                    onPressed: () async {
+                                                      logFirebaseEvent(
+                                                          'PROGRAMAS_PAGE_VER_MÁS_BTN_ON_TAP');
+                                                      logFirebaseEvent(
+                                                          'Button_navigate_to');
+
+                                                      context.pushNamed(
+                                                        'Programa',
+                                                        queryParameters: {
+                                                          'cat': serializeParam(
+                                                            7,
+                                                            ParamType.int,
+                                                          ),
+                                                        }.withoutNulls,
+                                                      );
+                                                    },
+                                                    text: 'Ver Más',
+                                                    options: FFButtonOptions(
+                                                      width: 100.0,
+                                                      height: 40.0,
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  5.0,
+                                                                  0.0,
+                                                                  5.0,
+                                                                  0.0),
+                                                      iconPadding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      color: Color(0xFFD11D1E),
+                                                      textStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Open Sans',
+                                                                color: Colors
+                                                                    .white,
+                                                                fontSize: 16.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                                lineHeight: 1.0,
+                                                              ),
+                                                      elevation: 3.0,
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            Colors.transparent,
+                                                        width: 1.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              0.0),
+                                                    ),
+                                                    showLoadingIndicator: false,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ]
+                                            .divide(SizedBox(width: 0.0))
+                                            .around(SizedBox(width: 0.0)),
+                                      ),
                                     ),
                                   ),
                                   Flexible(
@@ -538,7 +979,7 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                                           Colors.transparent,
                                                       onTap: () async {
                                                         logFirebaseEvent(
-                                                            'PROGRAMAS_PAGE_Container_ank7m2kz_ON_TAP');
+                                                            'PROGRAMAS_PAGE_Container_q7ksyez5_ON_TAP');
                                                         logFirebaseEvent(
                                                             'Container_navigate_to');
                                                         if (Navigator.of(
