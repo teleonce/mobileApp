@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'flutter_flow/request_manager.dart';
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import 'backend/api_requests/api_manager.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'flutter_flow/flutter_flow_util.dart';
 
 class FFAppState extends ChangeNotifier {
   static FFAppState _instance = FFAppState._internal();
@@ -28,132 +25,135 @@ class FFAppState extends ChangeNotifier {
 
   List<String> _menuItems = ['Home', 'Search', 'Directory', 'Book', 'Profile'];
   List<String> get menuItems => _menuItems;
-  set menuItems(List<String> _value) {
-    _menuItems = _value;
+  set menuItems(List<String> value) {
+    _menuItems = value;
   }
 
-  void addToMenuItems(String _value) {
-    _menuItems.add(_value);
+  void addToMenuItems(String value) {
+    _menuItems.add(value);
   }
 
-  void removeFromMenuItems(String _value) {
-    _menuItems.remove(_value);
+  void removeFromMenuItems(String value) {
+    _menuItems.remove(value);
   }
 
-  void removeAtIndexFromMenuItems(int _index) {
-    _menuItems.removeAt(_index);
+  void removeAtIndexFromMenuItems(int index) {
+    _menuItems.removeAt(index);
   }
 
   void updateMenuItemsAtIndex(
-    int _index,
+    int index,
     String Function(String) updateFn,
   ) {
-    _menuItems[_index] = updateFn(_menuItems[_index]);
+    _menuItems[index] = updateFn(_menuItems[index]);
   }
 
-  void insertAtIndexInMenuItems(int _index, String _value) {
-    _menuItems.insert(_index, _value);
+  void insertAtIndexInMenuItems(int index, String value) {
+    _menuItems.insert(index, value);
   }
 
   String _menuActiveItem = '';
   String get menuActiveItem => _menuActiveItem;
-  set menuActiveItem(String _value) {
-    _menuActiveItem = _value;
+  set menuActiveItem(String value) {
+    _menuActiveItem = value;
   }
 
   List<Color> _menuItemColors = [
-    Color(4290616064),
-    Color(4283261100),
-    Color(4282297928),
-    Color(4293935181),
-    Color(4278298585)
+    const Color(0xff01a7d9),
+    const Color(0xff7b6604),
+    const Color(0xfff0404d),
+    const Color(0xff4d60ac),
+    const Color(0xff3eae48),
+    const Color(0xff14181b),
+    const Color(0xfff8cd01),
+    const Color(0xffff59a2)
   ];
   List<Color> get menuItemColors => _menuItemColors;
-  set menuItemColors(List<Color> _value) {
-    _menuItemColors = _value;
+  set menuItemColors(List<Color> value) {
+    _menuItemColors = value;
   }
 
-  void addToMenuItemColors(Color _value) {
-    _menuItemColors.add(_value);
+  void addToMenuItemColors(Color value) {
+    _menuItemColors.add(value);
   }
 
-  void removeFromMenuItemColors(Color _value) {
-    _menuItemColors.remove(_value);
+  void removeFromMenuItemColors(Color value) {
+    _menuItemColors.remove(value);
   }
 
-  void removeAtIndexFromMenuItemColors(int _index) {
-    _menuItemColors.removeAt(_index);
+  void removeAtIndexFromMenuItemColors(int index) {
+    _menuItemColors.removeAt(index);
   }
 
   void updateMenuItemColorsAtIndex(
-    int _index,
+    int index,
     Color Function(Color) updateFn,
   ) {
-    _menuItemColors[_index] = updateFn(_menuItemColors[_index]);
+    _menuItemColors[index] = updateFn(_menuItemColors[index]);
   }
 
-  void insertAtIndexInMenuItemColors(int _index, Color _value) {
-    _menuItemColors.insert(_index, _value);
+  void insertAtIndexInMenuItemColors(int index, Color value) {
+    _menuItemColors.insert(index, value);
   }
 
   bool _drawer = false;
   bool get drawer => _drawer;
-  set drawer(bool _value) {
-    _drawer = _value;
+  set drawer(bool value) {
+    _drawer = value;
   }
 
   String _logo = '';
   String get logo => _logo;
-  set logo(String _value) {
-    _logo = _value;
+  set logo(String value) {
+    _logo = value;
   }
 
   bool _live = false;
   bool get live => _live;
-  set live(bool _value) {
-    _live = _value;
+  set live(bool value) {
+    _live = value;
   }
 
   String _link = '';
   String get link => _link;
-  set link(String _value) {
-    _link = _value;
+  set link(String value) {
+    _link = value;
   }
 
   String _state = '';
   String get state => _state;
-  set state(String _value) {
-    _state = _value;
+  set state(String value) {
+    _state = value;
   }
 
   String _search = '';
   String get search => _search;
-  set search(String _value) {
-    _search = _value;
+  set search(String value) {
+    _search = value;
   }
 
   String _weatherIcon = '';
   String get weatherIcon => _weatherIcon;
-  set weatherIcon(String _value) {
-    _weatherIcon = _value;
+  set weatherIcon(String value) {
+    _weatherIcon = value;
   }
 
   String _temp = '';
   String get temp => _temp;
-  set temp(String _value) {
-    _temp = _value;
+  set temp(String value) {
+    _temp = value;
   }
 
   bool _showAds = true;
   bool get showAds => _showAds;
-  set showAds(bool _value) {
-    _showAds = _value;
+  set showAds(bool value) {
+    _showAds = value;
   }
 
   bool _showSearch = true;
   bool get showSearch => _showSearch;
-  set showSearch(bool _value) {
-    _showSearch = _value;
+  set showSearch(bool value) {
+    _showSearch = value;
   }
 
   final _noticiasManager = FutureRequestManager<ApiCallResponse>();

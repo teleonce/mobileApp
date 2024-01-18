@@ -4,14 +4,12 @@ import '/components/menu_widget.dart';
 import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'programa_model.dart';
@@ -19,9 +17,9 @@ export 'programa_model.dart';
 
 class ProgramaWidget extends StatefulWidget {
   const ProgramaWidget({
-    Key? key,
+    super.key,
     required this.cat,
-  }) : super(key: key);
+  });
 
   final int? cat;
 
@@ -77,7 +75,7 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        drawer: Container(
+        drawer: SizedBox(
           width: 270.0,
           child: WebViewAware(
               child: Drawer(
@@ -85,23 +83,23 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
             child: wrapWithModel(
               model: _model.menuModel,
               updateCallback: () => setState(() {}),
-              child: MenuWidget(),
+              child: const MenuWidget(),
             ),
           )),
         ),
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.00, 0.00),
-            child: Container(
+            alignment: const AlignmentDirectional(0.0, 0.0),
+            child: SizedBox(
               width: double.infinity,
               height: double.infinity,
               child: Stack(
-                alignment: AlignmentDirectional(0.0, 0.0),
+                alignment: const AlignmentDirectional(0.0, 0.0),
                 children: [
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 74.0, 0.0, 80.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 74.0, 0.0, 80.0),
                     child: RefreshIndicator(
                       color: FlutterFlowTheme.of(context).primary,
                       backgroundColor:
@@ -166,15 +164,15 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
                                         borderRadius:
                                             BorderRadius.circular(0.0),
                                       ),
-                                      child: Container(
+                                      child: SizedBox(
                                         width:
                                             MediaQuery.sizeOf(context).width *
                                                 1.0,
                                         child: Stack(
                                           children: [
                                             Align(
-                                              alignment: AlignmentDirectional(
-                                                  0.00, -1.00),
+                                              alignment: const AlignmentDirectional(
+                                                  0.0, -1.0),
                                               child: ClipRRect(
                                                 borderRadius:
                                                     BorderRadius.circular(0.0),
@@ -182,9 +180,10 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
                                                   valueOrDefault<String>(
                                                     AppAPIGroup.showInfoCall
                                                         .banner(
-                                                      featuredShowInfoResponse
-                                                          .jsonBody,
-                                                    ),
+                                                          featuredShowInfoResponse
+                                                              .jsonBody,
+                                                        )
+                                                        .toString(),
                                                     'https://teleonce.com/wp-content/uploads/2023/08/no-image.jpg',
                                                   ),
                                                   width:
@@ -200,8 +199,8 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
                                               ),
                                             ),
                                             Align(
-                                              alignment: AlignmentDirectional(
-                                                  0.00, 1.00),
+                                              alignment: const AlignmentDirectional(
+                                                  0.0, 1.0),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:
@@ -211,8 +210,8 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
                                                 children: [
                                                   Align(
                                                     alignment:
-                                                        AlignmentDirectional(
-                                                            0.00, 1.00),
+                                                        const AlignmentDirectional(
+                                                            0.0, 1.0),
                                                     child: ClipRRect(
                                                       child: BackdropFilter(
                                                         filter:
@@ -225,7 +224,7 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
                                                               double.infinity,
                                                           decoration:
                                                               BoxDecoration(
-                                                            color: Color(
+                                                            color: const Color(
                                                                 0xB2000000),
                                                             borderRadius:
                                                                 BorderRadius
@@ -234,12 +233,8 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
                                                           ),
                                                           child: Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        12.0,
-                                                                        12.0,
-                                                                        12.0,
-                                                                        12.0),
+                                                                const EdgeInsets.all(
+                                                                    12.0),
                                                             child: Column(
                                                               mainAxisSize:
                                                                   MainAxisSize
@@ -257,7 +252,7 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
                                                                           .center,
                                                                   children: [
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           5.0,
@@ -325,7 +320,7 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
                             },
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 10.0, 0.0, 50.0),
                             child: FutureBuilder<ApiCallResponse>(
                               future: _model.contenido(
@@ -368,7 +363,7 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
                                             contenido[contenidoIndex];
                                         return Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   16.0, 6.0, 16.0, 6.0),
                                           child: InkWell(
                                             splashColor: Colors.transparent,
@@ -389,7 +384,7 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
                                                       getJsonField(
                                                         contenidoItem,
                                                         r'''$.link''',
-                                                      ).toString(),
+                                                      )?.toString(),
                                                       'https://teleonce.com',
                                                     ),
                                                     ParamType.String,
@@ -402,7 +397,7 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
                                               height: 100.0,
                                               decoration: BoxDecoration(
                                                 color: Colors.white,
-                                                boxShadow: [
+                                                boxShadow: const [
                                                   BoxShadow(
                                                     blurRadius: 4.0,
                                                     color: Color(0x230E151B),
@@ -416,7 +411,7 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
                                                 children: [
                                                   ClipRRect(
                                                     borderRadius:
-                                                        BorderRadius.only(
+                                                        const BorderRadius.only(
                                                       bottomLeft:
                                                           Radius.circular(12.0),
                                                       bottomRight:
@@ -431,7 +426,7 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
                                                         getJsonField(
                                                           contenidoItem,
                                                           r'''$.image''',
-                                                        ),
+                                                        )?.toString(),
                                                         'https://teleonce.com/wp-content/uploads/2023/08/no-image.jpg',
                                                       ),
                                                       width: 120.0,
@@ -441,12 +436,12 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
                                                   ),
                                                   Align(
                                                     alignment:
-                                                        AlignmentDirectional(
-                                                            -0.90, 0.85),
+                                                        const AlignmentDirectional(
+                                                            -0.9, 0.85),
                                                     child: Container(
                                                       width: 32.0,
                                                       height: 32.0,
-                                                      decoration: BoxDecoration(
+                                                      decoration: const BoxDecoration(
                                                         color: Colors.white,
                                                         boxShadow: [
                                                           BoxShadow(
@@ -459,7 +454,7 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
                                                         ],
                                                         shape: BoxShape.circle,
                                                       ),
-                                                      child: Icon(
+                                                      child: const Icon(
                                                         Icons
                                                             .play_arrow_rounded,
                                                         color:
@@ -470,7 +465,7 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(130.0,
                                                                 0.0, 12.0, 0.0),
                                                     child: Column(
@@ -489,7 +484,7 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
                                                             getJsonField(
                                                               contenidoItem,
                                                               r'''$.title''',
-                                                            ).toString(),
+                                                            )?.toString(),
                                                             'titulo',
                                                           ),
                                                           textAlign:
@@ -501,7 +496,7 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Open Sans',
-                                                                color: Color(
+                                                                color: const Color(
                                                                     0xFF14181B),
                                                                 fontSize: 15.0,
                                                                 letterSpacing:
@@ -514,7 +509,7 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       4.0,
@@ -526,7 +521,7 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
                                                               getJsonField(
                                                                 contenidoItem,
                                                                 r'''$.content''',
-                                                              ).toString(),
+                                                              )?.toString(),
                                                               'contenido',
                                                             ),
                                                             textAlign:
@@ -538,7 +533,7 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Open Sans',
-                                                                  color: Color(
+                                                                  color: const Color(
                                                                       0xFF57636C),
                                                                   fontSize:
                                                                       12.0,
@@ -566,7 +561,7 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
                                                             ),
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           2.0,
                                                                           0.0,
@@ -578,7 +573,7 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
                                                                   getJsonField(
                                                                     contenidoItem,
                                                                     r'''$.date''',
-                                                                  ).toString(),
+                                                                  )?.toString(),
                                                                   'fecha',
                                                                 ),
                                                                 style: FlutterFlowTheme.of(
@@ -620,15 +615,15 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.00, 1.00),
+                    alignment: const AlignmentDirectional(0.0, 1.0),
                     child: wrapWithModel(
                       model: _model.navBarModel,
                       updateCallback: () => setState(() {}),
-                      child: NavBarWidget(),
+                      child: const NavBarWidget(),
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.00, -1.00),
+                    alignment: const AlignmentDirectional(0.0, -1.0),
                     child: Container(
                       width: MediaQuery.sizeOf(context).width * 1.0,
                       height: 74.0,
@@ -638,7 +633,7 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
                       child: wrapWithModel(
                         model: _model.mainHeaderModel,
                         updateCallback: () => setState(() {}),
-                        child: MainHeaderWidget(
+                        child: const MainHeaderWidget(
                           logoNoticias: false,
                         ),
                       ),

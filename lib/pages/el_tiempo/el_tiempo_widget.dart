@@ -5,20 +5,17 @@ import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_web_view.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'el_tiempo_model.dart';
 export 'el_tiempo_model.dart';
 
 class ElTiempoWidget extends StatefulWidget {
-  const ElTiempoWidget({Key? key}) : super(key: key);
+  const ElTiempoWidget({super.key});
 
   @override
   _ElTiempoWidgetState createState() => _ElTiempoWidgetState();
@@ -79,7 +76,7 @@ class _ElTiempoWidgetState extends State<ElTiempoWidget>
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        drawer: Container(
+        drawer: SizedBox(
           width: 270.0,
           child: WebViewAware(
               child: Drawer(
@@ -87,30 +84,30 @@ class _ElTiempoWidgetState extends State<ElTiempoWidget>
             child: wrapWithModel(
               model: _model.menuModel,
               updateCallback: () => setState(() {}),
-              child: MenuWidget(),
+              child: const MenuWidget(),
             ),
           )),
         ),
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.00, 0.00),
-            child: Container(
+            alignment: const AlignmentDirectional(0.0, 0.0),
+            child: SizedBox(
               width: double.infinity,
               height: double.infinity,
               child: Stack(
-                alignment: AlignmentDirectional(0.0, 0.0),
+                alignment: const AlignmentDirectional(0.0, 0.0),
                 children: [
                   wrapWithModel(
                     model: _model.mainHeaderModel,
                     updateCallback: () => setState(() {}),
-                    child: MainHeaderWidget(
+                    child: const MainHeaderWidget(
                       logoNoticias: false,
                     ),
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 74.0, 0.0, 80.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 74.0, 0.0, 80.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -119,7 +116,7 @@ class _ElTiempoWidgetState extends State<ElTiempoWidget>
                           child: Column(
                             children: [
                               Align(
-                                alignment: Alignment(0.0, 0),
+                                alignment: const Alignment(0.0, 0),
                                 child: FlutterFlowButtonTabBar(
                                   useToggleButtonStyle: true,
                                   labelStyle: FlutterFlowTheme.of(context)
@@ -128,14 +125,14 @@ class _ElTiempoWidgetState extends State<ElTiempoWidget>
                                         fontFamily: 'Open Sans',
                                         fontWeight: FontWeight.w600,
                                       ),
-                                  unselectedLabelStyle: TextStyle(),
+                                  unselectedLabelStyle: const TextStyle(),
                                   labelColor:
                                       FlutterFlowTheme.of(context).primaryText,
                                   unselectedLabelColor:
                                       FlutterFlowTheme.of(context)
                                           .secondaryText,
                                   backgroundColor: Colors.white,
-                                  unselectedBackgroundColor: Color(0xFFD8D8D8),
+                                  unselectedBackgroundColor: const Color(0xFFD8D8D8),
                                   borderColor: FlutterFlowTheme.of(context)
                                       .secondaryText,
                                   unselectedBorderColor:
@@ -144,10 +141,9 @@ class _ElTiempoWidgetState extends State<ElTiempoWidget>
                                   borderWidth: 2.0,
                                   borderRadius: 8.0,
                                   elevation: 0.0,
-                                  buttonMargin: EdgeInsetsDirectional.fromSTEB(
+                                  buttonMargin: const EdgeInsetsDirectional.fromSTEB(
                                       8.0, 0.0, 8.0, 0.0),
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      4.0, 4.0, 4.0, 4.0),
+                                  padding: const EdgeInsets.all(4.0),
                                   tabs: [
                                     Row(
                                       mainAxisAlignment:
@@ -155,7 +151,7 @@ class _ElTiempoWidgetState extends State<ElTiempoWidget>
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 5.0, 0.0),
                                           child: FaIcon(
                                             FontAwesomeIcons.cloudSun,
@@ -164,7 +160,7 @@ class _ElTiempoWidgetState extends State<ElTiempoWidget>
                                             size: 18.0,
                                           ),
                                         ),
-                                        Tab(
+                                        const Tab(
                                           text: 'Pronostico',
                                         ),
                                       ],
@@ -175,7 +171,7 @@ class _ElTiempoWidgetState extends State<ElTiempoWidget>
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 5.0, 0.0),
                                           child: Icon(
                                             Icons.map_rounded,
@@ -184,13 +180,16 @@ class _ElTiempoWidgetState extends State<ElTiempoWidget>
                                             size: 20.0,
                                           ),
                                         ),
-                                        Tab(
+                                        const Tab(
                                           text: 'Mapa',
                                         ),
                                       ],
                                     ),
                                   ],
                                   controller: _model.tabBarController,
+                                  onTap: (i) async {
+                                    [() async {}, () async {}][i]();
+                                  },
                                 ),
                               ),
                               Expanded(
@@ -246,11 +245,11 @@ class _ElTiempoWidgetState extends State<ElTiempoWidget>
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.00, 1.00),
+                    alignment: const AlignmentDirectional(0.0, 1.0),
                     child: wrapWithModel(
                       model: _model.navBarModel,
                       updateCallback: () => setState(() {}),
-                      child: NavBarWidget(),
+                      child: const NavBarWidget(),
                     ),
                   ),
                 ],

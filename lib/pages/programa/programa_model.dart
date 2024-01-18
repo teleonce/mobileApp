@@ -2,21 +2,11 @@ import '/backend/api_requests/api_calls.dart';
 import '/components/main_header_widget.dart';
 import '/components/menu_widget.dart';
 import '/components/nav_bar_widget.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
-import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/request_manager.dart';
 
 import 'programa_widget.dart' show ProgramaWidget;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-import 'package:webviewx_plus/webviewx_plus.dart';
 
 class ProgramaModel extends FlutterFlowModel<ProgramaWidget> {
   ///  State fields for stateful widgets in this page.
@@ -63,12 +53,14 @@ class ProgramaModel extends FlutterFlowModel<ProgramaWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     navBarModel = createModel(context, () => NavBarModel());
     mainHeaderModel = createModel(context, () => MainHeaderModel());
     menuModel = createModel(context, () => MenuModel());
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     navBarModel.dispose();

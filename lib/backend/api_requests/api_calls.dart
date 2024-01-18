@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:typed_data';
 
 import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
@@ -7,187 +6,6 @@ import 'api_manager.dart';
 export 'api_manager.dart' show ApiCallResponse;
 
 const _kPrivateApiFunctionName = 'ffPrivateApiCall';
-
-/// Start Wordpress Group Code
-
-class WordpressGroup {
-  static String baseUrl = 'https://teleoncestg.wpengine.com/wp-json';
-  static Map<String, String> headers = {};
-  static PostsCall postsCall = PostsCall();
-  static SinglePostCall singlePostCall = SinglePostCall();
-  static NoticiasCall noticiasCall = NoticiasCall();
-  static SearchCall searchCall = SearchCall();
-  static ProgramasCall programasCall = ProgramasCall();
-}
-
-class PostsCall {
-  Future<ApiCallResponse> call({
-    String? perPage = '',
-  }) async {
-    return ApiManager.instance.makeApiCall(
-      callName: 'Posts',
-      apiUrl: '${WordpressGroup.baseUrl}/wp/v2/posts/',
-      callType: ApiCallType.GET,
-      headers: {},
-      params: {
-        'per_page': perPage,
-      },
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-    );
-  }
-}
-
-class SinglePostCall {
-  Future<ApiCallResponse> call({
-    String? postId = '',
-  }) async {
-    return ApiManager.instance.makeApiCall(
-      callName: 'Single Post',
-      apiUrl: '${WordpressGroup.baseUrl}/wp/v2/posts/${postId}',
-      callType: ApiCallType.GET,
-      headers: {},
-      params: {},
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-    );
-  }
-}
-
-class NoticiasCall {
-  Future<ApiCallResponse> call({
-    String? perPage = '5',
-    String? search = '',
-  }) async {
-    return ApiManager.instance.makeApiCall(
-      callName: 'Noticias',
-      apiUrl: '${WordpressGroup.baseUrl}/wp/v2/noticias',
-      callType: ApiCallType.GET,
-      headers: {},
-      params: {
-        'per_page': perPage,
-        'search': search,
-      },
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-    );
-  }
-
-  dynamic id(dynamic response) => getJsonField(
-        response,
-        r'''$[:].id''',
-        true,
-      );
-  dynamic date(dynamic response) => getJsonField(
-        response,
-        r'''$[:].date''',
-        true,
-      );
-  dynamic modified(dynamic response) => getJsonField(
-        response,
-        r'''$[:].modified''',
-        true,
-      );
-  dynamic link(dynamic response) => getJsonField(
-        response,
-        r'''$[:].link''',
-        true,
-      );
-  dynamic title(dynamic response) => getJsonField(
-        response,
-        r'''$[:].title.rendered''',
-        true,
-      );
-  dynamic content(dynamic response) => getJsonField(
-        response,
-        r'''$[:].content.rendered''',
-        true,
-      );
-  dynamic excerp(dynamic response) => getJsonField(
-        response,
-        r'''$[:].excerpt.rendered''',
-        true,
-      );
-  dynamic categorias(dynamic response) => getJsonField(
-        response,
-        r'''$[:].categorias''',
-        true,
-      );
-  dynamic image(dynamic response) => getJsonField(
-        response,
-        r'''$[:].fimg_url''',
-        true,
-      );
-}
-
-class SearchCall {
-  Future<ApiCallResponse> call() async {
-    return ApiManager.instance.makeApiCall(
-      callName: 'Search',
-      apiUrl: '${WordpressGroup.baseUrl}/wp/v2/search',
-      callType: ApiCallType.GET,
-      headers: {},
-      params: {},
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-    );
-  }
-}
-
-class ProgramasCall {
-  Future<ApiCallResponse> call({
-    String? perPage = '',
-  }) async {
-    return ApiManager.instance.makeApiCall(
-      callName: 'Programas',
-      apiUrl: '${WordpressGroup.baseUrl}/wp/v2/programas',
-      callType: ApiCallType.GET,
-      headers: {},
-      params: {
-        'per_page': perPage,
-      },
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-    );
-  }
-
-  dynamic id(dynamic response) => getJsonField(
-        response,
-        r'''$[:].id''',
-      );
-  dynamic date(dynamic response) => getJsonField(
-        response,
-        r'''$[:].date''',
-      );
-  dynamic link(dynamic response) => getJsonField(
-        response,
-        r'''$[:].link''',
-      );
-  dynamic title(dynamic response) => getJsonField(
-        response,
-        r'''$[:].title.rendered''',
-      );
-  dynamic image(dynamic response) => getJsonField(
-        response,
-        r'''$[:].fimg_url''',
-      );
-  dynamic content(dynamic response) => getJsonField(
-        response,
-        r'''$[:].content.rendered''',
-      );
-}
-
-/// End Wordpress Group Code
 
 /// Start App API Group Code
 
@@ -229,54 +47,83 @@ class NewsCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
-  dynamic id(dynamic response) => getJsonField(
+  List<int>? id(dynamic response) => (getJsonField(
         response,
         r'''$[:].id''',
         true,
-      );
-  dynamic title(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  List<String>? title(dynamic response) => (getJsonField(
         response,
         r'''$[:].title''',
         true,
-      );
-  dynamic image(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? image(dynamic response) => (getJsonField(
         response,
         r'''$[:].image''',
         true,
-      );
-  dynamic date(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? date(dynamic response) => (getJsonField(
         response,
         r'''$[:].date''',
         true,
-      );
-  dynamic video(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<bool>? video(dynamic response) => (getJsonField(
         response,
         r'''$[:].video''',
         true,
-      );
-  dynamic link(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
+  List<String>? link(dynamic response) => (getJsonField(
         response,
         r'''$[:].link''',
         true,
-      );
-  dynamic content(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? content(dynamic response) => (getJsonField(
         response,
         r'''$[:].content''',
         true,
-      );
-  dynamic category(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List? category(dynamic response) => getJsonField(
         response,
         r'''$[:].category''',
         true,
-      );
-  dynamic time(dynamic response) => getJsonField(
+      ) as List?;
+  List? time(dynamic response) => getJsonField(
         response,
         r'''$[:].time''',
         true,
-      );
+      ) as List?;
 }
 
 class ProgramsCall {
@@ -301,49 +148,78 @@ class ProgramsCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
-  dynamic id(dynamic response) => getJsonField(
+  List<int>? id(dynamic response) => (getJsonField(
         response,
         r'''$[:].id''',
         true,
-      );
-  dynamic title(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  List<String>? title(dynamic response) => (getJsonField(
         response,
         r'''$[:].title''',
         true,
-      );
-  dynamic image(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? image(dynamic response) => (getJsonField(
         response,
         r'''$[:].image''',
         true,
-      );
-  dynamic date(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? date(dynamic response) => (getJsonField(
         response,
         r'''$[:].date''',
         true,
-      );
-  dynamic video(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<bool>? video(dynamic response) => (getJsonField(
         response,
         r'''$[:].video''',
         true,
-      );
-  dynamic link(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
+  List<String>? link(dynamic response) => (getJsonField(
         response,
         r'''$[:].link''',
         true,
-      );
-  dynamic content(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? content(dynamic response) => (getJsonField(
         response,
         r'''$[:].content''',
         true,
-      );
-  dynamic category(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List? category(dynamic response) => getJsonField(
         response,
         r'''$[:].category''',
         true,
-      );
+      ) as List?;
 }
 
 class BrandedCall {
@@ -368,39 +244,64 @@ class BrandedCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
-  dynamic id(dynamic response) => getJsonField(
+  List<int>? id(dynamic response) => (getJsonField(
         response,
         r'''$[:].id''',
         true,
-      );
-  dynamic title(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  List<String>? title(dynamic response) => (getJsonField(
         response,
         r'''$[:].title''',
         true,
-      );
-  dynamic image(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? image(dynamic response) => (getJsonField(
         response,
         r'''$[:].image''',
         true,
-      );
-  dynamic date(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? date(dynamic response) => (getJsonField(
         response,
         r'''$[:].date''',
         true,
-      );
-  dynamic video(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<bool>? video(dynamic response) => (getJsonField(
         response,
         r'''$[:].video''',
         true,
-      );
-  dynamic link(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
+  List<String>? link(dynamic response) => (getJsonField(
         response,
         r'''$[:].link''',
         true,
-      );
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
 }
 
 class BannersCall {
@@ -415,24 +316,37 @@ class BannersCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
-  dynamic image(dynamic response) => getJsonField(
+  List<String>? image(dynamic response) => (getJsonField(
         response,
         r'''$[:].image''',
         true,
-      );
-  dynamic linkApp(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? linkApp(dynamic response) => (getJsonField(
         response,
         r'''$[:].link_app''',
         true,
-      );
-  dynamic link(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? link(dynamic response) => (getJsonField(
         response,
         r'''$[:].link''',
         true,
-      );
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
 }
 
 class NewsCategoriesCall {
@@ -447,24 +361,37 @@ class NewsCategoriesCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
-  dynamic id(dynamic response) => getJsonField(
+  List<int>? id(dynamic response) => (getJsonField(
         response,
         r'''$[:].id''',
         true,
-      );
-  dynamic name(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  List<String>? name(dynamic response) => (getJsonField(
         response,
         r'''$[:].name''',
         true,
-      );
-  dynamic icon(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? icon(dynamic response) => (getJsonField(
         response,
         r'''$[:].icon''',
         true,
-      );
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
 }
 
 class HomeCall {
@@ -479,172 +406,274 @@ class HomeCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
-  dynamic noticias(dynamic response) => getJsonField(
+  List? noticias(dynamic response) => getJsonField(
         response,
         r'''$.noticias''',
         true,
-      );
-  dynamic branded(dynamic response) => getJsonField(
+      ) as List?;
+  List? branded(dynamic response) => getJsonField(
         response,
         r'''$.branded''',
         true,
-      );
-  dynamic brandedId(dynamic response) => getJsonField(
+      ) as List?;
+  List<int>? brandedId(dynamic response) => (getJsonField(
         response,
         r'''$.branded[:].id''',
         true,
-      );
-  dynamic brandedTitle(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  List<String>? brandedTitle(dynamic response) => (getJsonField(
         response,
         r'''$.branded[:].title''',
         true,
-      );
-  dynamic brandedImage(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? brandedImage(dynamic response) => (getJsonField(
         response,
         r'''$.branded[:].image''',
         true,
-      );
-  dynamic brandedDate(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? brandedDate(dynamic response) => (getJsonField(
         response,
         r'''$.branded[:].date''',
         true,
-      );
-  dynamic brandedCategory(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List? brandedCategory(dynamic response) => getJsonField(
         response,
         r'''$.branded[:].category''',
         true,
-      );
-  dynamic brandedLink(dynamic response) => getJsonField(
+      ) as List?;
+  List<String>? brandedLink(dynamic response) => (getJsonField(
         response,
         r'''$.branded[:].link''',
         true,
-      );
-  dynamic brandedVideo(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<bool>? brandedVideo(dynamic response) => (getJsonField(
         response,
         r'''$.branded[:].video''',
         true,
-      );
-  dynamic noticiasId(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
+  List<int>? noticiasId(dynamic response) => (getJsonField(
         response,
         r'''$.noticias[:].id''',
         true,
-      );
-  dynamic noticiasTitle(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  List<String>? noticiasTitle(dynamic response) => (getJsonField(
         response,
         r'''$.noticias[:].title''',
         true,
-      );
-  dynamic noticiasImage(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? noticiasImage(dynamic response) => (getJsonField(
         response,
         r'''$.noticias[:].image''',
         true,
-      );
-  dynamic noticiasDate(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? noticiasDate(dynamic response) => (getJsonField(
         response,
         r'''$.noticias[:].date''',
         true,
-      );
-  dynamic noticiasCategory(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? noticiasCategory(dynamic response) => (getJsonField(
         response,
         r'''$.noticias[:].category''',
         true,
-      );
-  dynamic noticiasLink(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? noticiasLink(dynamic response) => (getJsonField(
         response,
         r'''$.noticias[:].link''',
         true,
-      );
-  dynamic noticiasVideo(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<bool>? noticiasVideo(dynamic response) => (getJsonField(
         response,
         r'''$.noticias[:].video''',
         true,
-      );
-  dynamic programas(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
+  List? programas(dynamic response) => getJsonField(
         response,
         r'''$.programas''',
         true,
-      );
-  dynamic programasId(dynamic response) => getJsonField(
+      ) as List?;
+  List<int>? programasId(dynamic response) => (getJsonField(
         response,
         r'''$.programas[:].id''',
         true,
-      );
-  dynamic programasTitle(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  List<String>? programasTitle(dynamic response) => (getJsonField(
         response,
         r'''$.programas[:].title''',
         true,
-      );
-  dynamic programasImage(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? programasImage(dynamic response) => (getJsonField(
         response,
         r'''$.programas[:].image''',
         true,
-      );
-  dynamic programasDate(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? programasDate(dynamic response) => (getJsonField(
         response,
         r'''$.programas[:].date''',
         true,
-      );
-  dynamic programasCategory(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? programasCategory(dynamic response) => (getJsonField(
         response,
         r'''$.programas[:].category''',
         true,
-      );
-  dynamic programasLink(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? programasLink(dynamic response) => (getJsonField(
         response,
         r'''$.programas[:].link''',
         true,
-      );
-  dynamic programasVideo(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<bool>? programasVideo(dynamic response) => (getJsonField(
         response,
         r'''$.programas[:].video''',
         true,
-      );
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
   dynamic userLocation(dynamic response) => getJsonField(
         response,
         r'''$.userlocation''',
       );
-  dynamic country(dynamic response) => getJsonField(
+  String? country(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.userlocation.country''',
-      );
-  dynamic baner(dynamic response) => getJsonField(
+      ));
+  List? baner(dynamic response) => getJsonField(
         response,
         r'''$.banner''',
         true,
-      );
-  dynamic bannerImage(dynamic response) => getJsonField(
+      ) as List?;
+  List<String>? bannerImage(dynamic response) => (getJsonField(
         response,
         r'''$.banner[:].image''',
         true,
-      );
-  dynamic bannerVideo(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<bool>? bannerVideo(dynamic response) => (getJsonField(
         response,
         r'''$.banner[:].video''',
         true,
-      );
-  dynamic bannerLink(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
+  List<bool>? bannerLink(dynamic response) => (getJsonField(
         response,
         r'''$.banner[:].link''',
         true,
-      );
-  dynamic bannerLinkApp(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
+  List<bool>? bannerLinkApp(dynamic response) => (getJsonField(
         response,
         r'''$.banner[:].link_app''',
         true,
-      );
-  dynamic bannerTitle(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
+  List? bannerTitle(dynamic response) => getJsonField(
         response,
         r'''$.banner[:].title''',
         true,
-      );
-  dynamic bannerTime(dynamic response) => getJsonField(
+      ) as List?;
+  List? bannerTime(dynamic response) => getJsonField(
         response,
         r'''$.banner[:].time''',
         true,
-      );
+      ) as List?;
+  List? showsCat(dynamic response) => getJsonField(
+        response,
+        r'''$.categories_shows.data''',
+        true,
+      ) as List?;
 }
 
 class LastestNewsCall {
@@ -659,414 +688,703 @@ class LastestNewsCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
-  dynamic internacionales(dynamic response) => getJsonField(
+  List? internacionales(dynamic response) => getJsonField(
         response,
         r'''$.Internacionales''',
         true,
-      );
-  dynamic internacionalesId(dynamic response) => getJsonField(
+      ) as List?;
+  List<int>? internacionalesId(dynamic response) => (getJsonField(
         response,
         r'''$.Internacionales[:].id''',
         true,
-      );
-  dynamic internacionalesTitle(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  List<String>? internacionalesTitle(dynamic response) => (getJsonField(
         response,
         r'''$.Internacionales[:].title''',
         true,
-      );
-  dynamic internacionalesContent(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? internacionalesContent(dynamic response) => (getJsonField(
         response,
         r'''$.Internacionales[:].content''',
         true,
-      );
-  dynamic internacionalesImage(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? internacionalesImage(dynamic response) => (getJsonField(
         response,
         r'''$.Internacionales[:].image''',
         true,
-      );
-  dynamic internacionalesDate(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? internacionalesDate(dynamic response) => (getJsonField(
         response,
         r'''$.Internacionales[:].date''',
         true,
-      );
-  dynamic internacioalesTime(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? internacioalesTime(dynamic response) => (getJsonField(
         response,
         r'''$.Internacionales[:].time''',
         true,
-      );
-  dynamic internacionalesVideo(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<bool>? internacionalesVideo(dynamic response) => (getJsonField(
         response,
         r'''$.Internacionales[:].video''',
         true,
-      );
-  dynamic internacionalesLink(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
+  List<String>? internacionalesLink(dynamic response) => (getJsonField(
         response,
         r'''$.Internacionales[:].link''',
         true,
-      );
-  dynamic internacionnalesCategory(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? internacionnalesCategory(dynamic response) => (getJsonField(
         response,
         r'''$.Internacionales[:].category''',
         true,
-      );
-  dynamic locales(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List? locales(dynamic response) => getJsonField(
         response,
         r'''$.Locales''',
         true,
-      );
-  dynamic localesId(dynamic response) => getJsonField(
+      ) as List?;
+  List<int>? localesId(dynamic response) => (getJsonField(
         response,
         r'''$.Locales[:].id''',
         true,
-      );
-  dynamic localesTitle(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  List<String>? localesTitle(dynamic response) => (getJsonField(
         response,
         r'''$.Locales[:].title''',
         true,
-      );
-  dynamic localesCotent(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? localesCotent(dynamic response) => (getJsonField(
         response,
         r'''$.Locales[:].content''',
         true,
-      );
-  dynamic localesImage(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? localesImage(dynamic response) => (getJsonField(
         response,
         r'''$.Locales[:].image''',
         true,
-      );
-  dynamic localesDate(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? localesDate(dynamic response) => (getJsonField(
         response,
         r'''$.Locales[:].date''',
         true,
-      );
-  dynamic localesTime(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? localesTime(dynamic response) => (getJsonField(
         response,
         r'''$.Locales[:].time''',
         true,
-      );
-  dynamic localesCategory(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? localesCategory(dynamic response) => (getJsonField(
         response,
         r'''$.Locales[:].category''',
         true,
-      );
-  dynamic localesLink(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? localesLink(dynamic response) => (getJsonField(
         response,
         r'''$.Locales[:].link''',
         true,
-      );
-  dynamic localesVideo(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<bool>? localesVideo(dynamic response) => (getJsonField(
         response,
         r'''$.Locales[:].video''',
         true,
-      );
-  dynamic deportes(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
+  List? deportes(dynamic response) => getJsonField(
         response,
         r'''$.Deportes''',
         true,
-      );
-  dynamic deportesId(dynamic response) => getJsonField(
+      ) as List?;
+  List<int>? deportesId(dynamic response) => (getJsonField(
         response,
         r'''$.Deportes[:].id''',
         true,
-      );
-  dynamic deportesTitle(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  List<String>? deportesTitle(dynamic response) => (getJsonField(
         response,
         r'''$.Deportes[:].title''',
         true,
-      );
-  dynamic deportesContent(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? deportesContent(dynamic response) => (getJsonField(
         response,
         r'''$.Deportes[:].content''',
         true,
-      );
-  dynamic deportesImage(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? deportesImage(dynamic response) => (getJsonField(
         response,
         r'''$.Deportes[:].image''',
         true,
-      );
-  dynamic deportesDate(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? deportesDate(dynamic response) => (getJsonField(
         response,
         r'''$.Deportes[:].date''',
         true,
-      );
-  dynamic deportesTime(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? deportesTime(dynamic response) => (getJsonField(
         response,
         r'''$.Deportes[:].time''',
         true,
-      );
-  dynamic deportesCategory(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? deportesCategory(dynamic response) => (getJsonField(
         response,
         r'''$.Deportes[:].category''',
         true,
-      );
-  dynamic deportesLink(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? deportesLink(dynamic response) => (getJsonField(
         response,
         r'''$.Deportes[:].link''',
         true,
-      );
-  dynamic deportesVideo(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<bool>? deportesVideo(dynamic response) => (getJsonField(
         response,
         r'''$.Deportes[:].video''',
         true,
-      );
-  dynamic entretenimiento(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
+  List? entretenimiento(dynamic response) => getJsonField(
         response,
         r'''$.Entretenimiento''',
         true,
-      );
-  dynamic entretenimientoId(dynamic response) => getJsonField(
+      ) as List?;
+  List<int>? entretenimientoId(dynamic response) => (getJsonField(
         response,
         r'''$.Entretenimiento[:].id''',
         true,
-      );
-  dynamic entretenimientoTitle(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  List<String>? entretenimientoTitle(dynamic response) => (getJsonField(
         response,
         r'''$.Entretenimiento[:].title''',
         true,
-      );
-  dynamic entretenimientoContent(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? entretenimientoContent(dynamic response) => (getJsonField(
         response,
         r'''$.Entretenimiento[:].content''',
         true,
-      );
-  dynamic entretenimientoImage(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? entretenimientoImage(dynamic response) => (getJsonField(
         response,
         r'''$.Entretenimiento[:].image''',
         true,
-      );
-  dynamic entretenimientoDate(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? entretenimientoDate(dynamic response) => (getJsonField(
         response,
         r'''$.Entretenimiento[:].date''',
         true,
-      );
-  dynamic entretenimientoTime(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? entretenimientoTime(dynamic response) => (getJsonField(
         response,
         r'''$.Entretenimiento[:].time''',
         true,
-      );
-  dynamic entretenimientoCategory(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? entretenimientoCategory(dynamic response) => (getJsonField(
         response,
         r'''$.Entretenimiento[:].category''',
         true,
-      );
-  dynamic entretenimientoLink(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? entretenimientoLink(dynamic response) => (getJsonField(
         response,
         r'''$.Entretenimiento[:].link''',
         true,
-      );
-  dynamic entretenimientoVideo(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<bool>? entretenimientoVideo(dynamic response) => (getJsonField(
         response,
         r'''$.Entretenimiento[:].video''',
         true,
-      );
-  dynamic latest(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
+  List? latest(dynamic response) => getJsonField(
         response,
         r'''$.latest''',
         true,
-      );
-  dynamic latestId(dynamic response) => getJsonField(
+      ) as List?;
+  List<int>? latestId(dynamic response) => (getJsonField(
         response,
         r'''$.latest[:].id''',
         true,
-      );
-  dynamic latestTitle(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  List<String>? latestTitle(dynamic response) => (getJsonField(
         response,
         r'''$.latest[:].title''',
         true,
-      );
-  dynamic latestContent(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? latestContent(dynamic response) => (getJsonField(
         response,
         r'''$.latest[:].content''',
         true,
-      );
-  dynamic latestImage(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? latestImage(dynamic response) => (getJsonField(
         response,
         r'''$.latest[:].image''',
         true,
-      );
-  dynamic latestDate(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? latestDate(dynamic response) => (getJsonField(
         response,
         r'''$.latest[:].date''',
         true,
-      );
-  dynamic latestTime(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? latestTime(dynamic response) => (getJsonField(
         response,
         r'''$.latest[:].time''',
         true,
-      );
-  dynamic latestCategory(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? latestCategory(dynamic response) => (getJsonField(
         response,
         r'''$.latest[:].category''',
         true,
-      );
-  dynamic latestLink(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? latestLink(dynamic response) => (getJsonField(
         response,
         r'''$.latest[:].link''',
         true,
-      );
-  dynamic latestVideo(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<bool>? latestVideo(dynamic response) => (getJsonField(
         response,
         r'''$.latest[:].video''',
         true,
-      );
-  dynamic politica(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
+  List? politica(dynamic response) => getJsonField(
         response,
         r'''$.Política''',
         true,
-      );
-  dynamic politicaId(dynamic response) => getJsonField(
+      ) as List?;
+  List<int>? politicaId(dynamic response) => (getJsonField(
         response,
         r'''$.Política[:].id''',
         true,
-      );
-  dynamic politicaTitle(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  List<String>? politicaTitle(dynamic response) => (getJsonField(
         response,
         r'''$.Política[:].title''',
         true,
-      );
-  dynamic politicaContent(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? politicaContent(dynamic response) => (getJsonField(
         response,
         r'''$.Política[:].content''',
         true,
-      );
-  dynamic politicaImage(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? politicaImage(dynamic response) => (getJsonField(
         response,
         r'''$.Política[:].image''',
         true,
-      );
-  dynamic politicaDate(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? politicaDate(dynamic response) => (getJsonField(
         response,
         r'''$.Política[:].date''',
         true,
-      );
-  dynamic politicaTime(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? politicaTime(dynamic response) => (getJsonField(
         response,
         r'''$.Política[:].time''',
         true,
-      );
-  dynamic politicaCategory(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? politicaCategory(dynamic response) => (getJsonField(
         response,
         r'''$.Política[:].category''',
         true,
-      );
-  dynamic politicaLink(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? politicaLink(dynamic response) => (getJsonField(
         response,
         r'''$.Política[:].link''',
         true,
-      );
-  dynamic politicaVideo(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<bool>? politicaVideo(dynamic response) => (getJsonField(
         response,
         r'''$.Política[:].video''',
         true,
-      );
-  dynamic salud(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
+  List? salud(dynamic response) => getJsonField(
         response,
         r'''$.Salud''',
         true,
-      );
-  dynamic saludId(dynamic response) => getJsonField(
+      ) as List?;
+  List<int>? saludId(dynamic response) => (getJsonField(
         response,
         r'''$.Salud[:].id''',
         true,
-      );
-  dynamic saludTitle(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  List<String>? saludTitle(dynamic response) => (getJsonField(
         response,
         r'''$.Salud[:].title''',
         true,
-      );
-  dynamic saludContent(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? saludContent(dynamic response) => (getJsonField(
         response,
         r'''$.Salud[:].content''',
         true,
-      );
-  dynamic saludImage(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? saludImage(dynamic response) => (getJsonField(
         response,
         r'''$.Salud[:].image''',
         true,
-      );
-  dynamic saludDate(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? saludDate(dynamic response) => (getJsonField(
         response,
         r'''$.Salud[:].date''',
         true,
-      );
-  dynamic saludTime(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? saludTime(dynamic response) => (getJsonField(
         response,
         r'''$.Salud[:].time''',
         true,
-      );
-  dynamic saludCategory(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? saludCategory(dynamic response) => (getJsonField(
         response,
         r'''$.Salud[:].category''',
         true,
-      );
-  dynamic saludLink(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? saludLink(dynamic response) => (getJsonField(
         response,
         r'''$.Salud[:].link''',
         true,
-      );
-  dynamic saludVideo(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<bool>? saludVideo(dynamic response) => (getJsonField(
         response,
         r'''$.Salud[:].video''',
         true,
-      );
-  dynamic seguridad(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
+  List? seguridad(dynamic response) => getJsonField(
         response,
         r'''$.Seguridad''',
         true,
-      );
-  dynamic seguridadId(dynamic response) => getJsonField(
+      ) as List?;
+  List<int>? seguridadId(dynamic response) => (getJsonField(
         response,
         r'''$.Seguridad[:].id''',
         true,
-      );
-  dynamic seguridadTitle(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  List<String>? seguridadTitle(dynamic response) => (getJsonField(
         response,
         r'''$.Seguridad[:].title''',
         true,
-      );
-  dynamic seguridadContent(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? seguridadContent(dynamic response) => (getJsonField(
         response,
         r'''$.Seguridad[:].content''',
         true,
-      );
-  dynamic seguridadImage(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? seguridadImage(dynamic response) => (getJsonField(
         response,
         r'''$.Seguridad[:].image''',
         true,
-      );
-  dynamic seguridadDate(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? seguridadDate(dynamic response) => (getJsonField(
         response,
         r'''$.Seguridad[:].date''',
         true,
-      );
-  dynamic seguridadTime(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? seguridadTime(dynamic response) => (getJsonField(
         response,
         r'''$.Seguridad[:].time''',
         true,
-      );
-  dynamic seguridadCatgeory(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? seguridadCatgeory(dynamic response) => (getJsonField(
         response,
         r'''$.Seguridad[:].category''',
         true,
-      );
-  dynamic seguridadLink(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? seguridadLink(dynamic response) => (getJsonField(
         response,
         r'''$.Seguridad[:].link''',
         true,
-      );
-  dynamic seguridadVideo(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<bool>? seguridadVideo(dynamic response) => (getJsonField(
         response,
         r'''$.Seguridad[:].video''',
         true,
-      );
-  dynamic tecnologia(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
+  List? tecnologia(dynamic response) => getJsonField(
         response,
         r'''$.Tecnología''',
         true,
-      );
+      ) as List?;
 }
 
 class LatestShowsCall {
@@ -1081,54 +1399,55 @@ class LatestShowsCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
-  dynamic latest(dynamic response) => getJsonField(
+  List? latest(dynamic response) => getJsonField(
         response,
         r'''$.latest''',
         true,
-      );
-  dynamic pRenVivo(dynamic response) => getJsonField(
+      ) as List?;
+  List? pRenVivo(dynamic response) => getJsonField(
         response,
         r'''$.prenvivo''',
         true,
-      );
-  dynamic lasNoticias(dynamic response) => getJsonField(
+      ) as List?;
+  List? lasNoticias(dynamic response) => getJsonField(
         response,
         r'''$.lasnoticias''',
         true,
-      );
-  dynamic laComay(dynamic response) => getJsonField(
+      ) as List?;
+  List? laComay(dynamic response) => getJsonField(
         response,
         r'''$.lacomay''',
         true,
-      );
-  dynamic laBoveda(dynamic response) => getJsonField(
+      ) as List?;
+  List? laBoveda(dynamic response) => getJsonField(
         response,
         r'''$.labovedadeteleonce''',
         true,
-      );
-  dynamic jpd(dynamic response) => getJsonField(
+      ) as List?;
+  List? jpd(dynamic response) => getJsonField(
         response,
         r'''$.jugandopelotadura''',
         true,
-      );
-  dynamic epdp(dynamic response) => getJsonField(
+      ) as List?;
+  List? epdp(dynamic response) => getJsonField(
         response,
         r'''$.elpoderdelpueblo''',
         true,
-      );
-  dynamic bannners(dynamic response) => getJsonField(
+      ) as List?;
+  List? bannners(dynamic response) => getJsonField(
         response,
         r'''$.banner''',
         true,
-      );
-  dynamic enLaManana(dynamic response) => getJsonField(
+      ) as List?;
+  List? enLaManana(dynamic response) => getJsonField(
         response,
         r'''$.enlamanana''',
         true,
-      );
+      ) as List?;
 }
 
 class ShowInfoCall {
@@ -1137,7 +1456,7 @@ class ShowInfoCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'Show Info',
-      apiUrl: '${AppAPIGroup.baseUrl}/v1/shows/category/${show}',
+      apiUrl: '${AppAPIGroup.baseUrl}/v1/shows/category/$show',
       callType: ApiCallType.GET,
       headers: {},
       params: {},
@@ -1145,6 +1464,7 @@ class ShowInfoCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
@@ -1180,7 +1500,7 @@ class NewsCatCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'News Cat',
-      apiUrl: '${AppAPIGroup.baseUrl}/v1/news/category/${cat}',
+      apiUrl: '${AppAPIGroup.baseUrl}/v1/news/category/$cat',
       callType: ApiCallType.GET,
       headers: {},
       params: {},
@@ -1188,6 +1508,7 @@ class NewsCatCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
@@ -1213,24 +1534,25 @@ class ShowCategoriesCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
-  dynamic id(dynamic response) => getJsonField(
+  List? id(dynamic response) => getJsonField(
         response,
         r'''$[:].id''',
         true,
-      );
-  dynamic name(dynamic response) => getJsonField(
+      ) as List?;
+  List? name(dynamic response) => getJsonField(
         response,
         r'''$[:].name''',
         true,
-      );
-  dynamic image(dynamic response) => getJsonField(
+      ) as List?;
+  List? image(dynamic response) => getJsonField(
         response,
         r'''$[:].image''',
         true,
-      );
+      ) as List?;
 }
 
 /// End App API Group Code
@@ -1247,13 +1569,14 @@ class GetLiveCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
-  static dynamic live(dynamic response) => getJsonField(
+  static bool? live(dynamic response) => castToType<bool>(getJsonField(
         response,
         r'''$.is_live''',
-      );
+      ));
 }
 
 class WeatherCall {
@@ -1282,6 +1605,7 @@ class WeatherCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
@@ -1307,17 +1631,19 @@ class CountryCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
-  static dynamic country(dynamic response) => getJsonField(
+  static String? country(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.country.iso_code''',
-      );
-  static dynamic countryName(dynamic response) => getJsonField(
+      ));
+  static String? countryName(dynamic response) =>
+      castToType<String>(getJsonField(
         response,
         r'''$.country.name''',
-      );
+      ));
   static dynamic state(dynamic response) => getJsonField(
         response,
         r'''$.city.region_code''',
@@ -1326,6 +1652,77 @@ class CountryCall {
         response,
         r'''$.city.region''',
       );
+}
+
+class BusquedaCall {
+  static Future<ApiCallResponse> call({
+    String? query = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'Busqueda',
+      apiUrl:
+          'https://II7OT4KDT5-dsn.algolia.net/1/indexes/wp_searchable_posts/query',
+      callType: ApiCallType.POST,
+      headers: {
+        'X-Algolia-API-Key': 'f17d37cf8adde0cae6409e2470c0762f',
+        'X-Algolia-Application-Id': 'II7OT4KDT5',
+      },
+      params: {},
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static List<String>? imageUrl(dynamic response) => (getJsonField(
+        response,
+        r'''$.hits[:].images.thumbnail.url''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? link(dynamic response) => (getJsonField(
+        response,
+        r'''$.hits[:].permalink''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List? categoria(dynamic response) => getJsonField(
+        response,
+        r'''$.hits[:].taxonomies.categorias''',
+        true,
+      ) as List?;
+  static List<String>? content(dynamic response) => (getJsonField(
+        response,
+        r'''$.hits[:].content''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? title(dynamic response) => (getJsonField(
+        response,
+        r'''$.hits[:].post_title''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List? date(dynamic response) => getJsonField(
+        response,
+        r'''$.hits[:].post_date_formatted''',
+        true,
+      ) as List?;
 }
 
 class ApiPagingParams {

@@ -13,7 +13,7 @@ import 'flutter_flow_util.dart';
 
 class FlutterFlowWebView extends StatefulWidget {
   const FlutterFlowWebView({
-    Key? key,
+    super.key,
     required this.content,
     this.width,
     this.height,
@@ -21,7 +21,7 @@ class FlutterFlowWebView extends StatefulWidget {
     this.horizontalScroll = false,
     this.verticalScroll = false,
     this.html = false,
-  }) : super(key: key);
+  });
 
   final String content;
   final double? height;

@@ -2,20 +2,17 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'menu_model.dart';
 export 'menu_model.dart';
 
 class MenuWidget extends StatefulWidget {
   const MenuWidget({
-    Key? key,
+    super.key,
     this.busqueda,
     this.menuItem,
-  }) : super(key: key);
+  });
 
   final String? busqueda;
   final String? menuItem;
@@ -53,7 +50,7 @@ class _MenuWidgetState extends State<MenuWidget> {
     return Container(
       width: 270.0,
       height: double.infinity,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white,
         boxShadow: [
           BoxShadow(
@@ -64,7 +61,7 @@ class _MenuWidgetState extends State<MenuWidget> {
         ],
       ),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 16.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 16.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -74,10 +71,10 @@ class _MenuWidgetState extends State<MenuWidget> {
               children: [
                 Flexible(
                   child: Align(
-                    alignment: AlignmentDirectional(0.00, 0.00),
+                    alignment: const AlignmentDirectional(0.0, 0.0),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8.0),
                         child: Image.asset(
@@ -92,7 +89,7 @@ class _MenuWidgetState extends State<MenuWidget> {
               ],
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
               child: InkWell(
                 splashColor: Colors.transparent,
                 focusColor: Colors.transparent,
@@ -109,18 +106,18 @@ class _MenuWidgetState extends State<MenuWidget> {
                   height: 50.0,
                   decoration: BoxDecoration(
                     color: FFAppState().menuActiveItem == 'home'
-                        ? Color(0xFFE1ECFB)
-                        : Color(0x00000000),
+                        ? const Color(0xFFE1ECFB)
+                        : const Color(0x00000000),
                     borderRadius: BorderRadius.circular(12.0),
                     shape: BoxShape.rectangle,
                   ),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 12.0, 0.0),
                           child: Container(
                             width: 4.0,
@@ -128,18 +125,18 @@ class _MenuWidgetState extends State<MenuWidget> {
                             decoration: BoxDecoration(
                               color: FFAppState().menuActiveItem == 'home'
                                   ? FlutterFlowTheme.of(context).primary
-                                  : Color(0xFFE1ECFB),
+                                  : const Color(0xFFE1ECFB),
                               borderRadius: BorderRadius.circular(4.0),
                             ),
                           ),
                         ),
-                        Icon(
+                        const Icon(
                           Icons.home_outlined,
                           color: Color(0xFF384E58),
                           size: 28.0,
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               12.0, 0.0, 0.0, 0.0),
                           child: Text(
                             'Inicio',
@@ -160,7 +157,7 @@ class _MenuWidgetState extends State<MenuWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
               child: InkWell(
                 splashColor: Colors.transparent,
                 focusColor: Colors.transparent,
@@ -177,18 +174,18 @@ class _MenuWidgetState extends State<MenuWidget> {
                   height: 50.0,
                   decoration: BoxDecoration(
                     color: FFAppState().menuActiveItem == 'noticias'
-                        ? Color(0xFFE1ECFB)
-                        : Color(0x00000000),
+                        ? const Color(0xFFE1ECFB)
+                        : const Color(0x00000000),
                     borderRadius: BorderRadius.circular(12.0),
                     shape: BoxShape.rectangle,
                   ),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 12.0, 0.0),
                           child: Container(
                             width: 4.0,
@@ -196,18 +193,18 @@ class _MenuWidgetState extends State<MenuWidget> {
                             decoration: BoxDecoration(
                               color: FFAppState().menuActiveItem == 'noticias'
                                   ? FlutterFlowTheme.of(context).primary
-                                  : Color(0xFFE1ECFB),
+                                  : const Color(0xFFE1ECFB),
                               borderRadius: BorderRadius.circular(4.0),
                             ),
                           ),
                         ),
-                        Icon(
+                        const Icon(
                           Icons.library_books_outlined,
                           color: Color(0xFF384E58),
                           size: 28.0,
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               12.0, 0.0, 0.0, 0.0),
                           child: Text(
                             'Noticias',
@@ -215,7 +212,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                                 .titleSmall
                                 .override(
                                   fontFamily: 'Plus Jakarta Sans',
-                                  color: Color(0xFF384E58),
+                                  color: const Color(0xFF384E58),
                                   fontSize: 16.0,
                                   fontWeight: FontWeight.w600,
                                 ),
@@ -228,7 +225,7 @@ class _MenuWidgetState extends State<MenuWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
               child: InkWell(
                 splashColor: Colors.transparent,
                 focusColor: Colors.transparent,
@@ -247,18 +244,18 @@ class _MenuWidgetState extends State<MenuWidget> {
                   height: 50.0,
                   decoration: BoxDecoration(
                     color: FFAppState().menuActiveItem == 'programas'
-                        ? Color(0xFFE1ECFB)
-                        : Color(0x00000000),
+                        ? const Color(0xFFE1ECFB)
+                        : const Color(0x00000000),
                     borderRadius: BorderRadius.circular(12.0),
                     shape: BoxShape.rectangle,
                   ),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 12.0, 0.0),
                           child: Container(
                             width: 4.0,
@@ -266,18 +263,18 @@ class _MenuWidgetState extends State<MenuWidget> {
                             decoration: BoxDecoration(
                               color: FFAppState().menuActiveItem == 'programas'
                                   ? FlutterFlowTheme.of(context).primary
-                                  : Color(0xFFE1ECFB),
+                                  : const Color(0xFFE1ECFB),
                               borderRadius: BorderRadius.circular(4.0),
                             ),
                           ),
                         ),
-                        Icon(
+                        const Icon(
                           Icons.ondemand_video,
                           color: Color(0xFF384E58),
                           size: 28.0,
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               12.0, 0.0, 0.0, 0.0),
                           child: Text(
                             'Programas',
@@ -285,7 +282,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                                 .titleSmall
                                 .override(
                                   fontFamily: 'Plus Jakarta Sans',
-                                  color: Color(0xFF384E58),
+                                  color: const Color(0xFF384E58),
                                   fontSize: 16.0,
                                   fontWeight: FontWeight.w600,
                                 ),
@@ -298,7 +295,7 @@ class _MenuWidgetState extends State<MenuWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
               child: InkWell(
                 splashColor: Colors.transparent,
                 focusColor: Colors.transparent,
@@ -317,18 +314,18 @@ class _MenuWidgetState extends State<MenuWidget> {
                   height: 50.0,
                   decoration: BoxDecoration(
                     color: FFAppState().menuActiveItem == 'eltiempo'
-                        ? Color(0xFFE1ECFB)
-                        : Color(0x00000000),
+                        ? const Color(0xFFE1ECFB)
+                        : const Color(0x00000000),
                     borderRadius: BorderRadius.circular(12.0),
                     shape: BoxShape.rectangle,
                   ),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 12.0, 0.0),
                           child: Container(
                             width: 4.0,
@@ -336,18 +333,18 @@ class _MenuWidgetState extends State<MenuWidget> {
                             decoration: BoxDecoration(
                               color: FFAppState().menuActiveItem == 'eltiempo'
                                   ? FlutterFlowTheme.of(context).primary
-                                  : Color(0xFFE1ECFB),
+                                  : const Color(0xFFE1ECFB),
                               borderRadius: BorderRadius.circular(4.0),
                             ),
                           ),
                         ),
-                        FaIcon(
+                        const FaIcon(
                           FontAwesomeIcons.cloudSunRain,
                           color: Color(0xFF384E58),
                           size: 28.0,
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               12.0, 0.0, 0.0, 0.0),
                           child: Text(
                             'El Tiempo',
@@ -355,7 +352,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                                 .titleSmall
                                 .override(
                                   fontFamily: 'Plus Jakarta Sans',
-                                  color: Color(0xFF384E58),
+                                  color: const Color(0xFF384E58),
                                   fontSize: 16.0,
                                   fontWeight: FontWeight.w600,
                                 ),
@@ -368,7 +365,7 @@ class _MenuWidgetState extends State<MenuWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
               child: InkWell(
                 splashColor: Colors.transparent,
                 focusColor: Colors.transparent,
@@ -387,35 +384,35 @@ class _MenuWidgetState extends State<MenuWidget> {
                   height: 50.0,
                   decoration: BoxDecoration(
                     color: FFAppState().menuActiveItem == 'buscar'
-                        ? Color(0xFFE1ECFB)
-                        : Color(0x00000000),
+                        ? const Color(0xFFE1ECFB)
+                        : const Color(0x00000000),
                     borderRadius: BorderRadius.circular(12.0),
                     shape: BoxShape.rectangle,
                   ),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 12.0, 0.0),
                           child: Container(
                             width: 4.0,
                             height: 60.0,
                             decoration: BoxDecoration(
-                              color: Color(0xFFD6E5EC),
+                              color: const Color(0xFFD6E5EC),
                               borderRadius: BorderRadius.circular(4.0),
                             ),
                           ),
                         ),
-                        Icon(
+                        const Icon(
                           Icons.manage_search_rounded,
                           color: Color(0xFF384E58),
                           size: 28.0,
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               12.0, 0.0, 0.0, 0.0),
                           child: Text(
                             'Busqueda',
@@ -423,7 +420,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                                 .titleSmall
                                 .override(
                                   fontFamily: 'Plus Jakarta Sans',
-                                  color: Color(0xFF384E58),
+                                  color: const Color(0xFF384E58),
                                   fontSize: 16.0,
                                   fontWeight: FontWeight.w600,
                                 ),
@@ -437,7 +434,7 @@ class _MenuWidgetState extends State<MenuWidget> {
             ),
             Expanded(
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -446,7 +443,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                       flex: 1,
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -519,8 +516,8 @@ class _MenuWidgetState extends State<MenuWidget> {
                               ),
                             ),
                           ]
-                              .divide(SizedBox(width: 10.0))
-                              .around(SizedBox(width: 10.0)),
+                              .divide(const SizedBox(width: 10.0))
+                              .around(const SizedBox(width: 10.0)),
                         ),
                       ),
                     ),
@@ -547,18 +544,18 @@ class _MenuWidgetState extends State<MenuWidget> {
                             ),
                           ),
                         ]
-                            .divide(SizedBox(width: 10.0))
-                            .around(SizedBox(width: 10.0)),
+                            .divide(const SizedBox(width: 10.0))
+                            .around(const SizedBox(width: 10.0)),
                       ),
                     ),
-                    Divider(
+                    const Divider(
                       height: 12.0,
                       thickness: 2.0,
                       color: Color(0xFFC8D7E4),
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -569,7 +566,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                           ),
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   12.0, 0.0, 0.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -583,7 +580,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                                         .bodySmall
                                         .override(
                                           fontFamily: 'Plus Jakarta Sans',
-                                          color: Color(0xFF384E58),
+                                          color: const Color(0xFF384E58),
                                           fontSize: 14.0,
                                           fontWeight: FontWeight.w600,
                                           lineHeight: 1.0,

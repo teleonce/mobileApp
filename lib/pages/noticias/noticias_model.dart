@@ -2,23 +2,12 @@ import '/backend/api_requests/api_calls.dart';
 import '/components/main_header_widget.dart';
 import '/components/menu_widget.dart';
 import '/components/nav_bar_widget.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/request_manager.dart';
 
 import 'dart:async';
 import 'noticias_widget.dart' show NoticiasWidget;
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-import 'package:webviewx_plus/webviewx_plus.dart';
 
 class NoticiasModel extends FlutterFlowModel<NoticiasWidget> {
   ///  State fields for stateful widgets in this page.
@@ -52,12 +41,14 @@ class NoticiasModel extends FlutterFlowModel<NoticiasWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     navBarModel = createModel(context, () => NavBarModel());
     mainHeaderModel = createModel(context, () => MainHeaderModel());
     menuModel = createModel(context, () => MenuModel());
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     navBarModel.dispose();
@@ -79,7 +70,7 @@ class NoticiasModel extends FlutterFlowModel<NoticiasWidget> {
   }) async {
     final stopwatch = Stopwatch()..start();
     while (true) {
-      await Future.delayed(Duration(milliseconds: 50));
+      await Future.delayed(const Duration(milliseconds: 50));
       final timeElapsed = stopwatch.elapsedMilliseconds;
       final requestComplete = apiRequestCompleted;
       if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {

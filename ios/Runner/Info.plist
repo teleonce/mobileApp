@@ -54,7 +54,15 @@
 	<true/>
 
 
-
+	<key>NSPhotoLibraryUsageDescription</key>
+    <string>Permiso para acceder a la galeria de fotos.</string>
+	<key>PermissionGroupNotification</key>
+    <string>Desea recibir Push Notifications?</string>
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>fetch</string>
+        <string>remote-notification</string>
+    </array>
 
 
 	<key>UILaunchStoryboardName</key>

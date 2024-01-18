@@ -44,7 +44,7 @@ void loadInterstitialAd(
 
   InterstitialAd.load(
     adUnitId: adUnitId,
-    request: AdRequest(),
+    request: const AdRequest(),
     adLoadCallback: InterstitialAdLoadCallback(
       onAdLoaded: (InterstitialAd ad) {
         if (adUnitId == _loadingInterstitialAdUnitId) {

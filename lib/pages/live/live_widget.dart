@@ -4,19 +4,16 @@ import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_web_view.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'live_model.dart';
 export 'live_model.dart';
 
 class LiveWidget extends StatefulWidget {
-  const LiveWidget({Key? key}) : super(key: key);
+  const LiveWidget({super.key});
 
   @override
   _LiveWidgetState createState() => _LiveWidgetState();
@@ -70,7 +67,7 @@ class _LiveWidgetState extends State<LiveWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        drawer: Container(
+        drawer: SizedBox(
           width: 270.0,
           child: WebViewAware(
               child: Drawer(
@@ -78,31 +75,31 @@ class _LiveWidgetState extends State<LiveWidget> {
             child: wrapWithModel(
               model: _model.menuModel,
               updateCallback: () => setState(() {}),
-              child: MenuWidget(),
+              child: const MenuWidget(),
             ),
           )),
         ),
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.00, 0.00),
-            child: Container(
+            alignment: const AlignmentDirectional(0.0, 0.0),
+            child: SizedBox(
               width: double.infinity,
               height: double.infinity,
               child: Stack(
-                alignment: AlignmentDirectional(0.0, 0.0),
+                alignment: const AlignmentDirectional(0.0, 0.0),
                 children: [
                   wrapWithModel(
                     model: _model.mainHeaderModel,
                     updateCallback: () => setState(() {}),
                     updateOnChange: true,
-                    child: MainHeaderWidget(
+                    child: const MainHeaderWidget(
                       logoNoticias: false,
                     ),
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 74.0, 0.0, 80.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 74.0, 0.0, 80.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -122,11 +119,11 @@ class _LiveWidgetState extends State<LiveWidget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.00, 1.00),
+                    alignment: const AlignmentDirectional(0.0, 1.0),
                     child: wrapWithModel(
                       model: _model.navBarModel,
                       updateCallback: () => setState(() {}),
-                      child: NavBarWidget(),
+                      child: const NavBarWidget(),
                     ),
                   ),
                 ],

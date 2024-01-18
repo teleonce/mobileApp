@@ -2,17 +2,14 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'header_post_model.dart';
 export 'header_post_model.dart';
 
 class HeaderPostWidget extends StatefulWidget {
-  const HeaderPostWidget({Key? key}) : super(key: key);
+  const HeaderPostWidget({super.key});
 
   @override
   _HeaderPostWidgetState createState() => _HeaderPostWidgetState();
@@ -54,12 +51,12 @@ class _HeaderPostWidgetState extends State<HeaderPostWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.00, -1.00),
-      child: Container(
+      alignment: const AlignmentDirectional(0.0, -1.0),
+      child: SizedBox(
         width: double.infinity,
         height: 74.0,
         child: Stack(
-          alignment: AlignmentDirectional(0.0, 1.0),
+          alignment: const AlignmentDirectional(0.0, 1.0),
           children: [
             Container(
               width: double.infinity,
@@ -68,14 +65,14 @@ class _HeaderPostWidgetState extends State<HeaderPostWidget> {
                 color: FlutterFlowTheme.of(context).primaryBackground,
               ),
               child: Align(
-                alignment: AlignmentDirectional(0.00, 0.00),
+                alignment: const AlignmentDirectional(0.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Flexible(
                       flex: 1,
                       child: Align(
-                        alignment: AlignmentDirectional(0.00, 0.00),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -83,9 +80,9 @@ class _HeaderPostWidgetState extends State<HeaderPostWidget> {
                           children: [
                             Flexible(
                               child: Align(
-                                alignment: AlignmentDirectional(-1.00, 0.00),
+                                alignment: const AlignmentDirectional(-1.0, 0.0),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       8.0, 0.0, 0.0, 0.0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
@@ -115,7 +112,7 @@ class _HeaderPostWidgetState extends State<HeaderPostWidget> {
                     Flexible(
                       flex: 2,
                       child: Align(
-                        alignment: AlignmentDirectional(0.00, 0.00),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -123,7 +120,7 @@ class _HeaderPostWidgetState extends State<HeaderPostWidget> {
                           children: [
                             if (FFAppState().menuActiveItem != 'Home')
                               Align(
-                                alignment: AlignmentDirectional(0.00, 0.00),
+                                alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
                                   focusColor: Colors.transparent,
@@ -154,9 +151,9 @@ class _HeaderPostWidgetState extends State<HeaderPostWidget> {
                     Flexible(
                       flex: 1,
                       child: Align(
-                        alignment: AlignmentDirectional(1.00, 0.00),
+                        alignment: const AlignmentDirectional(1.0, 0.0),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 10.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -164,7 +161,7 @@ class _HeaderPostWidgetState extends State<HeaderPostWidget> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Align(
-                                alignment: AlignmentDirectional(1.00, 0.00),
+                                alignment: const AlignmentDirectional(1.0, 0.0),
                                 child: Builder(
                                   builder: (context) => InkWell(
                                     splashColor: Colors.transparent,
@@ -200,7 +197,7 @@ class _HeaderPostWidgetState extends State<HeaderPostWidget> {
               ),
             ),
             Align(
-              alignment: AlignmentDirectional(0.00, 1.00),
+              alignment: const AlignmentDirectional(0.0, 1.0),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(0.0),
                 child: Image.asset(

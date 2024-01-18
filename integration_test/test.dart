@@ -16,6 +16,7 @@ void main() async {
     _overrideOnError();
     await initFirebase();
     await FirebaseAuth.instance.signOut();
+
     FFAppState.reset();
     final appState = FFAppState();
     await appState.initializePersistedState();

@@ -5,16 +5,13 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'nav_bar_model.dart';
 export 'nav_bar_model.dart';
 
 class NavBarWidget extends StatefulWidget {
-  const NavBarWidget({Key? key}) : super(key: key);
+  const NavBarWidget({super.key});
 
   @override
   _NavBarWidgetState createState() => _NavBarWidgetState();
@@ -47,11 +44,11 @@ class _NavBarWidgetState extends State<NavBarWidget> {
       setState(() {
         FFAppState().live = GetLiveCall.live(
           (_model.live?.jsonBody ?? ''),
-        );
+        )!;
         FFAppState().state = valueOrDefault<String>(
           CountryCall.country(
             (_model.country?.jsonBody ?? ''),
-          ).toString(),
+          ),
           'PR',
         );
       });
@@ -69,7 +66,7 @@ class _NavBarWidgetState extends State<NavBarWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Container(
+    return SizedBox(
       height: 130.0,
       child: Stack(
         children: [
@@ -79,9 +76,9 @@ class _NavBarWidgetState extends State<NavBarWidget> {
               (FFAppState().menuActiveItem != 'buscar') &&
               (FFAppState().menuActiveItem != 'live'))
             Align(
-              alignment: AlignmentDirectional(0.00, 1.00),
+              alignment: const AlignmentDirectional(0.0, 1.0),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 80.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 80.0),
                 child: Material(
                   color: Colors.transparent,
                   elevation: 6.0,
@@ -105,10 +102,10 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                         }(),
                         50.0,
                       ),
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Color(0xBFFFFFFF),
                       ),
-                      alignment: AlignmentDirectional(0.00, 1.00),
+                      alignment: const AlignmentDirectional(0.0, 1.0),
                       child: ClipRRect(
                         child: Container(
                           width: valueOrDefault<double>(
@@ -198,11 +195,11 @@ class _NavBarWidgetState extends State<NavBarWidget> {
               ),
             ),
           Align(
-            alignment: AlignmentDirectional(0.00, 1.00),
+            alignment: const AlignmentDirectional(0.0, 1.0),
             child: Container(
               width: double.infinity,
               height: 90.0,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Color(0x00EEEEEE),
               ),
               child: Stack(
@@ -223,7 +220,7 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                           decoration: BoxDecoration(
                             color:
                                 FlutterFlowTheme.of(context).primaryBackground,
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
                                 blurRadius: 10.0,
                                 color: Color(0x1A57636C),
@@ -238,7 +235,7 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                     ],
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.00, -1.00),
+                    alignment: const AlignmentDirectional(0.0, -1.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -247,7 +244,7 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                         Flexible(
                           flex: 1,
                           child: Align(
-                            alignment: AlignmentDirectional(0.00, 0.00),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
                               focusColor: Colors.transparent,
@@ -259,16 +256,16 @@ class _NavBarWidgetState extends State<NavBarWidget> {
 
                                 context.goNamed('Home');
                               },
-                              child: Container(
+                              child: SizedBox(
                                 height: 60.0,
                                 child: Stack(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                   children: [
                                     Align(
                                       alignment:
-                                          AlignmentDirectional(0.00, -1.00),
+                                          const AlignmentDirectional(0.0, -1.0),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 5.0, 0.0, 0.0),
                                         child: FlutterFlowIconButton(
                                           borderColor: Colors.transparent,
@@ -280,7 +277,7 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                                                       'home'
                                                   ? FlutterFlowTheme.of(context)
                                                       .primary
-                                                  : Color(0x00000000),
+                                                  : const Color(0x00000000),
                                           icon: Icon(
                                             Icons.home_rounded,
                                             color: FFAppState()
@@ -303,8 +300,7 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                                       ),
                                     ),
                                     Align(
-                                      alignment:
-                                          AlignmentDirectional(0.00, 1.00),
+                                      alignment: const AlignmentDirectional(0.0, 1.0),
                                       child: Text(
                                         'Inicio',
                                         style: FlutterFlowTheme.of(context)
@@ -328,7 +324,7 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                         Flexible(
                           flex: 1,
                           child: Align(
-                            alignment: AlignmentDirectional(0.00, 0.00),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
                               focusColor: Colors.transparent,
@@ -340,16 +336,16 @@ class _NavBarWidgetState extends State<NavBarWidget> {
 
                                 context.goNamed('Noticias');
                               },
-                              child: Container(
+                              child: SizedBox(
                                 height: 60.0,
                                 child: Stack(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                   children: [
                                     Align(
                                       alignment:
-                                          AlignmentDirectional(0.00, -1.00),
+                                          const AlignmentDirectional(0.0, -1.0),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 5.0, 0.0, 0.0),
                                         child: FlutterFlowIconButton(
                                           borderColor: Colors.transparent,
@@ -361,7 +357,7 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                                                       'noticias'
                                                   ? FlutterFlowTheme.of(context)
                                                       .primary
-                                                  : Color(0x00000000),
+                                                  : const Color(0x00000000),
                                           icon: Icon(
                                             Icons.library_books_outlined,
                                             color: FFAppState()
@@ -384,8 +380,7 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                                       ),
                                     ),
                                     Align(
-                                      alignment:
-                                          AlignmentDirectional(0.00, 1.00),
+                                      alignment: const AlignmentDirectional(0.0, 1.0),
                                       child: Text(
                                         'Noticias',
                                         style: FlutterFlowTheme.of(context)
@@ -414,13 +409,13 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 FlutterFlowIconButton(
-                                  borderColor: Color(0xFFA80915),
+                                  borderColor: const Color(0xFFA80915),
                                   borderRadius: 25.0,
                                   borderWidth: 0.0,
                                   buttonSize: 55.0,
                                   fillColor:
                                       FlutterFlowTheme.of(context).alternate,
-                                  icon: Icon(
+                                  icon: const Icon(
                                     Icons.slow_motion_video,
                                     color: Colors.white,
                                     size: 38.0,
@@ -435,7 +430,7 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                                   },
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(0.00, 1.00),
+                                  alignment: const AlignmentDirectional(0.0, 1.0),
                                   child: Text(
                                     'En Vivo',
                                     style: FlutterFlowTheme.of(context)
@@ -455,7 +450,7 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                         Flexible(
                           flex: 1,
                           child: Align(
-                            alignment: AlignmentDirectional(0.00, 0.00),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
                               focusColor: Colors.transparent,
@@ -468,16 +463,16 @@ class _NavBarWidgetState extends State<NavBarWidget> {
 
                                 context.goNamed('Programas');
                               },
-                              child: Container(
+                              child: SizedBox(
                                 height: 60.0,
                                 child: Stack(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                   children: [
                                     Align(
                                       alignment:
-                                          AlignmentDirectional(0.00, -1.00),
+                                          const AlignmentDirectional(0.0, -1.0),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 5.0, 0.0, 0.0),
                                         child: FlutterFlowIconButton(
                                           borderColor: Colors.transparent,
@@ -489,7 +484,7 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                                                   'programas'
                                               ? FlutterFlowTheme.of(context)
                                                   .primary
-                                              : Color(0x00000000),
+                                              : const Color(0x00000000),
                                           icon: Icon(
                                             Icons.ondemand_video,
                                             color: FFAppState()
@@ -512,8 +507,7 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                                       ),
                                     ),
                                     Align(
-                                      alignment:
-                                          AlignmentDirectional(0.00, 1.00),
+                                      alignment: const AlignmentDirectional(0.0, 1.0),
                                       child: Text(
                                         'Programas',
                                         style: FlutterFlowTheme.of(context)
@@ -537,7 +531,7 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                         Flexible(
                           flex: 1,
                           child: Align(
-                            alignment: AlignmentDirectional(0.00, 0.00),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
                               focusColor: Colors.transparent,
@@ -550,16 +544,16 @@ class _NavBarWidgetState extends State<NavBarWidget> {
 
                                 context.goNamed('ElTiempo');
                               },
-                              child: Container(
+                              child: SizedBox(
                                 height: 60.0,
                                 child: Stack(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                   children: [
                                     Align(
                                       alignment:
-                                          AlignmentDirectional(0.00, -1.00),
+                                          const AlignmentDirectional(0.0, -1.0),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 5.0, 0.0, 0.0),
                                         child: FlutterFlowIconButton(
                                           borderColor: Colors.transparent,
@@ -571,7 +565,7 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                                                       'eltiempo'
                                                   ? FlutterFlowTheme.of(context)
                                                       .primary
-                                                  : Color(0x00000000),
+                                                  : const Color(0x00000000),
                                           icon: FaIcon(
                                             FontAwesomeIcons.cloudSunRain,
                                             color: FFAppState()
@@ -594,8 +588,7 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                                       ),
                                     ),
                                     Align(
-                                      alignment:
-                                          AlignmentDirectional(0.00, 1.00),
+                                      alignment: const AlignmentDirectional(0.0, 1.0),
                                       child: Text(
                                         'El Tiempo',
                                         style: FlutterFlowTheme.of(context)

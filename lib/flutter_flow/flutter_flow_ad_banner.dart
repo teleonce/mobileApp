@@ -7,13 +7,13 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class FlutterFlowAdBanner extends StatefulWidget {
   const FlutterFlowAdBanner({
-    Key? key,
+    super.key,
     this.width,
     this.height,
     required this.showsTestAd,
     this.iOSAdUnitID,
     this.androidAdUnitID,
-  }) : super(key: key);
+  });
 
   final double? width;
   final double? height;

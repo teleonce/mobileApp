@@ -4,12 +4,9 @@ import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_web_view.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'post_model.dart';
@@ -17,9 +14,9 @@ export 'post_model.dart';
 
 class PostWidget extends StatefulWidget {
   const PostWidget({
-    Key? key,
+    super.key,
     required this.link,
-  }) : super(key: key);
+  });
 
   final String? link;
 
@@ -76,7 +73,7 @@ class _PostWidgetState extends State<PostWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        drawer: Container(
+        drawer: SizedBox(
           width: 270.0,
           child: WebViewAware(
               child: Drawer(
@@ -84,23 +81,23 @@ class _PostWidgetState extends State<PostWidget> {
             child: wrapWithModel(
               model: _model.menuModel,
               updateCallback: () => setState(() {}),
-              child: MenuWidget(),
+              child: const MenuWidget(),
             ),
           )),
         ),
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.00, 0.00),
-            child: Container(
+            alignment: const AlignmentDirectional(0.0, 0.0),
+            child: SizedBox(
               width: double.infinity,
               height: double.infinity,
               child: Stack(
-                alignment: AlignmentDirectional(0.0, 0.0),
+                alignment: const AlignmentDirectional(0.0, 0.0),
                 children: [
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 74.0, 0.0, 80.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 74.0, 0.0, 80.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -117,20 +114,20 @@ class _PostWidgetState extends State<PostWidget> {
                           ),
                         ),
                       ]
-                          .divide(SizedBox(height: 0.0))
-                          .around(SizedBox(height: 0.0)),
+                          .divide(const SizedBox(height: 0.0))
+                          .around(const SizedBox(height: 0.0)),
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.00, 1.00),
+                    alignment: const AlignmentDirectional(0.0, 1.0),
                     child: wrapWithModel(
                       model: _model.navBarModel,
                       updateCallback: () => setState(() {}),
-                      child: NavBarWidget(),
+                      child: const NavBarWidget(),
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.00, -1.00),
+                    alignment: const AlignmentDirectional(0.0, -1.0),
                     child: Container(
                       width: MediaQuery.sizeOf(context).width * 1.0,
                       height: 74.0,
@@ -140,7 +137,7 @@ class _PostWidgetState extends State<PostWidget> {
                       child: wrapWithModel(
                         model: _model.headerPostModel,
                         updateCallback: () => setState(() {}),
-                        child: HeaderPostWidget(),
+                        child: const HeaderPostWidget(),
                       ),
                     ),
                   ),
