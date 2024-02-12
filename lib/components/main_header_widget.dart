@@ -10,12 +10,12 @@ class MainHeaderWidget extends StatefulWidget {
   const MainHeaderWidget({
     super.key,
     bool? logoNoticias,
-  })  : logoNoticias = logoNoticias ?? false;
+  }) : logoNoticias = logoNoticias ?? false;
 
   final bool logoNoticias;
 
   @override
-  _MainHeaderWidgetState createState() => _MainHeaderWidgetState();
+  State<MainHeaderWidget> createState() => _MainHeaderWidgetState();
 }
 
 class _MainHeaderWidgetState extends State<MainHeaderWidget> {

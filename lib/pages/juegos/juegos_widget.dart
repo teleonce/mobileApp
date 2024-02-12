@@ -1,5 +1,5 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/components/main_header_widget.dart';
-import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_web_view.dart';
@@ -9,33 +9,33 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
-import 'live_model.dart';
-export 'live_model.dart';
+import 'juegos_model.dart';
+export 'juegos_model.dart';
 
-class LiveWidget extends StatefulWidget {
-  const LiveWidget({super.key});
+class JuegosWidget extends StatefulWidget {
+  const JuegosWidget({super.key});
 
   @override
-  State<LiveWidget> createState() => _LiveWidgetState();
+  State<JuegosWidget> createState() => _JuegosWidgetState();
 }
 
-class _LiveWidgetState extends State<LiveWidget> {
-  late LiveModel _model;
+class _JuegosWidgetState extends State<JuegosWidget> {
+  late JuegosModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => LiveModel());
+    _model = createModel(context, () => JuegosModel());
 
-    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Live'});
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Juegos'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      logFirebaseEvent('LIVE_PAGE_Live_ON_INIT_STATE');
-      logFirebaseEvent('Live_update_app_state');
+      logFirebaseEvent('JUEGOS_PAGE_Juegos_ON_INIT_STATE');
+      logFirebaseEvent('Juegos_update_app_state');
       setState(() {
-        FFAppState().menuActiveItem = 'live';
+        FFAppState().menuActiveItem = 'juegos';
       });
     });
   }
@@ -100,7 +100,7 @@ class _LiveWidgetState extends State<LiveWidget> {
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 74.0, 0.0, 80.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 74.0, 0.0, 0.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -108,7 +108,8 @@ class _LiveWidgetState extends State<LiveWidget> {
                         Flexible(
                           flex: 1,
                           child: FlutterFlowWebView(
-                            content: 'https://teleonce.com/live-mobile',
+                            content:
+                                'https://teleoncestg.wpengine.com/juegos/?user_id=$currentUserUid',
                             bypass: false,
                             width: MediaQuery.sizeOf(context).width * 1.0,
                             height: MediaQuery.sizeOf(context).height * 1.0,
@@ -117,14 +118,6 @@ class _LiveWidgetState extends State<LiveWidget> {
                           ),
                         ),
                       ],
-                    ),
-                  ),
-                  Align(
-                    alignment: const AlignmentDirectional(0.0, 1.0),
-                    child: wrapWithModel(
-                      model: _model.navBarModel,
-                      updateCallback: () => setState(() {}),
-                      child: const NavBarWidget(),
                     ),
                   ),
                 ],

@@ -1,10 +1,10 @@
 import '/components/main_header_widget.dart';
-import '/components/menu_widget.dart';
 import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_web_view.dart';
+import '/pages/menu/menu_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -18,7 +18,7 @@ class ElTiempoWidget extends StatefulWidget {
   const ElTiempoWidget({super.key});
 
   @override
-  _ElTiempoWidgetState createState() => _ElTiempoWidgetState();
+  State<ElTiempoWidget> createState() => _ElTiempoWidgetState();
 }
 
 class _ElTiempoWidgetState extends State<ElTiempoWidget>
@@ -78,15 +78,16 @@ class _ElTiempoWidgetState extends State<ElTiempoWidget>
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         drawer: SizedBox(
           width: 270.0,
-          child: WebViewAware(
-              child: Drawer(
+          child: Drawer(
             elevation: 16.0,
-            child: wrapWithModel(
-              model: _model.menuModel,
-              updateCallback: () => setState(() {}),
-              child: const MenuWidget(),
+            child: WebViewAware(
+              child: wrapWithModel(
+                model: _model.menuModel,
+                updateCallback: () => setState(() {}),
+                child: const MenuWidget(),
+              ),
             ),
-          )),
+          ),
         ),
         body: SafeArea(
           top: true,

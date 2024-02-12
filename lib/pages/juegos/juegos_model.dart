@@ -1,18 +1,15 @@
-import '/components/header_post_widget.dart';
-import '/components/nav_bar_widget.dart';
+import '/components/main_header_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/pages/menu/menu_widget.dart';
-import 'post_widget.dart' show PostWidget;
+import 'juegos_widget.dart' show JuegosWidget;
 import 'package:flutter/material.dart';
 
-class PostModel extends FlutterFlowModel<PostWidget> {
+class JuegosModel extends FlutterFlowModel<JuegosWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Model for NavBar component.
-  late NavBarModel navBarModel;
-  // Model for headerPost component.
-  late HeaderPostModel headerPostModel;
+  // Model for MainHeader component.
+  late MainHeaderModel mainHeaderModel;
   // Model for menu component.
   late MenuModel menuModel;
 
@@ -20,16 +17,14 @@ class PostModel extends FlutterFlowModel<PostWidget> {
 
   @override
   void initState(BuildContext context) {
-    navBarModel = createModel(context, () => NavBarModel());
-    headerPostModel = createModel(context, () => HeaderPostModel());
+    mainHeaderModel = createModel(context, () => MainHeaderModel());
     menuModel = createModel(context, () => MenuModel());
   }
 
   @override
   void dispose() {
     unfocusNode.dispose();
-    navBarModel.dispose();
-    headerPostModel.dispose();
+    mainHeaderModel.dispose();
     menuModel.dispose();
   }
 

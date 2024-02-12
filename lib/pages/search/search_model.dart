@@ -1,7 +1,7 @@
 import '/components/main_header_widget.dart';
-import '/components/menu_widget.dart';
 import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/pages/menu/menu_widget.dart';
 import 'search_widget.dart' show SearchWidget;
 import 'package:flutter/material.dart';
 

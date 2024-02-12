@@ -1,9 +1,9 @@
 import '/backend/api_requests/api_calls.dart';
 import '/components/main_header_widget.dart';
-import '/components/menu_widget.dart';
 import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/pages/menu/menu_widget.dart';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
@@ -24,7 +24,7 @@ class ProgramaWidget extends StatefulWidget {
   final int? cat;
 
   @override
-  _ProgramaWidgetState createState() => _ProgramaWidgetState();
+  State<ProgramaWidget> createState() => _ProgramaWidgetState();
 }
 
 class _ProgramaWidgetState extends State<ProgramaWidget> {
@@ -77,15 +77,16 @@ class _ProgramaWidgetState extends State<ProgramaWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         drawer: SizedBox(
           width: 270.0,
-          child: WebViewAware(
-              child: Drawer(
+          child: Drawer(
             elevation: 16.0,
-            child: wrapWithModel(
-              model: _model.menuModel,
-              updateCallback: () => setState(() {}),
-              child: const MenuWidget(),
+            child: WebViewAware(
+              child: wrapWithModel(
+                model: _model.menuModel,
+                updateCallback: () => setState(() {}),
+                child: const MenuWidget(),
+              ),
             ),
-          )),
+          ),
         ),
         body: SafeArea(
           top: true,

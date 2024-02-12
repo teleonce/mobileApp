@@ -1,10 +1,10 @@
 import '/backend/api_requests/api_calls.dart';
 import '/components/main_header_widget.dart';
-import '/components/menu_widget.dart';
 import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/pages/menu/menu_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -21,12 +21,12 @@ class NoticiasWidget extends StatefulWidget {
   const NoticiasWidget({
     super.key,
     String? logo,
-  })  : logo = logo ?? 'noticias';
+  }) : logo = logo ?? 'noticias';
 
   final String logo;
 
   @override
-  _NoticiasWidgetState createState() => _NoticiasWidgetState();
+  State<NoticiasWidget> createState() => _NoticiasWidgetState();
 }
 
 class _NoticiasWidgetState extends State<NoticiasWidget> {
@@ -79,17 +79,18 @@ class _NoticiasWidgetState extends State<NoticiasWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         drawer: SizedBox(
           width: 270.0,
-          child: WebViewAware(
-              child: Drawer(
+          child: Drawer(
             elevation: 16.0,
-            child: wrapWithModel(
-              model: _model.menuModel,
-              updateCallback: () => setState(() {}),
-              child: const MenuWidget(
-                menuItem: 'Noticias',
+            child: WebViewAware(
+              child: wrapWithModel(
+                model: _model.menuModel,
+                updateCallback: () => setState(() {}),
+                child: const MenuWidget(
+                  menuItem: 'Noticias',
+                ),
               ),
             ),
-          )),
+          ),
         ),
         body: SafeArea(
           top: true,

@@ -1,8 +1,8 @@
 import '/backend/api_requests/api_calls.dart';
 import '/components/main_header_widget.dart';
-import '/components/menu_widget.dart';
 import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/pages/menu/menu_widget.dart';
 import '/flutter_flow/request_manager.dart';
 
 import 'dart:async';

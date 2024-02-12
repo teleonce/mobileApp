@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'flutter_flow/request_manager.dart';
-import '/backend/backend.dart';
 import 'backend/api_requests/api_manager.dart';
 
 class FFAppState extends ChangeNotifier {
@@ -170,28 +169,6 @@ class FFAppState extends ChangeNotifier {
   void clearNoticiasCache() => _noticiasManager.clear();
   void clearNoticiasCacheKey(String? uniqueKey) =>
       _noticiasManager.clearRequest(uniqueKey);
-}
-
-LatLng? _latLngFromString(String? val) {
-  if (val == null) {
-    return null;
-  }
-  final split = val.split(',');
-  final lat = double.parse(split.first);
-  final lng = double.parse(split.last);
-  return LatLng(lat, lng);
-}
-
-void _safeInit(Function() initializeField) {
-  try {
-    initializeField();
-  } catch (_) {}
-}
-
-Future _safeInitAsync(Function() initializeField) async {
-  try {
-    await initializeField();
-  } catch (_) {}
 }
 
 Color? _colorFromIntValue(int? val) {

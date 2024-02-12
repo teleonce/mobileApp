@@ -1,9 +1,9 @@
 import '/backend/api_requests/api_calls.dart';
 import '/components/main_header_widget.dart';
-import '/components/menu_widget.dart';
 import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/pages/menu/menu_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +24,7 @@ class CategoriaWidget extends StatefulWidget {
   final int? cat;
 
   @override
-  _CategoriaWidgetState createState() => _CategoriaWidgetState();
+  State<CategoriaWidget> createState() => _CategoriaWidgetState();
 }
 
 class _CategoriaWidgetState extends State<CategoriaWidget> {
@@ -77,15 +77,16 @@ class _CategoriaWidgetState extends State<CategoriaWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         drawer: SizedBox(
           width: 270.0,
-          child: WebViewAware(
-              child: Drawer(
+          child: Drawer(
             elevation: 16.0,
-            child: wrapWithModel(
-              model: _model.menuModel,
-              updateCallback: () => setState(() {}),
-              child: const MenuWidget(),
+            child: WebViewAware(
+              child: wrapWithModel(
+                model: _model.menuModel,
+                updateCallback: () => setState(() {}),
+                child: const MenuWidget(),
+              ),
             ),
-          )),
+          ),
         ),
         body: SafeArea(
           top: true,
@@ -567,7 +568,7 @@ class _CategoriaWidgetState extends State<CategoriaWidget> {
                                   category: widget.cat?.toString(),
                                   postsPerPage: '10',
                                   paged: '1',
-                                  offset: '1',
+                                  offset: '0',
                                 ),
                               )
                                   .then((result) {

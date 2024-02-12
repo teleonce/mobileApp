@@ -143,6 +143,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => HomeWidget(
             page: params.getParam('page', ParamType.String),
           ),
+        ),
+        FFRoute(
+          name: 'Juegos',
+          path: '/juegos',
+          builder: (context, params) => const JuegosWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

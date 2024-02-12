@@ -12,7 +12,7 @@ class HeaderPostWidget extends StatefulWidget {
   const HeaderPostWidget({super.key});
 
   @override
-  _HeaderPostWidgetState createState() => _HeaderPostWidgetState();
+  State<HeaderPostWidget> createState() => _HeaderPostWidgetState();
 }
 
 class _HeaderPostWidgetState extends State<HeaderPostWidget> {

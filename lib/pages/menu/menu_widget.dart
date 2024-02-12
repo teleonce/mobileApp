@@ -18,7 +18,7 @@ class MenuWidget extends StatefulWidget {
   final String? menuItem;
 
   @override
-  _MenuWidgetState createState() => _MenuWidgetState();
+  State<MenuWidget> createState() => _MenuWidgetState();
 }
 
 class _MenuWidgetState extends State<MenuWidget> {
@@ -416,6 +416,74 @@ class _MenuWidgetState extends State<MenuWidget> {
                               12.0, 0.0, 0.0, 0.0),
                           child: Text(
                             'Busqueda',
+                            style: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Plus Jakarta Sans',
+                                  color: const Color(0xFF384E58),
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+              child: InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  logFirebaseEvent('MENU_COMP_Juego_ON_TAP');
+                  logFirebaseEvent('Juego_navigate_to');
+                  if (Navigator.of(context).canPop()) {
+                    context.pop();
+                  }
+                  context.pushNamed('Juegos');
+                },
+                child: Container(
+                  width: double.infinity,
+                  height: 50.0,
+                  decoration: BoxDecoration(
+                    color: FFAppState().menuActiveItem == 'buscar'
+                        ? const Color(0xFFE1ECFB)
+                        : const Color(0x00000000),
+                    borderRadius: BorderRadius.circular(12.0),
+                    shape: BoxShape.rectangle,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 12.0, 0.0),
+                          child: Container(
+                            width: 4.0,
+                            height: 60.0,
+                            decoration: BoxDecoration(
+                              color: const Color(0xFFD6E5EC),
+                              borderRadius: BorderRadius.circular(4.0),
+                            ),
+                          ),
+                        ),
+                        const FaIcon(
+                          FontAwesomeIcons.gamepad,
+                          color: Color(0xFF384E58),
+                          size: 28.0,
+                        ),
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              12.0, 0.0, 0.0, 0.0),
+                          child: Text(
+                            'Juegos',
                             style: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(

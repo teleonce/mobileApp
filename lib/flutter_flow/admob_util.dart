@@ -3,6 +3,7 @@ import 'dart:io' show Platform;
 
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+export 'package:google_mobile_ads/google_mobile_ads.dart';
 
 // Learn more about displaying interstitial ads:
 // https://developers.google.com/admob/flutter/interstitial
@@ -84,4 +85,35 @@ Future<bool> showInterstitialAd() async {
   );
   _interstitialAd!.show();
   return completer.future;
+}
+
+void requestConsent() {
+  if (kIsWeb) {
+    print('AdMob is not supported on web.');
+    return;
+  }
+
+  ConsentRequestParameters params = ConsentRequestParameters();
+
+  ConsentInformation.instance.requestConsentInfoUpdate(params, () async {
+    if (await ConsentInformation.instance.isConsentFormAvailable()) {
+      loadForm();
+    }
+  }, (error) {});
+}
+
+void loadForm() {
+  ConsentForm.loadConsentForm((consentForm) async {
+    var status = await ConsentInformation.instance.getConsentStatus();
+    if (status == ConsentStatus.required) {
+      consentForm.show((error) {
+        loadForm();
+      });
+    }
+  }, (error) {});
+}
+
+Future<bool> checkConsentNotRequired() async {
+  var status = await ConsentInformation.instance.getConsentStatus();
+  return status == ConsentStatus.notRequired;
 }

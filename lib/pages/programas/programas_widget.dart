@@ -1,11 +1,11 @@
 import '/backend/api_requests/api_calls.dart';
 import '/components/main_header_widget.dart';
-import '/components/menu_widget.dart';
 import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/instant_timer.dart';
+import '/pages/menu/menu_widget.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:cached_network_image/cached_network_image.dart';
@@ -22,7 +22,7 @@ class ProgramasWidget extends StatefulWidget {
   const ProgramasWidget({super.key});
 
   @override
-  _ProgramasWidgetState createState() => _ProgramasWidgetState();
+  State<ProgramasWidget> createState() => _ProgramasWidgetState();
 }
 
 class _ProgramasWidgetState extends State<ProgramasWidget> {
@@ -96,15 +96,16 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         drawer: SizedBox(
           width: 270.0,
-          child: WebViewAware(
-              child: Drawer(
+          child: Drawer(
             elevation: 16.0,
-            child: wrapWithModel(
-              model: _model.menuModel,
-              updateCallback: () => setState(() {}),
-              child: const MenuWidget(),
+            child: WebViewAware(
+              child: wrapWithModel(
+                model: _model.menuModel,
+                updateCallback: () => setState(() {}),
+                child: const MenuWidget(),
+              ),
             ),
-          )),
+          ),
         ),
         body: SafeArea(
           top: true,

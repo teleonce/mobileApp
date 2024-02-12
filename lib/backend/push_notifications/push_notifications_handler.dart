@@ -139,6 +139,7 @@ final parametersBuilderMap =
           'page': getParameter<String>(data, 'page'),
         },
       ),
+  'Juegos': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

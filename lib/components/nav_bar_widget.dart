@@ -14,7 +14,7 @@ class NavBarWidget extends StatefulWidget {
   const NavBarWidget({super.key});
 
   @override
-  _NavBarWidgetState createState() => _NavBarWidgetState();
+  State<NavBarWidget> createState() => _NavBarWidgetState();
 }
 
 class _NavBarWidgetState extends State<NavBarWidget> {
@@ -74,7 +74,8 @@ class _NavBarWidgetState extends State<NavBarWidget> {
               (FFAppState().menuActiveItem != 'eltiempo') &&
               (FFAppState().menuActiveItem != 'post') &&
               (FFAppState().menuActiveItem != 'buscar') &&
-              (FFAppState().menuActiveItem != 'live'))
+              (FFAppState().menuActiveItem != 'live') &&
+              (FFAppState().menuActiveItem != 'juegos'))
             Align(
               alignment: const AlignmentDirectional(0.0, 1.0),
               child: Padding(
