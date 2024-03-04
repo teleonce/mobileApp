@@ -1,12 +1,10 @@
 import '/components/main_header_widget.dart';
-import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_web_view.dart';
 import '/pages/menu/menu_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'search_model.dart';
@@ -55,15 +53,6 @@ class _SearchWidgetState extends State<SearchWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -96,60 +85,23 @@ class _SearchWidgetState extends State<SearchWidget> {
               child: Stack(
                 alignment: const AlignmentDirectional(0.0, 0.0),
                 children: [
-                  RefreshIndicator(
-                    color: FlutterFlowTheme.of(context).primary,
-                    backgroundColor:
-                        FlutterFlowTheme.of(context).primaryBackground,
-                    strokeWidth: 3.0,
-                    onRefresh: () async {
-                      logFirebaseEvent(
-                          'SEARCH_ListView_hbpdh6tm_ON_PULL_TO_REFR');
-                      logFirebaseEvent('ListView_navigate_to');
-
-                      context.goNamed('Search');
-                    },
-                    child: ListView(
-                      padding: EdgeInsets.zero,
-                      scrollDirection: Axis.vertical,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 80.0),
-                          child: FlutterFlowWebView(
-                            content: 'https://teleonce.com/?s=',
-                            bypass: false,
-                            width: MediaQuery.sizeOf(context).width * 1.0,
-                            height: MediaQuery.sizeOf(context).height * 1.0,
-                            verticalScroll: true,
-                            horizontalScroll: false,
-                          ),
-                        ),
-                      ],
+                  wrapWithModel(
+                    model: _model.mainHeaderModel,
+                    updateCallback: () => setState(() {}),
+                    child: const MainHeaderWidget(
+                      logoNoticias: false,
                     ),
                   ),
-                  Align(
-                    alignment: const AlignmentDirectional(0.0, 1.0),
-                    child: wrapWithModel(
-                      model: _model.navBarModel,
-                      updateCallback: () => setState(() {}),
-                      child: const NavBarWidget(),
-                    ),
-                  ),
-                  Align(
-                    alignment: const AlignmentDirectional(0.0, -1.0),
-                    child: Container(
+                  Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 74.0, 0.0, 0.0),
+                    child: FlutterFlowWebView(
+                      content: 'https://teleonce.com/?s=',
+                      bypass: false,
                       width: MediaQuery.sizeOf(context).width * 1.0,
-                      height: 74.0,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                      ),
-                      child: wrapWithModel(
-                        model: _model.mainHeaderModel,
-                        updateCallback: () => setState(() {}),
-                        child: const MainHeaderWidget(
-                          logoNoticias: false,
-                        ),
-                      ),
+                      height: MediaQuery.sizeOf(context).height * 1.0,
+                      verticalScroll: true,
+                      horizontalScroll: false,
                     ),
                   ),
                 ],

@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:collection/collection.dart';
 import 'package:from_css_color/from_css_color.dart';
 import 'package:intl/intl.dart';
@@ -18,6 +19,7 @@ export 'lat_lng.dart';
 export 'place.dart';
 export 'uploaded_file.dart';
 export '../app_state.dart';
+export '../app_constants.dart';
 export 'flutter_flow_model.dart';
 export 'dart:math' show min, max;
 export 'dart:typed_data' show Uint8List;
@@ -28,6 +30,7 @@ export 'package:cloud_firestore/cloud_firestore.dart'
 export 'package:page_transition/page_transition.dart';
 export '/backend/firebase_analytics/analytics.dart';
 export 'nav/nav.dart';
+export 'firebase_remote_config_util.dart';
 
 T valueOrDefault<T>(T? value, T defaultValue) =>
     (value is String && value.isEmpty) || value == null ? defaultValue : value;
@@ -335,5 +338,24 @@ extension StatefulWidgetExtensions on State<StatefulWidget> {
       // ignore: invalid_use_of_protected_member
       setState(fn);
     }
+  }
+}
+
+// For iOS 16 and below, set the status bar color to match the app's theme.
+// https://github.com/flutter/flutter/issues/41067
+Brightness? _lastBrightness;
+void fixStatusBarOniOS16AndBelow(BuildContext context) {
+  if (!isiOS) {
+    return;
+  }
+  final brightness = Theme.of(context).brightness;
+  if (_lastBrightness != brightness) {
+    _lastBrightness = brightness;
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarBrightness: brightness,
+        systemStatusBarContrastEnforced: true,
+      ),
+    );
   }
 }

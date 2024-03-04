@@ -51,6 +51,7 @@ class _NavBarWidgetState extends State<NavBarWidget> {
           ),
           'PR',
         );
+        FFAppState().showAds = getRemoteConfigBool('showAds');
       });
     });
   }
@@ -255,7 +256,15 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                                 logFirebaseEvent('NAV_BAR_COMP_Inicio_ON_TAP');
                                 logFirebaseEvent('Inicio_navigate_to');
 
-                                context.goNamed('Home');
+                                context.goNamed(
+                                  'Home',
+                                  queryParameters: {
+                                    'page': serializeParam(
+                                      'home',
+                                      ParamType.String,
+                                    ),
+                                  }.withoutNulls,
+                                );
                               },
                               child: SizedBox(
                                 height: 60.0,
@@ -335,7 +344,15 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                                 logFirebaseEvent('NAV_BAR_COMP_Noticia_ON_TAP');
                                 logFirebaseEvent('Noticia_navigate_to');
 
-                                context.goNamed('Noticias');
+                                context.goNamed(
+                                  'Noticias',
+                                  queryParameters: {
+                                    'logo': serializeParam(
+                                      '',
+                                      ParamType.String,
+                                    ),
+                                  }.withoutNulls,
+                                );
                               },
                               child: SizedBox(
                                 height: 60.0,

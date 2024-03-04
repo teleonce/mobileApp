@@ -1,5 +1,4 @@
 import '/components/main_header_widget.dart';
-import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/pages/menu/menu_widget.dart';
 import 'search_widget.dart' show SearchWidget;
@@ -9,8 +8,6 @@ class SearchModel extends FlutterFlowModel<SearchWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Model for NavBar component.
-  late NavBarModel navBarModel;
   // Model for MainHeader component.
   late MainHeaderModel mainHeaderModel;
   // Model for menu component.
@@ -20,7 +17,6 @@ class SearchModel extends FlutterFlowModel<SearchWidget> {
 
   @override
   void initState(BuildContext context) {
-    navBarModel = createModel(context, () => NavBarModel());
     mainHeaderModel = createModel(context, () => MainHeaderModel());
     menuModel = createModel(context, () => MenuModel());
   }
@@ -28,7 +24,6 @@ class SearchModel extends FlutterFlowModel<SearchWidget> {
   @override
   void dispose() {
     unfocusNode.dispose();
-    navBarModel.dispose();
     mainHeaderModel.dispose();
     menuModel.dispose();
   }

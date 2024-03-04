@@ -11,7 +11,6 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart'
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
@@ -76,15 +75,6 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -139,8 +129,7 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                 width: 50.0,
                                 height: 50.0,
                                 child: SpinKitFadingGrid(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
+                                  color: FlutterFlowTheme.of(context).accent4,
                                   size: 50.0,
                                 ),
                               ),
@@ -726,7 +715,7 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                                   'Programa',
                                                   queryParameters: {
                                                     'cat': serializeParam(
-                                                      7,
+                                                      9064,
                                                       ParamType.int,
                                                     ),
                                                   }.withoutNulls,
@@ -736,9 +725,9 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                                 borderRadius:
                                                     BorderRadius.circular(0.0),
                                                 child: Image.asset(
-                                                  'assets/images/COmay.png',
-                                                  width: 80.0,
-                                                  height: 60.0,
+                                                  'assets/images/En-Alerta.png',
+                                                  width: 125.0,
+                                                  height: 45.0,
                                                   fit: BoxFit.contain,
                                                 ),
                                               ),
@@ -801,7 +790,7 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                                     'Programa',
                                                     queryParameters: {
                                                       'cat': serializeParam(
-                                                        7,
+                                                        9064,
                                                         ParamType.int,
                                                       ),
                                                     }.withoutNulls,
@@ -856,9 +845,9 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                       0.0, 0.0, 0.0, 6.0),
                                   child: Builder(
                                     builder: (context) {
-                                      final lacomay =
+                                      final enAlerta =
                                           AppAPIGroup.latestShowsCall
-                                                  .laComay(
+                                                  .enAlerta(
                                                     mainProgramasLatestShowsResponse
                                                         .jsonBody,
                                                   )
@@ -871,9 +860,9 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.end,
                                           children: List.generate(
-                                              lacomay.length, (lacomayIndex) {
-                                            final lacomayItem =
-                                                lacomay[lacomayIndex];
+                                              enAlerta.length, (enAlertaIndex) {
+                                            final enAlertaItem =
+                                                enAlerta[enAlertaIndex];
                                             return Align(
                                               alignment: const AlignmentDirectional(
                                                   0.0, 1.0),
@@ -906,7 +895,7 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                                           valueOrDefault<
                                                               String>(
                                                             getJsonField(
-                                                              lacomayItem,
+                                                              enAlertaItem,
                                                               r'''$.link''',
                                                             )?.toString(),
                                                             'https://teleonce.com',
@@ -977,7 +966,7 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                                                 valueOrDefault<
                                                                     String>(
                                                                   getJsonField(
-                                                                    lacomayItem,
+                                                                    enAlertaItem,
                                                                     r'''$.image''',
                                                                   )?.toString(),
                                                                   'https://teleonce.com/wp-content/uploads/2023/08/no-image.jpg',
@@ -1001,7 +990,7 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                                               valueOrDefault<
                                                                   String>(
                                                                 getJsonField(
-                                                                  lacomayItem,
+                                                                  enAlertaItem,
                                                                   r'''$.title''',
                                                                 )?.toString(),
                                                                 'titulo',
@@ -1067,7 +1056,7 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                                 'Programa',
                                                 queryParameters: {
                                                   'cat': serializeParam(
-                                                    7,
+                                                    8,
                                                     ParamType.int,
                                                   ),
                                                 }.withoutNulls,
@@ -1414,7 +1403,7 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                                 'Programa',
                                                 queryParameters: {
                                                   'cat': serializeParam(
-                                                    7,
+                                                    2191,
                                                     ParamType.int,
                                                   ),
                                                 }.withoutNulls,
@@ -1762,7 +1751,7 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                                 'Programa',
                                                 queryParameters: {
                                                   'cat': serializeParam(
-                                                    7,
+                                                    4485,
                                                     ParamType.int,
                                                   ),
                                                 }.withoutNulls,
@@ -2113,7 +2102,7 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                                 'Programa',
                                                 queryParameters: {
                                                   'cat': serializeParam(
-                                                    7,
+                                                    4678,
                                                     ParamType.int,
                                                   ),
                                                 }.withoutNulls,
@@ -2244,9 +2233,9 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                         0.0, 0.0, 0.0, 6.0),
                                     child: Builder(
                                       builder: (context) {
-                                        final pRenVivo =
+                                        final paGanar =
                                             AppAPIGroup.latestShowsCall
-                                                    .epdp(
+                                                    .paGanar(
                                                       mainProgramasLatestShowsResponse
                                                           .jsonBody,
                                                     )
@@ -2258,11 +2247,10 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                             mainAxisSize: MainAxisSize.max,
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.end,
-                                            children:
-                                                List.generate(pRenVivo.length,
-                                                    (pRenVivoIndex) {
-                                              final pRenVivoItem =
-                                                  pRenVivo[pRenVivoIndex];
+                                            children: List.generate(
+                                                paGanar.length, (paGanarIndex) {
+                                              final paGanarItem =
+                                                  paGanar[paGanarIndex];
                                               return Align(
                                                 alignment: const AlignmentDirectional(
                                                     0.0, 1.0),
@@ -2281,7 +2269,7 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                                         Colors.transparent,
                                                     onTap: () async {
                                                       logFirebaseEvent(
-                                                          'PROGRAMAS_PAGE_Container_5972ojb2_ON_TAP');
+                                                          'PROGRAMAS_PAGE_Container_mt90n25j_ON_TAP');
                                                       logFirebaseEvent(
                                                           'Container_navigate_to');
                                                       if (Navigator.of(context)
@@ -2296,7 +2284,7 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                                             valueOrDefault<
                                                                 String>(
                                                               getJsonField(
-                                                                pRenVivoItem,
+                                                                paGanarItem,
                                                                 r'''$.link''',
                                                               )?.toString(),
                                                               'https://teleonce.com',
@@ -2369,7 +2357,7 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                                                   valueOrDefault<
                                                                       String>(
                                                                     getJsonField(
-                                                                      pRenVivoItem,
+                                                                      paGanarItem,
                                                                       r'''$.image''',
                                                                     )?.toString(),
                                                                     'https://teleonce.com/wp-content/uploads/2023/08/no-image.jpg',
@@ -2394,7 +2382,702 @@ class _ProgramasWidgetState extends State<ProgramasWidget> {
                                                                 valueOrDefault<
                                                                     String>(
                                                                   getJsonField(
-                                                                    pRenVivoItem,
+                                                                    paGanarItem,
+                                                                    r'''$.title''',
+                                                                  )?.toString(),
+                                                                  'titulo',
+                                                                ),
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .start,
+                                                                maxLines: 3,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyLarge
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Open Sans',
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w500,
+                                                                      lineHeight:
+                                                                          1.0,
+                                                                    ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            }),
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  10.0, 0.0, 0.0, 0.0),
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              logFirebaseEvent(
+                                                  'PROGRAMAS_PAGE_Image_cxshlnjs_ON_TAP');
+                                              logFirebaseEvent(
+                                                  'Image_navigate_to');
+                                              if (Navigator.of(context)
+                                                  .canPop()) {
+                                                context.pop();
+                                              }
+                                              context.pushNamed(
+                                                'Programa',
+                                                queryParameters: {
+                                                  'cat': serializeParam(
+                                                    9342,
+                                                    ParamType.int,
+                                                  ),
+                                                }.withoutNulls,
+                                              );
+                                            },
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(0.0),
+                                              child: Image.asset(
+                                                'assets/images/PaGanaryReir.png',
+                                                width: 97.0,
+                                                height: 56.0,
+                                                fit: BoxFit.contain,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Expanded(
+                                      flex: 1,
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Container(
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
+                                                1.0,
+                                            height: 22.0,
+                                            decoration: const BoxDecoration(
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  blurRadius: 4.0,
+                                                  color: Color(0x33000000),
+                                                  offset: Offset(0.0, 2.0),
+                                                )
+                                              ],
+                                              gradient: LinearGradient(
+                                                colors: [
+                                                  Color(0xFF0187E3),
+                                                  Color(0xFF02C4FB)
+                                                ],
+                                                stops: [0.0, 1.0],
+                                                begin: AlignmentDirectional(
+                                                    1.0, 0.0),
+                                                end: AlignmentDirectional(
+                                                    -1.0, 0),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Align(
+                                          alignment:
+                                              const AlignmentDirectional(1.0, 0.0),
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 10.0, 0.0),
+                                            child: FFButtonWidget(
+                                              onPressed: () async {
+                                                logFirebaseEvent(
+                                                    'PROGRAMAS_PAGE_VER_MÁS_BTN_ON_TAP');
+                                                logFirebaseEvent(
+                                                    'Button_navigate_to');
+
+                                                context.pushNamed(
+                                                  'Programa',
+                                                  queryParameters: {
+                                                    'cat': serializeParam(
+                                                      9342,
+                                                      ParamType.int,
+                                                    ),
+                                                  }.withoutNulls,
+                                                );
+                                              },
+                                              text: 'Ver Más',
+                                              options: FFButtonOptions(
+                                                width: 100.0,
+                                                height: 35.0,
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        5.0, 0.0, 5.0, 0.0),
+                                                iconPadding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
+                                                color: const Color(0xFF0187E3),
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Open Sans',
+                                                          color: Colors.white,
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          lineHeight: 1.0,
+                                                        ),
+                                                elevation: 3.0,
+                                                borderSide: const BorderSide(
+                                                  color: Colors.transparent,
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(0.0),
+                                              ),
+                                              showLoadingIndicator: false,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ]
+                                      .divide(const SizedBox(width: 0.0))
+                                      .around(const SizedBox(width: 0.0)),
+                                ),
+                                Align(
+                                  alignment: const AlignmentDirectional(0.0, 1.0),
+                                  child: Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 6.0),
+                                    child: Builder(
+                                      builder: (context) {
+                                        final paGanar =
+                                            AppAPIGroup.latestShowsCall
+                                                    .paGanar(
+                                                      mainProgramasLatestShowsResponse
+                                                          .jsonBody,
+                                                    )
+                                                    ?.toList() ??
+                                                [];
+                                        return SingleChildScrollView(
+                                          scrollDirection: Axis.horizontal,
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.end,
+                                            children: List.generate(
+                                                paGanar.length, (paGanarIndex) {
+                                              final paGanarItem =
+                                                  paGanar[paGanarIndex];
+                                              return Align(
+                                                alignment: const AlignmentDirectional(
+                                                    0.0, 1.0),
+                                                child: Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          5.0, 12.0, 5.0, 12.0),
+                                                  child: InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
+                                                    onTap: () async {
+                                                      logFirebaseEvent(
+                                                          'PROGRAMAS_PAGE_Container_u2iqv9tm_ON_TAP');
+                                                      logFirebaseEvent(
+                                                          'Container_navigate_to');
+                                                      if (Navigator.of(context)
+                                                          .canPop()) {
+                                                        context.pop();
+                                                      }
+                                                      context.pushNamed(
+                                                        'Post',
+                                                        queryParameters: {
+                                                          'link':
+                                                              serializeParam(
+                                                            valueOrDefault<
+                                                                String>(
+                                                              getJsonField(
+                                                                paGanarItem,
+                                                                r'''$.link''',
+                                                              )?.toString(),
+                                                              'https://teleonce.com',
+                                                            ),
+                                                            ParamType.String,
+                                                          ),
+                                                        }.withoutNulls,
+                                                      );
+                                                    },
+                                                    child: Container(
+                                                      width: 160.0,
+                                                      height: 180.0,
+                                                      constraints:
+                                                          const BoxConstraints(
+                                                        minHeight: 170.0,
+                                                        maxHeight: 300.0,
+                                                      ),
+                                                      decoration: BoxDecoration(
+                                                        color:
+                                                            const Color(0xFFF3F3F3),
+                                                        boxShadow: const [
+                                                          BoxShadow(
+                                                            blurRadius: 4.0,
+                                                            color: Color(
+                                                                0x33000000),
+                                                            offset: Offset(
+                                                                0.0, 2.0),
+                                                          )
+                                                        ],
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5.0),
+                                                      ),
+                                                      alignment:
+                                                          const AlignmentDirectional(
+                                                              -1.0, 0.0),
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    4.0,
+                                                                    4.0,
+                                                                    4.0,
+                                                                    12.0),
+                                                        child: Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .start,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          12.0),
+                                                              child: ClipRRect(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            5.0),
+                                                                child: Image
+                                                                    .network(
+                                                                  valueOrDefault<
+                                                                      String>(
+                                                                    getJsonField(
+                                                                      paGanarItem,
+                                                                      r'''$.image''',
+                                                                    )?.toString(),
+                                                                    'https://teleonce.com/wp-content/uploads/2023/08/no-image.jpg',
+                                                                  ),
+                                                                  width: double
+                                                                      .infinity,
+                                                                  height: 90.0,
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          8.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                              child: Text(
+                                                                valueOrDefault<
+                                                                    String>(
+                                                                  getJsonField(
+                                                                    paGanarItem,
+                                                                    r'''$.title''',
+                                                                  )?.toString(),
+                                                                  'titulo',
+                                                                ),
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .start,
+                                                                maxLines: 3,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyLarge
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Open Sans',
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w500,
+                                                                      lineHeight:
+                                                                          1.0,
+                                                                    ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            }),
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  10.0, 0.0, 0.0, 0.0),
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              logFirebaseEvent(
+                                                  'PROGRAMAS_PAGE_Image_15kclib3_ON_TAP');
+                                              logFirebaseEvent(
+                                                  'Image_navigate_to');
+                                              if (Navigator.of(context)
+                                                  .canPop()) {
+                                                context.pop();
+                                              }
+                                              context.pushNamed(
+                                                'Programa',
+                                                queryParameters: {
+                                                  'cat': serializeParam(
+                                                    9148,
+                                                    ParamType.int,
+                                                  ),
+                                                }.withoutNulls,
+                                              );
+                                            },
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(0.0),
+                                              child: Image.asset(
+                                                'assets/images/QuienCaera.png',
+                                                width: 97.0,
+                                                height: 56.0,
+                                                fit: BoxFit.contain,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Expanded(
+                                      flex: 1,
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Container(
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
+                                                1.0,
+                                            height: 22.0,
+                                            decoration: const BoxDecoration(
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  blurRadius: 4.0,
+                                                  color: Color(0x33000000),
+                                                  offset: Offset(0.0, 2.0),
+                                                )
+                                              ],
+                                              gradient: LinearGradient(
+                                                colors: [
+                                                  Color(0xFF1C1853),
+                                                  Color(0xFF14116F)
+                                                ],
+                                                stops: [0.0, 1.0],
+                                                begin: AlignmentDirectional(
+                                                    1.0, 0.0),
+                                                end: AlignmentDirectional(
+                                                    -1.0, 0),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Align(
+                                          alignment:
+                                              const AlignmentDirectional(1.0, 0.0),
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 10.0, 0.0),
+                                            child: FFButtonWidget(
+                                              onPressed: () async {
+                                                logFirebaseEvent(
+                                                    'PROGRAMAS_PAGE_VER_MÁS_BTN_ON_TAP');
+                                                logFirebaseEvent(
+                                                    'Button_navigate_to');
+
+                                                context.pushNamed(
+                                                  'Programa',
+                                                  queryParameters: {
+                                                    'cat': serializeParam(
+                                                      9148,
+                                                      ParamType.int,
+                                                    ),
+                                                  }.withoutNulls,
+                                                );
+                                              },
+                                              text: 'Ver Más',
+                                              options: FFButtonOptions(
+                                                width: 100.0,
+                                                height: 35.0,
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        5.0, 0.0, 5.0, 0.0),
+                                                iconPadding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
+                                                color: const Color(0xFF1C1853),
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Open Sans',
+                                                          color: Colors.white,
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          lineHeight: 1.0,
+                                                        ),
+                                                elevation: 3.0,
+                                                borderSide: const BorderSide(
+                                                  color: Colors.transparent,
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(0.0),
+                                              ),
+                                              showLoadingIndicator: false,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ]
+                                      .divide(const SizedBox(width: 0.0))
+                                      .around(const SizedBox(width: 0.0)),
+                                ),
+                                Align(
+                                  alignment: const AlignmentDirectional(0.0, 1.0),
+                                  child: Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 6.0),
+                                    child: Builder(
+                                      builder: (context) {
+                                        final quienCaera =
+                                            AppAPIGroup.latestShowsCall
+                                                    .quienCaera(
+                                                      mainProgramasLatestShowsResponse
+                                                          .jsonBody,
+                                                    )
+                                                    ?.toList() ??
+                                                [];
+                                        return SingleChildScrollView(
+                                          scrollDirection: Axis.horizontal,
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.end,
+                                            children:
+                                                List.generate(quienCaera.length,
+                                                    (quienCaeraIndex) {
+                                              final quienCaeraItem =
+                                                  quienCaera[quienCaeraIndex];
+                                              return Align(
+                                                alignment: const AlignmentDirectional(
+                                                    0.0, 1.0),
+                                                child: Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          5.0, 12.0, 5.0, 12.0),
+                                                  child: InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
+                                                    onTap: () async {
+                                                      logFirebaseEvent(
+                                                          'PROGRAMAS_PAGE_Container_xnvwy2b2_ON_TAP');
+                                                      logFirebaseEvent(
+                                                          'Container_navigate_to');
+                                                      if (Navigator.of(context)
+                                                          .canPop()) {
+                                                        context.pop();
+                                                      }
+                                                      context.pushNamed(
+                                                        'Post',
+                                                        queryParameters: {
+                                                          'link':
+                                                              serializeParam(
+                                                            valueOrDefault<
+                                                                String>(
+                                                              getJsonField(
+                                                                quienCaeraItem,
+                                                                r'''$.link''',
+                                                              )?.toString(),
+                                                              'https://teleonce.com',
+                                                            ),
+                                                            ParamType.String,
+                                                          ),
+                                                        }.withoutNulls,
+                                                      );
+                                                    },
+                                                    child: Container(
+                                                      width: 160.0,
+                                                      height: 180.0,
+                                                      constraints:
+                                                          const BoxConstraints(
+                                                        minHeight: 170.0,
+                                                        maxHeight: 300.0,
+                                                      ),
+                                                      decoration: BoxDecoration(
+                                                        color:
+                                                            const Color(0xFFF3F3F3),
+                                                        boxShadow: const [
+                                                          BoxShadow(
+                                                            blurRadius: 4.0,
+                                                            color: Color(
+                                                                0x33000000),
+                                                            offset: Offset(
+                                                                0.0, 2.0),
+                                                          )
+                                                        ],
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5.0),
+                                                      ),
+                                                      alignment:
+                                                          const AlignmentDirectional(
+                                                              -1.0, 0.0),
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    4.0,
+                                                                    4.0,
+                                                                    4.0,
+                                                                    12.0),
+                                                        child: Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .start,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          12.0),
+                                                              child: ClipRRect(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            5.0),
+                                                                child: Image
+                                                                    .network(
+                                                                  valueOrDefault<
+                                                                      String>(
+                                                                    getJsonField(
+                                                                      quienCaeraItem,
+                                                                      r'''$.image''',
+                                                                    )?.toString(),
+                                                                    'https://teleonce.com/wp-content/uploads/2023/08/no-image.jpg',
+                                                                  ),
+                                                                  width: double
+                                                                      .infinity,
+                                                                  height: 90.0,
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          8.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                              child: Text(
+                                                                valueOrDefault<
+                                                                    String>(
+                                                                  getJsonField(
+                                                                    quienCaeraItem,
                                                                     r'''$.title''',
                                                                   )?.toString(),
                                                                   'titulo',

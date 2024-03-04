@@ -1448,6 +1448,21 @@ class LatestShowsCall {
         r'''$.enlamanana''',
         true,
       ) as List?;
+  List? quienCaera(dynamic response) => getJsonField(
+        response,
+        r'''$.quiencaera''',
+        true,
+      ) as List?;
+  List? enAlerta(dynamic response) => getJsonField(
+        response,
+        r'''$.enalerta''',
+        true,
+      ) as List?;
+  List? paGanar(dynamic response) => getJsonField(
+        response,
+        r'''$.paganaryreir''',
+        true,
+      ) as List?;
 }
 
 class ShowInfoCall {

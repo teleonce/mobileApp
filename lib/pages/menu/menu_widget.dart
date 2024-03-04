@@ -96,10 +96,13 @@ class _MenuWidgetState extends State<MenuWidget> {
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () async {
-                  logFirebaseEvent('MENU_COMP_contentView_1_ON_TAP');
-                  logFirebaseEvent('contentView_1_navigate_to');
+                  logFirebaseEvent('MENU_COMP_menuInicio_ON_TAP');
+                  logFirebaseEvent('menuInicio_navigate_to');
 
                   context.goNamed('Home');
+
+                  logFirebaseEvent('menuInicio_update_app_state');
+                  FFAppState().update(() {});
                 },
                 child: Container(
                   width: double.infinity,
@@ -112,7 +115,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                     shape: BoxShape.rectangle,
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(4.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -157,15 +160,15 @@ class _MenuWidgetState extends State<MenuWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
               child: InkWell(
                 splashColor: Colors.transparent,
                 focusColor: Colors.transparent,
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () async {
-                  logFirebaseEvent('MENU_COMP_contentView_1_ON_TAP');
-                  logFirebaseEvent('contentView_1_navigate_to');
+                  logFirebaseEvent('MENU_COMP_menuNoticias_ON_TAP');
+                  logFirebaseEvent('menuNoticias_navigate_to');
 
                   context.goNamed('Noticias');
                 },
@@ -180,7 +183,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                     shape: BoxShape.rectangle,
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(4.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -225,15 +228,15 @@ class _MenuWidgetState extends State<MenuWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
               child: InkWell(
                 splashColor: Colors.transparent,
                 focusColor: Colors.transparent,
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () async {
-                  logFirebaseEvent('MENU_COMP_contentView_1_ON_TAP');
-                  logFirebaseEvent('contentView_1_navigate_to');
+                  logFirebaseEvent('MENU_COMP_menuProgramas_ON_TAP');
+                  logFirebaseEvent('menuProgramas_navigate_to');
                   if (Navigator.of(context).canPop()) {
                     context.pop();
                   }
@@ -250,7 +253,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                     shape: BoxShape.rectangle,
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(4.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -295,15 +298,15 @@ class _MenuWidgetState extends State<MenuWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
               child: InkWell(
                 splashColor: Colors.transparent,
                 focusColor: Colors.transparent,
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () async {
-                  logFirebaseEvent('MENU_COMP_contentView_1_ON_TAP');
-                  logFirebaseEvent('contentView_1_navigate_to');
+                  logFirebaseEvent('MENU_COMP_menuElTiempo_ON_TAP');
+                  logFirebaseEvent('menuElTiempo_navigate_to');
                   if (Navigator.of(context).canPop()) {
                     context.pop();
                   }
@@ -320,7 +323,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                     shape: BoxShape.rectangle,
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(4.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -365,15 +368,15 @@ class _MenuWidgetState extends State<MenuWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
               child: InkWell(
                 splashColor: Colors.transparent,
                 focusColor: Colors.transparent,
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () async {
-                  logFirebaseEvent('MENU_COMP_Buscar_ON_TAP');
-                  logFirebaseEvent('Buscar_navigate_to');
+                  logFirebaseEvent('MENU_COMP_menuBuscar_ON_TAP');
+                  logFirebaseEvent('menuBuscar_navigate_to');
                   if (Navigator.of(context).canPop()) {
                     context.pop();
                   }
@@ -390,7 +393,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                     shape: BoxShape.rectangle,
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(4.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -432,74 +435,75 @@ class _MenuWidgetState extends State<MenuWidget> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
-              child: InkWell(
-                splashColor: Colors.transparent,
-                focusColor: Colors.transparent,
-                hoverColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                onTap: () async {
-                  logFirebaseEvent('MENU_COMP_Juego_ON_TAP');
-                  logFirebaseEvent('Juego_navigate_to');
-                  if (Navigator.of(context).canPop()) {
-                    context.pop();
-                  }
-                  context.pushNamed('Juegos');
-                },
-                child: Container(
-                  width: double.infinity,
-                  height: 50.0,
-                  decoration: BoxDecoration(
-                    color: FFAppState().menuActiveItem == 'buscar'
-                        ? const Color(0xFFE1ECFB)
-                        : const Color(0x00000000),
-                    borderRadius: BorderRadius.circular(12.0),
-                    shape: BoxShape.rectangle,
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 12.0, 0.0),
-                          child: Container(
-                            width: 4.0,
-                            height: 60.0,
-                            decoration: BoxDecoration(
-                              color: const Color(0xFFD6E5EC),
-                              borderRadius: BorderRadius.circular(4.0),
+            if (getRemoteConfigBool('juegos'))
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
+                child: InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    logFirebaseEvent('MENU_COMP_menuArcade_ON_TAP');
+                    logFirebaseEvent('menuArcade_navigate_to');
+                    if (Navigator.of(context).canPop()) {
+                      context.pop();
+                    }
+                    context.pushNamed('Juegos');
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    height: 50.0,
+                    decoration: BoxDecoration(
+                      color: FFAppState().menuActiveItem == 'buscar'
+                          ? const Color(0xFFE1ECFB)
+                          : const Color(0x00000000),
+                      borderRadius: BorderRadius.circular(12.0),
+                      shape: BoxShape.rectangle,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 12.0, 0.0),
+                            child: Container(
+                              width: 4.0,
+                              height: 60.0,
+                              decoration: BoxDecoration(
+                                color: const Color(0xFFD6E5EC),
+                                borderRadius: BorderRadius.circular(4.0),
+                              ),
                             ),
                           ),
-                        ),
-                        const FaIcon(
-                          FontAwesomeIcons.gamepad,
-                          color: Color(0xFF384E58),
-                          size: 28.0,
-                        ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              12.0, 0.0, 0.0, 0.0),
-                          child: Text(
-                            'Juegos',
-                            style: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: 'Plus Jakarta Sans',
-                                  color: const Color(0xFF384E58),
-                                  fontSize: 16.0,
-                                  fontWeight: FontWeight.w600,
-                                ),
+                          const FaIcon(
+                            FontAwesomeIcons.gamepad,
+                            color: Color(0xFF384E58),
+                            size: 28.0,
                           ),
-                        ),
-                      ],
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                12.0, 0.0, 0.0, 0.0),
+                            child: Text(
+                              'Juegos',
+                              style: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    fontFamily: 'Plus Jakarta Sans',
+                                    color: const Color(0xFF384E58),
+                                    fontSize: 16.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
             Expanded(
               child: Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
@@ -598,7 +602,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                           Flexible(
                             flex: 1,
                             child: Text(
-                              'Copyright © 2023 TeleOnce. \nTodos los derechos reservados.',
+                              'Copyright © 2024 TeleOnce. \nTodos los derechos reservados.',
                               textAlign: TextAlign.center,
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
@@ -640,19 +644,32 @@ class _MenuWidgetState extends State<MenuWidget> {
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    currentUserUid.maybeHandleOverflow(
-                                        maxChars: 8),
-                                    maxLines: 1,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodySmall
-                                        .override(
-                                          fontFamily: 'Plus Jakarta Sans',
-                                          color: const Color(0xFF384E58),
-                                          fontSize: 14.0,
-                                          fontWeight: FontWeight.w600,
-                                          lineHeight: 1.0,
-                                        ),
+                                  InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      logFirebaseEvent(
+                                          'MENU_COMP_Text_3we3x80k_ON_TAP');
+                                      logFirebaseEvent('Text_navigate_to');
+
+                                      context.goNamed('Profile');
+                                    },
+                                    child: Text(
+                                      currentUserUid.maybeHandleOverflow(
+                                          maxChars: 8),
+                                      maxLines: 1,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodySmall
+                                          .override(
+                                            fontFamily: 'Plus Jakarta Sans',
+                                            color: const Color(0xFF384E58),
+                                            fontSize: 14.0,
+                                            fontWeight: FontWeight.w600,
+                                            lineHeight: 1.0,
+                                          ),
+                                    ),
                                   ),
                                 ],
                               ),

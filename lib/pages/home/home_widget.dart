@@ -12,7 +12,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
@@ -64,15 +63,6 @@ class _HomeWidgetState extends State<HomeWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -135,8 +125,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                   width: 50.0,
                                   height: 50.0,
                                   child: SpinKitFadingGrid(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
+                                    color: FlutterFlowTheme.of(context).accent4,
                                     size: 50.0,
                                   ),
                                 ),

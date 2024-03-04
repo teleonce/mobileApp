@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_web_view.dart';
 import '/pages/menu/menu_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'post_model.dart';
@@ -55,15 +54,6 @@ class _PostWidgetState extends State<PostWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -106,7 +96,7 @@ class _PostWidgetState extends State<PostWidget> {
                         Flexible(
                           flex: 1,
                           child: FlutterFlowWebView(
-                            content: '${widget.link}?template=single-app',
+                            content: '${widget.link}',
                             bypass: false,
                             width: MediaQuery.sizeOf(context).width * 1.0,
                             height: MediaQuery.sizeOf(context).height * 1.0,

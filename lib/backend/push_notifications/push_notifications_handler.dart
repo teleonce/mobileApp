@@ -140,6 +140,7 @@ final parametersBuilderMap =
         },
       ),
   'Juegos': ParameterData.none(),
+  'Profile': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

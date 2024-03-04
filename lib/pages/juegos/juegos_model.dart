@@ -1,4 +1,4 @@
-import '/components/main_header_widget.dart';
+import '/components/header_juegos_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/pages/menu/menu_widget.dart';
 import 'juegos_widget.dart' show JuegosWidget;
@@ -8,8 +8,8 @@ class JuegosModel extends FlutterFlowModel<JuegosWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Model for MainHeader component.
-  late MainHeaderModel mainHeaderModel;
+  // Model for headerJuegos component.
+  late HeaderJuegosModel headerJuegosModel;
   // Model for menu component.
   late MenuModel menuModel;
 
@@ -17,14 +17,14 @@ class JuegosModel extends FlutterFlowModel<JuegosWidget> {
 
   @override
   void initState(BuildContext context) {
-    mainHeaderModel = createModel(context, () => MainHeaderModel());
+    headerJuegosModel = createModel(context, () => HeaderJuegosModel());
     menuModel = createModel(context, () => MenuModel());
   }
 
   @override
   void dispose() {
     unfocusNode.dispose();
-    mainHeaderModel.dispose();
+    headerJuegosModel.dispose();
     menuModel.dispose();
   }
 

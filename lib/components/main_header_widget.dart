@@ -129,6 +129,9 @@ class _MainHeaderWidgetState extends State<MainHeaderWidget> {
                                       logFirebaseEvent('Logo_navigate_to');
 
                                       context.goNamed('Home');
+
+                                      logFirebaseEvent('Logo_update_app_state');
+                                      FFAppState().update(() {});
                                     },
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(8.0),
@@ -157,6 +160,10 @@ class _MainHeaderWidgetState extends State<MainHeaderWidget> {
                                         'LogoNoticias_navigate_to');
 
                                     context.goNamed('Noticias');
+
+                                    logFirebaseEvent(
+                                        'LogoNoticias_update_app_state');
+                                    FFAppState().update(() {});
                                   },
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(8.0),
@@ -217,7 +224,7 @@ class _MainHeaderWidgetState extends State<MainHeaderWidget> {
                                         'MAIN_HEADER_COMP_search_ICN_ON_TAP');
                                     logFirebaseEvent('IconButton_navigate_to');
 
-                                    context.pushNamed(
+                                    context.goNamed(
                                       'Search',
                                       queryParameters: {
                                         'search': serializeParam(
@@ -226,6 +233,10 @@ class _MainHeaderWidgetState extends State<MainHeaderWidget> {
                                         ),
                                       }.withoutNulls,
                                     );
+
+                                    logFirebaseEvent(
+                                        'IconButton_update_app_state');
+                                    FFAppState().update(() {});
                                   },
                                 ),
                               ),

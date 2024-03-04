@@ -10,3 +10,4 @@ export '/pages/programa/programa_widget.dart' show ProgramaWidget;
 export '/pages/live/live_widget.dart' show LiveWidget;
 export '/pages/home/home_widget.dart' show HomeWidget;
 export '/pages/juegos/juegos_widget.dart' show JuegosWidget;
+export '/profile/profile_widget.dart' show ProfileWidget;

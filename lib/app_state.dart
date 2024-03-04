@@ -155,6 +155,12 @@ class FFAppState extends ChangeNotifier {
     _showSearch = value;
   }
 
+  bool _juegos = false;
+  bool get juegos => _juegos;
+  set juegos(bool value) {
+    _juegos = value;
+  }
+
   final _noticiasManager = FutureRequestManager<ApiCallResponse>();
   Future<ApiCallResponse> noticias({
     String? uniqueQueryKey,

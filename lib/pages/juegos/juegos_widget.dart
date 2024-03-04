@@ -1,12 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/components/main_header_widget.dart';
+import '/components/header_juegos_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_web_view.dart';
 import '/pages/menu/menu_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'juegos_model.dart';
@@ -34,9 +33,7 @@ class _JuegosWidgetState extends State<JuegosWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('JUEGOS_PAGE_Juegos_ON_INIT_STATE');
       logFirebaseEvent('Juegos_update_app_state');
-      setState(() {
-        FFAppState().menuActiveItem = 'juegos';
-      });
+      FFAppState().update(() {});
     });
   }
 
@@ -49,15 +46,6 @@ class _JuegosWidgetState extends State<JuegosWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -91,12 +79,9 @@ class _JuegosWidgetState extends State<JuegosWidget> {
                 alignment: const AlignmentDirectional(0.0, 0.0),
                 children: [
                   wrapWithModel(
-                    model: _model.mainHeaderModel,
+                    model: _model.headerJuegosModel,
                     updateCallback: () => setState(() {}),
-                    updateOnChange: true,
-                    child: const MainHeaderWidget(
-                      logoNoticias: false,
-                    ),
+                    child: const HeaderJuegosWidget(),
                   ),
                   Padding(
                     padding:
@@ -109,7 +94,7 @@ class _JuegosWidgetState extends State<JuegosWidget> {
                           flex: 1,
                           child: FlutterFlowWebView(
                             content:
-                                'https://teleoncestg.wpengine.com/juegos/?user_id=$currentUserUid',
+                                'https://teleonce.com/juegos?user_id=$currentUserUid',
                             bypass: false,
                             width: MediaQuery.sizeOf(context).width * 1.0,
                             height: MediaQuery.sizeOf(context).height * 1.0,

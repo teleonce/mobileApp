@@ -1,12 +1,13 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
+import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
@@ -136,15 +137,6 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -303,8 +295,8 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                   ),
                               () => ClipRRect(
                                     borderRadius: BorderRadius.circular(16.0),
-                                    child: Image.network(
-                                      'https://picsum.photos/seed/32/600',
+                                    child: Image.asset(
+                                      'assets/images/paganar.jpg',
                                       width: 120.0,
                                       height: 160.0,
                                       fit: BoxFit.cover,
@@ -372,90 +364,176 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                   animationsMap['textOnPageLoadAnimation2']!),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 10.0, 0.0, 0.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                FFButtonWidget(
-                                  onPressed: () {
-                                    print('Button pressed ...');
-                                  },
-                                  text: 'Login',
-                                  options: FFButtonOptions(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 0.4,
-                                    height: 40.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        24.0, 0.0, 24.0, 0.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily: 'Open Sans',
-                                          color: Colors.white,
-                                        ),
-                                    elevation: 3.0,
-                                    borderSide: const BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1.0,
+                          if (responsiveVisibility(
+                            context: context,
+                            phone: false,
+                            tablet: false,
+                            tabletLandscape: false,
+                            desktop: false,
+                          ))
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 10.0, 0.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  FFButtonWidget(
+                                    onPressed: () {
+                                      print('Login pressed ...');
+                                    },
+                                    text: 'Login',
+                                    options: FFButtonOptions(
+                                      width: MediaQuery.sizeOf(context).width *
+                                          0.4,
+                                      height: 40.0,
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          24.0, 0.0, 24.0, 0.0),
+                                      iconPadding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily: 'Open Sans',
+                                            color: Colors.white,
+                                          ),
+                                      elevation: 3.0,
+                                      borderSide: const BorderSide(
+                                        color: Colors.transparent,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(20.0),
                                     ),
-                                    borderRadius: BorderRadius.circular(20.0),
                                   ),
-                                ),
-                                FFButtonWidget(
-                                  onPressed: () {
-                                    print('Button pressed ...');
-                                  },
-                                  text: 'Registrate',
-                                  options: FFButtonOptions(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 0.4,
-                                    height: 40.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        24.0, 0.0, 24.0, 0.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily: 'Open Sans',
-                                          color: Colors.white,
-                                        ),
-                                    elevation: 3.0,
-                                    borderSide: const BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1.0,
+                                  FFButtonWidget(
+                                    onPressed: () {
+                                      print('Register pressed ...');
+                                    },
+                                    text: 'Registrate',
+                                    options: FFButtonOptions(
+                                      width: MediaQuery.sizeOf(context).width *
+                                          0.4,
+                                      height: 40.0,
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          24.0, 0.0, 24.0, 0.0),
+                                      iconPadding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily: 'Open Sans',
+                                            color: Colors.white,
+                                          ),
+                                      elevation: 3.0,
+                                      borderSide: const BorderSide(
+                                        color: Colors.transparent,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(20.0),
                                     ),
-                                    borderRadius: BorderRadius.circular(20.0),
                                   ),
-                                ),
-                              ]
-                                  .divide(const SizedBox(width: 12.0))
-                                  .around(const SizedBox(width: 12.0)),
+                                ]
+                                    .divide(const SizedBox(width: 12.0))
+                                    .around(const SizedBox(width: 12.0)),
+                              ),
                             ),
-                          ),
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 12.0, 16.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 logFirebaseEvent(
-                                    'ONBOARDING_PAGE_CONTINUAR_BTN_ON_TAP');
-                                logFirebaseEvent('Button_auth');
+                                    'ONBOARDING_PAGE_Guest_ON_TAP');
+                                var shouldSetState = false;
+                                logFirebaseEvent('Guest_auth');
                                 GoRouter.of(context).prepareAuthEvent();
                                 final user = await authManager
                                     .signInAnonymously(context);
                                 if (user == null) {
                                   return;
                                 }
+                                logFirebaseEvent('Guest_cloud_function');
+                                try {
+                                  final result = await FirebaseFunctions
+                                      .instance
+                                      .httpsCallable('subscribeToTopic')
+                                      .call({
+                                    "userId": currentUserUid,
+                                    "topic": 'general',
+                                  });
+                                  _model.subscribeTopic =
+                                      SubscribeToTopicCloudFunctionCallResponse(
+                                    succeeded: true,
+                                  );
+                                } on FirebaseFunctionsException catch (error) {
+                                  _model.subscribeTopic =
+                                      SubscribeToTopicCloudFunctionCallResponse(
+                                    errorCode: error.code,
+                                    succeeded: false,
+                                  );
+                                }
 
-                                context.goNamedAuth('Home', context.mounted);
+                                shouldSetState = true;
+                                if (_model.subscribeTopic!.succeeded!) {
+                                  logFirebaseEvent('Guest_show_snack_bar');
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        '✅ Subscrito Correctamente.',
+                                        style: FlutterFlowTheme.of(context)
+                                            .labelSmall
+                                            .override(
+                                              fontFamily: 'Open Sans',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryBackground,
+                                            ),
+                                      ),
+                                      duration: const Duration(milliseconds: 4000),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context).primary,
+                                    ),
+                                  );
+                                  logFirebaseEvent('Guest_navigate_to');
+
+                                  context.pushNamedAuth(
+                                      'Home', context.mounted);
+
+                                  if (shouldSetState) setState(() {});
+                                  return;
+                                } else {
+                                  logFirebaseEvent('Guest_show_snack_bar');
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        '☹️ No se pudo Subscribir.',
+                                        style: TextStyle(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryBackground,
+                                        ),
+                                      ),
+                                      duration: const Duration(milliseconds: 4000),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context)
+                                              .alternate,
+                                    ),
+                                  );
+                                  logFirebaseEvent('Guest_navigate_to');
+
+                                  context.pushNamedAuth(
+                                      'Home', context.mounted);
+
+                                  if (shouldSetState) setState(() {});
+                                  return;
+                                }
+
+                                if (shouldSetState) setState(() {});
                               },
                               text: 'Continuar',
                               options: FFButtonOptions(

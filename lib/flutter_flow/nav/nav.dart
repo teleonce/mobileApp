@@ -80,75 +80,82 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/',
           builder: (context, _) =>
               appStateNotifier.loggedIn ? const HomeWidget() : const OnboardingWidget(),
+          routes: [
+            FFRoute(
+              name: 'Programas',
+              path: 'programas',
+              builder: (context, params) => const ProgramasWidget(),
+            ),
+            FFRoute(
+              name: 'Noticias',
+              path: 'noticias',
+              builder: (context, params) => NoticiasWidget(
+                logo: params.getParam('logo', ParamType.String),
+              ),
+            ),
+            FFRoute(
+              name: 'ElTiempo',
+              path: 'elTiempo',
+              builder: (context, params) => const ElTiempoWidget(),
+            ),
+            FFRoute(
+              name: 'Post',
+              path: 'post',
+              builder: (context, params) => PostWidget(
+                link: params.getParam('link', ParamType.String),
+              ),
+            ),
+            FFRoute(
+              name: 'Search',
+              path: 'search',
+              builder: (context, params) => SearchWidget(
+                search: params.getParam('search', ParamType.String),
+              ),
+            ),
+            FFRoute(
+              name: 'onboarding',
+              path: 'onboarding',
+              builder: (context, params) => const OnboardingWidget(),
+            ),
+            FFRoute(
+              name: 'Categoria',
+              path: 'categoria',
+              builder: (context, params) => CategoriaWidget(
+                cat: params.getParam('cat', ParamType.int),
+              ),
+            ),
+            FFRoute(
+              name: 'Programa',
+              path: 'programa',
+              builder: (context, params) => ProgramaWidget(
+                cat: params.getParam('cat', ParamType.int),
+              ),
+            ),
+            FFRoute(
+              name: 'Live',
+              path: 'live',
+              builder: (context, params) => const LiveWidget(),
+            ),
+            FFRoute(
+              name: 'Home',
+              path: 'home',
+              requireAuth: true,
+              builder: (context, params) => HomeWidget(
+                page: params.getParam('page', ParamType.String),
+              ),
+            ),
+            FFRoute(
+              name: 'Juegos',
+              path: 'juegos',
+              builder: (context, params) => const JuegosWidget(),
+            ),
+            FFRoute(
+              name: 'Profile',
+              path: 'profile',
+              builder: (context, params) => const ProfileWidget(),
+            )
+          ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
-        FFRoute(
-          name: 'Programas',
-          path: '/programas',
-          builder: (context, params) => const ProgramasWidget(),
-        ),
-        FFRoute(
-          name: 'Noticias',
-          path: '/noticias',
-          builder: (context, params) => NoticiasWidget(
-            logo: params.getParam('logo', ParamType.String),
-          ),
-        ),
-        FFRoute(
-          name: 'ElTiempo',
-          path: '/elTiempo',
-          builder: (context, params) => const ElTiempoWidget(),
-        ),
-        FFRoute(
-          name: 'Post',
-          path: '/post',
-          builder: (context, params) => PostWidget(
-            link: params.getParam('link', ParamType.String),
-          ),
-        ),
-        FFRoute(
-          name: 'Search',
-          path: '/search',
-          builder: (context, params) => SearchWidget(
-            search: params.getParam('search', ParamType.String),
-          ),
-        ),
-        FFRoute(
-          name: 'onboarding',
-          path: '/onboarding',
-          builder: (context, params) => const OnboardingWidget(),
-        ),
-        FFRoute(
-          name: 'Categoria',
-          path: '/categoria',
-          builder: (context, params) => CategoriaWidget(
-            cat: params.getParam('cat', ParamType.int),
-          ),
-        ),
-        FFRoute(
-          name: 'Programa',
-          path: '/programa',
-          builder: (context, params) => ProgramaWidget(
-            cat: params.getParam('cat', ParamType.int),
-          ),
-        ),
-        FFRoute(
-          name: 'Live',
-          path: '/live',
-          builder: (context, params) => const LiveWidget(),
-        ),
-        FFRoute(
-          name: 'Home',
-          path: '/home',
-          requireAuth: true,
-          builder: (context, params) => HomeWidget(
-            page: params.getParam('page', ParamType.String),
-          ),
-        ),
-        FFRoute(
-          name: 'Juegos',
-          path: '/juegos',
-          builder: (context, params) => const JuegosWidget(),
-        )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
 
@@ -319,6 +326,7 @@ class FFRoute {
           return null;
         },
         pageBuilder: (context, state) {
+          fixStatusBarOniOS16AndBelow(context);
           final ffParams = FFParameters(state, asyncParams);
           final page = ffParams.hasFutures
               ? FutureBuilder(
